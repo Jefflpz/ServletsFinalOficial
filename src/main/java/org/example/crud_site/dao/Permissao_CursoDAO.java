@@ -2,60 +2,40 @@ package org.example.crud_site.dao;
 
 // Importando a classe Permissao_Curso para usar os seus atributos e métodos.
 
-// Importando as classes necessárias para a conexão com o banco de dados e a execução de consultas SQL.
-
-
 import org.example.crud_site.model.Permissao_Curso;
 
-import java.awt.*;
+//importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
+
+// Importando a classe ArrayList para criar uma lista de Permissões.
 import java.util.ArrayList;
 import java.util.List;
+
+// Importando a classe UUID para usar nos ids.
 import java.util.UUID;
 
-
+// Classe Permissao_CursoDAO
 public class Permissao_CursoDAO {
 
-
-    // Atributo estático para a única instância da classe
-    private static Permissao_CursoDAO instanciaUnica;
-    // Nomeando as bibliotecas necessárias para a conexão com o banco de
-    // dados para facilitar a leitura do código.
+    // Objeto que acessa os atributos que gerenciam o banco de dados.
     private Conexao conexao;
 
-    //O padrão Singleton é um padrão de design que garante que uma classe
-    // tenha apenas uma única instância durante todo o ciclo de vida da aplicação
-    //  e fornece um ponto global de acesso a essa instância. Esse padrão é útil
-    //  em situações onde é necessário haver apenas um objeto compartilhado por
-    //  todo o sistema, no nosso caso 'conexao'.
-
-    // Construtor privado para evitar multiplas instâncias da classe.
-    private Permissao_CursoDAO(){
+    //Construtor atribui a conexao uma nova Conexao() com os atribuitos da classe Conexao.
+    public Permissao_CursoDAO(){
+        // Inicializa a conexão com o banco de dados.
         conexao = new Conexao();
     }
 
-    // Método público para obter a única instância da classe(Singleton)
-    // Isso significa que se a classe já tiver sido instanciada, ela retornará a mesma instância.
-    public static Permissao_CursoDAO getInstancia() {
-        if (instanciaUnica == null) {
-            instanciaUnica = new Permissao_CursoDAO();
-        }
-        return instanciaUnica;
-    }
-
+    // Método para autorizar a permissão de um curso.
     public boolean autorizarPermissao(UUID id_curso) {
 
-        // No próprio try usamos esse comando: "Connection conexao = Conexao.conectar()".
-        // Ele garante que ela será fechada automaticamente após o uso, mesmo que ocorra uma exceção.
-        try{
+        // Estabelece a conexão com o banco de dados.
+        conexao.conectar();
+        try {
 
-            // Instrução SQL para alterar um administrador na tabela Adm.
-            String sql = "UPDATE Permissao_Curso SET permissao = TRUE WHERE id_cuso =?";
-
-            // Prepara a instrução SQL para ser executada.
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-
-            // Acessa o 'SET' de Permissão_Curso para mudar a autorização do curso no banco de dados.
+            // Instrução SQL para autorizar um curso no banco.
+            conexao.pstmt = conexao.conn.prepareStatement("UPDATE Permissao_Curso SET permissao = TRUE WHERE id_curso = ?");
+            // Define o parâmetro id_curso na consulta SQL.
             conexao.pstmt.setObject(1, id_curso);
 
             // Retorna se o comando SQL foi executado com sucesso.
@@ -63,30 +43,54 @@ public class Permissao_CursoDAO {
         }catch(SQLException e) {
             // Retorna false se ocorrer algum erro na execução do comando SQL.
             return false;
+        }finally {
+            // Fecha a conexão com o banco de dados.
+            conexao.desconectar();
         }
     }
 
-    public List<Permissao_Curso> listarPermissoes(){
+    // Método para negar a permissão de um curso.
+    public boolean negarPermissao(UUID id_curso) {
 
-        // Instrução SQL para listar os administradores na tabela Adm.
-        String sql = "SELECT * FROM permissao_curso";
+        // Estabelece a conexão com o banco de dados.
+        conexao.conectar();
+        try {
+            // Instrução SQL para negar a permissão de um curso no banco.
+            conexao.pstmt = conexao.conn.prepareStatement("UPDATE Permissao_Curso SET permissao = FALSE WHERE id_curso = ?");
+            // Define o parâmetro id_curso na consulta SQL.
+            conexao.pstmt.setObject(1, id_curso);
 
-        // Essa linha cria uma lista vazia chamada adms, pronta para armazenar objetos do tipo Adm.
-        // Usamos o ArrayList para faciliar a manipulação da lista.
+            // Retorna se o comando SQL foi executado com sucesso.
+            return conexao.pstmt.executeUpdate() > 0;
+        }catch(SQLException e) {
+            // Retorna false se ocorrer algum erro na execução do comando SQL.
+            e.printStackTrace();
+            return false;
+        }finally {
+            // Fecha a conexão com o banco de dados.
+            conexao.desconectar();
+        }
+    }
+
+    // Método para listar as permissões de cursos.
+    public List<Permissao_Curso> listarPermissoes() {
+
+        // Estabelece a conexão com o banco de dados.
+        conexao.conectar();
+        // Lista vazia que armazenará as permissões de cursos.
         List<Permissao_Curso> permissoes = new ArrayList<>();
-        try{
+        try {
 
-            // Prepara a instrução SQL para ser executada.
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+            // Prepara a instrução SQL para listar as permissões de cursos.
+            conexao.pstmt = conexao.conn.prepareStatement("SELECT * FROM permissao_curso");
 
-            // Executa a instrução SQL e armazena os resultados em um ResultSet.
+            // Executa a consulta SQL e armazena os resultados em um ResultSet.
             conexao.rs = conexao.pstmt.executeQuery();
 
-            // Enquanto houver registros no ResultSet, pega os dados de cada registro e cria um objeto Adm.
-            while(conexao.rs.next()){
+            // Enquanto houver registros no ResultSet, cria objetos Permissao_Curso e os adiciona à lista.
+            while(conexao.rs.next()) {
 
-                //pega os dados de cada registro e cria um objeto Adm.
-                //ignora o id_permissao, pois é gerado automaticamente pelo banco de dados.
+                // Pega os dados do ResultSet e cria um objeto Permissao_Curso.
                 UUID id_conta = (UUID) conexao.rs.getObject(2);
                 boolean permissao =  conexao.rs.getBoolean(3);
                 String dt_solicitacao = conexao.rs.getString(4);
@@ -94,12 +98,20 @@ public class Permissao_CursoDAO {
                 UUID id_curso = (UUID) conexao.rs.getObject(6);
                 UUID id_autorizador = (UUID) conexao.rs.getObject(7);
 
+                // Cria o objeto Permissao_Curso com os dados obtidos.
                 Permissao_Curso permissaoCurso = new Permissao_Curso(id_conta, permissao, dt_solicitacao, dt_autorizacao, id_curso, id_autorizador);
+
+                // Adiciona o objeto Permissao_Curso à lista de permissões.
                 permissoes.add(permissaoCurso);
             }
+            // Retorna a lista de permissões de cursos.
             return permissoes;
         }catch(SQLException e){
+            // Retorna null caso ocorra algum erro.
             return null;
+        }finally {
+            // Fecha a conexão com o banco de dados.
+            conexao.desconectar();
         }
     }
 }

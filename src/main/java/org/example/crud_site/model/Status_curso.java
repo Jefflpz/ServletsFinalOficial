@@ -12,29 +12,32 @@ public class Status_curso {
     public Status_curso(String nome) {
         this.nome = nome;
     }
-
-    // Métodos Getters que retornam os valores dos atributos da classe
-    public UUID getId() {
-        // Retorna o valor do atributo id
-        return id;
-    }
-    public String getNome() {
-        // Retorna o valor do atributo nome
-        return nome;
-    }
-
-    // Métodos Setters que alteram os valores dos atributos da classe
-    public void setNome(String nome) {
-        // Recebe um valor String e altera o valod do atributo nome
+    public Status_curso(UUID id,String nome) {
+        this.id = id;
         this.nome = nome;
     }
 
-    // Método toString que retorna uma representação textual do objeto da classe
-    @Override
+    // Métodos Getters que retornam os valores dos atributos da classe.;~~~~~~~~~~~~~~~~
+    public UUID getId() {
+        // Retorna o valor do atributo id.
+        return id;
+    }
+    public String getNome() {
+        // Retorna o valor do atributo nome.
+        return nome;
+    }
+
+    // Métodos Setters que alteram os valores dos atributos da classe.
+    public void setNome(String nome) {
+        // Recebe um valor String e altera o valod do atributo nome.
+        this.nome = nome;
+    }
+
+    // Método toString que retorna uma representação textual do objeto da classe.
     public String toString() {
         return "Status_curso{" +
                 "\nid: " + id +
-                ";\nnome='" + nome +
+                ";\nnome: " + nome +
                 "\n";
     }
 }

@@ -1,6 +1,5 @@
 package org.example.crud_site.controller;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlets")
-public class ServletListar extends HttpServlet {
+public class Login extends HttpServlet {
     private String message;
 
     public void init() {

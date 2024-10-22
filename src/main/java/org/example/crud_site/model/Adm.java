@@ -1,5 +1,6 @@
 package org.example.crud_site.model;
 
+// importando o UUID para ultilizar
 import java.util.UUID;
 
 public class Adm {
@@ -34,7 +35,6 @@ public class Adm {
     }
     public String getUsername() {
         // Retorna o valor do atributo
-        // username
         return this.username;
     }
     public String getSenha() {
@@ -50,6 +50,10 @@ public class Adm {
 
     // Método toString que retorna uma representação textual do objeto da classe
     public String toString() {
-        return "Adm{id:" + id + ",  username:" +  username + ", senha:" + senha + "}";
+        return "Adm{" +
+                "\nid: " + this.id +
+                ";\nusername: " +  username +
+                ";\nsenha: " + senha +
+                "\n}";
     }
 }

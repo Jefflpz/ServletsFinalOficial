@@ -14,6 +14,11 @@ public class Setor {
         this.nome = nome;
     }
 
+    public Setor(UUID id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     // Métodos Getters que retornam os valores dos atributos da classe
     public UUID getId() {
         // Retorna o valor do atributo Id
@@ -33,8 +38,8 @@ public class Setor {
     // Método toString que retorna uma representação textual do objeto da classe
     public String toString() {
         return "Setor{" +
-                "\nid: " + id +
-                ";\nnome: '" + nome +
+                "\nid: " + this.id +
+                ";\nnome: '" + this.nome +
                 "\n}";
     }
 }

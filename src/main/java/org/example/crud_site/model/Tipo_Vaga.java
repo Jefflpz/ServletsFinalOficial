@@ -13,6 +13,10 @@ public class Tipo_Vaga {
     public Tipo_Vaga(String nome) {
         this.nome = nome;
     }
+    public Tipo_Vaga(UUID id,String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 
     // Métodos Getters que retornam os valores dos atributos da classe
     public UUID getId() {

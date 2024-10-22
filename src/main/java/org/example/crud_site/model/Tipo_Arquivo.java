@@ -13,6 +13,10 @@ public class Tipo_Arquivo {
     public Tipo_Arquivo(String nome) {
         this.nome = nome;
     }
+    public Tipo_Arquivo(UUID id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 
     // Métodos Getters que retornam os valores dos atributos da classe
     public UUID getId() {

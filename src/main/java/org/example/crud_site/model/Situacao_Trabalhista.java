@@ -13,6 +13,10 @@ public class Situacao_Trabalhista {
     public Situacao_Trabalhista(String nome) {
         this.nome = nome;
     }
+    public Situacao_Trabalhista(UUID id ,String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 
     // Métodos Getters que retornam os valores dos atributos da classe
     public UUID getId() {
@@ -31,11 +35,10 @@ public class Situacao_Trabalhista {
     }
 
     // Método toString que retorna uma representação textual do objeto
-    @Override
     public String toString() {
         return "Situacao_Trabalhista{" +
-                "\nid" + id +
-                ";\nnome: " + nome +
+                "\nid: " + this.id +
+                ";\nnome: " + this.nome +
                 "\n}";
     }
 }
