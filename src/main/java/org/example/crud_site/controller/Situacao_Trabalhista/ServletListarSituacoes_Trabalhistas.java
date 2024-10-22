@@ -1,4 +1,4 @@
-package org.example.crud_site.controller.Listar;
+package org.example.crud_site.controller.Situacao_Trabalhista;
 
 import java.util.List;
 import jakarta.servlet.ServletException;
