@@ -1,4 +1,4 @@
-package org.example.crud_site.controller.Login;
+package org.example.crud_site.controller;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

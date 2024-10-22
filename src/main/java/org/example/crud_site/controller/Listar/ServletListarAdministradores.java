@@ -1,4 +1,4 @@
-package org.example.crud_site.controller.Adm;
+package org.example.crud_site.controller.Listar;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;

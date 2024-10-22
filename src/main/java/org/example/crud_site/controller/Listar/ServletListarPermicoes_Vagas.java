@@ -1,4 +1,4 @@
-package org.example.crud_site.controller.Permissao_Vaga;
+package org.example.crud_site.controller.Listar;
 
 import java.util.List;
 import jakarta.servlet.ServletException;

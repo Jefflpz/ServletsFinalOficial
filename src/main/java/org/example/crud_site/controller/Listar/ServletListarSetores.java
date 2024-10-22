@@ -1,4 +1,4 @@
-package org.example.crud_site.controller.Setor;
+package org.example.crud_site.controller.Listar;
 
 import java.util.List;
 import jakarta.servlet.ServletException;
