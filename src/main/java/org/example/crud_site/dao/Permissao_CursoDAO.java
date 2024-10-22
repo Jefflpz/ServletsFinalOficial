@@ -73,7 +73,7 @@ public class Permissao_CursoDAO {
     }
 
     // Método para listar as permissões de cursos.
-    public List<Permissao_Curso> listarPermissoes() {
+    public List<Permissao_Curso> listarPermissoes_Curso() {
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();

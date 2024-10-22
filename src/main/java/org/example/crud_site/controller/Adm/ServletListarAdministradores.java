@@ -1,18 +1,16 @@
-package org.example.crud_site.controller;
+package org.example.crud_site.controller.Adm;
 
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.AdmDAO;
 import org.example.crud_site.model.Adm;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/listarAdm")
-public class ListarAdm {
+public class ServletListarAdministradores {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         AdmDAO admDAO = new AdmDAO();
         List<Adm> adms = admDAO.listarAdms();

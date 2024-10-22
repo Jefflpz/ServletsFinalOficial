@@ -3,16 +3,16 @@ package org.example.crud_site.model;
 import java.util.UUID;
 
 // Classe Status_curso
-public class Status_curso {
+public class Status_Curso {
     // Atributos da classe
     private UUID id;
     private String nome;
 
     // Método construtor que recebe os parâmetros necessários para criar um objeto da classe
-    public Status_curso(String nome) {
+    public Status_Curso(String nome) {
         this.nome = nome;
     }
-    public Status_curso(UUID id,String nome) {
+    public Status_Curso(UUID id, String nome) {
         this.id = id;
         this.nome = nome;
     }

@@ -81,7 +81,7 @@ public class Permissao_VagaDAO {
     }
 
     // Método para listar todas as permissões de vagas.
-    public List<Permissao_Vaga> listarPermissoes() {
+    public List<Permissao_Vaga> listarPermissoes_Vaga() {
 
         // Conecta ao banco de dados.
         conexao.conectar();

@@ -1,4 +1,4 @@
-package org.example.crud_site.controller;
+package org.example.crud_site.controller.Login;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlets")
-public class Login extends HttpServlet {
+public class ServletLogin extends HttpServlet {
     private String message;
 
     public void init() {

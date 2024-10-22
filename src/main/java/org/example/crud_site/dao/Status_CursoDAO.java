@@ -2,7 +2,7 @@ package org.example.crud_site.dao;
 
 // Importando a classe Status_curso para manipular os dados relacionados.
 
-import org.example.crud_site.model.Status_curso;
+import org.example.crud_site.model.Status_Curso;
 
 // Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
@@ -15,18 +15,18 @@ import java.util.List;
 import java.util.UUID;
 
 // Classe DAO responsável pelas operações de CRUD relacionadas ao status do curso
-public class Status_cursoDAO {
+public class Status_CursoDAO {
 
     // Objeto responsável por gerenciar a conexão com o banco de dados
     private Conexao conexao;
 
     //Construtor atribui a conexao uma nova Conexao() com os atribuitos da classe Conexao.
-    public Status_cursoDAO() {
+    public Status_CursoDAO() {
         conexao = new Conexao();
     }
 
     // Método para inserir um novo status de curso no banco de dados
-    public boolean inserirStatus_curso(Status_curso status_curso) {
+    public boolean inserirStatus_curso(Status_Curso status_curso) {
         conexao.conectar(); // Conecta ao banco de dados
         try {
             // Instrução SQL para inserir um novo status de curso na tabela
@@ -47,7 +47,7 @@ public class Status_cursoDAO {
     }
 
     // Método para alterar o nome de um status de curso existente
-    public boolean alterarNomeSatus_curso(Status_curso status_curso, String nome) {
+    public boolean alterarNomeSatus_curso(Status_Curso status_curso, String nome) {
         conexao.conectar(); // Conecta ao banco de dados
         try {
             // Instrução SQL para atualizar o nome do status de curso
@@ -94,7 +94,7 @@ public class Status_cursoDAO {
     }
 
     // Método para buscar um status de curso pelo nome
-    public Status_curso buscarStatus_Curso(String nomeStatus_curso) {
+    public Status_Curso buscarStatus_Curso(String nomeStatus_curso) {
         conexao.conectar(); // Conecta ao banco de dados
         try {
             // Instrução SQL para selecionar um status de curso pelo nome
@@ -109,7 +109,7 @@ public class Status_cursoDAO {
             if (conexao.rs.next()) {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);
-                return new Status_curso(id, nome);
+                return new Status_Curso(id, nome);
             } else {
                 // Caso não encontre o status, retorna null
                 return null;
@@ -123,12 +123,12 @@ public class Status_cursoDAO {
     }
 
     // Método para listar todos os status de curso cadastrados no banco de dados
-    public List<Status_curso> listarStatus_Curso() {
+    public List<Status_Curso> listarStatus_Curso() {
         // Instrução SQL para listar todos os registros na tabela status_curso
         String sql = "SELECT * FROM status_curso";
 
         // Cria uma lista vazia para armazenar os resultados
-        List<Status_curso> status_Cursos = new ArrayList<>();
+        List<Status_Curso> status_Cursos = new ArrayList<>();
         conexao.conectar(); // Conecta ao banco de dados
 
         try {
@@ -140,7 +140,7 @@ public class Status_cursoDAO {
             while (conexao.rs.next()) {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);
-                Status_curso status_Curso = new Status_curso(id, nome);
+                Status_Curso status_Curso = new Status_Curso(id, nome);
                 status_Cursos.add(status_Curso);
             }
         } catch (SQLException e) {
