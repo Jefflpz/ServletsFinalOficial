@@ -1,31 +1,30 @@
 package org.example.crud_site.dao;
 
-// Importando a classe Status_curso para manipular os dados relacionados.
-
+// Importando a classe Status_Curso para manipular os dados relacionados.
 import org.example.crud_site.model.Status_Curso;
 
 // Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
 
-// Importando a classe ArrayList para criar uma lista de Permissões.
+// Importando a classe ArrayList para criar uma lista de status de curso.
 import java.util.ArrayList;
 import java.util.List;
 
 // Importando a classe UUID para usar nos ids.
 import java.util.UUID;
 
-// Classe DAO responsável pelas operações de CRUD relacionadas ao status do curso
+// Classe DAO responsável pelas operações de CRUD relacionadas ao status do curso.
 public class Status_CursoDAO {
 
-    // Objeto responsável por gerenciar a conexão com o banco de dados
+    // Objeto responsável por gerenciar a conexão com o banco de dados.
     private Conexao conexao;
 
-    //Construtor atribui a conexao uma nova Conexao() com os atribuitos da classe Conexao.
+    // Construtor que inicializa a conexão com uma nova instância de Conexao().
     public Status_CursoDAO() {
         conexao = new Conexao();
     }
 
-    // Método para inserir um novo status de curso no banco de dados
+    // Método para inserir um novo status de curso no banco de dados.
     public boolean inserirStatus_curso(Status_Curso status_curso) {
         conexao.conectar(); // Conecta ao banco de dados
         try {
@@ -46,7 +45,7 @@ public class Status_CursoDAO {
         }
     }
 
-    // Método para alterar o nome de um status de curso existente
+    // Método para alterar o nome de um status de curso existente.
     public boolean alterarNomeSatus_curso(Status_Curso status_curso, String nome) {
         conexao.conectar(); // Conecta ao banco de dados
         try {
@@ -72,7 +71,7 @@ public class Status_CursoDAO {
         }
     }
 
-    // Método para excluir um status de curso pelo nome
+    // Método para excluir um status de curso pelo nome.
     public void excluirStauts_curso(String nomeStatus_curso) {
         conexao.conectar(); // Conecta ao banco de dados
         try {
@@ -93,7 +92,7 @@ public class Status_CursoDAO {
         }
     }
 
-    // Método para buscar um status de curso pelo nome
+    // Método para buscar um status de curso pelo nome.
     public Status_Curso buscarStatus_Curso(String nomeStatus_curso) {
         conexao.conectar(); // Conecta ao banco de dados
         try {
@@ -105,7 +104,7 @@ public class Status_CursoDAO {
             // Executa a consulta e armazena o resultado
             conexao.rs = conexao.pstmt.executeQuery();
 
-            // Se o registro existir, cria um objeto Status_curso com os dados obtidos
+            // Se o registro existir, cria um objeto Status_Curso com os dados obtidos
             if (conexao.rs.next()) {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);
@@ -122,7 +121,7 @@ public class Status_CursoDAO {
         }
     }
 
-    // Método para listar todos os status de curso cadastrados no banco de dados
+    // Método para listar todos os status de curso cadastrados no banco de dados.
     public List<Status_Curso> listarStatus_Curso() {
         // Instrução SQL para listar todos os registros na tabela status_curso
         String sql = "SELECT * FROM status_curso";
@@ -136,7 +135,7 @@ public class Status_CursoDAO {
             conexao.pstmt = conexao.conn.prepareStatement(sql);
             conexao.rs = conexao.pstmt.executeQuery();
 
-            // Enquanto houver registros no ResultSet, cria objetos Status_curso e os adiciona à lista
+            // Enquanto houver registros no ResultSet, cria objetos Status_Curso e os adiciona à lista
             while (conexao.rs.next()) {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);

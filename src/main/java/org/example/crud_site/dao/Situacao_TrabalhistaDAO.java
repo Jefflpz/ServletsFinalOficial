@@ -1,7 +1,6 @@
 package org.example.crud_site.dao;
 
 // Importando a classe Situacao_Trabalhista para manipular os dados relacionados.
-
 import org.example.crud_site.model.Situacao_Trabalhista;
 
 // Importando a classe SQLException para tratar os erros de SQL.
@@ -20,7 +19,7 @@ public class Situacao_TrabalhistaDAO {
     // Atributo para gerenciar a conexão com o banco de dados.
     private Conexao conexao;
 
-    //Construtor atribui a conexao uma nova Conexao() com os atribuitos da classe Conexao.
+    // Construtor que inicializa a conexão com uma nova instância de Conexao().
     public Situacao_TrabalhistaDAO() {
         conexao = new Conexao();
     }

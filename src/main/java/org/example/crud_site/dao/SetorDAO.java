@@ -1,9 +1,9 @@
 package org.example.crud_site.dao;
 
-// Importando a classe Setor para ultilizar seus atributos e métodos.
+// Importando a classe Setor para utilizar seus atributos e métodos.
 import org.example.crud_site.model.Setor;
 
-//importando a classe SQLException para tratar os erros de SQL.
+// Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
 
 // Importando a classe ArrayList para criar uma lista de setores.
@@ -13,13 +13,13 @@ import java.util.List;
 // Importando a classe UUID para usar nos ids.
 import java.util.UUID;
 
-//Classe SetorDAO
+// Classe SetorDAO
 public class SetorDAO {
 
     // Objeto que acessa os atributos que gerenciam a conexão com o banco de dados.
     private Conexao conexao;
 
-    //Construtor atribui a conexao uma nova Conexao() com os atribuitos da classe Conexao.
+    // Construtor que inicializa a conexão com o banco de dados.
     public SetorDAO() {
         conexao = new Conexao();
     }
@@ -30,7 +30,6 @@ public class SetorDAO {
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
         try {
-
             // Instrução SQL para inserir um novo setor no banco de dados.
             String sql = "INSERT INTO Setor (nome) VALUES (?)";
             conexao.pstmt = conexao.conn.prepareStatement(sql);
@@ -56,7 +55,7 @@ public class SetorDAO {
         conexao.conectar();
         try {
             // Instrução SQL para atualizar o nome de um setor.
-            String sql = "UPDATE setor SET nome = ? WHERE nome = ?";
+            String sql = "UPDATE Setor SET nome = ? WHERE nome = ?";
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
             // Define os valores dos parâmetros da consulta SQL.
@@ -87,7 +86,7 @@ public class SetorDAO {
         conexao.conectar();
         try {
             // Instrução SQL para excluir um setor da tabela Setor.
-            String sql = "DELETE FROM setor WHERE nome=?";
+            String sql = "DELETE FROM Setor WHERE nome = ?";
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
             // Define o valor do parâmetro na consulta SQL.
@@ -114,7 +113,7 @@ public class SetorDAO {
         conexao.conectar();
         try {
             // Instrução SQL para buscar um setor pelo nome.
-            String sql = "SELECT * FROM setor WHERE nome = ?";
+            String sql = "SELECT * FROM Setor WHERE nome = ?";
             conexao.pstmt = conexao.conn.prepareStatement(sql);
             conexao.pstmt.setString(1, nomeSetor);
 
@@ -123,11 +122,11 @@ public class SetorDAO {
 
             // Verifica se o ResultSet contém dados.
             if (conexao.rs.next()) {
-                // Obtem o nome do setor do ResultSet.
+                // Obtém o nome do setor do ResultSet.
                 String nome = conexao.rs.getString(1);
 
                 // Cria um novo objeto Setor com os dados obtidos.
-                setor = new Setor(nomeSetor);
+                setor = new Setor(nome);
             } else {
                 return null;
             }
@@ -147,7 +146,7 @@ public class SetorDAO {
     public List<Setor> listarSetores() {
 
         // Instrução SQL para listar todos os setores.
-        String sql = "SELECT * FROM setor";
+        String sql = "SELECT * FROM Setor";
 
         // Cria uma lista vazia para armazenar os setores.
         List<Setor> setores = new ArrayList<>();
