@@ -35,7 +35,7 @@ public class Permissao_CursoDAO {
             // Instrução SQL para alterar a permissão de um curso.
             String sql = "UPDATE Permissao_Curso SET permissao = TRUE WHERE id_curso = ?";
 
-            // Prepara a instrução SQL para ser executada.
+            // Prepawra a instrução SQL para ser executada.
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
             // Define os valores dos parâmetros na consulta SQL.

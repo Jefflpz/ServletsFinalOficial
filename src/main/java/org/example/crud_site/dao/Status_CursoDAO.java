@@ -72,7 +72,7 @@ public class Status_CursoDAO {
     }
 
     // Método para excluir um status de curso pelo nome.
-    public void excluirStauts_curso(String nomeStatus_curso) {
+    public void excluirStauts_Curso(String nomeStatus_curso) {
         conexao.conectar(); // Conecta ao banco de dados
         try {
             // Instrução SQL para excluir um status de curso

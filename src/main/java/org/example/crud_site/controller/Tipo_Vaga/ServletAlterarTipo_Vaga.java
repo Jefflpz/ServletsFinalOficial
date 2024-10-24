@@ -1,0 +1,36 @@
+package org.example.crud_site.controller.Tipo_Vaga;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.example.crud_site.dao.Tipo_VagaDAO;
+import org.example.crud_site.model.Tipo_Vaga;
+
+import java.io.IOException;
+
+@WebServlet("/atualizarTipo_Vaga")
+public class ServletAlterarTipo_Vaga {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        // Obtém o nome atual e o novo nome do tipo de vaga a partir da requisição
+        String nomeAtual = req.getParameter("nome_atual");
+        String nomeNovo = req.getParameter("nome_novo");
+
+        // Cria uma instância do modelo com o nome atual
+        Tipo_Vaga tipo_Vaga = new Tipo_Vaga(nomeAtual);
+        Tipo_VagaDAO tipo_VagaDAO = new Tipo_VagaDAO();
+
+        // Atualiza o tipo de vaga e verifica se a operação foi bem-sucedida
+        boolean atualizado = tipo_VagaDAO.alterarTipo_Vaga(tipo_Vaga, nomeNovo);
+        if (atualizado) {
+            // Redireciona para a página de sucesso
+            req.setAttribute("mensagem", "Tipo de vaga atualizado com sucesso.");
+            req.getRequestDispatcher("sucesso.jsp").forward(req, res);
+            return;
+        }
+
+        // Caso contrário, redireciona para a página de erro
+        req.setAttribute("erro", "Falha ao atualizar o tipo de vaga.");
+        req.getRequestDispatcher("erro.jsp").forward(req, res);
+    }
+}

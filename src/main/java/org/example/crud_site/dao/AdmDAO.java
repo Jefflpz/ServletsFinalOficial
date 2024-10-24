@@ -27,7 +27,7 @@ public class AdmDAO{
 
 
     // Método para inserir um novo registro na tabala Adm
-    public boolean inserir(String username, String senha) {
+    public boolean inserirAdm(String username, String senha) {
 
         conexao.conectar();
         try{
@@ -61,7 +61,7 @@ public class AdmDAO{
     }
 
     // Método para alterar a senha de um administrador na tabela Adm
-    public boolean alterarSenha(String novaSenha, String senhaAntiga, String username) {
+    public boolean alterarSenhaAdm(String novaSenha, String senhaAntiga, String username) {
         conexao.conectar();
         try {
 
@@ -91,7 +91,7 @@ public class AdmDAO{
     }
 
     // Método para alterar o login de um administrador na tabela Adm
-    public boolean alterarLogin(String novoUsername, String username, String senha) {
+    public boolean alterarLoginAdm(String novoUsername, String username, String senha) {
         conexao.conectar();
         try {
 
@@ -123,9 +123,9 @@ public class AdmDAO{
 
 
     // Método para excluir um administrador na tabela Adm
-    public boolean excluirAdm(String username, String senha) {
+    public void excluirAdm(String username, String senha) {
         conexao.conectar();
-        try{
+        try {
             // Instrução SQL para excluir um administrador na tabela Adm
             String sql = "DELETE FROM adm WHERE username=? AND senha=?";
             conexao.pstmt = conexao.conn.prepareStatement(sql);
@@ -134,15 +134,17 @@ public class AdmDAO{
             conexao.pstmt.setString(1, username);
             conexao.pstmt.setString(2, senha);
 
-            // executa instrução SQL
-            return conexao.pstmt.executeUpdate()>0;
-        }catch (SQLException e){
-            return false;
-//            throw new RuntimeException("Erro ao excluir o registro.", e);
-        }finally {
+            // Executa a instrução SQL de exclusão
+            conexao.pstmt.executeUpdate();
+        } catch (SQLException e) {
+            // Lança uma exceção em caso de erro
+            throw new RuntimeException("Erro ao excluir o administrador.", e);
+        } finally {
+            // Fecha a conexão com o banco de dados
             conexao.desconectar();
         }
     }
+
 
 
     // Método para buscar um administrador na tabela Adm

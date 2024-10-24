@@ -25,7 +25,7 @@ public class Tipo_ArquivoDAO {
     }
 
     // Método para inserir um novo tipo de arquivo
-    public boolean inserir(Tipo_Arquivo tipo_arquivo) {
+    public boolean inserirTipo_Arquivo(Tipo_Arquivo tipo_arquivo) {
         conexao.conectar();
         try {
             // Instrução SQL para inserir registro na tabela tipo_arquivo

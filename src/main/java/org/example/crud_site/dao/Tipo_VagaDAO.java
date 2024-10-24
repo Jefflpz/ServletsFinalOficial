@@ -25,7 +25,7 @@ public class Tipo_VagaDAO {
     }
 
     // Método para inserir um novo tipo de vaga
-    public boolean insert(Tipo_Vaga tipo_vaga) {
+    public boolean inserirTipo_Vaga(Tipo_Vaga tipo_vaga) {
         conexao.conectar();
         try {
             // Instrução SQL para inserir registro na tabela tipo_vaga
@@ -45,7 +45,7 @@ public class Tipo_VagaDAO {
     }
 
     // Método para atualizar um tipo de vaga
-    public boolean atualizarTipo_Vaga(Tipo_Vaga tipo_vaga, String nome) {
+    public boolean alterarTipo_Vaga(Tipo_Vaga tipo_vaga, String nome) {
         conexao.conectar();
         try {
             // Instrução SQL para atualizar o nome do tipo de vaga
