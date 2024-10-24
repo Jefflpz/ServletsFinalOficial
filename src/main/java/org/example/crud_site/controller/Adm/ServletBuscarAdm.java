@@ -24,7 +24,7 @@ public class ServletBuscarAdm extends HttpServlet {
         if (adm == null) {
             // Se não encontrado, define uma mensagem de erro e encaminha para uma página de erro
             req.setAttribute("erro", "Administrador não encontrado.");
-            req.getRequestDispatcher("erro.jsp").forward(req, res);
+            req.getRequestDispatcher("/pages/erro.jsp").forward(req, res);
             return;
         }
 

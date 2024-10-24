@@ -24,7 +24,7 @@ public class ServletBuscarSetor extends HttpServlet {
         if (setor == null) {
             // Se não encontrado, define uma mensagem de erro e encaminha para uma página de erro
             req.setAttribute("erro", "Setor não encontrado.");
-            req.getRequestDispatcher("erro.jsp").forward(req, res);
+            req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
             return;
         }
 

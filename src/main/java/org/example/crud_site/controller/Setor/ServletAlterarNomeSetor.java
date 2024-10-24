@@ -28,7 +28,7 @@ public class ServletAlterarNomeSetor extends HttpServlet {
 
         // Se a operação falhar, redireciona para erro.jsp.
         if (!resultado) {
-            req.getRequestDispatcher("erro.jsp").forward(req, res);
+            req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
         }
 
         // Redireciona para a página de sucesso (ou outra página apropriada).

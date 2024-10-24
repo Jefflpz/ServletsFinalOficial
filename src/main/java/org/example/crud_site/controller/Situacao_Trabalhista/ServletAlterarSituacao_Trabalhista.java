@@ -25,6 +25,6 @@ public class ServletAlterarSituacao_Trabalhista extends HttpServlet {
         }
 
         req.setAttribute("erro", "Falha ao alterar a situação trabalhista.");
-        req.getRequestDispatcher("erro.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
     }
 }

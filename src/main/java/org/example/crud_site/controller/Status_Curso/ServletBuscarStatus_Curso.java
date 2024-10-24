@@ -24,7 +24,7 @@ public class ServletBuscarStatus_Curso extends HttpServlet {
         if (status_Curso == null) {
             // Se não encontrado, define uma mensagem de erro e encaminha para uma página de erro
             req.setAttribute("erro", "Status do curso não encontrado.");
-            req.getRequestDispatcher("erro.jsp").forward(req, res);
+            req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
             return;
         }
 

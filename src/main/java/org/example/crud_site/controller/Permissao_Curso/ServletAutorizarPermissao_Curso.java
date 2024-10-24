@@ -30,6 +30,6 @@ public class ServletAutorizarPermissao_Curso extends HttpServlet {
             req.getRequestDispatcher("permissao_autorizada.jsp").forward(req, res);
         }
         // Redireciona para a página de erro, caso a operação não tenha sido bem-sucedida.
-        req.getRequestDispatcher("erro.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
     }
 }

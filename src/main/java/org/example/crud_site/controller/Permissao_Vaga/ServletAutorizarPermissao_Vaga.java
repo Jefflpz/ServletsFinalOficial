@@ -30,6 +30,6 @@ public class ServletAutorizarPermissao_Vaga extends HttpServlet {
             req.getRequestDispatcher("permissao_autorizada.jsp").forward(req, res);
         }
 
-        req.getRequestDispatcher("erro.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
     }
 }

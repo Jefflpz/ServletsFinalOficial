@@ -24,7 +24,7 @@ public class ServletExcluirTipo_Arquivo extends HttpServlet {
         } catch (RuntimeException e) {
             // Se ocorrer um erro, redireciona para erro.jsp
             req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("erro.jsp").forward(req, res);
+            req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
             return; // Para garantir que a execução não continue
         }
 

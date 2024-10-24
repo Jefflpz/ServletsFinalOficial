@@ -31,6 +31,6 @@ public class ServletInserirTipo_Vaga extends HttpServlet {
 
         // Caso contrário, redireciona para a página de erro
         req.setAttribute("erro", "Falha ao inserir o tipo de vaga.");
-        req.getRequestDispatcher("erro.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
     }
 }

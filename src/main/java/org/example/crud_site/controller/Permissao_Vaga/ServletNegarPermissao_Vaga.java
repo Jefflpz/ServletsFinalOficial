@@ -26,7 +26,7 @@ public class ServletNegarPermissao_Vaga extends HttpServlet {
         if (resultado) {
             req.getRequestDispatcher("permissao_negada.jsp").forward(req, res);
         }
-        req.getRequestDispatcher("erro.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
     }
 }
 

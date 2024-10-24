@@ -33,7 +33,7 @@ public class ServletAlterarStatus_Curso extends HttpServlet {
         } catch (RuntimeException e) {
             // Se ocorrer um erro, redireciona para erro.jsp com a mensagem de erro
             req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("erro.jsp").forward(req, res);
+            req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
             return;
         }
 

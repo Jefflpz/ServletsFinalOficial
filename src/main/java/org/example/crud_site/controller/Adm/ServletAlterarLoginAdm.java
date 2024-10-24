@@ -31,6 +31,6 @@ public class ServletAlterarLoginAdm extends HttpServlet {
 
         // Se não for bem-sucedida, define uma mensagem de erro e encaminha para uma página de erro
         req.setAttribute("erro", "Falha ao alterar o login.");
-        req.getRequestDispatcher("erro.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
     }
 }
