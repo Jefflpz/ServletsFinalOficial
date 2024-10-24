@@ -2,6 +2,7 @@ package org.example.crud_site.controller.Status_Curso;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.Status_CursoDAO;
@@ -10,7 +11,7 @@ import org.example.crud_site.model.Status_Curso;
 import java.io.IOException;
 
 @WebServlet("/alterarStatus_Curso")
-public class ServletAlterarStatus_Curso {
+public class ServletAlterarStatus_Curso extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o nome atual e o novo nome do status de curso a partir da requisição
         String nomeAtual = req.getParameter("nome_atual");

@@ -3,6 +3,7 @@ package org.example.crud_site.controller.Permissao_Curso;
 import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import org.example.crud_site.dao.Permissao_CursoDAO;
 
 // Define a servlet que responde ao caminho /listarPermissao_Curso
 @WebServlet("/listarPermissao_Curso")
-public class ServletListarPermissoes_Cursos {
+public class ServletListarPermissoes_Cursos extends HttpServlet {
 
     // Método que lida com requisições GET
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -28,5 +29,6 @@ public class ServletListarPermissoes_Cursos {
 
         // Encaminha a requisição e a resposta para a página permissao_curso.jsp
         req.getRequestDispatcher("permissao_curso.jsp").forward(req, res);
+
     }
 }

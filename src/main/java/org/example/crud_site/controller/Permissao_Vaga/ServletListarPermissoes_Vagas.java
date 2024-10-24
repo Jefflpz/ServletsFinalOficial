@@ -3,6 +3,7 @@ package org.example.crud_site.controller.Permissao_Vaga;
 import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import org.example.crud_site.model.Permissao_Vaga;
 
 // Define a servlet que responde ao caminho /listarPermissao_Vaga
 @WebServlet("/listarPermissao_Vaga")
-public class ServletListarPermissoes_Vagas {
+public class ServletListarPermissoes_Vagas extends HttpServlet {
 
     // Método que lida com requisições GET
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

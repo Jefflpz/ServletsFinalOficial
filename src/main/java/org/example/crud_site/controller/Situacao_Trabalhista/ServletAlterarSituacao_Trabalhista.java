@@ -1,6 +1,7 @@
 package org.example.crud_site.controller.Situacao_Trabalhista;
 
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.Situacao_TrabalhistaDAO;
@@ -8,7 +9,7 @@ import org.example.crud_site.dao.Situacao_TrabalhistaDAO;
 import java.io.IOException;
 
 @WebServlet("/alterarSituacaoTrabalhista")
-public class ServletAlterarSituacao_Trabalhista {
+public class ServletAlterarSituacao_Trabalhista extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
         String nomeAtual = req.getParameter("nome_atual");
         String novoNome = req.getParameter("novo_nome");

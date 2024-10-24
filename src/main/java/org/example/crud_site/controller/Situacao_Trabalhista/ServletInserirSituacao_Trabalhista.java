@@ -1,6 +1,7 @@
 package org.example.crud_site.controller.Situacao_Trabalhista;
 
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.Situacao_TrabalhistaDAO;
@@ -9,7 +10,7 @@ import org.example.crud_site.model.Situacao_Trabalhista;
 import java.io.IOException;
 
 @WebServlet("/inserirSituacaoTrabalhista")
-public class ServletInserirSituacao_Trabalhista {
+public class ServletInserirSituacao_Trabalhista extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
         // Obtém o parâmetro do nome da situação trabalhista da requisição
         String nomeSituacao = req.getParameter("nome");

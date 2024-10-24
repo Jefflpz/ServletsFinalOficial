@@ -2,6 +2,7 @@ package org.example.crud_site.controller.Permissao_Curso;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.UUID;
 import org.example.crud_site.dao.Permissao_CursoDAO;
 
 @WebServlet("/autorizarPermissao")
-public class ServletAutorizarPermissao_Curso {
+public class ServletAutorizarPermissao_Curso extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o ID do curso a partir da requisição.
         String idCursoParam = req.getParameter("id_curso");

@@ -1,6 +1,7 @@
 package org.example.crud_site.controller.Adm;
 
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.AdmDAO;
@@ -9,7 +10,7 @@ import org.example.crud_site.model.Adm;
 import java.io.IOException;
 
 @WebServlet("/buscarAdm")
-public class ServletBuscarAdm {
+public class ServletBuscarAdm extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         // Obtém o parâmetro "username" da requisição
         String username = req.getParameter("username");

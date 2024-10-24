@@ -1,6 +1,7 @@
 package org.example.crud_site.controller.Adm;
 
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.AdmDAO;
@@ -11,7 +12,7 @@ import java.util.List;
 
 // Define a servlet que responde ao caminho /listarAdm
 @WebServlet("/listarAdm")
-public class ServletListarAdministradores {
+public class ServletListarAdministradores extends HttpServlet {
 
     // Método que lida com requisições GET
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {

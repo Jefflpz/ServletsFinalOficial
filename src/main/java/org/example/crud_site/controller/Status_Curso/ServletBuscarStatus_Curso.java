@@ -1,6 +1,7 @@
 package org.example.crud_site.controller.Status_Curso;
 
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.Status_CursoDAO;
@@ -9,7 +10,7 @@ import org.example.crud_site.model.Status_Curso;
 import java.io.IOException;
 
 @WebServlet("/buscarStatus_Curso")
-public class ServletBuscarStatus_Curso {
+public class ServletBuscarStatus_Curso extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         // Obtém o parâmetro "nomeStatus_Curso" da requisição
         String nomeStatus_Curso = req.getParameter("nomeStatus_Curso");

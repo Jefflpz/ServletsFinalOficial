@@ -1,6 +1,7 @@
 package org.example.crud_site.controller.Setor;
 
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.SetorDAO;
@@ -9,7 +10,7 @@ import org.example.crud_site.model.Setor;
 import java.io.IOException;
 
 @WebServlet("/buscarSetor")
-public class ServletBuscarSetor {
+public class ServletBuscarSetor extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         // Obtém o parâmetro "nomeSetor" da requisição
         String nomeSetor = req.getParameter("nomeSetor");

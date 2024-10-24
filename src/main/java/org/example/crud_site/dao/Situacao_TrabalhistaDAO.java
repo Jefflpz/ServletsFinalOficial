@@ -48,7 +48,7 @@ public class Situacao_TrabalhistaDAO {
     }
 
     // Método para alterar o nome de uma situação trabalhista.
-    public boolean alterarNome(Situacao_Trabalhista situacao_trabalhista, String nome) {
+    public boolean alterarNome(String nomeAntigo, String nomeNovo) {
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
         try {
@@ -57,8 +57,8 @@ public class Situacao_TrabalhistaDAO {
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
             // Define os parâmetros da consulta: o novo nome e o nome atual.
-            conexao.pstmt.setString(1, nome);
-            conexao.pstmt.setString(2, situacao_trabalhista.getNome());
+            conexao.pstmt.setString(1, nomeNovo);
+            conexao.pstmt.setString(2, nomeAntigo);
 
             // Executa a consulta SQL.
             int rows = conexao.pstmt.executeUpdate();

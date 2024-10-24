@@ -2,6 +2,7 @@ package org.example.crud_site.controller.Adm;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.AdmDAO;
@@ -9,7 +10,7 @@ import org.example.crud_site.dao.AdmDAO;
 import java.io.IOException;
 
 @WebServlet("/excluirAdm")
-public class ServletExcluirAdm {
+public class ServletExcluirAdm extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém os parâmetros da requisição
         String username = req.getParameter("username");

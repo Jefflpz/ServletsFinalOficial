@@ -2,6 +2,7 @@ package org.example.crud_site.controller.Tipo_Arquivo;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.Tipo_ArquivoDAO;
@@ -9,7 +10,7 @@ import org.example.crud_site.dao.Tipo_ArquivoDAO;
 import java.io.IOException;
 
 @WebServlet("/excluirTipoArquivo")
-public class ServletExcluirTipo_Arquivo {
+public class ServletExcluirTipo_Arquivo extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o nome do tipo de arquivo a partir da requisição
         String nomeTipo_Arquivo = req.getParameter("nome_tipo_arquivo");

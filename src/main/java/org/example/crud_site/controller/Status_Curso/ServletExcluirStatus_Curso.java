@@ -2,6 +2,7 @@ package org.example.crud_site.controller.Status_Curso;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.Status_CursoDAO;
@@ -9,7 +10,7 @@ import org.example.crud_site.dao.Status_CursoDAO;
 import java.io.IOException;
 
 @WebServlet("/excluirStatusCurso")
-public class ServletExcluirStatus_Curso {
+public class ServletExcluirStatus_Curso extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o nome do status de curso a partir da requisição
         String nomeStatus_Curso = req.getParameter("nome_status_curso");
