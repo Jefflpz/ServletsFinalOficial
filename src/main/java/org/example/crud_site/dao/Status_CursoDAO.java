@@ -109,10 +109,10 @@ public class Status_CursoDAO {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);
                 return new Status_Curso(id, nome);
-            } else {
-                // Caso não encontre o status, retorna null
-                return null;
             }
+            // Caso não encontre o status, retorna null
+            return null;
+
         } catch (SQLException e) {
             return null;
         } finally {

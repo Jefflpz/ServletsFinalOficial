@@ -171,10 +171,8 @@ public class AdmDAO{
 
                 // Cria um objeto Adm com os dados do ResultSet
                 return new Adm(id,login, senha);
-            }else {
-                return null;
             }
-
+            return null;
         }catch (SQLException e) {
             // Retorna null caso ocorra algum erro.
             return null;

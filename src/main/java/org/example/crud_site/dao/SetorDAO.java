@@ -126,10 +126,10 @@ public class SetorDAO {
                 String nome = conexao.rs.getString(1);
 
                 // Cria um novo objeto Setor com os dados obtidos.
-                setor = new Setor(nome);
-            } else {
-                return null;
+                return new Setor(nome);
             }
+            // Retorna null se não houver nenhum setor com o nome informado.
+            return null;
         } catch (SQLException e) {
             // Retorna null em caso de erro.
             return null;
@@ -139,7 +139,7 @@ public class SetorDAO {
         }
 
         // Retorna o objeto Setor encontrado.
-        return setor;
+
     }
 
     // Método para listar todos os setores da tabela Setor.

@@ -107,9 +107,10 @@ public class Tipo_ArquivoDAO {
                 String nome = conexao.rs.getString(2);
                 // Cria um objeto Tipo_Arquivo com os dados do ResultSet
                 return new Tipo_Arquivo(id, nome);
-            } else {
-                return null; // Retorna null se não encontrar o tipo de arquivo
             }
+            // Retorna null se não encontrar o tipo de arquivo
+            return null;
+
         } catch (SQLException e) {
             return null; // Retorna null caso ocorra algum erro
         } finally {

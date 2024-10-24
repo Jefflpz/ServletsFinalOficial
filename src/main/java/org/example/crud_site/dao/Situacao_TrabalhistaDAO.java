@@ -124,9 +124,10 @@ public class Situacao_TrabalhistaDAO {
 
                 // Cria um novo objeto Situacao_Trabalhista com os dados retornados.
                 return new Situacao_Trabalhista(id, nome);
-            } else {
-                return null;
             }
+            // Retorna null se não houver nenhum resultado.
+            return null;
+
         } catch (SQLException e) {
             // Retorna null em caso de erro.
             return null;

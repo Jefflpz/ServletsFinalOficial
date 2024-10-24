@@ -108,9 +108,9 @@ public class Tipo_VagaDAO {
                 String nome = conexao.rs.getString(2);
                 // Cria um objeto Tipo_Vaga com os dados do ResultSet
                 return new Tipo_Vaga(id, nome);
-            } else {
-                return null; // Retorna null se não encontrar o tipo de vaga
             }
+            // Retorna null se não encontrar o tipo de vaga
+            return null;
         } catch (SQLException e) {
             return null; // Retorna null caso ocorra algum erro
         } finally {
