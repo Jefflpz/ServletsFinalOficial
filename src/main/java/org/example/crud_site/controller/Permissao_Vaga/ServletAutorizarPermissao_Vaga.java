@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.UUID;
 import org.example.crud_site.dao.Permissao_VagaDAO;
 
-@WebServlet("/autorizarPermissao")
+@WebServlet("/autorizarPermissao_Vaga")
 public class ServletAutorizarPermissao_Vaga extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o ID da vaga a partir da requisição.

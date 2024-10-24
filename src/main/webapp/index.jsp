@@ -20,21 +20,24 @@
 <button class="voltar">🢐 Voltar</button>
 <div class="container">
   <div class="incluses">
-    <h1><span class="inclus">Inclus</span><span class="es">es</span></h1>
+    <h1 id="inclus">Inclus<span id="es">es</span></h1>
   </div>
   <hr>
   <h2>Login administrador</h2>
-  <form>
+  <form id="formLogin">
     <label for="usuario">Usuário:</label>
-    <input type="text" id="usuario" placeholder="Ex: avnadmin">
+    <input type="text" id="usuario" placeholder="Ex: admAlgumaCoisa" required>
+    <span id="erroAdm" class="mensagem-erro"></span>
     <label for="senha">Digite a senha:</label>
     <div class="senha-container">
-      <input type="password" id="senha" placeholder="Ex: ********">
+      <input type="password" id="senha" placeholder="Senha" required>
       <span class="mostrar-senha"><img src="img/Icone_olhoA.png" class="imagem-olho" alt="mostrar senha"></span>
     </div>
+    <span id="erroSenha" class="mensagem-erro"></span>
     <button type="submit">Entrar</button>
   </form>
 </div>
-<script src="LandingPage.js"></script>
+<script src="js/LoginAdm.js"></script>
 </body>
+
 </html>

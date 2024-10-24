@@ -1,5 +1,6 @@
 package org.example.crud_site.controller.Adm;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,15 +16,14 @@ import java.util.List;
 public class ServletListarAdministradores extends HttpServlet {
 
     // Método que lida com requisições GET
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         // Cria uma instância do DAO para acessar dados de administradores
         AdmDAO admDAO = new AdmDAO();
         // Obtém a lista de administradores através do DAO
         List<Adm> adms = admDAO.listarAdms();
         // Define a lista de administradores como um atributo da requisição
         req.setAttribute("listarAdm", adms);
-        // Encaminha a requisição e a resposta para a página index.jsp
-        req.getRequestDispatcher("index.jsp").forward(req, res);
+        // Encaminha a requisição e a resposta para a página CrudAdm.jsp
+        req.getRequestDispatcher("/pages/CrudAdm.jsp").forward(req, res);
     }
 }

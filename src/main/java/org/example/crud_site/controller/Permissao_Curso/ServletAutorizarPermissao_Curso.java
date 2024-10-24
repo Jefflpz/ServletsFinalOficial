@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.UUID;
 import org.example.crud_site.dao.Permissao_CursoDAO;
 
-@WebServlet("/autorizarPermissao")
+@WebServlet("/autorizarPermissao_Curso")
 public class ServletAutorizarPermissao_Curso extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o ID do curso a partir da requisição.

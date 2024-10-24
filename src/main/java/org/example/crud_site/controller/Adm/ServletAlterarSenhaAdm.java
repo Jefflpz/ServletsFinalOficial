@@ -1,5 +1,6 @@
 package org.example.crud_site.controller.Adm;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,7 +11,7 @@ import java.io.IOException;
 
 @WebServlet("/alterarSenhaAdm")
 public class ServletAlterarSenhaAdm extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         // Obtém os parâmetros da requisição
         String username = req.getParameter("username");
         String senhaAntiga = req.getParameter("senhaAntiga");

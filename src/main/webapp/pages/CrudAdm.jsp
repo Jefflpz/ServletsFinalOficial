@@ -1,14 +1,15 @@
 <%@ page import="org.example.crud_site.dao.AdmDAO" %>
 <%@ page import="org.example.crud_site.model.Adm" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/CrudAdm.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Adm</title>
-    <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
 <aside class="sidebar">
@@ -65,7 +66,11 @@
                 AdmDAO admDAO = new AdmDAO();
                 List<Adm> lista = (List<Adm>) request.getAttribute("listarAdm");
 
-                if (!lista.isEmpty()){
+                if (lista == null) {
+                    lista = new ArrayList<>(); // Inicializa como uma lista vazia se for null
+                }
+
+                if (!lista.isEmpty()) {
                     for (int i = 0; i < lista.size(); i++) {
             %>
             <div class="grid-item registro"><%= i+1 %></div>
@@ -78,9 +83,11 @@
             </div>
             <%
                     }
-                }else {
-                    //Falta fazer a pagina de erro
-//                    request.getDispatcherType().forward(request, response);
+                } else {
+            %>
+                    <div class="grid-item">Nenhum registro encontrado.</div>
+            <%
+                    System.out.println("Nenhum registro encontrado.");
                 }
             %>
 
@@ -143,6 +150,6 @@
         </div>
     </div>
 </div>
-<script src="../script.js"></script>
+<script src="../js/LoginAdm.js"></script>
 </body>
 </html>

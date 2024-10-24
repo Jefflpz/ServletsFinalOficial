@@ -1,5 +1,6 @@
 package org.example.crud_site.controller.Tipo_Arquivo;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/buscarTipo_Arquivo")
 public class ServletBuscarTipo_Arquivo extends HttpServlet {
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         // Obtém o parâmetro "nomeTipo_Arquivo" da requisição
         String nomeTipo_Arquivo = req.getParameter("nomeTipo_Arquivo");
 
