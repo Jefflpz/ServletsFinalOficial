@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/CrudAdm.css"/>
+    <link rel="stylesheet" href="../css/CrudAdm.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Adm</title>
 </head>
@@ -29,7 +29,7 @@
             <li><a href="#">Status curso</a></li>
         </ul>
     </nav>
-    <button class="logout">Sair</button>
+    <button href="index.jsp" class="logout">Sair</button>
 </aside>
 
 <div class="container">
@@ -63,12 +63,7 @@
             <div class="grid-header acoes">Ações</div>
 
             <%
-                AdmDAO admDAO = new AdmDAO();
                 List<Adm> lista = (List<Adm>) request.getAttribute("listarAdm");
-
-                if (lista == null) {
-                    lista = new ArrayList<>(); // Inicializa como uma lista vazia se for null
-                }
 
                 if (!lista.isEmpty()) {
                     for (int i = 0; i < lista.size(); i++) {
@@ -150,6 +145,6 @@
         </div>
     </div>
 </div>
-<script src="../js/LoginAdm.js"></script>
+<script src="../js/Adm.js"></script>
 </body>
 </html>

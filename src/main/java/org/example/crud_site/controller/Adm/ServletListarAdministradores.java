@@ -20,9 +20,9 @@ public class ServletListarAdministradores extends HttpServlet {
         // Cria uma instância do DAO para acessar dados de administradores
         AdmDAO admDAO = new AdmDAO();
         // Obtém a lista de administradores através do DAO
-        List<Adm> adms = admDAO.listarAdms();
+        List<Adm> listaAdm = admDAO.listarAdms();
         // Define a lista de administradores como um atributo da requisição
-        req.setAttribute("listarAdm", adms);
+        req.setAttribute("listarAdm", listaAdm);
         // Encaminha a requisição e a resposta para a página CrudAdm.jsp
         req.getRequestDispatcher("/pages/CrudAdm.jsp").forward(req, res);
     }

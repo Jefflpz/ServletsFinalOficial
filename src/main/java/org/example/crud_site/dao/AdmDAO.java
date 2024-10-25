@@ -226,4 +226,28 @@ public class AdmDAO{
         // Retorna a lista de administradores
         return adms;
     }
+
+    public Adm validarLogin(String username, String senha) {
+        conexao.conectar();
+
+        try {
+            conexao.pstmt = conexao.conn.prepareStatement("SELECT * FROM adm WHERE username = ? AND senha = ?");
+            conexao.pstmt.setString(1, username);
+            conexao.pstmt.setString(2, senha);
+            conexao.rs = conexao.pstmt.executeQuery();
+
+            if (conexao.rs.next()) {
+                UUID id = (UUID) conexao.rs.getObject(1);
+                String login = conexao.rs.getString(2);
+                String senha2 = conexao.rs.getString(3);
+
+                return new Adm(id,login, senha2);
+            }
+            return null;
+        }catch (SQLException e) {
+            return null;
+        }finally {
+            conexao.desconectar();
+        }
+    }
 }

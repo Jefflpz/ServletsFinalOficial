@@ -20,24 +20,34 @@
 <button class="voltar">🢐 Voltar</button>
 <div class="container">
   <div class="incluses">
-    <h1 id="inclus">Inclus<span id="es">es</span></h1>
+    <h1><span class="inclus">Inclus</span><span class="es">es</span></h1>
   </div>
   <hr>
   <h2>Login administrador</h2>
-  <form id="formLogin">
+  <form class="forms" action="login" method="post">
     <label for="usuario">Usuário:</label>
-    <input type="text" id="usuario" placeholder="Ex: admAlgumaCoisa" required>
+    <input type="text" id="usuario" name="usuario" placeholder="Ex: admAlgumaCoisa" required>
     <span id="erroAdm" class="mensagem-erro"></span>
     <label for="senha">Digite a senha:</label>
     <div class="senha-container">
-      <input type="password" id="senha" placeholder="Senha" required>
+      <input type="password" id="senha" name="senha" placeholder="Senha" required>
       <span class="mostrar-senha"><img src="img/Icone_olhoA.png" class="imagem-olho" alt="mostrar senha"></span>
     </div>
     <span id="erroSenha" class="mensagem-erro"></span>
+    <div class="text-center" style="color: red;">
+      <%
+        String erroLogin = (String) request.getAttribute("erroLogin");
+        if (erroLogin != null) {
+      %>
+      <p><%= erroLogin %></p>
+      <%
+        }
+      %>
+    </div>
     <button type="submit">Entrar</button>
   </form>
+
 </div>
 <script src="js/LoginAdm.js"></script>
 </body>
-
 </html>
