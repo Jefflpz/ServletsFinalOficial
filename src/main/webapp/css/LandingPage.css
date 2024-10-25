@@ -1,0 +1,169 @@
+body {
+    font-family: palanquin; /* Define a fonte */
+    display: flex; /* Define o display como flex */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Define a altura */
+    font-size: 20px; /* Tamanho da fonte */
+    margin: 0; /* Remove a margem */
+}
+h1{
+    font-size: 48px;  /* aumenta o tamanho da fonte */
+    font-weight: 600;  /* aumenta o tamanho da fonte */
+    margin: 0;
+    padding-top: 5%;
+}
+h2{
+    padding-left: 10%; /* Move o texto para a esquerda */
+    margin: 0; /* Remove a margem */
+    padding-top: 2%;
+}
+
+label{
+    font-size: 70%;  /* aumenta o tamanho da fonte */
+    color: #929292; /* Altera a cor */
+    padding-left: 3%; /* Move o texto para a esquerda */
+    margin: 10px 0 5px; /* Remove a margem */
+}
+
+
+hr {
+    border: none;               /* Remove a borda padrão */
+    height: 0.5px;              /* Define a altura da linha */
+    background-color: cornflowerblue; /* Cor da linha */
+    width: 85%;                 /* Largura da linha (em porcentagem do contêiner) */
+    margin: 20px auto;          /* Centraliza a linha horizontalmente */
+}
+
+form{
+    padding-left: 10%; /* Move o texto para a esquerda */
+    flex-direction: column; /* Coloca o conteúdo em colunas */
+}
+
+
+input {
+    padding: 10px 15px; /* Aumenta o padding */
+    border: 1px solid #ccc; /* Adiciona uma borda */
+    border-radius: 25px; /* Borda arredondada */
+    font-size: 20px; /* Tamanho da fonte */
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+}
+
+/* Estiliza o texto do placeholder */
+input::placeholder {
+    color: #ccc; /* Cor clara para o placeholder */
+    font-size: 15px; /* Tamanho do texto do placeholder */
+}
+
+.incluses{
+    text-align: center; /* Centraliza o texto */
+}
+
+.incluses #inclus{
+    color: mediumblue; /* Cor do texto */
+}
+.incluses #es{
+    color:blueviolet /* Cor do texto */
+}
+
+.container {
+    position: relative; /* Define o posicionamento como absoluto */
+    background-color: #fff; /* Cor de fundo */
+    border-radius: 25px; /* Borda arredondada */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* Sombra */
+    text-align: left; /* Centraliza o texto */
+    width: 545px; /* Largura */
+    height: 565px; /* Altura */
+    align-items: center; /* Centraliza o conteúdo */
+    padding: 5px; /* Preenchimento */
+}
+
+.isInvalid{
+    color: red;
+    border: 1px red/* Cor do texto */
+}
+
+.container h2 {
+    text-align: left; /* Centraliza o texto */
+}
+
+.container input {
+    display: flex; /* Define o display flex */
+    justify-content: center; /* Centraliza horizontalmente */
+    width: 85%; /* Largura */
+    height: 60px; /* Altura */
+    padding: 5%; /* Preenchimento */
+    border: 1px solid #929292; /* Adiciona uma borda */
+    border-radius: 10px; /* Borda arredondada */
+}
+
+.container button {
+    background-color: rgb(20, 20, 188); /* Altera a cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 5% 15%;; /* Preenchimento */
+    border: none; /* Remove a borda */
+    width: 75%; /* Largura */
+    border-radius: 15px; /* Borda arredondada */
+    cursor: pointer; /* Altera o cursor */
+    font-weight: bold; /* Altera a fonte */
+    font-size: 15px; /* Tamanho da fonte */
+    margin-left: 5%; /* Margem para esquerda */
+    margin-top: 24px; /* Margem para cima */
+}
+
+.container button:hover {
+    background-color: #ccc; /* Altera a cor de fundo */
+    color: rgb(255, 255, 255); /* Cor do texto */
+    transition: 0.2s ease-in-out; /* Altera o tempo de transição */
+    background-color: #067fff; /* Altera a cor de fundo */
+    font-weight: bold; /* Altera a fonte */
+    font-size: 15px; /* Tamanho da fonte */
+}
+
+
+.mostrar-senha{
+    cursor: default; /* Altera o cursor */
+    font-size: 14px; /* Tamanho da fonte */
+    float: right; /* Coloca o elemento para a direita */
+    color: #8a0fc8; /* Cor do texto */
+    font-weight: bold; /* Altera a fonte */
+    text-decoration: none; /* Remove o sublinhado */
+    right: 13ch; /* Move o texto para a direita */
+    margin-top: 15px; /* Margem para cima */
+    margin-bottom: 1%; /* Margem para baixo */
+    cursor: pointer;    /* Altera o cursor */
+    position: absolute; /* Define o posicionamento bonus absoluto */
+}
+
+.imagem-olho{
+    width: 100%; /* Largura */
+    height: 25px; /* Altura */
+}
+
+.senha-container{
+    display: flex; /* Define o display como flex */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /*Espaça o conteúdo entre os elementos */
+}
+
+.voltar{
+    text-align: center;
+    padding: 1.5%;
+    width: 10%;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 0;
+    background-color: #2C46D1;
+    font-size: 25px;
+    color: #ffffff;
+    position: absolute;
+    top: 15%;
+    left: 30%;
+}
+
+.voltar:hover{
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+    text-align: left;
+    left:23%;
+}
