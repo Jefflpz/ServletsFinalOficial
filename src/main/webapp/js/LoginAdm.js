@@ -5,8 +5,8 @@ const erroAdm = document.getElementById('erroAdm');
 const usuarioInput = document.getElementById('usuario');
 
 const mostrarSenha = document.querySelector('.mostrar-senha img');
-const olhoAberto = 'Icone_olhoA.png';
-const olhoFechado = 'Icone_olhoB.png';
+const olhoAberto = 'img/Icone_olhoA.png';
+const olhoFechado = 'img/Icone_olhoB.png';
 
 // Regex para validação
 const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.[a-z])(?=.[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
@@ -51,18 +51,25 @@ form.addEventListener('submit', async (e) => {
     }
 
     if (isValid) {
-        const formData = new FormData(form);
-        const redirectUrl = 'http://localhost:8080/CRUD_Site_war_exploded/listarAdm';
-        const redirectResponse = await fetch('redirectUrl', {
+        const formData = {
+            adm: usuarioInput.value,
+            senha: senhaInput.value
+        }
+        const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/login', {
             method: 'POST',
-            body: formData
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+            }
         });
 
-        if (!redirectResponse.ok) {
-            window.location.href = redirectUrl;
+        console.log(response);
+        if (response.ok) {
+            window.location.href = 'http://localhost:8080/CRUD_Site_war_exploded/listarAdm';
             window.alert('Login realizado com sucesso!');
         } else {
-            window.alert('Usuário ou senha incorretos');
+            const result = await response.json();
+            window.alert(result.message);
         }
     }
 });

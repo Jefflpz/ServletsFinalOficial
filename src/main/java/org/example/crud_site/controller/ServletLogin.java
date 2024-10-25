@@ -1,5 +1,6 @@
 package org.example.crud_site.controller;
 
+import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -7,22 +8,41 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.AdmDAO;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 @WebServlet(name = "Login administrador", value = "/login")
 public class ServletLogin extends HttpServlet {
+    private final Gson gson = new Gson();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        response.setContentType("application/json");
 
-        String usuario = request.getParameter("usuario");
+        StringBuilder requestBody = new StringBuilder();
+        String line;
+        try (BufferedReader reader = request.getReader()) {
+            while ((line = reader.readLine()) != null) {
+                requestBody.append(line);
+            }
+        }
 
-        String senha = request.getParameter("senha");
+        Adm adm = gson.fromJson(requestBody.toString(), Adm.class);
 
-        if(verificarLogin(usuario, senha)){
-            request.getRequestDispatcher("/listarAdm").forward(request, response);
-        } else {
-            request.setAttribute("erroLogin", "Usuário ou senha incorretos");
-            request.getRequestDispatcher("index.html").forward(request, response);
+        System.out.println("Usuário: " + adm.getAdm());
+        System.out.println("Senha: " + adm.getSenha());
+
+        try {
+            if (verificarLogin(adm.getAdm(), adm.getSenha())) {
+                response.setStatus(HttpServletResponse.SC_OK);
+                response.getWriter().println("{\"success\":true}");
+            } else {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("{\"success\": false, \"message\": \"Usuário ou senha incorretos\"}");
+            }
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
+            e.printStackTrace();
         }
     }
 
@@ -30,9 +50,27 @@ public class ServletLogin extends HttpServlet {
         doPost(request, response);  // Redireciona GET para POST
     }
 
-    public boolean verificarLogin(String usuario, String senha){
+    private boolean verificarLogin(String usuario, String senha){
         AdmDAO admDAO = new AdmDAO();
         return admDAO.buscarAdm(usuario, senha)!=null;
+    }
+
+    private static class Adm {
+        private String adm;
+        private String senha;
+
+        public String getAdm() {
+            return adm;
+        }
+        public void setUsuario(String adm) {
+            this.adm = adm;
+        }
+        public String getSenha() {
+            return senha;
+        }
+        public void setSenha(String senha) {
+            this.senha = senha;
+        }
     }
 
 }

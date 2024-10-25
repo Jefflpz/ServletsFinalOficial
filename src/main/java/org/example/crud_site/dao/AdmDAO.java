@@ -149,8 +149,6 @@ public class AdmDAO{
 
     // Método para buscar um administrador na tabela Adm
     public Adm buscarAdm(String username){
-
-
         conexao.conectar();
 
         try {
