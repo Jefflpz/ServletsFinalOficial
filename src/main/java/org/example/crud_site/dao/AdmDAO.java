@@ -227,7 +227,7 @@ public class AdmDAO{
         return adms;
     }
 
-    public Adm validarLogin(String username, String senha) {
+    public Adm buscarAdm(String username, String senha) {
         conexao.conectar();
 
         try {

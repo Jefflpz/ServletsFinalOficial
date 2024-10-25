@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/LandingPage.css">
+  <link rel="stylesheet" href="css/Login.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,10 +44,10 @@
         }
       %>
     </div>
-    <button type="submit">Entrar</button>
+<%--    <button type="submit">Entrar</button>--%>
   </form>
 
 </div>
-<script src="js/LoginAdm.js"></script>
+<%--<script src="js/LoginAdm.js"></script>--%>
 </body>
 </html>

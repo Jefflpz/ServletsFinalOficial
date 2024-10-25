@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.AdmDAO;
-import org.example.crud_site.model.Adm;
+
 import java.io.IOException;
 
 @WebServlet(name = "Login administrador", value = "/login")
@@ -18,13 +18,21 @@ public class ServletLogin extends HttpServlet {
 
         String senha = request.getParameter("senha");
 
-        AdmDAO admDAO = new AdmDAO();
-
-        if(admDAO.validarLogin(usuario, senha)!=null){
-            response.sendRedirect(request.getContextPath() + "/pages/CrudAdm.jsp");
-        }else {
+        if(verificarLogin(usuario, senha)){
+            request.getRequestDispatcher("/listarAdm").forward(request, response);
+        } else {
             request.setAttribute("erroLogin", "Usuário ou senha incorretos");
-            request.getRequestDispatcher("index.jsp").forward(request,response);
+            request.getRequestDispatcher("index.html").forward(request, response);
         }
     }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);  // Redireciona GET para POST
+    }
+
+    public boolean verificarLogin(String usuario, String senha){
+        AdmDAO admDAO = new AdmDAO();
+        return admDAO.buscarAdm(usuario, senha)!=null;
+    }
+
 }

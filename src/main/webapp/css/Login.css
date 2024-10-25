@@ -83,6 +83,23 @@ input::placeholder {
     border: 1px red/* Cor do texto */
 }
 
+.mensagem-erro{
+    display: block;
+    color: red;
+    font-size: 11px;
+    text-align: start;
+    font-weight: 600;
+}
+
+.input-erro {
+    border-color: red;
+    box-shadow: 5px 5px red;
+}
+
+#usuario.input-erro, #senha.input-erro {
+    box-shadow: 0 0 5px red;
+}
+
 .container h2 {
     text-align: left; /* Centraliza o texto */
 }

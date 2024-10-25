@@ -9,10 +9,11 @@ import org.example.crud_site.dao.AdmDAO;
 import org.example.crud_site.model.Adm;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/buscarAdm")
 public class ServletBuscarAdm extends HttpServlet {
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         // Obtém o parâmetro "username" da requisição
         String username = req.getParameter("username");
 
@@ -28,9 +29,11 @@ public class ServletBuscarAdm extends HttpServlet {
             return;
         }
 
+
         // Se encontrado, adiciona o administrador como atributo na requisição
         req.setAttribute("adm", adm);
-        // Encaminha para a página JSP que exibirá os dados do administrador
-        req.getRequestDispatcher("exibirAdm.jsp").forward(req, res);
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);  // Redireciona GET para POST
     }
 }

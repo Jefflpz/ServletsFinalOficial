@@ -15,15 +15,17 @@ import java.util.List;
 @WebServlet("/listarAdm")
 public class ServletListarAdministradores extends HttpServlet {
 
-    // Método que lida com requisições GET
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+    // Método que lida com requisições Post
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // Cria uma instância do DAO para acessar dados de administradores
         AdmDAO admDAO = new AdmDAO();
-        // Obtém a lista de administradores através do DAO
-        List<Adm> listaAdm = admDAO.listarAdms();
-        // Define a lista de administradores como um atributo da requisição
-        req.setAttribute("listarAdm", listaAdm);
-        // Encaminha a requisição e a resposta para a página CrudAdm.jsp
-        req.getRequestDispatcher("/pages/CrudAdm.jsp").forward(req, res);
+        List<Adm> listaAdms = admDAO.listarAdms();  // Este método deve estar implementado no AdmDAO
+        request.setAttribute("listarAdm", listaAdms);
+
+        // Encaminha para a página JSP que exibirá os dados do administrador
+        request.getRequestDispatcher("/pages/CrudAdm.jsp").forward(request, response);
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);  // Redireciona GET para POST
     }
 }

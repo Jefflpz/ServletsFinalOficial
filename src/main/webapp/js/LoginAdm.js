@@ -9,8 +9,9 @@ const olhoAberto = 'Icone_olhoA.png';
 const olhoFechado = 'Icone_olhoB.png';
 
 // Regex para validação
-const patternSenha = /^(?=.[A-Z])(?=.\d)(?=.[a-z])(?=.[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$\%\^\&\\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
-const patternAdm = /^adm((?=.[A-Z]{1,})?|(?=.[a-z]{1,}))(?=.\d{1,})?(?=.[!@#$%^&*\(\)_\-+=[]\{\}\|;:'",\.<>\/\?])?.{3,}/;
+const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.[a-z])(?=.[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
+const patternAdm = /^adm((?=.[A-Z]{1,})?|(?=.[a-z]{1,}))(?=.\d{1,})?(?=.[!@#$%^&*()_\-+=[]\{}\|;:'",\.<>\/\?])?.{3,}/;
+
 
 mostrarSenha.addEventListener('click', () => {
     if (senhaInput.type === 'password') {
@@ -24,7 +25,7 @@ mostrarSenha.addEventListener('click', () => {
     }
 });
 
-// usuarioInput.addEventListener('input', (e) => {
+// usuarioInput.addEventListener('submit', (e) => {
 //     if(e.va != 'a'){
 //         usuarioInput.classList.add('isInvalid')
 //         window.alert('O nome do usuário deve começar com "adm"')
@@ -32,26 +33,36 @@ mostrarSenha.addEventListener('click', () => {
 // })
 
 // Validação do login
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     erroAdm.textContent = '';
     erroSenha.textContent = '';
-
+    senhaInput.classList.remove('isInvalid');
+    usuarioInput.classList.remove('isInvalid');
     let isValid = true;
 
     // Validação do ADM
-    if (!patternAdm.test(usuarioInput.value)) {
-        erroAdm.textContent = 'ADM inválido! O nome não atende aos padrões requisitados.';
-        isValid = false;
-    }
-
-    // Validação da senha
-    if (!patternSenha.test(senhaInput.value)) {
-        erroSenha.textContent = 'Senha inválida! A senha não atende aos padrões requisitados.';
+    if (!patternAdm.test(usuarioInput.value) || !patternSenha.test(senhaInput.value)) {
+        erroSenha.textContent = 'ADM ou senha inválida(o)!';
+        usuarioInput.classList.add('isInvalid');
+        senhaInput.classList.add('isInvalid');
         isValid = false;
     }
 
     if (isValid) {
-        window.alert('Login realizado com sucesso!');
-}});
+        const formData = new FormData(form);
+        const redirectUrl = 'http://localhost:8080/CRUD_Site_war_exploded/listarAdm';
+        const redirectResponse = await fetch('redirectUrl', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!redirectResponse.ok) {
+            window.location.href = redirectUrl;
+            window.alert('Login realizado com sucesso!');
+        } else {
+            window.alert('Usuário ou senha incorretos');
+        }
+    }
+});
