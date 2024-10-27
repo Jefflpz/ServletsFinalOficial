@@ -1,5 +1,5 @@
 body {
-    font-family: palanquin; /* Define a fonte */
+    font-family: palanquin, sans-serif; /* Define a fonte */
     display: flex; /* Define o display como flex */
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
