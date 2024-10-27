@@ -112,7 +112,7 @@ public class Permissao_VagaDAO {
                 UUID id_Autorizador = (UUID) conexao.rs.getObject(7);
 
                 // Cria um objeto Permissao_Vaga e adiciona na lista.
-                Permissao_Vaga permissao_Vaga = new Permissao_Vaga(id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);
+                Permissao_Vaga permissao_Vaga = new Permissao_Vaga(null, id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);
                 permissoes_Vaga.add(permissao_Vaga);
             }
 
@@ -128,4 +128,57 @@ public class Permissao_VagaDAO {
             conexao.desconectar();
         }
     }
+    // Método para buscar uma permissão de vaga pelo ID, incluindo atributos de Vaga
+    public Permissao_Vaga buscarPermissao_VagaPorId(UUID id) {
+
+        // Conecta ao banco de dados
+        conexao.conectar();
+
+        try {
+            // Declara a instrução SQL para buscar uma permissão de vaga pelo ID, incluindo atributos da Vaga
+            String sql = """
+                     SELECT pv.id, pv.id_empresa, pv.permissao, pv.dt_solicitacao, pv.dt_autorizacao,
+                            pv.id_vaga, pv.id_autorizador, v.nome AS nome_vaga, v.descricao AS descricao_vaga
+                     FROM Permissao_Vaga pv
+                     JOIN Vaga v ON pv.id_vaga = v.id
+                     WHERE pv.id = ?
+                     """;
+
+            // Prepara a instrução SQL
+            conexao.pstmt = conexao.conn.prepareStatement(sql);
+
+            // Define o valor do parâmetro na instrução SQL
+            conexao.pstmt.setObject(1, id);
+
+            // Executa a consulta e armazena o resultado em ResultSet
+            conexao.rs = conexao.pstmt.executeQuery();
+
+            // Verifica se o ResultSet contém algum registro
+            if (conexao.rs.next()) {
+                UUID idEmpresa = (UUID) conexao.rs.getObject("id_empresa");
+                boolean permissao = conexao.rs.getBoolean("permissao");
+                String dtSolicitacao = conexao.rs.getString("dt_solicitacao");
+                String dtAutorizacao = conexao.rs.getString("dt_autorizacao");
+                UUID idVaga = (UUID) conexao.rs.getObject("id_vaga");
+                UUID idAutorizador = (UUID) conexao.rs.getObject("id_autorizador");
+                String nomeVaga = conexao.rs.getString("nome_vaga");
+                String descricaoVaga = conexao.rs.getString("descricao_vaga");
+
+                // Cria e retorna um objeto Permissao_Vaga com os dados obtidos
+                return new Permissao_Vaga(nomeVaga, descricaoVaga, idEmpresa, id, idEmpresa, permissao, dtSolicitacao, dtAutorizacao, idVaga, idAutorizador);
+            }
+
+            // Retorna null se nenhum registro for encontrado
+            return null;
+
+        } catch (SQLException e) {
+            // Retorna null caso ocorra uma exceção
+            return null;
+
+        } finally {
+            // Desconecta do banco de dados
+            conexao.desconectar();
+        }
+    }
+
 }

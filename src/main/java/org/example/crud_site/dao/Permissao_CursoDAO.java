@@ -1,110 +1,101 @@
 package org.example.crud_site.dao;
 
-// Importando a classe Permissao_Curso para usar os seus atributos e métodos.
+// Importando a classe Permissao_Curso para manipular permissões de cursos
 import org.example.crud_site.model.Permissao_Curso;
 
-// Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
-
-// Importando a classe ArrayList para criar uma lista de permissões.
 import java.util.ArrayList;
 import java.util.List;
-
-// Importando a classe UUID para usar nos ids.
 import java.util.UUID;
 
-// Classe Permissao_CursoDAO
+// Classe Permissao_CursoDAO para manipulação dos dados de permissão de cursos no banco de dados
 public class Permissao_CursoDAO {
 
-    // Objeto que acessa os atributos que gerenciam o banco de dados.
+    // Objeto de conexão com o banco de dados
     private Conexao conexao;
 
-    // Construtor atribui a conexao uma nova Conexao() com os atributos da classe Conexao.
+    // Construtor que inicializa a conexão com o banco de dados
     public Permissao_CursoDAO() {
-        // Inicializa a conexão com o banco de dados.
         conexao = new Conexao();
     }
 
-    // Método para autorizar a permissão de um curso.
+    // Método para autorizar a permissão de um curso
     public boolean autorizarPermissao(UUID id_Curso) {
 
-        // Conecta ao banco de dados.
+        // Conecta ao banco de dados
         conexao.conectar();
         try {
-
-            // Instrução SQL para alterar a permissão de um curso.
+            // Declara a instrução SQL para alterar o status de permissão de um curso
             String sql = "UPDATE Permissao_Curso SET permissao = TRUE WHERE id_curso = ?";
 
-            // Prepawra a instrução SQL para ser executada.
+            // Prepara a instrução SQL
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
-            // Define os valores dos parâmetros na consulta SQL.
+            // Define o valor do parâmetro na instrução SQL
             conexao.pstmt.setObject(1, id_Curso);
 
-            // Retorna se o comando SQL foi executado com sucesso.
+            // Executa o comando SQL e retorna verdadeiro se a atualização for bem-sucedida
             return conexao.pstmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            // Retorna false se ocorrer algum erro na execução do comando SQL.
+            // Retorna falso caso ocorra uma exceção
             return false;
+
         } finally {
-            // Desconecta do banco de dados.
+            // Desconecta do banco de dados
             conexao.desconectar();
         }
     }
 
-    // Método para negar a permissão de um curso.
+    // Método para negar a permissão de um curso
     public boolean negarPermissao(UUID id_Curso) {
 
-        // Conecta ao banco de dados.
+        // Conecta ao banco de dados
         conexao.conectar();
         try {
-
-            // Instrução SQL para alterar a permissão de um curso.
+            // Declara a instrução SQL para alterar o status de permissão de um curso
             String sql = "UPDATE Permissao_Curso SET permissao = FALSE WHERE id_curso = ?";
 
-            // Prepara a instrução SQL para ser executada.
+            // Prepara a instrução SQL
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
-            // Define os valores dos parâmetros na consulta SQL.
+            // Define o valor do parâmetro na instrução SQL
             conexao.pstmt.setObject(1, id_Curso);
 
-            // Retorna se o comando SQL foi executado com sucesso.
+            // Executa o comando SQL e retorna verdadeiro se a atualização for bem-sucedida
             return conexao.pstmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            // Retorna false se ocorrer algum erro na execução do comando SQL.
+            // Retorna falso caso ocorra uma exceção
             return false;
+
         } finally {
-            // Desconecta do banco de dados.
+            // Desconecta do banco de dados
             conexao.desconectar();
         }
     }
 
-    // Método para listar todas as permissões de cursos.
+    // Método para listar todas as permissões de cursos
     public List<Permissao_Curso> listarPermissoes_Curso() {
 
-        // Conecta ao banco de dados.
+        // Conecta ao banco de dados
         conexao.conectar();
 
-        // Instrução SQL para listar todas as permissões de cursos.
+        // Declara a instrução SQL para listar todas as permissões de cursos
         String sql = "SELECT * FROM Permissao_Curso";
 
-        // Cria uma lista vazia de Permissao_Curso.
+        // Cria uma lista vazia de Permissao_Curso
         List<Permissao_Curso> permissoes_Curso = new ArrayList<>();
 
         try {
-
-            // Prepara a instrução SQL para ser executada.
+            // Prepara a instrução SQL
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
-            // Executa a instrução SQL e armazena os resultados em um ResultSet.
+            // Executa a instrução SQL e armazena os resultados em um ResultSet
             conexao.rs = conexao.pstmt.executeQuery();
 
-            // Enquanto houver registros no ResultSet, adiciona os dados na lista de permissões.
+            // Processa cada registro do ResultSet e adiciona à lista
             while (conexao.rs.next()) {
-
-                // Pega os dados de cada registro e cria um objeto Permissao_Curso.
                 UUID id_Conta = (UUID) conexao.rs.getObject(2);
                 boolean permissao = conexao.rs.getBoolean(3);
                 String dt_Solicitacao = conexao.rs.getString(4);
@@ -112,20 +103,73 @@ public class Permissao_CursoDAO {
                 UUID id_Curso = (UUID) conexao.rs.getObject(6);
                 UUID id_Autorizador = (UUID) conexao.rs.getObject(7);
 
-                // Cria um objeto Permissao_Curso e adiciona na lista.
-                Permissao_Curso permissao_Curso = new Permissao_Curso(id_Conta, permissao, dt_Solicitacao, dt_Autorizacao, id_Curso, id_Autorizador);
+                // Cria um objeto Permissao_Curso e adiciona na lista
+                Permissao_Curso permissao_Curso = new Permissao_Curso(id_Autorizador,id_Curso, dt_Autorizacao, dt_Solicitacao, permissao, id_Conta, id_Conta);
                 permissoes_Curso.add(permissao_Curso);
             }
 
-            // Retorna a lista de permissões.
+            // Retorna a lista de permissões de cursos
             return permissoes_Curso;
 
         } catch (SQLException e) {
-            // Retorna null caso ocorra algum erro.
+            // Retorna null caso ocorra uma exceção
             return null;
 
         } finally {
-            // Desconecta do banco de dados.
+            // Desconecta do banco de dados
+            conexao.desconectar();
+        }
+    }
+
+    // Método para buscar uma permissão de curso pelo ID, incluindo atributos de Curso
+    public Permissao_Curso buscarPermissao_CursoPorId(UUID id) {
+
+        // Conecta ao banco de dados
+        conexao.conectar();
+
+        try {
+            // Declara a instrução SQL para buscar uma permissão de curso pelo ID, incluindo atributos do Curso
+            String sql = """
+                         SELECT pc.id, pc.id_conta, pc.permissao, pc.dt_solicitacao, pc.dt_autorizacao, 
+                                pc.id_curso, pc.id_autorizador, c.nome AS nome_curso, c.descricao AS descricao_curso 
+                         FROM Permissao_Curso pc
+                         JOIN Curso c ON pc.id_curso = c.id
+                         WHERE pc.id = ?
+                         """;
+
+            // Prepara a instrução SQL
+            conexao.pstmt = conexao.conn.prepareStatement(sql);
+
+            // Define o valor do parâmetro na instrução SQL
+            conexao.pstmt.setObject(1, id);
+
+            // Executa a consulta e armazena o resultado em ResultSet
+            conexao.rs = conexao.pstmt.executeQuery();
+
+            // Verifica se o ResultSet contém algum registro
+            if (conexao.rs.next()) {
+                UUID idConta = (UUID) conexao.rs.getObject("id_conta");
+                boolean permissao = conexao.rs.getBoolean("permissao");
+                String dtSolicitacao = conexao.rs.getString("dt_solicitacao");
+                String dtAutorizacao = conexao.rs.getString("dt_autorizacao");
+                UUID idCurso = (UUID) conexao.rs.getObject("id_curso");
+                UUID idAutorizador = (UUID) conexao.rs.getObject("id_autorizador");
+                String nomeCurso = conexao.rs.getString("nome_curso");
+                String descricaoCurso = conexao.rs.getString("descricao_curso");
+
+                // Cria e retorna um objeto Permissao_Curso com os dados obtidos
+                return new Permissao_Curso(nomeCurso, descricaoCurso, idConta, idAutorizador, idCurso, dtAutorizacao, dtSolicitacao, permissao, idConta, id);
+            }
+
+            // Retorna null se nenhum registro for encontrado
+            return null;
+
+        } catch (SQLException e) {
+            // Retorna null caso ocorra uma exceção
+            return null;
+
+        } finally {
+            // Desconecta do banco de dados
             conexao.desconectar();
         }
     }
