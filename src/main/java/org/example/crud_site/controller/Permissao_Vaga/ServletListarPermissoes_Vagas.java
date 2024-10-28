@@ -28,6 +28,6 @@ public class ServletListarPermissoes_Vagas extends HttpServlet {
         req.setAttribute("listaPermissao_Vaga", listaPermissao_Vaga);
 
         // Encaminha a requisição e a resposta para a página permissao_Vaga.jsp
-        req.getRequestDispatcher("permissao_Vaga.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/permissaoVaga.jsp").forward(req, res);
     }
 }

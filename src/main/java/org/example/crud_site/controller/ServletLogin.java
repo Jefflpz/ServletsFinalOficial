@@ -28,9 +28,6 @@ public class ServletLogin extends HttpServlet {
 
         Adm adm = gson.fromJson(requestBody.toString(), Adm.class);
 
-        System.out.println("Usuário: " + adm.getAdm());
-        System.out.println("Senha: " + adm.getSenha());
-
         try {
             if (verificarLogin(adm.getAdm(), adm.getSenha())) {
                 response.setStatus(HttpServletResponse.SC_OK);

@@ -179,6 +179,39 @@ public class AdmDAO{
         }
     }
 
+    // Método para buscar um administrador na tabela Adm
+    public Adm buscarAdm(String username, String senha){
+        conexao.conectar();
+
+        try {
+
+            // Instrução SQL para excluir um administrador na tabela Adm
+            String sql = "SELECT * FROM adm WHERE username = ? AND senha = ?";
+            conexao.pstmt = conexao.conn.prepareStatement(sql);
+            conexao.pstmt.setString(1, username);
+            conexao.pstmt.setString(2, senha);
+
+            // Armazena o resultado da consulta no objeto ResultSet
+            conexao.rs = conexao.pstmt.executeQuery();
+
+            /// Obtem os dados do ResultSet
+            if (conexao.rs.next()) {
+                UUID id = (UUID) conexao.rs.getObject(1);
+                String login = conexao.rs.getString(2);
+                String senhaAtualizada = conexao.rs.getString(3);
+
+                // Cria um objeto Adm com os dados do ResultSet
+                return new Adm(id,login, senhaAtualizada);
+            }
+            return null;
+        }catch (SQLException e) {
+            // Retorna null caso ocorra algum erro.
+            return null;
+        }finally {
+            conexao.desconectar();
+        }
+    }
+
     // Método para listar todos os administradores na tabela Adm
     public List<Adm> listarAdms(){
 
@@ -223,29 +256,5 @@ public class AdmDAO{
 
         // Retorna a lista de administradores
         return adms;
-    }
-
-    public Adm buscarAdm(String username, String senha) {
-        conexao.conectar();
-
-        try {
-            conexao.pstmt = conexao.conn.prepareStatement("SELECT * FROM adm WHERE username = ? AND senha = ?");
-            conexao.pstmt.setString(1, username);
-            conexao.pstmt.setString(2, senha);
-            conexao.rs = conexao.pstmt.executeQuery();
-
-            if (conexao.rs.next()) {
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String login = conexao.rs.getString(2);
-                String senha2 = conexao.rs.getString(3);
-
-                return new Adm(id,login, senha2);
-            }
-            return null;
-        }catch (SQLException e) {
-            return null;
-        }finally {
-            conexao.desconectar();
-        }
     }
 }

@@ -28,7 +28,7 @@ public class ServletListarPermissoes_Cursos extends HttpServlet {
         req.setAttribute("listaPermissao_Curso", listaPermissao_Curso);
 
         // Encaminha a requisição e a resposta para a página permissao_curso.jsp
-        req.getRequestDispatcher("permissao_curso.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/permissao_curso.jsp").forward(req, res);
 
     }
 }
