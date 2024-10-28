@@ -36,17 +36,13 @@ mostrarSenha.addEventListener('click', () => {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    erroAdm.textContent = '';
+    erroAdm.classList.add('isInvalid');
     erroSenha.textContent = '';
-    senhaInput.classList.remove('isInvalid');
-    usuarioInput.classList.remove('isInvalid');
     let isValid = true;
 
     // Validação do ADM
     if (!patternAdm.test(usuarioInput.value) || !patternSenha.test(senhaInput.value)) {
         erroSenha.textContent = 'ADM ou senha inválida(o)!';
-        usuarioInput.classList.add('isInvalid');
-        senhaInput.classList.add('isInvalid');
         isValid = false;
     }
 
