@@ -105,7 +105,7 @@
                 <!--                    -->
                 <div class="form-group">
                     <!--                      tirei o for="password"-->
-                    <label  class="label">Digite a senha:</label>
+                    <label class="label">Digite a senha:</label>
                     <div class="password-container">
                         <input type="password" placeholder="***********" class="input password"/>
                     </div>

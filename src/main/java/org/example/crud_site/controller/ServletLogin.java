@@ -26,7 +26,7 @@ public class ServletLogin extends HttpServlet {
             }
         }
 
-        Adm adm = gson.fromJson(requestBody.toString(), Adm.class);
+        Login adm = gson.fromJson(requestBody.toString(), Login.class);
 
         try {
             if (verificarLogin(adm.getAdm(), adm.getSenha())) {
@@ -52,15 +52,15 @@ public class ServletLogin extends HttpServlet {
         return admDAO.buscarAdm(usuario, senha)!=null;
     }
 
-    private static class Adm {
-        private String adm;
+    private static class Login{
+        private String username;
         private String senha;
 
         public String getAdm() {
-            return adm;
+            return username;
         }
         public void setUsuario(String adm) {
-            this.adm = adm;
+            this.username = adm;
         }
         public String getSenha() {
             return senha;
