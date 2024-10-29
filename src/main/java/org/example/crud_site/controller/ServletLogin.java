@@ -19,14 +19,14 @@ public class ServletLogin extends HttpServlet {
         response.setContentType("application/json");
 
         StringBuilder requestBody = new StringBuilder();
-        String linha;
+        String line;
         try (BufferedReader reader = request.getReader()) {
-            while ((linha = reader.readLine()) != null) {
-                requestBody.append(linha);
+            while ((line = reader.readLine()) != null) {
+                requestBody.append(line);
             }
         }
 
-        Login adm = gson.fromJson(requestBody.toString(), Login.class);
+        Adm adm = gson.fromJson(requestBody.toString(), Adm.class);
 
         try {
             if (verificarLogin(adm.getAdm(), adm.getSenha())) {
@@ -49,18 +49,18 @@ public class ServletLogin extends HttpServlet {
 
     private boolean verificarLogin(String usuario, String senha){
         AdmDAO admDAO = new AdmDAO();
-        return admDAO.buscarAdm(usuario, senha)==null;
+        return admDAO.buscarAdm(usuario, senha)!=null;
     }
 
-    private static class Login{
-        private String username;
+    private static class Adm {
+        private String adm;
         private String senha;
 
         public String getAdm() {
-            return username;
+            return adm;
         }
         public void setUsuario(String adm) {
-            this.username = adm;
+            this.adm = adm;
         }
         public String getSenha() {
             return senha;
