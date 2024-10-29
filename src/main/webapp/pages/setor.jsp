@@ -1,10 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD Setor</title>
-  <link rel="stylesheet" href="../css/setor.css">
+  <link rel="stylesheet" href="css/setor.css">
 </head>
 <body>
 
@@ -14,12 +15,12 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#"><img src="../img/casa.png">Home</a></li>
-                <li><a href="#">Adm</a></li>
-                <li><a href="#">Permissão Vaga</a></li>
-                <li><a href="#">Permissão Curso</a></li>
+                <li><a href="#"><img src="img/casa.png">Home</a></li>
+                <li><a href="listarAdm">Adm</a></li>
+                <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
+                <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
                 <li  class="selecionado"><a href="#">Setores</a></li>
-                <li><a href="#">Tipo de arquivo</a></li>
+                <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
                 <li><a href="#">Tipo de vaga</a></li>
                 <li><a href="#">Situação trabalhista</a></li>
                 <li><a href="#">Status curso</a></li>

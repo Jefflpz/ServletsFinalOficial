@@ -1,3 +1,9 @@
+const sair = document.getElementById('sair');
+
+sair.addEventListener('click', function() {
+    window.location.href = 'webapp\\index.html';
+});
+
 document.querySelectorAll('.view-password').forEach(button => {
     button.addEventListener('click', function() {
         const passwordCell = this.parentElement.previousElementSibling;

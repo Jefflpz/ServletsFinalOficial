@@ -18,18 +18,19 @@
     </div>
     <nav>
         <ul>
-            <li><a href="#"><img src="../img/house.png">Home</a></li>
+            <li><a href="#"><img src="img/house.png">Home</a></li>
             <li class="selecionado"><a href="#">Adm</a></li>
             <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
             <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
-            <li><a href="../../listarSetor">Setores</a></li>
-            <li><a href="../listarTipo_arquivo">Tipo de arquivo</a></li>
-            <li><a href="../../listarTipo_Vaga">Tipo de vaga</a></li>
-            <li><a href="../../listarSituacao_Trabalhistas">Situação trabalhista</a></li>
-            <li><a href="../../listarStatus_Curso">Status curso</a></li>
+            <li><a href="listarSetor">Setores</a></li>
+            <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+            <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
+            <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
+            <li><a href="listarStatus_Curso">Status curso</a></li>
+            <li><a href="index.html" class="logout">Sair</a></li>
         </ul>
     </nav>
-    <button href="index.jsp" class="logout">Sair</button>
+
 </aside>
 
 <div class="container">
@@ -72,9 +73,9 @@
             <div class="grid-item username"><%= lista.get(i).getUsername() %></div>
             <div class="grid-item"> <%= "*".repeat(lista.get(i).getSenha().length()) %></div>
             <div class="grid-item">
-                <button class="action view"><img src="../img/olho.png" alt=""></button>
-                <button class="action edit"><img src="../img/lapis.png" alt=""></button>
-                <button class="action delete"><img src="../img/lixo.png" alt=""></button>
+                <button class="action view"><img src="img/olho.png" alt=""></button>
+                <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                <button class="action delete"><img src="img/lixo.png" alt=""></button>
             </div>
             <%
                     }

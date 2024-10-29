@@ -1,0 +1,150 @@
+body {
+    font-family: palanquin; /* Define a fonte */
+    display: flex; /* Define o display como flex */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Define a altura */
+    font-size: 20px; /* Tamanho da fonte */
+    margin: 0; /* Remove a margem */
+}
+
+h1 {
+    font-size: 48px; /* Aumenta o tamanho da fonte */
+    font-weight: 600; /* Aumenta o peso da fonte */
+    margin: 0;
+    padding-top: 5%;
+}
+
+h2 {
+    padding-left: 10%; /* Move o texto para a esquerda */
+    margin: 0; /* Remove a margem */
+    padding-top: 2%;
+}
+
+label {
+    font-size: 70%; /* Aumenta o tamanho da fonte */
+    color: #929292; /* Altera a cor */
+    padding-left: 3%; /* Move o texto para a esquerda */
+    margin: 10px 0 5px; /* Remove a margem */
+}
+
+hr {
+    border: none; /* Remove a borda padrão */
+    height: 0.5px; /* Define a altura da linha */
+    background-color: cornflowerblue; /* Cor da linha */
+    width: 85%; /* Largura da linha (em porcentagem do contêiner) */
+    margin: 20px auto; /* Centraliza a linha horizontalmente */
+}
+
+.incluses {
+    text-align: center; /* Centraliza o texto */
+}
+
+.inclus {
+    color: mediumblue; /* Cor do texto */
+}
+
+.es {
+    color: blueviolet; /* Cor do texto */
+}
+
+.container {
+    position: relative; /* Define o posicionamento como absoluto */
+    background-color: #fff; /* Cor de fundo */
+    border-radius: 25px; /* Borda arredondada */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* Sombra */
+    text-align: left; /* Alinha o texto à esquerda */
+    width: 1001px; /* Largura */
+    height: 565px; /* Altura */
+    align-items: center; /* Centraliza o conteúdo */
+    padding: 5px; /* Preenchimento */
+    text-align: center;
+}
+
+.container h2 {
+    text-align: center; /* Centraliza o texto */
+    margin-right: 10%;
+    font-size: 45px;
+}
+
+.voltar {
+    text-align: center;
+    padding: 1.5%;
+    width: 10%;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 0;
+    background-color: #2C46D1;
+    font-size: 25px;
+    color: #ffffff;
+    position: absolute;
+    top: 15%;
+    left: 8%;
+}
+
+
+.errortext {
+    text-align: center;
+    width: 70%;
+    font-size: 25px;
+    margin-left: 15%;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .container {
+        width: 90%; /* Ajusta a largura do contêiner */
+        height: auto; /* Permite que a altura se ajuste ao conteúdo */
+    }
+
+    h1 {
+        font-size: 40px; /* Reduz o tamanho da fonte do h1 */
+    }
+
+    h2 {
+        font-size: 35px; /* Reduz o tamanho da fonte do h2 */
+        padding-left: 5%; /* Ajusta o preenchimento */
+    }
+
+    .voltar {
+        width: 15%; /* Aumenta a largura do botão voltar */
+        font-size: 20px; /* Reduz o tamanho da fonte do botão */
+        top: 10%; /* Ajusta a posição */
+        left: 40%; /* Centraliza o botão */
+    }
+
+    .errortext {
+        font-size: 20px; /* Reduz o tamanho da fonte da mensagem de erro */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: row; 
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 25px; 
+        padding-left: 10%; 
+    }
+
+    label {
+        font-size: 60%; 
+    }
+
+    .voltar {
+        width: 30%; 
+        font-size: 18px; 
+        top: 5%; 
+        left: 35%; 
+    }
+
+    .errortext {
+        font-size: 18px;
+        margin-left: 15%; 
+    }
+}
