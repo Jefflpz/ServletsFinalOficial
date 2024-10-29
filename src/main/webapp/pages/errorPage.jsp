@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/LandingPage.css">
-
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/errorPage.css">
   <link href="https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
   <title>Login Administrador</title>
 </head>

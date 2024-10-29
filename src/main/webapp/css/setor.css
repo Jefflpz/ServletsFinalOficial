@@ -123,8 +123,8 @@ h1 {
 .sidebar {
     width: 260px;
     height: 100%;
-    background-image: url(sidebar.png);
-    background-size: cover; 
+    background-image: url(../img/sidebar.png);
+    background-size: cover;
     padding: 20px;
     color: #ecf0f1;
 }

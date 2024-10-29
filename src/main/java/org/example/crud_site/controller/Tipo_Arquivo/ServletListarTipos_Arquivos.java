@@ -28,6 +28,6 @@ public class ServletListarTipos_Arquivos extends HttpServlet {
         req.setAttribute("tipos_Arquivos", tipos_Arquivos);
 
         // Encaminha a requisição e a resposta para a página listarTipo_arquivo.jsp
-        req.getRequestDispatcher("listarTipo_arquivo.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/tipoArquivo.jsp").forward(req, res);
     }
 }

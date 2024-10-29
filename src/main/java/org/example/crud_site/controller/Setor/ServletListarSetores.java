@@ -25,9 +25,10 @@ public class ServletListarSetores extends HttpServlet {
         List<Setor> listaSetor = setorDAO.listarSetores();
 
         // Define a lista de setores como um atributo da requisição
-        req.setAttribute("listaSetor", listaSetor);
+        req.setAttribute("listarSetor", listaSetor);
 
         // Encaminha a requisição e a resposta para a página listarSetor.jsp
-        req.getRequestDispatcher("listarSetor.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/setor.jsp").forward(req, res);
     }
+
 }

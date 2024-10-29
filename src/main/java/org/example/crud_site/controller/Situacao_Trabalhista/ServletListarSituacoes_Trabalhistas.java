@@ -28,6 +28,6 @@ public class ServletListarSituacoes_Trabalhistas extends HttpServlet {
         req.setAttribute("situacoes_Trabalhistas", situacoes_Trabalhistas);
 
         // Encaminha a requisição e a resposta para a página listarSituacao_Trabalhistas.jsp
-        req.getRequestDispatcher("listarSituacao_Trabalhistas.jsp").forward(req, res);
+        req.getRequestDispatcher("/pages/situacaoTrabalhista.jsp").forward(req, res);
     }
 }

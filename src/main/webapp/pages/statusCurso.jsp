@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD status curso</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/statusCurso.css">
 </head>
 <body>
 
@@ -15,18 +15,18 @@
     </div>
     <nav>
         <ul>
-            <li><a href="#"><img src="casa.png">Home</a></li>
-            <li class="selecionado"><a href="../CrudAdm/adm.html">Adm</a></li>
-            <li><a href="../PermissaoVaga/permissaoVaga.html">Permissão Vaga</a></li>
-            <li><a href="../PermissaoCurso/permissaoCurso.html">Permissão Curso</a></li>
-            <li><a href="../CrudSetor/Setor.html">Setores</a></li>
-            <li><a href="../TipoArquivo/tipoArquivo.html">Tipo de arquivo</a></li>
-            <li><a href="../TipoVaga/tipoVaga.html">Tipo de vaga</a></li>
-            <li><a href="../SituaçãoTrabalhistas/situaçãoTrabalhista.html">Situação trabalhista</a></li>
-            <li class="selecionado"><a href="../StatusCurso/statusCurso.html">Status curso</a></li>
+            <li><a href="#"><img src="img/casa.png">Home</a></li>
+            <li><a href="listarAdm">Adm</a></li>
+            <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
+            <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
+            <li><a href="listarSetor">Setores</a></li>
+            <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
+            <li class="selecionado"><a href="#">Status curso</a></li>
+            <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+            <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
+            <li><a href="index.html" class="logout">Sair</a></li>
         </ul>
     </nav>
-    <button class="logout" onclick="window.location.href='../Portal Administrador/portalAdm.html'">Sair</button>
   </aside>
 
 
@@ -66,45 +66,45 @@
                 <div class="grid-item item-username">admin1</div>
                 <div class="grid-item">Em andamento</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>  
 
                 <div class="grid-item item-registro">2</div>
                 <div class="grid-item item-username">admin2</div>
                 <div class="grid-item">Concluido</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>  
 
                 <div class="grid-item item-registro">3</div>
                 <div class="grid-item item-username">admin3</div>
                 <div class="grid-item">Concluido</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>  
 
                 <div class="grid-item item-registro">4</div>
                 <div class="grid-item item-username">admin4</div>
                 <div class="grid-item">Cancelado</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>  
 
                 <div class="grid-item item-registro">5</div>
                 <div class="grid-item item-username">admin5</div>
                 <div class="grid-item">Em andamento </div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>          
             </div>
 
@@ -162,6 +162,6 @@
           </div>
 
 
-  <script src="script.js"></script>
+  <script src="js/statusCurso.js"></script>
 </body>
 </html>

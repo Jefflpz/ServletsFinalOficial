@@ -18,13 +18,13 @@
             <ul>
                 <li><a href="#"><img src="img/casa.png">Home</a></li>
                 <li><a href="listarAdm">Adm</a></li>
-                <li class="selecionado"><a href="#">Permissão Vaga</a></li>
                 <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
+                <li class="selecionado"><a href="#">Permissão Vaga</a></li>
                 <li><a href="listarSetor">Setores</a></li>
-                <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
-                <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
                 <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
                 <li><a href="listarStatus_Curso">Status curso</a></li>
+                <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+                <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
                 <li><a href="index.html" class="logout">Sair</a></li>
             </ul>
         </nav>
@@ -74,13 +74,13 @@
                 <div class="grid-item item-id_conta">12</div>
                 <div class="grid-item item-id_vaga">23</div>
                 <div class="grid-item">
-                    <button class="action permitido"><img src="../img/correto.png" alt=""></button>
-                    <button class="action view"><img src="../img/olho.png" alt=""></button>
-                    <button class="action delete"><img src="../img/lixo.png" alt=""></button>
+                    <button class="action permitido"><img src="img/correto.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>  
             </div>
         </main>
     </div>
-  <script src="../js/permissaoVaga.js"></script>
+  <script src="js/permissaoVaga.js"></script>
 </body>
 </html>

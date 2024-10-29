@@ -20,13 +20,13 @@
         <ul>
             <li><a href="#"><img src="img/house.png">Home</a></li>
             <li class="selecionado"><a href="#">Adm</a></li>
-            <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
             <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
+            <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
             <li><a href="listarSetor">Setores</a></li>
-            <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
-            <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
             <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
             <li><a href="listarStatus_Curso">Status curso</a></li>
+            <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+            <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
             <li><a href="index.html" class="logout">Sair</a></li>
         </ul>
     </nav>
@@ -146,6 +146,6 @@
         </div>
     </div>
 </div>
-<script src="../js/adm.js"></script>
+<script src="js/adm.js"></script>
 </body>
 </html>
