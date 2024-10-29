@@ -78,25 +78,11 @@ input::placeholder {
     padding: 5px; /* Preenchimento */
 }
 
-.isInvalid{
-    color: red;
-    border: 1px red/* Cor do texto */
-}
-
 .mensagem-erro{
     display: block;
-    color: red;
     font-size: 11px;
     text-align: start;
-}
-
-.input-erro {
     color: red;
-    box-shadow: 0 0 5px red;
-}
-
-.container h2 {
-    text-align: left; /* Centraliza o texto */
 }
 
 .container input {

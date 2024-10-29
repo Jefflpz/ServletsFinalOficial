@@ -19,10 +19,10 @@ public class ServletLogin extends HttpServlet {
         response.setContentType("application/json");
 
         StringBuilder requestBody = new StringBuilder();
-        String line;
+        String linha;
         try (BufferedReader reader = request.getReader()) {
-            while ((line = reader.readLine()) != null) {
-                requestBody.append(line);
+            while ((linha = reader.readLine()) != null) {
+                requestBody.append(linha);
             }
         }
 
