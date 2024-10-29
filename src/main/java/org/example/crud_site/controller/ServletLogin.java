@@ -49,7 +49,7 @@ public class ServletLogin extends HttpServlet {
 
     private boolean verificarLogin(String usuario, String senha){
         AdmDAO admDAO = new AdmDAO();
-        return admDAO.buscarAdm(usuario, senha)!=null;
+        return admDAO.buscarAdm(usuario, senha)==null;
     }
 
     private static class Login{
