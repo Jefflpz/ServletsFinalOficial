@@ -23,8 +23,7 @@ public class ServletInserirAdm extends HttpServlet {
         // Verifica se a inserção foi bem-sucedida
         if (resultado) {
             // Se a inserção foi bem-sucedida, redireciona para a página de sucesso
-            req.setAttribute("mensagem", "Administrador inserido com sucesso.");
-            req.getRequestDispatcher("sucesso.jsp").forward(req, res);
+            req.getRequestDispatcher("/pages/CrudAdm.jsp").forward(req, res);
             return; // Para evitar a execução do código abaixo
         }
 

@@ -68,7 +68,7 @@
             %>
             <div class="grid-item registro"><%= i+1 %></div>
             <div class="grid-item username"><%= lista.get(i).getUsername() %></div>
-            <div class="grid-item"> <%= "*".repeat(lista.get(i).getSenha().length()) %></div>
+            <div class="grid-item"> <%= (lista.get(i).getSenha() != null) ? "*".repeat(lista.get(i).getSenha().length()) : "" %></div>
             <div class="grid-item">
                 <button class="action view"><img src="img/olho.png" alt=""></button>
                 <button class="action edit"><img src="img/lapis.png" alt=""></button>
@@ -89,7 +89,7 @@
 
     <div id="popupID" style="display: none;">
         <div class="popup">
-            <form action="#" class="registrar">
+            <form action="inserirAdm" method="post" class="registrar">
                 <div class="bloco-titulo">
                     <h2 class="titulo">Cadastrar administrador</h2>
                 </div>
@@ -101,9 +101,10 @@
                 <div class="form-group">
                     <label class="label">Digite a senha:</label>
                     <div class="password-container">
-                        <input type="password" placeholder="*" class="input password"/>
+                        <input type="password" placeholder="*" id="novoSenha" name="password" class="input password"/>
                     </div>
                 </div>
+                <%%>
 
                 <button type="submit" class="b bt-registrar">Cadastrar</button>
                 <button type="button" class="b bt-cancelar">Cancelar</button>

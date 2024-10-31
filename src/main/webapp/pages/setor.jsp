@@ -35,7 +35,7 @@
             <div class="titulo">
                 <h1>Setor</h1>
                 <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
-                <button class="inserir-adm">Inserir Adm</button>
+                <button class="inserir-adm">Inserir Setor</button>
             </div>
 
             <!-- Barra de Filtro -->
