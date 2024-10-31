@@ -95,13 +95,13 @@
                 </div>
                 <div class="form-group">
                     <label for="login" class="label">Login:</label>
-                    <input type="text" id="novoAdm" name="login" placeholder="avnadmin" class="input" required />
+                    <input type="text" id="novoAdm" name="username" placeholder="avnadmin" class="input" required />
                 </div>
 
                 <div class="form-group">
                     <label class="label">Digite a senha:</label>
                     <div class="password-container">
-                        <input type="password" placeholder="*" id="novoSenha" name="password" class="input password"/>
+                        <input type="password" placeholder="*" id="novoSenha" name="senha" class="input password"/>
                     </div>
                 </div>
                 <%%>
