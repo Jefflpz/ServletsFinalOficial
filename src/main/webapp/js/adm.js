@@ -1,13 +1,7 @@
-const sair = document.getElementById('sair');
-
-sair.addEventListener('click', function() {
-    window.location.href = 'webapp\\index.html';
-});
-
 document.querySelectorAll('.view-password').forEach(button => {
     button.addEventListener('click', function() {
         const passwordCell = this.parentElement.previousElementSibling;
-        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
+        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
     });
 });
 
@@ -80,9 +74,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const acoes = gridItems[i + 3];
 
             let shouldDisplay = false;
-            if (selectedField === 'Todos') {
+            if (selectedField === 'todos') {
                 shouldDisplay = true;
-            } else if (selectedField === 'Registro-filtro') {
+            } else if (selectedField === 'registro-filtro') {
                 shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
             } else if (selectedField === 'username-filtro') {
                 shouldDisplay = username.textContent.toLowerCase().includes(searchTerm);
@@ -102,4 +96,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-

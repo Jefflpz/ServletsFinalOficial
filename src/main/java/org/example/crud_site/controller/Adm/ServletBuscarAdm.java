@@ -24,14 +24,16 @@ public class ServletBuscarAdm extends HttpServlet {
         // Verifica se o administrador foi encontrado
         if (adm == null) {
             // Se não encontrado, define uma mensagem de erro e encaminha para uma página de erro
-            req.setAttribute("erro", "Administrador não encontrado.");
-            req.getRequestDispatcher("/pages/erro.jsp").forward(req, res);
+            req.setAttribute("erro", "Adm" +
+                    "não encontrado.");
+            req.getRequestDispatcher("pages/error.jsp").forward(req, res);
             return;
         }
 
 
         // Se encontrado, adiciona o administrador como atributo na requisição
         req.setAttribute("adm", adm);
+        req.getRequestDispatcher("/pages/CrudAdm.jsp").forward(req, res);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);  // Redireciona GET para POST

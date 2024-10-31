@@ -21,7 +21,7 @@ public class Conexao {
             Class.forName("org.postgresql.Driver");
 
         //  Lê o arquivo.env
-            Dotenv dotenv = Dotenv.configure().directory("C:\\Users\\diogoqueiroz-ieg\\IdeaProjects\\CRUD_Site\\.env").load();
+            Dotenv dotenv = Dotenv.configure().directory("C:\\Users\\joaoabreu-ieg\\IdeaProjects\\CRUD_Site\\.env").load();
 
         // Pega as informações do arquivo .env e coloca em variáveis
             String url = dotenv.get("DATABASE_URL");

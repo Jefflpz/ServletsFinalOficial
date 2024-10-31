@@ -41,9 +41,8 @@
             <button class="inserir-adm">Inserir Adm</button>
         </div>
 
-        <!-- Barra de Filtro -->
         <div id="filtrar-bar" style="display: none;">
-            <form action="#">
+            <form action="#" method="get">
                 <select name="filter-field">
                     <option value="">Escolher campo</option>
                     <option value="Todos">Todos</option>
@@ -78,16 +77,14 @@
                 <button class="action delete"><img src="img/lixo.png" alt=""></button>
             </div>
             <%
-                    }
-                } else {
+                }
+            } else {
             %>
-                    <div class="grid-item">Nenhum registro encontrado.</div>
+            <div class="grid-item">Nenhum registro encontrado.</div>
             <%
                     System.out.println("Nenhum registro encontrado.");
                 }
             %>
-
-
         </div>
 
     </main>
@@ -103,22 +100,18 @@
                     <input type="text" id="novoAdm" name="login" placeholder="avnadmin" class="input" required />
                 </div>
 
-                <!--                    -->
                 <div class="form-group">
-                    <!--                      tirei o for="password"-->
                     <label class="label">Digite a senha:</label>
                     <div class="password-container">
                         <input type="password" placeholder="***********" class="input password"/>
                     </div>
                 </div>
 
-
                 <button type="submit" class="b bt-registrar">Cadastrar</button>
                 <button type="button" class="b bt-cancelar">Cancelar</button>
             </form>
         </div>
     </div>
-
 
     <div id="popupIDadm" style="display: none;">
         <div class="popup">
@@ -132,13 +125,11 @@
                 </div>
 
                 <div class="form-group">
-                    <!--                      tirei o for="password"-->
                     <label class="label">Digite a senha:</label>
                     <div class="password-container">
                         <input type="password" placeholder="***********" class="input password"/>
                     </div>
                 </div>
-
 
                 <button type="submit" class="b bt-registrar">Confirmar alterações</button>
                 <button type="button" class="b bt-cancelar-edit">Cancelar</button>

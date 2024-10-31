@@ -47,9 +47,7 @@
                         <option value="id_conta-filtro">id_conta</option>
                         <option value="id_vaga-filtro">id_vaga</option>
                     </select>
-
                     <input type="text" name="search" placeholder="Pesquisar...">
-
                     <button type="submit">Aplicar</button>
                 </form>
             </div>
