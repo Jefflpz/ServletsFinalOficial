@@ -33,7 +33,7 @@
     <div class="container">
         <main class="main-content">
             <div class="titulo">
-                <h1>Crud Setor</h1>
+                <h1>Setor</h1>
                 <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
                 <button class="inserir-adm">Inserir Adm</button>
             </div>

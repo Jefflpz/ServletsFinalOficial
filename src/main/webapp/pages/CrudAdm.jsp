@@ -7,9 +7,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/CrudAdm.css"/>
+    <link rel="stylesheet" href="css/CrudAdm.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Adm</title>
+    <title>Crud Adm</title>
 </head>
 <body>
 <aside class="sidebar">
@@ -36,7 +36,7 @@
 <div class="container">
     <main class="main-content">
         <div class="titulo">
-            <h1>Crud Adm</h1>
+            <h1>Adm</h1>
             <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
             <button class="inserir-adm">Inserir Adm</button>
         </div>
@@ -45,13 +45,11 @@
             <form action="#" method="get">
                 <select name="filter-field">
                     <option value="">Escolher campo</option>
-                    <option value="Todos">Todos</option>
-                    <option value="Registro-filtro">Registro</option>
+                    <option value="todos">Todos</option>
+                    <option value="registro-filtro">Registro</option>
                     <option value="username-filtro">Username</option>
                 </select>
-
                 <input type="text" name="search" placeholder="Pesquisar...">
-
                 <button type="submit">Aplicar</button>
             </form>
         </div>
@@ -103,7 +101,7 @@
                 <div class="form-group">
                     <label class="label">Digite a senha:</label>
                     <div class="password-container">
-                        <input type="password" placeholder="***********" class="input password"/>
+                        <input type="password" placeholder="*" class="input password"/>
                     </div>
                 </div>
 
@@ -127,7 +125,7 @@
                 <div class="form-group">
                     <label class="label">Digite a senha:</label>
                     <div class="password-container">
-                        <input type="password" placeholder="***********" class="input password"/>
+                        <input type="password" placeholder="*" class="input password"/>
                     </div>
                 </div>
 
