@@ -1,7 +1,6 @@
 const form = document.getElementById('formLogin');
 const senhaInput = document.getElementById('senha');
-const erroSenha = document.getElementById('erroSenha');
-const erroAdm = document.getElementById('erroAdm');
+const erro = document.getElementById('erro');
 const usuarioInput = document.getElementById('usuario');
 
 const mostrarSenha = document.querySelector('.mostrar-senha img');
@@ -35,13 +34,12 @@ mostrarSenha.addEventListener('click', () => {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    erroAdm.classList.add('isInvalid');
-    erroSenha.textContent = '';
+    erro.textContent = '';
     let isValid = true;
 
     // Validação do ADM
     if (!patternAdm.test(usuarioInput.value) || !patternSenha.test(senhaInput.value)) {
-        erroSenha.textContent = 'ADM ou senha inválida(o)!';
+        erro.textContent = 'ADM ou senha inválida(o)!';
         isValid = false;
     }
 

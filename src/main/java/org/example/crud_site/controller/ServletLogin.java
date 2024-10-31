@@ -52,7 +52,7 @@ public class ServletLogin extends HttpServlet {
 //        System.out.println("Senha: " + senha);
 
         try {
-            if (verificarLogin(adm.getAdm(), adm.getSenha())) {
+            if (verificarLogin(adm.getAdm(), senhaHash)) {
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("{\"success\":true}");
             } else {

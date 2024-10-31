@@ -101,9 +101,10 @@
                 <div class="form-group">
                     <label class="label">Digite a senha:</label>
                     <div class="password-container">
-                        <input type="password" placeholder="*" id="novoSenha" name="senha" class="input password"/>
+                        <input type="password" placeholder="*" id="novoSenha" name="senha" class="input password" required/>
                     </div>
                 </div>
+                <span id="erro" class="mensagem-erro"></span>
                 <%%>
 
                 <button type="submit" class="b bt-registrar">Cadastrar</button>
