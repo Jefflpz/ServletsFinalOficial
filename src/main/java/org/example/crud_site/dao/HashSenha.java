@@ -1,4 +1,4 @@
-package org.example.crud_site.controller;
+package org.example.crud_site.dao;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -6,8 +6,11 @@ import java.security.NoSuchAlgorithmException;
 
 public class HashSenha {
 
-    // Método para gerar o hash da senha
-    public String hashSenha(String senha) throws NoSuchAlgorithmException {
+    // Atributo para armazenar a senha
+    private String senha;
+
+    // Método construtor que gera o hash da senha
+    public HashSenha(String senha) throws NoSuchAlgorithmException {
         // Objeto para criar o hash da senha
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
@@ -21,6 +24,10 @@ public class HashSenha {
         }
 
         // Retorna a string hexadecimal
-        return hexString.toString();
+        this.senha = hexString.toString();
+    }
+
+    public String getSenha() {
+        return this.senha;
     }
 }

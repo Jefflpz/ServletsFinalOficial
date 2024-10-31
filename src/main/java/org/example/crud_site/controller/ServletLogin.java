@@ -7,9 +7,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.AdmDAO;
+import org.example.crud_site.dao.HashSenha;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet(name = "Login administrador", value = "/login")
 public class ServletLogin extends HttpServlet {
@@ -31,7 +33,18 @@ public class ServletLogin extends HttpServlet {
             return;
         }
 
+        // Lê o JSON por meio da classe Login
         Login adm = gson.fromJson(requestBody.toString(), Login.class);
+
+        // Criando o hashing da senha
+        String senhaHash;
+
+        try {
+            HashSenha hashSenha = new HashSenha(adm.getSenha());
+            senhaHash = hashSenha.getSenha();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
 
 //        String user = (String) request.getAttribute("usuario");
 //        String senha = (String) request.getAttribute("senha");

@@ -20,13 +20,10 @@ public class Conexao {
 
             Class.forName("org.postgresql.Driver");
 
-        //  Lê o arquivo.env
-            Dotenv dotenv = Dotenv.configure().directory("C:\\Users\\joaoabreu-ieg\\IdeaProjects\\CRUD_Site\\.env").load();
-
         // Pega as informações do arquivo .env e coloca em variáveis
-            String url = dotenv.get("DATABASE_URL");
-            String user = dotenv.get("DATABASE_USER");
-            String password = dotenv.get("DATABASE_PASSWORD");
+            String url = System.getenv("DATABASE_URL");
+            String user = System.getenv("DATABASE_USER");
+            String password = System.getenv("DATABASE_PASSWORD");
 
         // Atribui a conn a Conexao que o "DriverManager.getConnection(url, user, password);" retorna
             this.conn = DriverManager.getConnection(url, user, password);
