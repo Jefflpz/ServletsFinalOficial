@@ -24,9 +24,19 @@ public class ServletLogin extends HttpServlet {
             while ((line = reader.readLine()) != null) {
                 requestBody.append(line);
             }
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
+            e.printStackTrace();
+            return;
         }
 
-        Adm adm = gson.fromJson(requestBody.toString(), Adm.class);
+        Login adm = gson.fromJson(requestBody.toString(), Login.class);
+
+//        String user = (String) request.getAttribute("usuario");
+//        String senha = (String) request.getAttribute("senha");
+//        System.out.println("Usuario: " + user);
+//        System.out.println("Senha: " + senha);
 
         try {
             if (verificarLogin(adm.getAdm(), adm.getSenha())) {
@@ -47,26 +57,21 @@ public class ServletLogin extends HttpServlet {
         doPost(request, response);  // Redireciona GET para POST
     }
 
-    private boolean verificarLogin(String usuario, String senha){
+    private boolean verificarLogin(String usuario, String senha) {
         AdmDAO admDAO = new AdmDAO();
-        return admDAO.buscarAdm(usuario, senha)!=null;
+        return admDAO.buscarAdm(usuario, senha) != null;
     }
 
-    private static class Adm {
+    private static class Login {
         private String adm;
         private String senha;
 
         public String getAdm() {
-            return adm;
+            return this.adm;
         }
-        public void setUsuario(String adm) {
-            this.adm = adm;
-        }
+
         public String getSenha() {
-            return senha;
-        }
-        public void setSenha(String senha) {
-            this.senha = senha;
+            return this.senha;
         }
     }
 

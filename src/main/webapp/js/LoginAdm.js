@@ -12,7 +12,6 @@ const olhoFechado = 'img/Icone_olhoB.png';
 const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.[a-z])(?=.[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
 const patternAdm = /^adm((?=.[A-Z]{1,})?|(?=.[a-z]{1,}))(?=.\d{1,})?(?=.[!@#$%^&*()_\-+=[]\{}\|;:'",\.<>\/\?])?.{3,}/;
 
-
 mostrarSenha.addEventListener('click', () => {
     if (senhaInput.type === 'password') {
         senhaInput.type = 'text';
