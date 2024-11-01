@@ -89,7 +89,7 @@
 
     <div id="popupID" style="display: none;">
         <div class="popup">
-            <form action="inserirAdm" method="post" class="registrar">
+            <form id="cadastroForm" action="inserirAdm" method="post" class="registrar">
                 <div class="bloco-titulo">
                     <h2 class="titulo">Cadastrar administrador</h2>
                 </div>

@@ -98,6 +98,13 @@ body {
     transform: scale(1.2);
 }
 
+.mensagem-erro{
+    display: block;
+    font-size: 11px;
+    text-align: start;
+    color: red;
+}
+
 .grid-item:hover {
     background-color: #f0f8ff;
 }
