@@ -1,7 +1,7 @@
 package org.example.crud_site.dao;
 
 // Importando a classe Permissao_Vaga para usar os seus atributos e métodos.
-import org.example.crud_site.model.Permissao_Vaga;
+import org.example.crud_site.model.PermissaoVaga;
 
 // Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
@@ -81,7 +81,7 @@ public class Permissao_VagaDAO {
     }
 
     // Método para listar todas as permissões de vagas.
-    public List<Permissao_Vaga> listarPermissoes_Vaga() {
+    public List<PermissaoVaga> listarPermissoes_Vaga() {
 
         // Conecta ao banco de dados.
         conexao.conectar();
@@ -90,7 +90,7 @@ public class Permissao_VagaDAO {
         String sql = "SELECT * FROM permissao_vaga";
 
         // Cria uma lista vazia de Permissao_Vaga.
-        List<Permissao_Vaga> permissoes_Vaga = new ArrayList<>();
+        List<PermissaoVaga> permissoes_Vaga = new ArrayList<>();
 
         try {
 
@@ -112,7 +112,7 @@ public class Permissao_VagaDAO {
                 UUID id_Autorizador = (UUID) conexao.rs.getObject(7);
 
                 // Cria um objeto Permissao_Vaga e adiciona na lista.
-                Permissao_Vaga permissao_Vaga = new Permissao_Vaga(null, id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);
+                PermissaoVaga permissao_Vaga = new PermissaoVaga(null, id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);
                 permissoes_Vaga.add(permissao_Vaga);
             }
 
@@ -129,7 +129,7 @@ public class Permissao_VagaDAO {
         }
     }
     // Método para buscar uma permissão de vaga pelo ID, incluindo atributos de Vaga
-    public Permissao_Vaga buscarPermissao_VagaPorId(UUID id) {
+    public PermissaoVaga buscarPermissao_VagaPorId(UUID id) {
 
         // Conecta ao banco de dados
         conexao.conectar();
@@ -165,7 +165,7 @@ public class Permissao_VagaDAO {
                 String descricaoVaga = conexao.rs.getString("descricao_vaga");
 
                 // Cria e retorna um objeto Permissao_Vaga com os dados obtidos
-                return new Permissao_Vaga(nomeVaga, descricaoVaga, idEmpresa, id, idEmpresa, permissao, dtSolicitacao, dtAutorizacao, idVaga, idAutorizador);
+                return new PermissaoVaga(nomeVaga, descricaoVaga, idEmpresa, id, idEmpresa, permissao, dtSolicitacao, dtAutorizacao, idVaga, idAutorizador);
             }
 
             // Retorna null se nenhum registro for encontrado

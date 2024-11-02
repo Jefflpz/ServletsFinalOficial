@@ -60,49 +60,19 @@ public class AdmDAO{
         }
     }
 
-    // Método para alterar a senha de um administrador na tabela Adm
-    public boolean alterarSenhaAdm(String novaSenha, String senhaAntiga, String username) {
+    // Método para alterar um administrador na tabela Adm
+    public boolean alterarAdm(String novoUsername, String novasenha, UUID id) {
         conexao.conectar();
         try {
 
             // Instrução SQL para inserir um administrador na tabela Adm.
-            String sql = "UPDATE adm SET senha=? WHERE username=? AND senha=?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-
-            // Define os valores dos parâmetros na consulta SQL
-            conexao.pstmt.setString(1, novaSenha);
-            conexao.pstmt.setString(2, username);
-            conexao.pstmt.setString(3, senhaAntiga);
-
-            // Executa a instrução SQL.
-            int rows = conexao.pstmt.executeUpdate();
-
-            // Verifica se a instrução SQL alterou algum registro.
-            if (rows == 0) {
-                throw new RuntimeException("Nenhum registro encontrado.");
-            }
-            // retorna true se a quantidade
-            return rows > 0;
-        }catch (SQLException e){
-            return false;
-        }finally {
-            conexao.desconectar();
-        }
-    }
-
-    // Método para alterar o login de um administrador na tabela Adm
-    public boolean alterarLoginAdm(String novoUsername, String username, String senha) {
-        conexao.conectar();
-        try {
-
-            // Instrução SQL para inserir um administrador na tabela Adm.
-            String sql = "UPDATE adm SET username=? WHERE username=? AND senha=?";
+            String sql = "UPDATE adm SET username=?, senha =? WHERE id = ?";
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
             // Define os valores dos parâmetros na consulta SQL
             conexao.pstmt.setString(1, novoUsername);
-            conexao.pstmt.setString(2, username);
-            conexao.pstmt.setString(3, senha);
+            conexao.pstmt.setString(2, novasenha);
+            conexao.pstmt.setObject(3, id);
 
             // Executa a instrução SQL.
             int rows = conexao.pstmt.executeUpdate();

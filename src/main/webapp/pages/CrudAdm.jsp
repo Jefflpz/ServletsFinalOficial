@@ -70,8 +70,7 @@
             <div class="grid-item username"><%= lista.get(i).getUsername() %></div>
             <div class="grid-item"> <%= (lista.get(i).getSenha() != null) ? "*".repeat(lista.get(i).getSenha().length()) : "" %></div>
             <div class="grid-item">
-                <button class="action view"><img src="img/olho.png" alt=""></button>
-                <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                <button class="action edit" data-id="<%= lista.get(i).getId()%>"><img src="img/lapis.png" alt=""></button>
                 <button class="action delete"><img src="img/lixo.png" alt=""></button>
             </div>
             <%

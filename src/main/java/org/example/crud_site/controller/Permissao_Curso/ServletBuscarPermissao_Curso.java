@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.Permissao_CursoDAO;
-import org.example.crud_site.model.Permissao_Curso;
+import org.example.crud_site.model.PermissaoCurso;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -24,7 +24,7 @@ public class ServletBuscarPermissao_Curso extends HttpServlet {
 
         // Cria uma instância do DAO para realizar a busca
         Permissao_CursoDAO permissaoCursoDAO = new Permissao_CursoDAO();
-        Permissao_Curso permissaoCurso = permissaoCursoDAO.buscarPermissao_CursoPorId(id);
+        PermissaoCurso permissaoCurso = permissaoCursoDAO.buscarPermissao_CursoPorId(id);
 
         // Verifica se a permissão de curso foi encontrada
         if (permissaoCurso == null) {

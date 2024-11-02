@@ -1,7 +1,7 @@
 package org.example.crud_site.dao;
 
 // Importando a classe Permissao_Curso para manipular permissões de cursos
-import org.example.crud_site.model.Permissao_Curso;
+import org.example.crud_site.model.PermissaoCurso;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class Permissao_CursoDAO {
     }
 
     // Método para listar todas as permissões de cursos
-    public List<Permissao_Curso> listarPermissoes_Curso() {
+    public List<PermissaoCurso> listarPermissoes_Curso() {
 
         // Conecta ao banco de dados
         conexao.conectar();
@@ -85,7 +85,7 @@ public class Permissao_CursoDAO {
         String sql = "SELECT * FROM Permissao_Curso";
 
         // Cria uma lista vazia de Permissao_Curso
-        List<Permissao_Curso> permissoes_Curso = new ArrayList<>();
+        List<PermissaoCurso> permissoes_Curso = new ArrayList<>();
 
         try {
             // Prepara a instrução SQL
@@ -104,7 +104,7 @@ public class Permissao_CursoDAO {
                 UUID id_Autorizador = (UUID) conexao.rs.getObject(7);
 
                 // Cria um objeto Permissao_Curso e adiciona na lista
-                Permissao_Curso permissao_Curso = new Permissao_Curso(id_Autorizador,id_Curso, dt_Autorizacao, dt_Solicitacao, permissao, id_Conta, id_Conta);
+                PermissaoCurso permissao_Curso = new PermissaoCurso(id_Autorizador,id_Curso, dt_Autorizacao, dt_Solicitacao, permissao, id_Conta, id_Conta);
                 permissoes_Curso.add(permissao_Curso);
             }
 
@@ -122,7 +122,7 @@ public class Permissao_CursoDAO {
     }
 
     // Método para buscar uma permissão de curso pelo ID, incluindo atributos de Curso
-    public Permissao_Curso buscarPermissao_CursoPorId(UUID id) {
+    public PermissaoCurso buscarPermissao_CursoPorId(UUID id) {
 
         // Conecta ao banco de dados
         conexao.conectar();
@@ -158,7 +158,7 @@ public class Permissao_CursoDAO {
                 String descricaoCurso = conexao.rs.getString("descricao_curso");
 
                 // Cria e retorna um objeto Permissao_Curso com os dados obtidos
-                return new Permissao_Curso(nomeCurso, descricaoCurso, idConta, idAutorizador, idCurso, dtAutorizacao, dtSolicitacao, permissao, idConta, id);
+                return new PermissaoCurso(nomeCurso, descricaoCurso, idConta, idAutorizador, idCurso, dtAutorizacao, dtSolicitacao, permissao, idConta, id);
             }
 
             // Retorna null se nenhum registro for encontrado

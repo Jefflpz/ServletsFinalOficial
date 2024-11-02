@@ -66,7 +66,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     padding: 10px;
-    border: 1px solid #c3e0fe;  
+    border: 1px solid #c3e0fe;
     background-color: white;
 }
 
@@ -103,7 +103,7 @@ body {
 }
 
 .titulo {
-    font-size: 25px;  
+    font-size: 25px;
     margin-bottom: 40px;
     display: flex;
     align-items: center;
@@ -121,13 +121,13 @@ h1 {
 
 .inclus {
     font-size: 30px;
-    color: mediumblue; 
+    color: mediumblue;
 }
 
 .es {
-    
+
     font-size: 30px;
-    color: blueviolet; 
+    color: blueviolet;
 }
 
 .sidebar {
@@ -140,6 +140,7 @@ h1 {
 }
 
 .sidebar ul {
+    margin-top: 80px;
     list-style-type: none;
 }
 
@@ -152,8 +153,8 @@ h1 {
 
 .sidebar ul li a {
     text-decoration: none;
-    color: #797979;
-    font-size: 20px;
+    color: #c7c7c7;
+    font-size: 16px;
     display: flex;
     align-items: center;
 }
@@ -164,9 +165,9 @@ h1 {
 }
 
 .logout {
-    margin-left: 20px;
-    width: 130px;
-    padding: 10px 30px;
+    margin-left: 35px;
+    width: 120px;
+    padding: 15px 30px;
     background-color: #ffffff;
     border: 1px solid #2B46D3;
     border-radius: 11px;
@@ -174,14 +175,16 @@ h1 {
     cursor: pointer;
     font-size: 20px;
     transition: 0.5s;
+    color: #0000F9;
 }
 
 .sidebar ul li a:hover {
     color: #2B46D3;
 }
 
+
 .logout:hover {
-    background-color: #6e6e6e;
+    background-color: #d3d3d3;
 }
 
 
@@ -195,7 +198,7 @@ h1 {
     align-items: center;
 }
 
-.inserir-adm {
+.inserir-situacao {
     padding: 18px 30px;
     background-color: #2C46D1;
     color: white;
@@ -206,7 +209,7 @@ h1 {
     margin-right: 40PX;
 }
 
-.inserir-adm {
+.inserir-situacao{
     padding: 15px 20px;
     background-color: #2C46D1;
     color: white;
@@ -220,14 +223,14 @@ h1 {
 .filtrar {
     text-align: center;
     border-radius: 10px;
-    padding: 15px 30px; 
+    padding: 15px 30px;
     color: #0000F9;
     font-weight: bold;
     border: 0;
     background-color: white;
-    border: rgb(177, 177, 177) 1px solid;
+    border: gray 1px solid;
     position: absolute;
-    margin-left: 25%;
+    margin-left: 30%;
 }
 
 #filtrar-bar {
@@ -267,17 +270,17 @@ h1 {
 }
 
 #filtrar-bar button {
-padding: 10px;
-border: 1px solid #69B1FF;
-border-radius: 5px;
-font-size: 16px;
+    padding: 10px;
+    border: 1px solid #69B1FF;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 #filtrar-bar select{
-padding: 10px;
-border: 1px solid #69B1FF;
-border-radius: 8px;
-font-size: 16px;
+    padding: 10px;
+    border: 1px solid #69B1FF;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 
@@ -348,7 +351,7 @@ font-size: 16px;
 }
 
 .password{
- margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .bt-registrar{
@@ -382,12 +385,12 @@ font-size: 16px;
     }
 
     .filtrar, .inserir-adm {
-        font-size: 10px; 
-        padding: 10px; 
+        font-size: 10px;
+        padding: 10px;
     }
 
     .grid-item {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     .sidebar ul li {
@@ -395,7 +398,7 @@ font-size: 16px;
     }
 
     .logout {
-        font-size: 14px; 
+        font-size: 14px;
     }
 
     .action {
@@ -410,7 +413,7 @@ font-size: 16px;
     }
 
     .permitido, .edit, .delete {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {
@@ -420,7 +423,7 @@ font-size: 16px;
         margin-left: 30%;
     }
     .sidebar {
-        margin-right: 20px; 
+        margin-right: 20px;
     }
 }
 

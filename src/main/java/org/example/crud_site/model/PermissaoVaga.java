@@ -5,7 +5,7 @@ package org.example.crud_site.model;
 import java.util.UUID;
 
 // Classe Permissao_Vaga
-public class Permissao_Vaga extends Vaga {
+public class PermissaoVaga extends Vaga {
     //Atributos da classe
     private UUID id;
     private UUID id_empresa;
@@ -16,7 +16,7 @@ public class Permissao_Vaga extends Vaga {
     private UUID id_autorizador;
 
     // Método construtor que recebe os parâmetros necessários para criar um objeto da classe
-    public Permissao_Vaga(String nome, String descricao, UUID id_empresa, UUID id, UUID id_empresa1, boolean permissao, String data_solicitacao, String data_autorizacao, UUID id_vaga, UUID id_autorizador) {
+    public PermissaoVaga(String nome, String descricao, UUID id_empresa, UUID id, UUID id_empresa1, boolean permissao, String data_solicitacao, String data_autorizacao, UUID id_vaga, UUID id_autorizador) {
         super(nome, descricao, id_empresa);
         this.id = id;
         this.id_empresa = id_empresa1;
@@ -26,7 +26,7 @@ public class Permissao_Vaga extends Vaga {
         this.id_vaga = id_vaga;
         this.id_autorizador = id_autorizador;
     }
-    public Permissao_Vaga(UUID id, UUID id_empresa, boolean permissao, String data_solicitacao, String data_autorizacao, UUID id_vaga, UUID id_autorizador) {
+    public PermissaoVaga(UUID id, UUID id_empresa, boolean permissao, String data_solicitacao, String data_autorizacao, UUID id_vaga, UUID id_autorizador) {
         super();
         this.id = id;
         this.id_empresa = id_empresa;
@@ -46,11 +46,11 @@ public class Permissao_Vaga extends Vaga {
         // Retorna o valor do atributo id_empresa
         return id_empresa;
     }
-    public boolean permissao() {
+    public boolean getPermissao() {
         // Retorna o valor do atributo permissao
         return permissao;
     }
-    public String getData_solicitacao() {
+    public String getDt_solicitacao() {
         // Retorna o valor do atributo data_solicitacao
         return data_solicitacao;
     }

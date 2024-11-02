@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.Permissao_VagaDAO;
-import org.example.crud_site.model.Permissao_Vaga;
+import org.example.crud_site.model.PermissaoVaga;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -24,7 +24,7 @@ public class ServletBuscarPermissao_Vaga extends HttpServlet {
 
             // Cria uma instância do DAO para realizar a busca
             Permissao_VagaDAO permissaoVagaDAO = new Permissao_VagaDAO();
-            Permissao_Vaga permissaoVaga = permissaoVagaDAO.buscarPermissao_VagaPorId(id);
+            PermissaoVaga permissaoVaga = permissaoVagaDAO.buscarPermissao_VagaPorId(id);
 
             // Verifica se a permissão de vaga foi encontrada
             if (permissaoVaga == null) {

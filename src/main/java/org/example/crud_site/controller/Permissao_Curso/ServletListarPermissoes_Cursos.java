@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import org.example.crud_site.model.Permissao_Curso;
+import org.example.crud_site.model.PermissaoCurso;
 import org.example.crud_site.dao.Permissao_CursoDAO;
 
 // Define a servlet que responde ao caminho /listarPermissao_Curso
@@ -22,7 +22,7 @@ public class ServletListarPermissoes_Cursos extends HttpServlet {
         Permissao_CursoDAO permissao_cursoDAO = new Permissao_CursoDAO();
 
         // Obtém a lista de permissões de curso através do DAO
-        List<Permissao_Curso> listaPermissao_Curso = permissao_cursoDAO.listarPermissoes_Curso();
+        List<PermissaoCurso> listaPermissao_Curso = permissao_cursoDAO.listarPermissoes_Curso();
 
         // Define a lista de permissões de curso como um atributo da requisição
         req.setAttribute("listaPermissao_Curso", listaPermissao_Curso);

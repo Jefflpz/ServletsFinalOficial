@@ -2,7 +2,7 @@ package org.example.crud_site.model;
 
 import java.util.UUID;
 
-public class Permissao_Curso extends Curso {
+public class PermissaoCurso extends Curso {
 
     //Atributos da classe
     private UUID id;
@@ -15,7 +15,7 @@ public class Permissao_Curso extends Curso {
 
     // Método construtor que recebe os parâmetros necessários para criar um objeto da classe
 
-    public Permissao_Curso(String nome, String descricao, UUID id_conta, UUID id_autorizador, UUID id_curso, String dt_autorizacao, String dt_solicitaco, boolean permissao, UUID id_conta1, UUID id) {
+    public PermissaoCurso(String nome, String descricao, UUID id_conta, UUID id_autorizador, UUID id_curso, String dt_autorizacao, String dt_solicitaco, boolean permissao, UUID id_conta1, UUID id) {
         super(nome, descricao, id_conta);
         this.id_autorizador = id_autorizador;
         this.id_curso = id_curso;
@@ -25,7 +25,7 @@ public class Permissao_Curso extends Curso {
         this.id_conta = id_conta1;
         this.id = id;
     }
-    public Permissao_Curso(UUID id_autorizador, UUID id_curso, String dt_autorizacao, String dt_solicitaco, boolean permissao, UUID id, UUID id_conta) {
+    public PermissaoCurso(UUID id_autorizador, UUID id_curso, String dt_autorizacao, String dt_solicitaco, boolean permissao, UUID id, UUID id_conta) {
         super();
         this.id_autorizador = id_autorizador;
         this.id_curso = id_curso;
@@ -45,7 +45,7 @@ public class Permissao_Curso extends Curso {
         // Retorna o valor do atributo id_conta
         return id_conta;
     }
-    public boolean isPermissao() {
+    public boolean getPermissao() {
         // Retorna o valor do atributo permissao
         return permissao;
     }

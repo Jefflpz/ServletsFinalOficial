@@ -6,7 +6,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.crud_site.controller.ServletLogin;
 import org.example.crud_site.dao.AdmDAO;
 import org.example.crud_site.dao.HashSenha;
 
@@ -15,8 +14,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
-@WebServlet("/inserirAdm")
-public class ServletInserirAdm extends HttpServlet {
+@WebServlet("/alterarLoginAdm")
+public class ServletAlterarAdm extends HttpServlet {
     private final Gson gson = new Gson();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -55,7 +54,7 @@ public class ServletInserirAdm extends HttpServlet {
         }
 
         try {
-            if ( admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
+            if ( admDAO.alterarAdm(adm.getUsername(), senhaHash, adm.getId()) ) {
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("{\"success\":true}");
             } else {
@@ -83,7 +82,12 @@ public class ServletInserirAdm extends HttpServlet {
     private static class Cadastro {
         private String username;
         private String senha;
+        private UUID id;
 
+
+        public UUID getId() {
+            return this.id;
+        }
         public String getUsername() {
             return this.username;
         }

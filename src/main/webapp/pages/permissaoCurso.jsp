@@ -1,3 +1,5 @@
+<%@ page import="org.example.crud_site.model.PermissaoCurso" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,23 +56,33 @@
 
         <div class="grid-container">
             <div class="grid-header registro">Registro</div>
-            <div class="grid-header id_conta">id_conta</div>
-            <div class="grid-header id_conta">id_vaga</div>
+            <div class="grid-header id_conta">dt_solicitação</div>
+            <div class="grid-header id_conta">Permissão</div>
             <div class="grid-header acoes">Permissão</div>
 
-            <div class="grid-item item-registro">1</div>
-            <div class="grid-item item-id_conta">24</div>
-            <div class="grid-item item-id_vaga">31</div>
-            <div class="grid-item">
-                <button class="action view"><img src="olho.png" alt=""></button>
-            </div>
+            <%
+                List<PermissaoCurso> lista = (List<PermissaoCurso>) request.getAttribute("listaPermissao_Curso");
 
-            <div class="grid-item item-registro">2</div>
-            <div class="grid-item item-id_conta">12</div>
-            <div class="grid-item item-id_vaga">23</div>
+                if (!lista.isEmpty()) {
+                    for (int i = 0; i < lista.size(); i++) {
+            %>
+            <div class="grid-item registro"><%= i+1 %></div>
+            <div class="grid-item username"><%= lista.get(i).getDt_solicitaco() %></div>
+            <div class="grid-item"> <%= lista.get(i).getPermissao() %></div>
             <div class="grid-item">
-                <button class="action view"><img src="olho.png" alt=""></button>
+                <button class="action view"><img src="img/olho.png" alt=""></button>
+                <button class="action view"><img src="img/olho.png" alt=""></button>
+                <button class="action delete"><img src="img/lixo.png" alt=""></button>
             </div>
+            <%
+                }
+            } else {
+            %>
+            <div class="grid-item">Nenhum registro encontrado.</div>
+            <%
+                    System.out.println("Nenhum registro encontrado.");
+                }
+            %>
 
         </div>
     </main>
