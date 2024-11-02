@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Validação do ADM
         if (!patternAdm.test(novoAdmin.value) || !patternSenha.test(novaSenha.value)) {
-            erro.textContent = 'ADM ou senha inválida(o)!';
+            erro.textContent = 'Administrador ou senha inválida(o)!';
             isValid = false;
         }
 

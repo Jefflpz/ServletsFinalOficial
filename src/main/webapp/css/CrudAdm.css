@@ -100,6 +100,9 @@ body {
 
 .mensagem-erro{
     display: block;
+    position: relative;
+    bottom: 25px;
+    left: 2px;
     font-size: 11px;
     text-align: start;
     color: red;
