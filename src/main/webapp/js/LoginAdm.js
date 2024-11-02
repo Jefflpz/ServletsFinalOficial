@@ -39,7 +39,7 @@ form.addEventListener('submit', async (e) => {
 
     // Validação do ADM
     if (!patternAdm.test(usuarioInput.value) || !patternSenha.test(senhaInput.value)) {
-        erro.textContent = 'ADM ou senha inválida(o)!';
+        erro.textContent = 'Administrador ou senha inválida(o)!';
         isValid = false;
     }
 
