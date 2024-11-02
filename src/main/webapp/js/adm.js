@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isValid) {
             const formData = {
-                adm: novoAdmin.value,
+                username: novoAdmin.value,
                 senha: novaSenha.value
             }
             const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/inserirAdm', {

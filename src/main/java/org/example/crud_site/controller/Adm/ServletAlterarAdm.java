@@ -54,12 +54,22 @@ public class ServletAlterarAdm extends HttpServlet {
         }
 
         try {
-            if ( admDAO.alterarAdm(adm.getUsername(), senhaHash, adm.getId()) ) {
+            
+            if ( adm.getSenha() == null && adm.getUsername() != null ){
+                admDAO.alterarLoginAdm(adm.getUsername(), adm.getId());
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("{\"success\":true}");
-            } else {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("{\"success\": false, \"message\": \"Usuário ou senha incorretos\"}");
+            }
+            else if ( adm.getSenha() != null && adm.getUsername() == null ){
+                admDAO.alterarSenhaAdm(adm.getSenha(), adm.getId());
+                response.setStatus(HttpServletResponse.SC_OK);
+                response.getWriter().println("{\"success\":true}");
+            }
+            else{
+                if ( (admDAO.alterarLoginAdm(adm.getUsername(), adm.getId()) && (admDAO.alterarSenhaAdm(senhaHash, adm.getId())))){
+                    response.setStatus(HttpServletResponse.SC_OK);
+                    response.getWriter().println("{\"success\":true}");
+                }
             }
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

@@ -29,7 +29,9 @@ public class ServletInserirAdm extends HttpServlet {
         StringBuilder requestBody = new StringBuilder();
         String line;
         try (BufferedReader reader = request.getReader()) {
+
             while ((line = reader.readLine()) != null) {
+
                 requestBody.append(line);
             }
         } catch (IOException e) {
