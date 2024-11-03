@@ -121,27 +121,47 @@ public class AdmDAO{
 
 
     // Método para excluir um administrador na tabela Adm
-    public void excluirAdm(String username, String senha) {
+    public boolean excluirAdm(UUID id) {
         conexao.conectar();
         try {
-            // Instrução SQL para excluir um administrador na tabela Adm
-            String sql = "DELETE FROM adm WHERE username=? AND senha=?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+            // Primeiro, obtemos o nome do usuário associado ao administrador que será excluído
+            String getUserSql = "SELECT username FROM adm WHERE id = ?";
+            conexao.pstmt = conexao.conn.prepareStatement(getUserSql);
+            conexao.pstmt.setObject(1, id);
+            conexao.rs = conexao.pstmt.executeQuery();
 
-            // Define os valores dos parâmetros na consulta SQL
-            conexao.pstmt.setString(1, username);
-            conexao.pstmt.setString(2, senha);
+            String username = null;
+            if (conexao.rs.next()) {
+                username = conexao.rs.getString("username");
+            }
 
-            // Executa a instrução SQL de exclusão
-            conexao.pstmt.executeUpdate();
+            // Verifica se o usuário foi encontrado
+            if (username == null) {
+                throw new RuntimeException("Administrador não encontrado com o ID fornecido.");
+            }
+
+            // Exclui o administrador da tabela `adm`
+            String deleteSql = "DELETE FROM adm WHERE id = ?";
+            conexao.pstmt = conexao.conn.prepareStatement(deleteSql);
+            conexao.pstmt.setObject(1, id);
+            int rowsAffected = conexao.pstmt.executeUpdate();
+
+            // Se o administrador foi excluído com sucesso, tenta excluir o usuário do banco
+            if (rowsAffected > 0) {
+                // Exclui o usuário associado no banco
+                String dropUserSql = "DROP USER " + username;
+                conexao.pstmt = conexao.conn.prepareStatement(dropUserSql);
+                conexao.pstmt.executeUpdate();
+            }
+
+            return true;
         } catch (SQLException e) {
-            // Lança uma exceção em caso de erro
-            throw new RuntimeException("Erro ao excluir o administrador.", e);
+            throw new RuntimeException("Erro ao excluir o administrador ou usuário do banco.", e);
         } finally {
-            // Fecha a conexão com o banco de dados
             conexao.desconectar();
         }
     }
+
 
 
 

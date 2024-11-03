@@ -8,29 +8,24 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.AdmDAO;
 
 import java.io.IOException;
+import java.util.UUID;
 
 @WebServlet("/excluirAdm")
 public class ServletExcluirAdm extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtém os parâmetros da requisição
-        String username = req.getParameter("username");
-        String senha = req.getParameter("senha");
-
+        String id = request.getParameter("id");
+        UUID uuid = UUID.fromString(id);
         // Cria uma instância do DAO para realizar a exclusão
         AdmDAO admDAO = new AdmDAO();
 
-        // Tenta excluir o administrador
-        try {
-            admDAO.excluirAdm(username, senha);
-        } catch (RuntimeException e) {
-            // Se ocorrer um erro, redireciona para erro.jsp
-            req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
-            return; // Para garantir que a execução não continue
+        if (admDAO.excluirAdm(uuid)) {
+//            response.setStatus(HttpServletResponse.SC_OK);
+//            response.getWriter().println("{\"success\": true");
+//            response.sendRedirect("listarAdm");
+            request.getRequestDispatcher("listarAdm").forward(request, response);
+        }else{
+            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
         }
-
-        // Redireciona para a página de sucesso após a exclusão
-        req.setAttribute("mensagem", "Administrador excluído com sucesso.");
-        req.getRequestDispatcher("sucesso.jsp").forward(req, res);
     }
 }

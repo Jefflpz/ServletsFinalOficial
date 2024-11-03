@@ -55,9 +55,13 @@ public class ServletInserirAdm extends HttpServlet {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-
+//        if (admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
+//            response.setStatus(HttpServletResponse.SC_OK);
+//            response.getWriter().println("{\"success\": true");
+//            request.getRequestDispatcher("listarAdm").forward(request, response);
+//        }
         try {
-            if ( admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
+            if (admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("{\"success\":true}");
             } else {
