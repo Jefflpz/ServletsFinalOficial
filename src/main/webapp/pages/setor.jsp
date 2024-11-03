@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD Setor</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/setor.css">
 </head>
 <body>
 
@@ -29,8 +29,6 @@
             <li><a href="index.html" class="logout">Sair</a></li>
         </ul>
     </nav>
-
-    <button class="logout" onclick="window.location.href='../Portal Administrador/portalAdm.html'">Sair</button>
   </aside>
 
 
@@ -69,45 +67,45 @@
                 <div class="grid-item item-UUID">admin1</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
 
                 <div class="grid-item item-registro">2</div>
                 <div class="grid-item item-UUID">admin2</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
 
                 <div class="grid-item item-registro">3</div>
                 <div class="grid-item item-UUID">admin3</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
 
                 <div class="grid-item item-registro">4</div>
                 <div class="grid-item item-UUID">admin4</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
 
                 <div class="grid-item item-registro">5</div>
                 <div class="grid-item item-UUID">admin5</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>        
             </div>
 
@@ -163,7 +161,9 @@
               </form>
             </div>
           </div>
+        </div>
+    </div>
 
-  <script src="script.js"></script>
+  <script src="js/setor.js"></script>
 </body>
 </html>

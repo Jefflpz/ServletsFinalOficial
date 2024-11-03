@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crud Permissao vaga</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/permissaoVaga.css">
 </head>
 <body>
 
@@ -16,18 +16,18 @@
         <nav>
             <ul>
                 <li><a href="#"><img src="casa.png">Home</a></li>
-                <li><a href="../pages/adm.jsp">Adm</a></li>
+                <li><a href="listarAdm">Adm</a></li>
                 <div class="elemento"></div>
-                <li class="selecionado"><a href="../PermissaoVaga/permissaoVaga.html">Permissão Vaga</a></li>
-                <li><a href="../pages/permissaoCurso.jsp">Permissão Curso</a></li>
-                <li><a href="../CrudSetor/Setor.jsp">Setores</a></li>
-                <li><a href="tipoArquivo.jsp">Tipo de arquivo</a></li>
-                <li><a href="tipoVaga.jsp">Tipo de vaga</a></li>
-                <li><a href="situaçãoTrabalhista.jsp">Situação trabalhista</a></li>
-                <li><a href="statusCurso.jsp">Status curso</a></li>
+                <li class="selecionado"><a href="#">Permissão Vaga</a></li>
+                <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
+                <li><a href="listarSetor">Setores</a></li>
+                <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+                <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
+                <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
+                <li><a href="listarStatus_Curso">Status curso</a></li>
+                <li><a href="index.html" class="logout">Sair</a></li>
             </ul>
         </nav>
-        <button class="logout" onclick="window.location.href='../Portal Administrador/portalAdm.html'">Sair</button>
     </aside>
 
 
@@ -66,20 +66,20 @@
                 <div class="grid-item item-id_conta">24</div>
                 <div class="grid-item item-id_vaga">31</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
                 </div>
                                 <div class="grid-item item-registro">1</div>
                 <div class="grid-item item-id_conta">24</div>
                 <div class="grid-item item-id_vaga">31</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
                 </div>
 
                 <div class="grid-item item-registro">2</div>
                 <div class="grid-item item-id_conta">12</div>
                 <div class="grid-item item-id_vaga">23</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
+                    <button class="action view"><img src="img/olho.png" alt=""></button>
                 </div>  
 
 
@@ -116,8 +116,8 @@
                                 <span class="char-count">0/500</span>
                             </div>
                             <div class="form-buttons">
-                                <button type="submit" class="b bt-confirmar"><img src="correto.png" alt=""></button>
-                                <button type="button" class="b bt-cancelar"><img src="lixo.png" alt=""></button>
+                                <button type="submit" class="b bt-confirmar"><img src="img/correto.png" alt=""></button>
+                                <button type="button" class="b bt-cancelar"><img src="img/lixo.png" alt=""></button>
                             </div>
                         </form>
                     </div>
@@ -126,6 +126,6 @@
         </main>
     </div>
                 
-        <script src="script.js"></script>
+        <script src="js/permissaoVaga.js"></script>
     </body>
 </html>

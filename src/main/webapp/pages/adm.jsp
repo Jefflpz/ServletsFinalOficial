@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="#"><img src="img/casa.png" alt="Home">Home</a></li>
                 <div class="elemento"></div>
-                <li class="selecionado"><a href="pages/adm.jsp">Adm</a></li>
+                <li class="selecionado"><a href="#">Adm</a></li>
                 <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
                 <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
                 <li><a href="listarSetor">Setores</a></li>
@@ -25,10 +25,10 @@
                 <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
                 <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
                 <li><a href="listarStatus_Curso">Status curso</a></li>
+                <li><a href="index.html" class="logout">Sair</a></li>
             </ul>
         </nav>
-        <button class="logout" onclick="window.location.href='../Portal Administrador/portalAdm.html'">Sair</button>
-    </aside>
+        </aside>
 
     <div class="container">
         <main class="main-content">
@@ -63,9 +63,8 @@
                 <div class="grid-item item-username">admin1</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="olho.png" alt=""></button>
-                    <button class="action edit"><img src="lapis.png" alt=""></button>
-                    <button class="action delete"><img src="lixo.png" alt=""></button>
+                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
                 <!-- Repetir para outros admins... -->
             </div>

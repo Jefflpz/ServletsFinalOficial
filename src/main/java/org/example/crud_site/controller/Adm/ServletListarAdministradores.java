@@ -23,7 +23,7 @@ public class ServletListarAdministradores extends HttpServlet {
         request.setAttribute("listarAdm", listaAdms);
 
         // Encaminha para a página JSP que exibirá os dados do administrador
-        request.getRequestDispatcher("/pages/adm.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/adm.jsp").forward(request, response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);  // Redireciona GET para POST

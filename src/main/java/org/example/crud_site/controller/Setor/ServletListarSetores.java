@@ -28,7 +28,7 @@ public class ServletListarSetores extends HttpServlet {
         req.setAttribute("listarSetor", listaSetor);
 
         // Encaminha a requisição e a resposta para a página listarSetor.jsp
-        req.getRequestDispatcher("/pages/setor.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/setor.jsp").forward(req, res);
     }
 
 }
