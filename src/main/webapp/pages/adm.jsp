@@ -15,9 +15,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#"><img src="CrudAdm/casa.png" alt="Home">Home</a></li>
+                <li><a href="#"><img src="img/casa.png" alt="Home">Home</a></li>
                 <div class="elemento"></div>
-                <li class="selecionado"><a href="../CrudAdm/adm.html">Adm</a></li>
+                <li class="selecionado"><a href="pages/adm.jsp">Adm</a></li>
                 <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
                 <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
                 <li><a href="listarSetor">Setores</a></li>
