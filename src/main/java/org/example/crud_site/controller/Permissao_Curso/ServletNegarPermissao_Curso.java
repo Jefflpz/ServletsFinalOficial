@@ -31,6 +31,6 @@ public class ServletNegarPermissao_Curso extends HttpServlet {
         }
 
         // Redireciona para a página de erro, caso a operação não tenha sido bem-sucedida.
-        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

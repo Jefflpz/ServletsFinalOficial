@@ -27,12 +27,12 @@ public class ServletInserirSituacao_Trabalhista extends HttpServlet {
         if (resultado) {
             // Se a inserção foi bem-sucedida, redireciona para a página de sucesso
             req.setAttribute("mensagem", "Situação trabalhista inserida com sucesso.");
-            req.getRequestDispatcher("sucesso.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/situacaoTrabalhista.jsp").forward(req, res);
             return; // Para evitar a execução do código abaixo
         }
 
         // Se não for bem-sucedida, define uma mensagem de erro e encaminha para uma página de erro
         req.setAttribute("erro", "Falha ao inserir a situação trabalhista.");
-        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

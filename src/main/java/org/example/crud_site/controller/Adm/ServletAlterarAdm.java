@@ -76,17 +76,6 @@ public class ServletAlterarAdm extends HttpServlet {
             response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
             e.printStackTrace();
         }
-
-        // Verifica se a inserção foi bem-sucedida
-//        if (resultado) {
-//            // Se a inserção foi bem-sucedida, redireciona para a página de sucesso
-//            req.getRequestDispatcher("/pages/CrudAdm.jsp").forward(req, res);
-//            return; // Para evitar a execução do código abaixo
-//        }
-//
-//        // Se não for bem-sucedida, define uma mensagem de erro e encaminha para uma página de erro
-//        req.setAttribute("erro", "Falha ao inserir o administrador.");
-//        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
     }
 
     private static class Cadastro {

@@ -25,12 +25,12 @@ public class ServletInserirStatus_Curso extends HttpServlet {
         if (inserido) {
             // Redireciona para a página de sucesso
             req.setAttribute("mensagem", "Status de curso inserido com sucesso.");
-            req.getRequestDispatcher("sucesso.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/statusCurso.jsp").forward(req, res);
             return;
         }
 
         // Caso contrário, redireciona para a página de erro
         req.setAttribute("erro", "Falha ao inserir o status de curso.");
-        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

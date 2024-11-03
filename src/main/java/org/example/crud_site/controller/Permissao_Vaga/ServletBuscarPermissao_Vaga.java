@@ -30,7 +30,7 @@ public class ServletBuscarPermissao_Vaga extends HttpServlet {
             if (permissaoVaga == null) {
                 // Define uma mensagem de erro e encaminha para a página de erro
                 req.setAttribute("erro", "Permissão de vaga não encontrada.");
-                req.getRequestDispatcher("/pages/erro.jsp").forward(req, res);
+                req.getRequestDispatcher("pages/erro.jsp").forward(req, res);
                 return;
             }
 
@@ -38,12 +38,12 @@ public class ServletBuscarPermissao_Vaga extends HttpServlet {
             req.setAttribute("permissaoVaga", permissaoVaga);
 
             // Encaminha a requisição para a página de detalhes da permissão de vaga
-            req.getRequestDispatcher("/pages/detalhesPermissao_Vaga.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/permissaoVaga.jsp").forward(req, res);
 
         } catch (IllegalArgumentException e) {
             // Define uma mensagem de erro para o caso de UUID inválido
             req.setAttribute("erro", "ID inválido.");
-            req.getRequestDispatcher("/pages/erro.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/erro.jsp").forward(req, res);
         }
     }
 

@@ -26,12 +26,12 @@ public class ServletAlterarTipo_Vaga extends HttpServlet {
         if (atualizado) {
             // Redireciona para a página de sucesso
             req.setAttribute("mensagem", "Tipo de vaga atualizado com sucesso.");
-            req.getRequestDispatcher("sucesso.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/tipoVaga.jsp").forward(req, res);
             return;
         }
 
         // Caso contrário, redireciona para a página de erro
         req.setAttribute("erro", "Falha ao atualizar o tipo de vaga.");
-        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

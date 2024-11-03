@@ -20,11 +20,11 @@ public class ServletAlterarSituacao_Trabalhista extends HttpServlet {
 
         if (resultado) {
             req.setAttribute("mensagem", "Situação trabalhista alterada com sucesso.");
-            req.getRequestDispatcher("sucesso.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/situacaoTrabalhista.jsp").forward(req, res);
             return;
         }
 
         req.setAttribute("erro", "Falha ao alterar a situação trabalhista.");
-        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

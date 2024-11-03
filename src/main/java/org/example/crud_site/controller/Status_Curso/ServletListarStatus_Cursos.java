@@ -28,6 +28,6 @@ public class ServletListarStatus_Cursos extends HttpServlet {
         req.setAttribute("status_cursoList", status_Cursos);
 
         // Encaminha a requisição e a resposta para a página status_curso.jsp
-        req.getRequestDispatcher("/pages/statusCurso.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/statusCurso.jsp").forward(req, res);
     }
 }

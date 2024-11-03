@@ -28,6 +28,6 @@ public class ServletListarTipos_Vagas extends HttpServlet {
         req.setAttribute("tipos_Vaga", tipos_Vaga);
 
         // Encaminha a requisição e a resposta para a página listarTipo_Vaga.jsp
-        req.getRequestDispatcher("/pages/tipoVaga.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/tipoVaga.jsp").forward(req, res);
     }
 }

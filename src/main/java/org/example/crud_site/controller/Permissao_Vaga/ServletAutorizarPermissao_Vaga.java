@@ -27,9 +27,9 @@ public class ServletAutorizarPermissao_Vaga extends HttpServlet {
 
         // Redireciona para a página apropriada, com base no resultado da operação.
         if (resultado) {
-            req.getRequestDispatcher("permissao_autorizada.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/permissaoCurso.jsp").forward(req, res);
         }
 
-        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

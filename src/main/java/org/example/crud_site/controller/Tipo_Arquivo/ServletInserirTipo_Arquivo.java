@@ -25,12 +25,12 @@ public class ServletInserirTipo_Arquivo extends HttpServlet {
         if (inserido) {
             // Redireciona para a página de sucesso
             req.setAttribute("mensagem", "Tipo de arquivo inserido com sucesso.");
-            req.getRequestDispatcher("sucesso.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/tipoArquivo.jsp").forward(req, res);
             return;
         }
 
         // Caso contrário, redireciona para a página de erro
         req.setAttribute("erro", "Falha ao inserir o tipo de arquivo.");
-        req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }
