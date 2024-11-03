@@ -66,7 +66,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     padding: 10px;
-    border: 1px solid #c3e0fe;
+    border: 1px solid #c3e0fe;  
     background-color: white;
 }
 
@@ -103,7 +103,7 @@ body {
 }
 
 .titulo {
-    font-size: 25px;
+    font-size: 25px;  
     margin-bottom: 40px;
     display: flex;
     align-items: center;
@@ -121,20 +121,20 @@ h1 {
 
 .inclus {
     font-size: 30px;
-    color: mediumblue;
+    color: mediumblue; 
 }
 
 .es {
-
+    
     font-size: 30px;
-    color: blueviolet;
+    color: blueviolet; 
 }
 
 .sidebar {
     width: 260px;
     height: 100%;
     background-image: url(../img/sidebar.png);
-    background-size: cover;
+    background-size: cover; 
     padding: 20px;
     color: #ecf0f1;
 }
@@ -187,6 +187,7 @@ h1 {
     background-color: #d3d3d3;
 }
 
+
 .main-content {
     width: 100%;
 }
@@ -197,16 +198,35 @@ h1 {
     align-items: center;
 }
 
-.inserir-arquivo {
-    padding: 18px 30px;
-    background-color: #2C46D1;
-    color: white;
-    border: none;
-    cursor: pointer;
+.filtrar {
+    text-align: center;
     border-radius: 10px;
-    font-size: 14px;
-    margin-right: 40PX;
+    padding: 15px 30px; 
+    color: #0000F9;
     font-weight: bold;
+    border: 0;
+    background-color: white;
+    border: rgb(177, 177, 177) 1px solid;
+    position: absolute;
+    margin-left: 20%;
+}
+
+#filter-bar {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.pesquisa {
+    color: #D9D9D9;
+}
+
+.action {
+    height: 37px;
+    width: 65px;
+    border-radius: 10px;
+    padding-top: 4px;
 }
 
 .elemento{
@@ -221,76 +241,34 @@ h1 {
     right: 5px;
 }
 
-.filtrar {
-    text-align: center;
-    border-radius: 10px;
-    padding: 15px 30px;
-    color: #0000F9;
-    font-weight: bold;
-    border: 0;
-    background-color: white;
-    border: rgb(177, 177, 177) 1px solid;
-    position: absolute;
-    margin-left: 20%;
-}
-#filtrar-bar {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 30px;
-    gap: 10px;
-}
-
-.pesquisa {
-    color: #D9D9D9;
-}
-.action{
-    height: 37px;
-    width: 65px;
-    border-radius: 10px;
-    padding-top: 4px;
+.permitido {
+    background-color: #6eff76;
 }
 
 .view {
     background-color: #9747FF;
 }
 
-.edit {
-    background-color: #69B1FF;
-}
-
 .delete {
     background-color: #FFA8A8;
 }
 
-#filtrar-bar input {
-    padding: 10px;
-    border: 1px solid #69B1FF;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-#filtrar-bar button {
+#filter-bar select,
+#filter-bar input,
+#filter-bar button {
     padding: 10px;
     border: 1px solid #69B1FF;
     border-radius: 5px;
     font-size: 16px;
 }
 
-#filtrar-bar select{
-    padding: 10px;
-    border: 1px solid #69B1FF;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-
-#filtrar-bar button {
+#filter-bar button {
     background-color: #69B1FF;
     color: white;
     cursor: pointer;
 }
 
-#filtrar-bar button:hover {
+#filter-bar button:hover {
     background-color: #007bb5;
 }
 
@@ -298,99 +276,187 @@ h1 {
     color: #2B46D3; /* Azul desejado */
 }
 
-#popupID,
-#popupIDadm {
-    display: none; /* Para ocultar inicialmente */
-    position: fixed; /* Alterado */
+#filter-bar select,
+#filter-bar input,
+#filter-bar button {
+    padding: 10px;
+    border: 1px solid #69B1FF;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#filter-bar button {
+    background-color: #69B1FF;
+    color: white;
+    cursor: pointer;
+}
+
+#filter-bar button:hover {
+    background-color: #007bb5;
+}
+
+.sidebar ul li.selecionado a {
+    color: #2B46D3; /* Azul desejado */
+}
+#popupID {
+    display: none; /* Oculto inicialmente */
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.35); /* Fundo escurecido semi-transparente */
     z-index: 100;
+    display: flex;
     align-items: center; /* Alinhamento vertical */
     justify-content: center; /* Alinhamento horizontal */
 }
 
-.popup{
-    display: flex;
-    background-color: white;
-    width: 430px;
-    height: 450px;
-    justify-content: center;
-    border-radius: 20px;
-}
-
-.b{
-    width: 80%;
-    height: 40px;
-    margin-left: 30px;
-    margin-bottom: 20px;
+/* Container do popup */
+.popup {
+    background-color: #FFFFFF;
+    width: 60%;
+    max-width: 700px;
+    padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.label{
-    display: block;
-    margin-top: 20px;
-
-
+/* Cabeçalho do popup */
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E8F1FF; /* Fundo do cabeçalho */
+    padding: 15px;
+    border-radius: 10px 10px 0 0; /* Bordas arredondadas apenas no topo */
+    position: relative;
 }
 
-.input{
-    padding: 10px;
-    border: 1px solid #000000;
-    border-radius: 15px;
-    font-size: 16px;
-    width: 100%;
-    height: 50px;
-    margin-top: 20px;
-}
-.registrar .titulo{
-    margin-top: 33px;
+/* Título do popup */
+.popup-header .titulo {
+    font-size: 24px;
     color: #0866FF;
+    margin: 0;
+    font-weight: bold;
 }
 
-.password{
-    margin-bottom: 30px;
+/* Botão de fechar no cabeçalho */
+.popup-header .close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #0866FF;
+    font-weight: bold;
+    outline: none;
 }
 
-.bt-registrar{
-    background-color: #2C46D1;
+/* Layout dos campos do formulário */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Grupos de campos */
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels dos campos */
+.label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Campos de entrada */
+.input {
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Campo de texto longo (textarea) */
+textarea.input {
+    resize: none;
+    height: 100px;
+}
+
+/* Contador de caracteres */
+.char-count {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+}
+
+/* Botões de ação */
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Estilo dos botões */
+.b {
+    width: 100px;
+    height: 60px;
+    border-radius: 10%;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Botão de confirmar */
+.bt-confirmar {
+    background-color: #3EE23E; /* Verde claro */
     color: white;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-}
-.bt-cancelar-edit{
-    background-color: white;
-    color:#FF1B1F;
-    border: #0000F9 1px solid;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
 }
 
-.bt-cancelar{
-    background-color: white;
-    color:#3f3ff5;
-    border: #0000F9 1px solid;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
+/* Botão de cancelar */
+.bt-cancelar {
+    background-color: #FFB6B6; /* Vermelho claro */
+    color: white;
 }
+
+/* Efeito de hover nos botões */
+.bt-confirmar:hover {
+    background-color: #32B232;
+}
+
+.bt-cancelar:hover {
+    background-color: #FF8A8A;
+}
+
+
 
 @media (max-width: 904px) {
     .titulo h1 {
         font-size: 20px;
     }
 
-    .filtrar, .inserir-arquivo {
-        font-size: 10px;
-        padding: 10px;
+    .filtrar {
+        font-size: 10px; 
+        padding: 10px; 
     }
 
     .grid-item {
-        font-size: 12px;
+        font-size: 12px; 
     }
 
     .sidebar ul li {
@@ -398,35 +464,30 @@ h1 {
     }
 
     .logout {
-        font-size: 14px;
+        font-size: 14px; 
     }
 
     .action {
         height: 27px;
         width: 35px;
-        margin-left: 10px;
 
     }
     .action img {
-        height: 18px;
-        width: 18px;
+        height: 17px;
+        width: 25px;
     }
 
     .permitido, .edit, .delete {
-        font-size: 12px;
+        font-size: 12px; 
     }
 
-    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {
+    #filter-bar select, #filter-bar input, #filter-bar button {
         font-size: 12px;
     }
     .filtrar{
         margin-left: 30%;
     }
     .sidebar {
-        margin-right: 20px;
+        margin-right: 20px; 
     }
 }
-
-
-
-

@@ -1,7 +1,26 @@
+document.querySelectorAll('.view-password').forEach(button => {
+    button.addEventListener('click', function() {
+        const passwordCell = this.parentElement.previousElementSibling;
+        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
+    });
+});
 
-document.addEventListener("DOMContentLoaded", function () {
+document.querySelectorAll('.delete').forEach(button => {
+    button.addEventListener('click', function() {
+        this.closest('.crud-row').remove();
+    });
+});
 
-    const inserirADM = document.querySelector('.inserir-adm');
+document.addEventListener("DOMContentLoaded", function() {
+    const filterButton = document.querySelector('.filtrar');
+    const filterBar = document.getElementById('filtrar-bar');
+    filterButton.addEventListener('click', toggleFilterBar);
+
+    function toggleFilterBar() {
+        filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    const inserirADM = document.querySelector('.inserir-curso');
     const editADM = document.querySelectorAll('.edit');
     const cancelADM = document.querySelector('.bt-cancelar');
     const cancelADMedi = document.querySelector('.bt-cancelar-edit');
@@ -30,44 +49,53 @@ document.addEventListener("DOMContentLoaded", function () {
     function cancelPopup() {
         popupADM.style.display = 'none';
     }
-
     function cancelPopupedit() {
         popupADMedit.style.display = 'none';
     }
 
-    // Validação do login
-    cadastroForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const form = filterBar.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-        erro.textContent = '';
-        let isValid = true;
+        const selectedField = this['filter-field'].value;
+        const searchTerm = this['search'].value.toLowerCase();
 
-        // Validação do ADM
-        if (!patternAdm.test(novoAdmin.value) || !patternSenha.test(novaSenha.value)) {
-            erro.textContent = 'ADM ou senha inválida(o)!';
-            isValid = false;
+        if (!selectedField) return; // Verificação extra
+
+        const gridItems = document.querySelectorAll('.grid-container .grid-item');
+        gridItems.forEach(item => item.style.display = 'none');
+
+        let found = false;
+
+        for (let i = 0; i < gridItems.length; i += 4) {
+            const registro = gridItems[i];
+            const uuid = gridItems[i + 1];
+            const status = gridItems[i + 2];
+            const acoes = gridItems[i + 3];
+
+            let shouldDisplay = false;
+            if (selectedField === 'todos') {
+                shouldDisplay = true;
+            } else if (selectedField === 'registro-filtro') {
+                shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'uuid-filtro') {
+                shouldDisplay = uuid.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'status-filtro') {
+                shouldDisplay = status.textContent.toLowerCase().includes(searchTerm);
+            }
+
+            if (shouldDisplay) {
+                registro.style.display = 'flex';
+                uuid.style.display = 'flex';
+                status.style.display = 'flex';
+                acoes.style.display = 'flex';
+                found = true;
+            }
         }
 
-        if (isValid) {
-            const formData = {
-                adm: novoAdmin.value,
-                senha: novaSenha.value
-            }
-            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/inserirAdm', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
-            console.log(response);
-            if (response.ok) {
-                window.alert('Cadastro realizado com sucesso!');
-                location.reload();
-            } else {
-                const result = await response.json();
-                window.alert(result.message);
-            }
-        }});
+        if (!found) {
+            alert('Nenhum item encontrado.');
+        }
+    });
 });
+

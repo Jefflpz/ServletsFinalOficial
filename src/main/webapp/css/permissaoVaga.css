@@ -66,7 +66,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     padding: 10px;
-    border: 1px solid #c3e0fe;
+    border: 1px solid #c3e0fe;  
     background-color: white;
 }
 
@@ -80,6 +80,18 @@ body {
     font-size: 18px;
     cursor: pointer;
     transition: transform 0.2s;
+}
+
+.elemento{
+    background-color: #0866FF;
+    height: 9px;
+    width: 23px;
+    border: none;
+    border-radius: 75px;
+    transform: rotate(90deg);
+    position: relative;
+    top: 13px;
+    right: 5px;
 }
 
 .action.view {
@@ -103,7 +115,7 @@ body {
 }
 
 .titulo {
-    font-size: 25px;
+    font-size: 25px;  
     margin-bottom: 40px;
     display: flex;
     align-items: center;
@@ -121,20 +133,20 @@ h1 {
 
 .inclus {
     font-size: 30px;
-    color: mediumblue;
+    color: mediumblue; 
 }
 
 .es {
-
+    
     font-size: 30px;
-    color: blueviolet;
+    color: blueviolet; 
 }
 
 .sidebar {
     width: 260px;
     height: 100%;
     background-image: url(../img/sidebar.png);
-    background-size: cover;
+    background-size: cover; 
     padding: 20px;
     color: #ecf0f1;
 }
@@ -201,14 +213,14 @@ h1 {
 .filtrar {
     text-align: center;
     border-radius: 10px;
-    padding: 15px 30px;
+    padding: 15px 30px; 
     color: #0000F9;
     font-weight: bold;
     border: 0;
     background-color: white;
-    border: gray 1px solid;
+    border: rgb(177, 177, 177) 1px solid;
     position: absolute;
-    margin-left: 30%;
+    margin-left: 20%;
 }
 
 #filter-bar {
@@ -438,13 +450,13 @@ textarea.input {
         font-size: 20px;
     }
 
-    .filtrar, .inserir-adm {
-        font-size: 10px;
-        padding: 10px;
+    .filtrar{
+        font-size: 10px; 
+        padding: 10px; 
     }
 
     .grid-item {
-        font-size: 12px;
+        font-size: 12px; 
     }
 
     .sidebar ul li {
@@ -452,7 +464,7 @@ textarea.input {
     }
 
     .logout {
-        font-size: 14px;
+        font-size: 14px; 
     }
 
     .action {
@@ -466,7 +478,7 @@ textarea.input {
     }
 
     .permitido, .edit, .delete {
-        font-size: 12px;
+        font-size: 12px; 
     }
 
     #filter-bar select, #filter-bar input, #filter-bar button {
@@ -476,6 +488,6 @@ textarea.input {
         margin-left: 30%;
     }
     .sidebar {
-        margin-right: 20px;
+        margin-right: 20px; 
     }
 }

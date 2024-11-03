@@ -1,10 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crud Permissao curso</title>
-  <link rel="stylesheet" href="../css/permissaoCurso.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Permissao vaga</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -14,17 +15,16 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#"><img src="img/casa.png">Home</a></li>
-                <li><a href="listarAdm">Adm</a></li>
-                <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
-                <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
+                <li><a href="#"><img src="casa.png">Home</a></li>
+                <li><a href="../pages/adm.jsp">Adm</a></li>
                 <div class="elemento"></div>
-                <li class="selecionado"><a href="#">Setores</a></li>
-                <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
-                <li><a href="listarStatus_Curso">Status curso</a></li>
-                <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
-                <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
-                <li><a href="index.html" class="logout">Sair</a></li>
+                <li class="selecionado"><a href="../PermissaoVaga/permissaoVaga.html">Permissão Vaga</a></li>
+                <li><a href="../pages/permissaoCurso.jsp">Permissão Curso</a></li>
+                <li><a href="../CrudSetor/Setor.jsp">Setores</a></li>
+                <li><a href="tipoArquivo.jsp">Tipo de arquivo</a></li>
+                <li><a href="tipoVaga.jsp">Tipo de vaga</a></li>
+                <li><a href="situaçãoTrabalhista.jsp">Situação trabalhista</a></li>
+                <li><a href="statusCurso.jsp">Status curso</a></li>
             </ul>
         </nav>
         <button class="logout" onclick="window.location.href='../Portal Administrador/portalAdm.html'">Sair</button>
@@ -34,7 +34,7 @@
     <div class="container">
         <main class="main-content">
             <div class="titulo">
-                <h1>Permissao curso</h1>
+                <h1>Permissao vaga</h1>
                 <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
             </div>
 
@@ -44,9 +44,10 @@
                     <select name="filter-field">
                         <option value="">Escolher campo</option>
                         <option value="todos">Todos</option>
-                        <option value="registro-filtro">Registro</option>
+                        <option v
+                        alue="registro-filtro">Registro</option>
                         <option value="id_conta-filtro">id_conta</option>
-                        <option value="id_curso-filtro">id_curso</option>
+                        <option value="id_vaga-filtro">id_vaga</option>
                     </select>
 
                     <input type="text" name="search" placeholder="Pesquisar...">
@@ -58,21 +59,27 @@
             <div class="grid-container">
                 <div class="grid-header registro">Registro</div>
                 <div class="grid-header id_conta">id_conta</div>
-                <div class="grid-header id_curso">id_curso</div>
+                <div class="grid-header id_conta">id_vaga</div>
                 <div class="grid-header acoes">Permissão</div>
 
                 <div class="grid-item item-registro">1</div>
                 <div class="grid-item item-id_conta">24</div>
-                <div class="grid-item item-id_curso">31</div>
+                <div class="grid-item item-id_vaga">31</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="../PermissaoCurso/olho.png" alt=""></button>
+                    <button class="action view"><img src="olho.png" alt=""></button>
+                </div>
+                                <div class="grid-item item-registro">1</div>
+                <div class="grid-item item-id_conta">24</div>
+                <div class="grid-item item-id_vaga">31</div>
+                <div class="grid-item">
+                    <button class="action view"><img src="olho.png" alt=""></button>
                 </div>
 
                 <div class="grid-item item-registro">2</div>
                 <div class="grid-item item-id_conta">12</div>
-                <div class="grid-item item-id_curso">23</div>
+                <div class="grid-item item-id_vaga">23</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="../PermissaoCurso/olho.png" alt=""></button>
+                    <button class="action view"><img src="olho.png" alt=""></button>
                 </div>  
 
 
@@ -89,7 +96,7 @@
                                     <input type="text" id="uuid" name="uuid" class="input" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="id_tipo" class="label">Id_status:</label>
+                                    <label for="id_tipo" class="label">Id_tipo:</label>
                                     <input type="text" id="id_tipo" name="id_tipo" class="input" />
                                 </div>
                             </div>
@@ -99,7 +106,7 @@
                                     <input type="text" id="nome" name="nome" class="input" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="id_empresa" class="label">id_conta:</label>
+                                    <label for="id_empresa" class="label">Id_empresa:</label>
                                     <input type="text" id="id_empresa" name="id_empresa" class="input" />
                                 </div>
                             </div>
@@ -109,15 +116,16 @@
                                 <span class="char-count">0/500</span>
                             </div>
                             <div class="form-buttons">
-                                <button type="submit" class="b bt-confirmar"><img src="../PermissaoCurso/correto.png" alt=""></button>
-                                <button type="button" class="b bt-cancelar"><img src="../PermissaoCurso/lixo.png" alt=""></button>
+                                <button type="submit" class="b bt-confirmar"><img src="correto.png" alt=""></button>
+                                <button type="button" class="b bt-cancelar"><img src="lixo.png" alt=""></button>
                             </div>
                         </form>
                     </div>
                 </div>
+                </div>
+        </main>
+    </div>
                 
-                
-
-  <script src="../js/permissaoCurso.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>

@@ -1,73 +1,101 @@
+document.querySelectorAll('.view-password').forEach(button => {
+    button.addEventListener('click', function() {
+        const passwordCell = this.parentElement.previousElementSibling;
+        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
+    });
+});
 
-document.addEventListener("DOMContentLoaded", function () {
+document.querySelectorAll('.delete').forEach(button => {
+    button.addEventListener('click', function() {
+        this.closest('.crud-row').remove();
+    });
+});
 
-    const inserirSetor = document.querySelector('.inserir-setor');
-    const editSetor = document.querySelectorAll('.edit');
-    const cancel = document.querySelector('.bt-cancelar');
-    const canceledit = document.querySelector('.bt-cancelar-edit');
+document.addEventListener("DOMContentLoaded", function() {
+    const filterButton = document.querySelector('.filtrar');
+    const filterBar = document.getElementById('filtrar-bar');
+    filterButton.addEventListener('click', toggleFilterBar);
 
-    const popupADM = document.getElementById('popupID');
-    const popupSetoredit = document.getElementById('popupIDsetor');
-
-    let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editSetor.length; i++) {
-        editSetor[i].addEventListener('click', togglePopupedit);
+    function toggleFilterBar() {
+        filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    cancel.addEventListener('click', cancelPopup);
-    canceledit.addEventListener('click', cancelPopupedit);
+    const inserirADM = document.querySelector('.inserir-setor');
+    const editADM = document.querySelectorAll('.edit');
+    const cancelADM = document.querySelector('.bt-cancelar');
+    const cancelADMedi = document.querySelector('.bt-cancelar-edit');
 
-    inserirSetor.addEventListener('click', togglePopup);
+    const popupADM = document.getElementById('popupID');
+    const popupADMedit = document.getElementById('popupIDadm');
+
+    let i = 0; // Corrigido: declaração do índice
+    for (i = 0; i < editADM.length; i++) {
+        editADM[i].addEventListener('click', togglePopupedit);
+    }
+
+    cancelADM.addEventListener('click', cancelPopup);
+    cancelADMedi.addEventListener('click', cancelPopupedit);
+
+    inserirADM.addEventListener('click', togglePopup);
 
     function togglePopup() {
         popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
     }
 
     function togglePopupedit() {
-        popupSetoredit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
+        popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
     }
 
     function cancelPopup() {
         popupADM.style.display = 'none';
     }
-
     function cancelPopupedit() {
-        popupSetoredit.style.display = 'none';
+        popupADMedit.style.display = 'none';
     }
 
-    // Validação do login
-    cadastroForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const form = filterBar.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-        erro.textContent = '';
-        let isValid = true;
+        const selectedField = this['filter-field'].value;
+        const searchTerm = this['search'].value.toLowerCase();
 
-        // Validação do ADM
-        if (!patternAdm.test(novoAdmin.value) || !patternSenha.test(novaSenha.value)) {
-            erro.textContent = 'ADM ou senha inválida(o)!';
-            isValid = false;
+        if (!selectedField) return; // Verificação extra
+
+        const gridItems = document.querySelectorAll('.grid-container .grid-item');
+        gridItems.forEach(item => item.style.display = 'none');
+
+        let found = false;
+
+        for (let i = 0; i < gridItems.length; i += 4) {
+            const registro = gridItems[i];
+            const UUID = gridItems[i + 1];
+            const nome = gridItems[i + 2];
+            const acoes = gridItems[i + 3];
+
+            let shouldDisplay = false;
+            if (selectedField === 'todos') {
+                shouldDisplay = true;
+            } else if (selectedField === 'registro-filtro') {
+                shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'UUID-filtro') {
+                shouldDisplay = UUID.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'nome-filtro') {
+                shouldDisplay = nome.textContent.toLowerCase().includes(searchTerm);
+            }
+
+            if (shouldDisplay) {
+                registro.style.display = 'flex';
+                UUID.style.display = 'flex';
+                nome.style.display = 'flex';
+                acoes.style.display = 'flex';
+                found = true;
+            }
         }
 
-        if (isValid) {
-            const formData = {
-                adm: novoAdmin.value,
-                senha: novaSenha.value
-            }
-            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/inserirSetor', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
-            console.log(response);
-            if (response.ok) {
-                window.alert('Cadastro realizado com sucesso!');
-                location.reload();
-            } else {
-                const result = await response.json();
-                window.alert(result.message);
-            }
-        }});
+        if (!found) {
+            alert('Nenhum item encontrado.');
+        }
+    });
 });
+
