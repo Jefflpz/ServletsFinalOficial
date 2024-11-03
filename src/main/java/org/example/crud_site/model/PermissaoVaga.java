@@ -54,7 +54,7 @@ public class PermissaoVaga extends Vaga {
         // Retorna o valor do atributo data_solicitacao
         return data_solicitacao;
     }
-    public String getData_autorizacao() {
+    public String getDt_autorizacao() {
         // Retorna o valor do atributo data_autorizacao
         return data_autorizacao;
     }

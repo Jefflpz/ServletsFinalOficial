@@ -29,7 +29,7 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 4fr 2fr 2fr;
+    grid-template-columns: 1fr 2fr 2fr;
     grid-auto-rows: 58px;
     width: 100%;
     background-color: #c3e0fe;
@@ -40,7 +40,6 @@ body {
     position: relative;
     scrollbar-width: none;
     -ms-overflow-style: none;
-
 }
 
 .grid-header {
@@ -53,7 +52,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 10;
-    color: #0f0fe0;
+    color: #0f0fe0
 }
 
 .grid-container::-webkit-scrollbar {
