@@ -78,7 +78,7 @@
                     <img src="img/lapis.png" alt="editar adm"></button>
                 <form action="excluirAdm" method="post">
                     <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+                    <button id="delete" class="action delete"><img src="img/lixo.png" alt=""></button>
                 </form>
             </div>
             <%

@@ -2,6 +2,7 @@ const novoAdmin = document.getElementById('novoAdm');
 const novaSenha = document.getElementById('novoSenha');
 const cadastroForm = document.getElementById('cadastroForm');
 const erro = document.getElementById('erro');
+const deletar = document.getElementById('delete');
 
 // Regex para validação
 const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
@@ -14,13 +15,14 @@ document.querySelectorAll('.view-password').forEach(button => {
     });
 });
 
-document.querySelectorAll('.delete').forEach(button => {
-    button.addEventListener('click', function () {
-        this.closest('.crud-row').remove();
-    });
-});
-
 document.addEventListener("DOMContentLoaded", function () {
+    const filterButton = document.querySelector('.filtrar');
+    const filterBar = document.getElementById('filtrar-bar');
+    filterButton.addEventListener('click', toggleFilterBar);
+
+    function toggleFilterBar() {
+        filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
+    }
 
     const inserirADM = document.querySelector('.inserir-adm');
     const editADM = document.querySelectorAll('.edit');
@@ -90,5 +92,51 @@ document.addEventListener("DOMContentLoaded", function () {
                 const result = await response.json();
                 window.alert(result.message);
             }
+
+
+
+            const form = filterBar.querySelector('form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const selectedField = this['filter-field'].value;
+                const searchTerm = this['search'].value.toLowerCase();
+
+                if (!selectedField) return; // Verificação extra
+
+                const gridItems = document.querySelectorAll('.grid-container .grid-item');
+                gridItems.forEach(item => item.style.display = 'none');
+
+                let found = false;
+
+                for (let i = 0; i < gridItems.length; i += 4) {
+                    const registro = gridItems[i];
+                    const username = gridItems[i + 1];
+                    const senha = gridItems[i + 2];
+                    const acoes = gridItems[i + 3];
+
+                    let shouldDisplay = false;
+                    if (selectedField === 'todos') {
+                        shouldDisplay = true;
+                    } else if (selectedField === 'registro-filtro') {
+                        shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
+                    } else if (selectedField === 'username-filtro') {
+                        shouldDisplay = username.textContent.toLowerCase().includes(searchTerm);
+                    }
+
+                    if (shouldDisplay) {
+                        registro.style.display = 'flex';
+                        username.style.display = 'flex';
+                        senha.style.display = 'flex';
+                        acoes.style.display = 'flex';
+                        found = true;
+                    }
+                }
+
+                if (!found) {
+                    alert('Nenhum item encontrado.');
+                }
+                });
         }});
+
 });
