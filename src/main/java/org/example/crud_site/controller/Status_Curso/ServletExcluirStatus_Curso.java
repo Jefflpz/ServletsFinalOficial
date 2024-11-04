@@ -19,17 +19,10 @@ public class ServletExcluirStatus_Curso extends HttpServlet {
         Status_CursoDAO status_CursoDAO = new Status_CursoDAO();
 
         // Tenta excluir o status de curso
-        try {
-            status_CursoDAO.excluirStauts_Curso(nomeStatus_Curso);
-        } catch (RuntimeException e) {
-            // Se ocorrer um erro, redireciona para erro.jsp
-            req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
-            return; // Para garantir que a execução não continue
+        if (status_CursoDAO.excluirStauts_Curso(nomeStatus_Curso)){
+            req.getRequestDispatcher("listarStatus_Curso").forward(req, res);
         }
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
 
-        // Redireciona para a página de sucesso após a exclusão
-        req.setAttribute("mensagem", "Status de curso excluído com sucesso.");
-        req.getRequestDispatcher("pages/statusCurso.jsp").forward(req, res);
     }
 }

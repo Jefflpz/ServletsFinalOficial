@@ -19,17 +19,9 @@ public class ServletExcluirTipo_Arquivo extends HttpServlet {
         Tipo_ArquivoDAO tipo_ArquivoDAO = new Tipo_ArquivoDAO();
 
         // Tenta excluir o tipo de arquivo
-        try {
-            tipo_ArquivoDAO.excluirTipo_Arquivo(nomeTipo_Arquivo);
-        } catch (RuntimeException e) {
-            // Se ocorrer um erro, redireciona para erro.jsp
-            req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
-            return; // Para garantir que a execução não continue
+        if (tipo_ArquivoDAO.excluirTipo_Arquivo(nomeTipo_Arquivo)){
+            req.getRequestDispatcher("listarTipo_Arquivo").forward(req, res);
         }
-
-        // Redireciona para a página de sucesso após a exclusão
-        req.setAttribute("mensagem", "Tipo de arquivo excluído com sucesso.");
-        req.getRequestDispatcher("pages/tipoArquivo.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

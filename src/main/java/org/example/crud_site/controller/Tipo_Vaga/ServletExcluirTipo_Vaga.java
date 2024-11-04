@@ -19,17 +19,9 @@ public class ServletExcluirTipo_Vaga extends HttpServlet {
         Tipo_VagaDAO tipo_VagaDAO = new Tipo_VagaDAO();
 
         // Tenta excluir o tipo de vaga
-        try {
-            tipo_VagaDAO.excluirTipo_Vaga(nomeTipo_Vaga);
-        } catch (RuntimeException e) {
-            // Se ocorrer um erro, redireciona para erro.jsp
-            req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
-            return; // Para garantir que a execução não continue
+        if (tipo_VagaDAO.excluirTipo_Vaga(nomeTipo_Vaga)){
+            req.getRequestDispatcher("listarTipo_Vaga").forward(req, res);
         }
-
-        // Redireciona para a página de sucesso após a exclusão
-        req.setAttribute("mensagem", "Tipo de vaga excluído com sucesso.");
-        req.getRequestDispatcher("pages/tipoVaga.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

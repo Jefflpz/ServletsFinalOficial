@@ -20,7 +20,7 @@ public class ServletExcluirSituacao_Trabalhista extends HttpServlet {
 
         // Tenta excluir a situação trabalhista
         if (situacaoTrabalhistaDAO.excluirSituacao_Trabalhista(nomeSituacaoTrabalhista)) {
-            req.getRequestDispatcher("listarSituacoes_Trabalhistas").forward(req, res);
+            req.getRequestDispatcher("listarSituacao_Trabalhistas").forward(req, res);
         }
     }
 }
