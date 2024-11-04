@@ -14,7 +14,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#"><img src="casa.png">Home</a></li>
+                <li><a href="#"><img src="img/casa.png">Home</a></li>
                 <li><a href="listarAdm">Adm</a></li>
                 <div class="elemento"></div>
                 <li class="selecionado"><a href="#">Permissão Vaga</a></li>
