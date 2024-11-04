@@ -5,7 +5,7 @@ const erro = document.getElementById('erro');
 const deletar = document.getElementById('delete');
 
 // Regex para validação
-const patternSenha = /^(?=.[A-Z])(?=.\d)(?=.[a-z])(?=.[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
+const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
 const patternAdm = /^adm((?=.[A-Z]{1,})?|(?=.[a-z]{1,}))(?=.\d{1,})?(?=.[!@#$%^&*()_\-+=[]\{}\|;:'",\.<>\/\?])?.{3,}/;
 
 document.querySelectorAll('.view-password').forEach(button => {
@@ -34,20 +34,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let i = 0; // Corrigido: declaração do índice
     for (i = 0; i < editADM.length; i++) {
-        editADM[i].addEventListener('click', togglePopupedit);
+        editADM[i].addEventListener('click', (e) => togglePopupedit(e));
     }
 
     cancelADM.addEventListener('click', cancelPopup);
     cancelADMedi.addEventListener('click', cancelPopupedit);
 
-    inserirADM.addEventListener('click', togglePopup);
+    inserirADM.addEventListener('click', (e) => {   togglePopup (e)});
 
-    function togglePopup() {
+    function togglePopup(e) {
         popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function togglePopupedit() {
+    function togglePopupedit(e) {
         popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
+        let usernameEdit = document.getElementById('login');
+        usernameEdit.value = e.currentTarget.getAttribute('data-username');
     }
 
     function cancelPopup() {
@@ -57,46 +59,41 @@ document.addEventListener("DOMContentLoaded", function () {
         popupADMedit.style.display = 'none';
     }
 
-    const form = filterBar.querySelector('form');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
+    // Validação do login
+    cadastroForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-        const selectedField = this['filter-field'].value;
-        const searchTerm = this['search'].value.toLowerCase();
+        erro.textContent = '';
+        let isValid = true;
 
-        if (!selectedField) return; // Verificação extra
-
-        const gridItems = document.querySelectorAll('.grid-container .grid-item');
-        gridItems.forEach(item => item.style.display = 'none');
-
-        let found = false;
-
-        for (let i = 0; i < gridItems.length; i += 4) {
-            const registro = gridItems[i];
-            const username = gridItems[i + 1];
-            const senha = gridItems[i + 2];
-            const acoes = gridItems[i + 3];
-
-            let shouldDisplay = false;
-            if (selectedField === 'todos') {
-                shouldDisplay = true;
-            } else if (selectedField === 'registro-filtro') {
-                shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
-            } else if (selectedField === 'username-filtro') {
-                shouldDisplay = username.textContent.toLowerCase().includes(searchTerm);
-            }
-
-            if (shouldDisplay) {
-                registro.style.display = 'flex';
-                username.style.display = 'flex';
-                senha.style.display = 'flex';
-                acoes.style.display = 'flex';
-                found = true;
-            }
+        // Validação do ADM
+        if (!patternAdm.test(novoAdmin.value) || !patternSenha.test(novaSenha.value)) {
+            erro.textContent = 'Administrador ou senha inválida(o)!';
+            isValid = false;
         }
 
-        if (!found) {
-            alert('Nenhum item encontrado.');
-        }
-    });
+        if (isValid) {
+            const formData = {
+                adm: novoAdmin.value,
+                senha: novaSenha.value
+            }
+            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/inserirAdm', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            console.log(response);
+            if (response.ok) {
+                window.alert('Cadastro realizado com sucesso!');
+                location.reload();
+            } else {
+                const result = await response.json();
+                window.alert(result.message);
+            }
+        }});
 });
+
+

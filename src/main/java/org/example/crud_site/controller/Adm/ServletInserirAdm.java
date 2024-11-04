@@ -20,18 +20,12 @@ public class ServletInserirAdm extends HttpServlet {
     private final Gson gson = new Gson();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        // Obtém os parâmetros da requisição
-//        String username = req.getParameter("username");
-//        String senha = req.getParameter("senha");
-
         response.setContentType("application/json");
 
         StringBuilder requestBody = new StringBuilder();
         String line;
         try (BufferedReader reader = request.getReader()) {
-
             while ((line = reader.readLine()) != null) {
-
                 requestBody.append(line);
             }
         } catch (IOException e) {
@@ -55,11 +49,7 @@ public class ServletInserirAdm extends HttpServlet {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-//        if (admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
-//            response.setStatus(HttpServletResponse.SC_OK);
-//            response.getWriter().println("{\"success\": true");
-//            request.getRequestDispatcher("listarAdm").forward(request, response);
-//        }
+
         try {
             if (admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
                 response.setStatus(HttpServletResponse.SC_OK);
@@ -77,11 +67,11 @@ public class ServletInserirAdm extends HttpServlet {
     }
 
     private static class Cadastro {
-        private String username;
+        private String adm;
         private String senha;
 
         public String getUsername() {
-            return this.username;
+            return this.adm;
         }
 
         public String getSenha() {

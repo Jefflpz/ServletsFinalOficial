@@ -30,9 +30,10 @@ public class ServletBuscarPermissao_Curso extends HttpServlet {
         if (permissaoCurso == null) {
             // Se não encontrada, define uma mensagem de erro e encaminha para uma página de erro
             req.setAttribute("erro", "Permissão de curso não encontrada.");
-            req.getRequestDispatcher("pages/erro.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
             return;
         }
+
 
         // Se encontrada, adiciona a permissão de curso como atributo na requisição
         req.setAttribute("permissaoCurso", permissaoCurso);
