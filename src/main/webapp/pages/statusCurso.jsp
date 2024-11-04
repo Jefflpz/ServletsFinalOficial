@@ -110,57 +110,57 @@
             </div>
 
         </main>
-        
+
         <div id="popupID" style="display: none;">
             <div class="popup">
-              <form action="#" class="registrar">
-                <div class="bloco-titulo">
-                    <h2 class="titulo">Inserir status</h2>
-                </div>
-                <div class="form-group">
-                  <label for="login" class="label">UUIDgin:</label>
-                  <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
-                </div>
-          
-                <div class="form-group">
-                  <label for="password" class="label">Nome:</label>
-                  <div class="password-container">
-                    <input type="password" placeholder="***********" class="input password"/>
-                  </div>
-                </div>
-          
+                <form action="#" class="registrar">
+                    <div class="bloco-titulo">
+                        <h2 class="titulo">Inserir status</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="login" class="label">UUIDgin:</label>
+                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+                    </div>
 
-                  <button type="submit" class="b bt-registrar">Cadastrar</button>
-                  <button type="button" class="b bt-cancelar">Cancelar</button>
-              </form>
+                    <div class="form-group">
+                        <label for="password" class="label">Nome:</label>
+                        <div class="password-container">
+                            <input type="password" placeholder="*" class="input password"/>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="b bt-registrar">Cadastrar</button>
+                    <button type="button" class="b bt-cancelar">Cancelar</button>
+                </form>
             </div>
-          </div>
+        </div>
 
+        <!-- AQUI -->
 
-          <div id="popupIDadm" style="display: none;">
+        <div id="popupIDCurso" style="display: none;">
             <div class="popup">
-              <form action="#" class="registrar">
-                <div class="bloco-titulo">
-                    <h2 class="titulo">Editar Status</h2>
-                </div>
-                <div class="form-group">
-                  <label for="login" class="label">UUID:</label>
-                  <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
-                </div>
-          
-                <div class="form-group">
-                  <label for="password" class="label">Nome:</label>
-                  <div class="password-container">
-                    <input type="password" placeholder="***********" class="input password"/>
-                  </div>
-                </div>
-          
+                <form action="#" class="registrar">
+                    <div class="bloco-titulo">
+                        <h2 class="titulo">Editar Status</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="login" class="label">UUID:</label>
+                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+                    </div>
 
-                  <button type="submit" class="b bt-registrar">Confirmar alterações</button>
-                  <button type="button" class="b bt-cancelar-edit">Cancelar</button>
-              </form>
+                    <div class="form-group">
+                        <label for="password" class="label">Nome:</label>
+                        <div class="password-container">
+                            <input type="password" placeholder="*" class="input password"/>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                </form>
             </div>
-          </div>
         </div>
     </div>
 

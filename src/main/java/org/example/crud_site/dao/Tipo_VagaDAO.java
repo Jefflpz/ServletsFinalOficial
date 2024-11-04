@@ -72,7 +72,7 @@ public class Tipo_VagaDAO {
     }
 
     // Método para excluir um tipo de vaga
-    public void excluirTipo_Vaga(String nomeTipo_Vaga) {
+    public boolean excluirTipo_Vaga(String nomeTipo_Vaga) {
         conexao.conectar();
         try {
             // Instrução SQL para excluir um tipo de vaga na tabela tipo_vaga
@@ -84,6 +84,7 @@ public class Tipo_VagaDAO {
 
             // Executa a instrução SQL
             conexao.pstmt.execute();
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir o registro.", e);
         } finally {

@@ -80,7 +80,7 @@ public class SetorDAO {
     }
 
     // Método para excluir um setor da tabela Setor.
-    public void excluirSetor(String nomeSetor) {
+    public boolean excluirSetor(String nomeSetor) {
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
@@ -94,6 +94,8 @@ public class SetorDAO {
 
             // Executa a instrução SQL.
             conexao.pstmt.execute();
+            // Retorna true se a exclusão foi bem-sucedida.
+            return true;
         } catch (SQLException e) {
             // Lança uma exceção em caso de erro.
             throw new RuntimeException("Erro ao excluir o registro.", e);

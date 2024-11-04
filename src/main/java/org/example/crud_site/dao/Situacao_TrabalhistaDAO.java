@@ -78,7 +78,7 @@ public class Situacao_TrabalhistaDAO {
     }
 
     // Método para excluir uma situação trabalhista da tabela.
-    public void excluirSituacao_Trabalhista(String nomeSituacao_Trabalhista) {
+    public boolean excluirSituacao_Trabalhista(String nomeSituacao_Trabalhista) {
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
         try {
@@ -91,6 +91,7 @@ public class Situacao_TrabalhistaDAO {
 
             // Executa a instrução SQL de exclusão.
             conexao.pstmt.execute();
+            return true;
         } catch (SQLException e) {
             // Lança uma exceção em caso de erro.
             throw new RuntimeException("Erro ao excluir o registro.", e);

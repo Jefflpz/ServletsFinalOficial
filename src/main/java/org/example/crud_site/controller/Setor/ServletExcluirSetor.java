@@ -14,22 +14,11 @@ public class ServletExcluirSetor extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o nome do setor a partir da requisição
         String nomeSetor = req.getParameter("nome_setor");
-
         // Cria uma instância do DAO para realizar a exclusão
         SetorDAO setorDAO = new SetorDAO();
-
-        // Tenta excluir o setor
-        try {
-            setorDAO.excluirSetor(nomeSetor);
-        } catch (RuntimeException e) {
-            // Se ocorrer um erro, redireciona para erro.jsp
-            req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
-            return; // Para garantir que a execução não continue
+        if (setorDAO.excluirSetor(nomeSetor)){
+            req.getRequestDispatcher("listarSetor").forward(req, res);
         }
-
-        // Redireciona para a página de sucesso após a exclusão
-        req.setAttribute("mensagem", "Setor excluído com sucesso.");
-        req.getRequestDispatcher("pages/setor.jsp").forward(req, res);
+        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

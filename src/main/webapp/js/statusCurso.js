@@ -1,7 +1,7 @@
 document.querySelectorAll('.view-password').forEach(button => {
     button.addEventListener('click', function() {
         const passwordCell = this.parentElement.previousElementSibling;
-        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
+        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
     });
 });
 
@@ -20,37 +20,37 @@ document.addEventListener("DOMContentLoaded", function() {
         filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    const inserirADM = document.querySelector('.inserir-curso');
-    const editADM = document.querySelectorAll('.edit');
-    const cancelADM = document.querySelector('.bt-cancelar');
-    const cancelADMedi = document.querySelector('.bt-cancelar-edit');
+    const inserirStatusCurso = document.querySelector('.inserir-status-curso');
+    const editStatusCurso = document.querySelectorAll('.edit');
+    const cancelStatusCurso = document.querySelector('.bt-cancelar');
+    const cancelStatusCursoEdit = document.querySelector('.bt-cancelar-edit');
 
-    const popupADM = document.getElementById('popupID');
-    const popupADMedit = document.getElementById('popupIDadm');
+    const popupStatusCurso = document.getElementById('popupID');
+    const popupStatusCursoEdit = document.getElementById('popupIDCurso');
 
     let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editADM.length; i++) {
-        editADM[i].addEventListener('click', togglePopupedit);
+    for (i = 0; i < editStatusCurso.length; i++) {
+        editStatusCurso[i].addEventListener('click', togglePopupEdit);
     }
 
-    cancelADM.addEventListener('click', cancelPopup);
-    cancelADMedi.addEventListener('click', cancelPopupedit);
+    cancelStatusCurso.addEventListener('click', cancelPopup);
+    cancelStatusCursoEdit.addEventListener('click', cancelPopupEdit);
 
-    inserirADM.addEventListener('click', togglePopup);
+    inserirStatusCurso.addEventListener('click', togglePopup);
 
     function togglePopup() {
-        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
+        popupStatusCurso.style.display = popupStatusCurso.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function togglePopupedit() {
-        popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
+    function togglePopupEdit() {
+        popupStatusCursoEdit.style.display = popupStatusCursoEdit.style.display === 'none' ? 'flex' : 'none';
     }
 
     function cancelPopup() {
-        popupADM.style.display = 'none';
+        popupStatusCurso.style.display = 'none';
     }
-    function cancelPopupedit() {
-        popupADMedit.style.display = 'none';
+    function cancelPopupEdit() {
+        popupStatusCursoEdit.style.display = 'none';
     }
 
     const form = filterBar.querySelector('form');
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for (let i = 0; i < gridItems.length; i += 4) {
             const registro = gridItems[i];
-            const uuid = gridItems[i + 1];
+            const nome = gridItems[i + 1];
             const status = gridItems[i + 2];
             const acoes = gridItems[i + 3];
 
@@ -78,15 +78,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 shouldDisplay = true;
             } else if (selectedField === 'registro-filtro') {
                 shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
-            } else if (selectedField === 'uuid-filtro') {
-                shouldDisplay = uuid.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'nome-filtro') {
+                shouldDisplay = nome.textContent.toLowerCase().includes(searchTerm);
             } else if (selectedField === 'status-filtro') {
                 shouldDisplay = status.textContent.toLowerCase().includes(searchTerm);
             }
 
             if (shouldDisplay) {
                 registro.style.display = 'flex';
-                uuid.style.display = 'flex';
+                nome.style.display = 'flex';
                 status.style.display = 'flex';
                 acoes.style.display = 'flex';
                 found = true;
@@ -98,4 +98,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-

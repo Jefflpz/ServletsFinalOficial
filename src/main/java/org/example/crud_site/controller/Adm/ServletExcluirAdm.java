@@ -24,8 +24,8 @@ public class ServletExcluirAdm extends HttpServlet {
 //            response.getWriter().println("{\"success\": true");
 //            response.sendRedirect("listarAdm");
             request.getRequestDispatcher("listarAdm").forward(request, response);
-        }else{
-            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
         }
+        request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
+
     }
 }

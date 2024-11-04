@@ -1,7 +1,7 @@
 document.querySelectorAll('.view-password').forEach(button => {
     button.addEventListener('click', function() {
         const passwordCell = this.parentElement.previousElementSibling;
-        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
+        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
     });
 });
 
@@ -20,37 +20,37 @@ document.addEventListener("DOMContentLoaded", function() {
         filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    const inserirADM = document.querySelector('.inserir-vaga');
-    const editADM = document.querySelectorAll('.edit');
-    const cancelADM = document.querySelector('.bt-cancelar');
-    const cancelADMedi = document.querySelector('.bt-cancelar-edit');
+    const inserirVaga = document.querySelector('.inserir-vaga');
+    const editVaga = document.querySelectorAll('.edit');
+    const cancelVaga = document.querySelector('.bt-cancelar');
+    const cancelVAGAedi = document.querySelector('.bt-cancelar-edit');
 
-    const popupADM = document.getElementById('popupID');
-    const popupADMedit = document.getElementById('popupIDadm');
+    const popupVaga = document.getElementById('popupID');
+    const popupVagaedit = document.getElementById('popupIDVaga');
 
     let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editADM.length; i++) {
-        editADM[i].addEventListener('click', togglePopupedit);
+    for (i = 0; i < editVaga.length; i++) {
+        editVaga[i].addEventListener('click', togglePopupedit);
     }
 
-    cancelADM.addEventListener('click', cancelPopup);
-    cancelADMedi.addEventListener('click', cancelPopupedit);
+    cancelVaga.addEventListener('click', cancelPopup);
+    cancelVAGAedi.addEventListener('click', cancelPopupedit);
 
-    inserirADM.addEventListener('click', togglePopup);
+    inserirVaga.addEventListener('click', togglePopup);
 
     function togglePopup() {
-        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
+        popupVaga.style.display = popupVaga.style.display === 'none' ? 'flex' : 'none';
     }
 
     function togglePopupedit() {
-        popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
+        popupVagaedit.style.display = popupVagaedit.style.display === 'none' ? 'flex' : 'none';
     }
 
     function cancelPopup() {
-        popupADM.style.display = 'none';
+        popupVaga.style.display = 'none';
     }
     function cancelPopupedit() {
-        popupADMedit.style.display = 'none';
+        popupVagaedit.style.display = 'none';
     }
 
     const form = filterBar.querySelector('form');
@@ -98,4 +98,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-

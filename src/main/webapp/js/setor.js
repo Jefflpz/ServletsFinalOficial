@@ -1,7 +1,7 @@
 document.querySelectorAll('.view-password').forEach(button => {
     button.addEventListener('click', function() {
         const passwordCell = this.parentElement.previousElementSibling;
-        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
+        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
     });
 });
 
@@ -20,37 +20,37 @@ document.addEventListener("DOMContentLoaded", function() {
         filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    const inserirADM = document.querySelector('.inserir-setor');
-    const editADM = document.querySelectorAll('.edit');
-    const cancelADM = document.querySelector('.bt-cancelar');
-    const cancelADMedi = document.querySelector('.bt-cancelar-edit');
+    const inserirSetor = document.querySelector('.inserir-setor');
+    const editSetor = document.querySelectorAll('.edit');
+    const cancelSetor = document.querySelector('.bt-cancelar');
+    const cancelSetorEdit = document.querySelector('.bt-cancelar-edit');
 
-    const popupADM = document.getElementById('popupID');
-    const popupADMedit = document.getElementById('popupIDadm');
+    const popupSetor = document.getElementById('popupID');
+    const popupSetorEdit = document.getElementById('popupIDsetor');
 
     let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editADM.length; i++) {
-        editADM[i].addEventListener('click', togglePopupedit);
+    for (i = 0; i < editSetor.length; i++) {
+        editSetor[i].addEventListener('click', togglePopupEdit);
     }
 
-    cancelADM.addEventListener('click', cancelPopup);
-    cancelADMedi.addEventListener('click', cancelPopupedit);
+    cancelSetor.addEventListener('click', cancelPopup);
+    cancelSetorEdit.addEventListener('click', cancelPopupEdit);
 
-    inserirADM.addEventListener('click', togglePopup);
+    inserirSetor.addEventListener('click', togglePopup);
 
     function togglePopup() {
-        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
+        popupSetor.style.display = popupSetor.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function togglePopupedit() {
-        popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
+    function togglePopupEdit() {
+        popupSetorEdit.style.display = popupSetorEdit.style.display === 'none' ? 'flex' : 'none';
     }
 
     function cancelPopup() {
-        popupADM.style.display = 'none';
+        popupSetor.style.display = 'none';
     }
-    function cancelPopupedit() {
-        popupADMedit.style.display = 'none';
+    function cancelPopupEdit() {
+        popupSetorEdit.style.display = 'none';
     }
 
     const form = filterBar.querySelector('form');
@@ -98,4 +98,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-

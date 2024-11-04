@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/permissaoVaga.css">
 </head>
 <body>
-
     <aside class="sidebar">
         <div class="titulo">
             <h1><span class="inclus">Inclus</span><span class="es">es</span></h1>

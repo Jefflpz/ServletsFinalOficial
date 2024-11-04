@@ -68,7 +68,7 @@ public class VagaDAO {
     }
 
     // Método para excluir uma vaga na tabela Vaga
-    public void excluirVaga(UUID id) {
+    public boolean excluirVaga(UUID id) {
         conexao.conectar();
         try {
             // Instrução SQL para excluir uma vaga na tabela Vaga
@@ -80,6 +80,7 @@ public class VagaDAO {
 
             // Executa a instrução SQL de exclusão
             conexao.pstmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir a vaga.", e);
         } finally {

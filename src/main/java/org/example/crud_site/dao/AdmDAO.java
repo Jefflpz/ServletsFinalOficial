@@ -25,7 +25,6 @@ public class AdmDAO{
         conexao = new Conexao();
     }
 
-
     // Método para inserir um novo registro na tabala Adm
     public boolean inserirAdm(String username, String senha) {
 

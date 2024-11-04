@@ -1,7 +1,7 @@
 document.querySelectorAll('.view-password').forEach(button => {
     button.addEventListener('click', function() {
         const passwordCell = this.parentElement.previousElementSibling;
-        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
+        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
     });
 });
 
@@ -20,37 +20,37 @@ document.addEventListener("DOMContentLoaded", function() {
         filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    const inserirADM = document.querySelector('.inserir-situacao');
-    const editADM = document.querySelectorAll('.edit');
-    const cancelADM = document.querySelector('.bt-cancelar');
-    const cancelADMedi = document.querySelector('.bt-cancelar-edit');
+    const inserirSituacao = document.querySelector('.inserir-situacao');
+    const editSituacao = document.querySelectorAll('.edit');
+    const cancelSituacao = document.querySelector('.bt-cancelar');
+    const cancelSituacaoEdit = document.querySelector('.bt-cancelar-edit');
 
-    const popupADM = document.getElementById('popupID');
-    const popupADMedit = document.getElementById('popupIDadm');
+    const popupSituacao = document.getElementById('popupID');
+    const popupSituacaoEdit = document.getElementById('popupIDsituacao');
 
     let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editADM.length; i++) {
-        editADM[i].addEventListener('click', togglePopupedit);
+    for (i = 0; i < editSituacao.length; i++) {
+        editSituacao[i].addEventListener('click', togglePopupEdit);
     }
 
-    cancelADM.addEventListener('click', cancelPopup);
-    cancelADMedi.addEventListener('click', cancelPopupedit);
+    cancelSituacao.addEventListener('click', cancelPopup);
+    cancelSituacaoEdit.addEventListener('click', cancelPopupEdit);
 
-    inserirADM.addEventListener('click', togglePopup);
+    inserirSituacao.addEventListener('click', togglePopup);
 
     function togglePopup() {
-        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
+        popupSituacao.style.display = popupSituacao.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function togglePopupedit() {
-        popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
+    function togglePopupEdit() {
+        popupSituacaoEdit.style.display = popupSituacaoEdit.style.display === 'none' ? 'flex' : 'none';
     }
 
     function cancelPopup() {
-        popupADM.style.display = 'none';
+        popupSituacao.style.display = 'none';
     }
-    function cancelPopupedit() {
-        popupADMedit.style.display = 'none';
+    function cancelPopupEdit() {
+        popupSituacaoEdit.style.display = 'none';
     }
 
     const form = filterBar.querySelector('form');
@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (shouldDisplay) {
                 registro.style.display = 'flex';
-                nome.style.display = 'flex'; // Substitua 'username' por 'nome'
-                status.style.display = 'flex'; // Substitua 'senha' por 'status'
+                nome.style.display = 'flex';
+                status.style.display = 'flex';
                 acoes.style.display = 'flex';
                 found = true;
             }

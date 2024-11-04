@@ -1,7 +1,7 @@
 document.querySelectorAll('.view-password').forEach(button => {
     button.addEventListener('click', function() {
         const passwordCell = this.parentElement.previousElementSibling;
-        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
+        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
     });
 });
 
@@ -20,37 +20,37 @@ document.addEventListener("DOMContentLoaded", function() {
         filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    const inserirADM = document.querySelector('.inserir-arquivo');
-    const editADM = document.querySelectorAll('.edit');
-    const cancelADM = document.querySelector('.bt-cancelar');
-    const cancelADMedi = document.querySelector('.bt-cancelar-edit');
+    const inserirArquivo = document.querySelector('.inserir-arquivo');
+    const editAquivo = document.querySelectorAll('.edit');
+    const cancelArquivo = document.querySelector('.bt-cancelar');
+    const cancelARQUIVOedi = document.querySelector('.bt-cancelar-edit');
 
-    const popupADM = document.getElementById('popupID');
-    const popupADMedit = document.getElementById('popupIDadm');
+    const popupArquivo = document.getElementById('popupID');
+    const popupArquivoedit = document.getElementById('popupIDArquivo');
 
     let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editADM.length; i++) {
-        editADM[i].addEventListener('click', togglePopupedit);
+    for (i = 0; i < editAquivo.length; i++) {
+        editAquivo[i].addEventListener('click', togglePopupedit);
     }
 
-    cancelADM.addEventListener('click', cancelPopup);
-    cancelADMedi.addEventListener('click', cancelPopupedit);
+    cancelArquivo.addEventListener('click', cancelPopup);
+    cancelARQUIVOedi.addEventListener('click', cancelPopupedit);
 
-    inserirADM.addEventListener('click', togglePopup);
+    inserirArquivo.addEventListener('click', togglePopup);
 
     function togglePopup() {
-        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
+        popupArquivo.style.display = popupArquivo.style.display === 'none' ? 'flex' : 'none';
     }
 
     function togglePopupedit() {
-        popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
+        popupArquivoedit.style.display = popupArquivoedit.style.display === 'none' ? 'flex' : 'none';
     }
 
     function cancelPopup() {
-        popupADM.style.display = 'none';
+        popupArquivo.style.display = 'none';
     }
     function cancelPopupedit() {
-        popupADMedit.style.display = 'none';
+        popupArquivoedit.style.display = 'none';
     }
 
     const form = filterBar.querySelector('form');
@@ -98,4 +98,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-

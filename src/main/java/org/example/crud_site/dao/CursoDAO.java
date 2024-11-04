@@ -68,7 +68,7 @@ public class CursoDAO {
     }
 
     // Método para excluir um curso na tabela Curso
-    public void excluirCurso(UUID id) {
+    public boolean excluirCurso(UUID id) {
         conexao.conectar();
         try {
             // Instrução SQL para excluir um curso na tabela Curso
@@ -80,6 +80,7 @@ public class CursoDAO {
 
             // Executa a instrução SQL de exclusão
             conexao.pstmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir o curso.", e);
         } finally {

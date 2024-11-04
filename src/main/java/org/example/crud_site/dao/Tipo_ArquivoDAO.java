@@ -71,7 +71,7 @@ public class Tipo_ArquivoDAO {
     }
 
     // Método para excluir um tipo de arquivo
-    public void excluirTipo_Arquivo(String nomeTipo_Arquivo) {
+    public boolean excluirTipo_Arquivo(String nomeTipo_Arquivo) {
         conexao.conectar();
         try {
             // Instrução SQL para excluir um tipo de arquivo na tabela tipo_arquivo
@@ -83,6 +83,7 @@ public class Tipo_ArquivoDAO {
 
             // Executa a instrução SQL
             conexao.pstmt.execute();
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir o registro.", e);
         } finally {

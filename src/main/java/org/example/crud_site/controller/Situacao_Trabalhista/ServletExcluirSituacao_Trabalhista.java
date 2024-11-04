@@ -19,17 +19,8 @@ public class ServletExcluirSituacao_Trabalhista extends HttpServlet {
         Situacao_TrabalhistaDAO situacaoTrabalhistaDAO = new Situacao_TrabalhistaDAO();
 
         // Tenta excluir a situação trabalhista
-        try {
-            situacaoTrabalhistaDAO.excluirSituacao_Trabalhista(nomeSituacaoTrabalhista);
-        } catch (RuntimeException e) {
-            // Se ocorrer um erro, redireciona para erro.jsp
-            req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
-            return; // Para garantir que a execução não continue
+        if (situacaoTrabalhistaDAO.excluirSituacao_Trabalhista(nomeSituacaoTrabalhista)) {
+            req.getRequestDispatcher("listarSituacoes_Trabalhistas").forward(req, res);
         }
-
-        // Redireciona para a página de sucesso após a exclusão
-        req.setAttribute("mensagem", "Situação trabalhista excluída com sucesso.");
-        req.getRequestDispatcher("pages/situacaoTrabalhista.jsp").forward(req, res);
     }
 }

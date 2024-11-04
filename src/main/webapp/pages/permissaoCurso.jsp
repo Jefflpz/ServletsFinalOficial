@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,8 +15,7 @@
         </div>
         <nav>
             <ul>
-                li><a href="#"><img src="img/casa.png" alt="Home">Home</a></li>
-
+                <li><a href="#"><img src="img/casa.png" alt="Home">Home</a></li>
                 <li><a href="listarAdm">Adm</a></li>
                 <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
                 <div class="elemento"></div>

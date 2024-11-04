@@ -66,7 +66,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     padding: 10px;
-    border: 1px solid #c3e0fe;  
+    border: 1px solid #c3e0fe;
     background-color: white;
 }
 
@@ -103,7 +103,7 @@ body {
 }
 
 .titulo {
-    font-size: 25px;  
+    font-size: 25px;
     margin-bottom: 40px;
     display: flex;
     align-items: center;
@@ -121,20 +121,20 @@ h1 {
 
 .inclus {
     font-size: 30px;
-    color: mediumblue; 
+    color: mediumblue;
 }
 
 .es {
-    
+
     font-size: 30px;
-    color: blueviolet; 
+    color: blueviolet;
 }
 
 .sidebar {
     width: 260px;
     height: 100%;
     background-image: url(../img/sidebar.png);
-    background-size: cover; 
+    background-size: cover;
     padding: 20px;
     color: #ecf0f1;
 }
@@ -224,7 +224,7 @@ h1 {
 .filtrar {
     text-align: center;
     border-radius: 10px;
-    padding: 15px 30px; 
+    padding: 15px 30px;
     color: #0000F9;
     font-weight: bold;
     border: 0;
@@ -270,17 +270,17 @@ h1 {
 }
 
 #filtrar-bar button {
-padding: 10px;
-border: 1px solid #69B1FF;
-border-radius: 5px;
-font-size: 16px;
+    padding: 10px;
+    border: 1px solid #69B1FF;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 #filtrar-bar select{
-padding: 10px;
-border: 1px solid #69B1FF;
-border-radius: 8px;
-font-size: 16px;
+    padding: 10px;
+    border: 1px solid #69B1FF;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 
@@ -299,7 +299,7 @@ font-size: 16px;
 }
 
 #popupID,
-#popupIDadm {
+#popupIDArquivo {
     display: none; /* Para ocultar inicialmente */
     position: fixed; /* Alterado */
     left: 0;
@@ -351,7 +351,7 @@ font-size: 16px;
 }
 
 .password{
- margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .bt-registrar{
@@ -385,12 +385,12 @@ font-size: 16px;
     }
 
     .filtrar, .inserir-arquivo {
-        font-size: 10px; 
-        padding: 10px; 
+        font-size: 10px;
+        padding: 10px;
     }
 
     .grid-item {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     .sidebar ul li {
@@ -398,7 +398,7 @@ font-size: 16px;
     }
 
     .logout {
-        font-size: 14px; 
+        font-size: 14px;
     }
 
     .action {
@@ -413,7 +413,7 @@ font-size: 16px;
     }
 
     .permitido, .edit, .delete {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {
@@ -423,10 +423,6 @@ font-size: 16px;
         margin-left: 30%;
     }
     .sidebar {
-        margin-right: 20px; 
+        margin-right: 20px;
     }
 }
-
-
-
-

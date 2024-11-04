@@ -110,59 +110,110 @@
             </div>
 
         </main>
-        
+
         <div id="popupID" style="display: none;">
             <div class="popup">
-              <form action="#" class="registrar">
+                <form action="#" class="registrar">
+                    <div class="bloco-titulo">
+                        <h2 class="titulo">Inserir Situação trabalhista</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="login" class="label">Login:</label>
+                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="label">Digite a senha:</label>
+                        <div class="password-container">
+                            <input type="password" placeholder="*" class="input password"/>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="b bt-registrar">Cadastrar</button>
+                    <button type="button" class="b bt-cancelar">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- AQUI -->
+
+        <div id="popupIDsituacao" style="display: none;">
+            <div class="popup">
+                <form action="#" class="registrar">
+                    <div class="bloco-titulo">
+                        <h2 class="titulo">Editar Situação Trabalhista</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="login" class="label">Login:</label>
+                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="label">Digite a senha:</label>
+                        <div class="password-container">
+                            <input type="password" placeholder="*" class="input password"/>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                </form>
+            </div>
+        </div><div id="popupID" style="display: none;">
+        <div class="popup">
+            <form action="#" class="registrar">
                 <div class="bloco-titulo">
                     <h2 class="titulo">Inserir Situação trabalhista</h2>
                 </div>
                 <div class="form-group">
-                  <label for="login" class="label">Login:</label>
-                  <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+                    <label for="login" class="label">Login:</label>
+                    <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
                 </div>
-          
+
                 <div class="form-group">
-                  <label for="password" class="label">Digite a senha:</label>
-                  <div class="password-container">
-                    <input type="password" placeholder="***********" class="input password"/>
-                  </div>
+                    <label for="password" class="label">Digite a senha:</label>
+                    <div class="password-container">
+                        <input type="password" placeholder="*" class="input password"/>
+                    </div>
                 </div>
-          
-
-                  <button type="submit" class="b bt-registrar">Cadastrar</button>
-                  <button type="button" class="b bt-cancelar">Cancelar</button>
-              </form>
-            </div>
-          </div>
 
 
-          <div id="popupIDadm" style="display: none;">
-            <div class="popup">
-              <form action="#" class="registrar">
-                <div class="bloco-titulo">
-                    <h2 class="titulo">Editar Situação Trabalhista</h2>
-                </div>
-                <div class="form-group">
-                  <label for="login" class="label">Login:</label>
-                  <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
-                </div>
-          
-                <div class="form-group">
-                  <label for="password" class="label">Digite a senha:</label>
-                  <div class="password-container">
-                    <input type="password" placeholder="***********" class="input password"/>
-                  </div>
-                </div>
-          
-
-                  <button type="submit" class="b bt-registrar">Confirmar alterações</button>
-                  <button type="button" class="b bt-cancelar-edit">Cancelar</button>
-              </form>
-            </div>
-          </div>
+                <button type="submit" class="b bt-registrar">Cadastrar</button>
+                <button type="button" class="b bt-cancelar">Cancelar</button>
+            </form>
         </div>
     </div>
+
+        <!-- AQUI -->
+
+        <div id="popupIDsituacao" style="display: none;">
+            <div class="popup">
+                <form action="#" class="registrar">
+                    <div class="bloco-titulo">
+                        <h2 class="titulo">Editar Situação Trabalhista</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="login" class="label">Login:</label>
+                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="label">Digite a senha:</label>
+                        <div class="password-container">
+                            <input type="password" placeholder="*" class="input password"/>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 <script src="js/situacaoTrabalhista.js"></script>
 </body>
