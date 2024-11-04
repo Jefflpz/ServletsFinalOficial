@@ -20,9 +20,6 @@ public class ServletExcluirAdm extends HttpServlet {
         AdmDAO admDAO = new AdmDAO();
 
         if (admDAO.excluirAdm(uuid)) {
-//            response.setStatus(HttpServletResponse.SC_OK);
-//            response.getWriter().println("{\"success\": true");
-//            response.sendRedirect("listarAdm");
             request.getRequestDispatcher("listarAdm").forward(request, response);
         }
         request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
