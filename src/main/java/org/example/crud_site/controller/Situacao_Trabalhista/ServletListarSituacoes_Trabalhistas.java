@@ -25,7 +25,7 @@ public class ServletListarSituacoes_Trabalhistas extends HttpServlet {
         List<Situacao_Trabalhista> situacoes_Trabalhistas = situacao_TrabalhistaDAO.listarSituacao_Trabalhista();
 
         // Define a lista de situações trabalhistas como um atributo da requisição
-        req.setAttribute("situacoes_Trabalhistas", situacoes_Trabalhistas);
+        req.setAttribute("listarSituacoes_Trabalhistas", situacoes_Trabalhistas);
 
         // Encaminha a requisição e a resposta para a página listarSituacao_Trabalhistas.jsp
         req.getRequestDispatcher("pages/situacaoTrabalhista.jsp").forward(req, res);

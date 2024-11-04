@@ -25,7 +25,7 @@ public class ServletListarTipos_Vagas extends HttpServlet {
         List<Tipo_Vaga> tipos_Vaga = tipo_VagaDAO.listarTipo_Vaga();
 
         // Define a lista de tipos de vaga como um atributo da requisição
-        req.setAttribute("tipos_Vaga", tipos_Vaga);
+    req.setAttribute("listarTipo_Vaga", tipos_Vaga);
 
         // Encaminha a requisição e a resposta para a página listarTipo_Vaga.jsp
         req.getRequestDispatcher("pages/tipoVaga.jsp").forward(req, res);

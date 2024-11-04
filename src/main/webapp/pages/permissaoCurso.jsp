@@ -1,3 +1,5 @@
+<%@ page import="org.example.crud_site.model.PermissaoCurso" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -6,7 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crud Permissao curso</title>
   <link rel="stylesheet" href="css/permissaoCurso.css">
-</head>
+    <style>
+        /* Estilos da página */
+        body.no-scroll {
+            overflow: hidden;
+        }
+    </style></head>
 <body>
 
     <aside class="sidebar">
@@ -57,29 +64,48 @@
 
             <div class="grid-container">
                 <div class="grid-header registro">Registro</div>
-                <div class="grid-header id_conta">id_conta</div>
-                <div class="grid-header id_curso">id_curso</div>
-                <div class="grid-header acoes">Permissão</div>
+                <div class="grid-header id_conta">Data da solicitação</div>
+                <div class="grid-header id_curso">Permissão</div>
+                <div class="grid-header acoes">Ações</div>
 
-                <div class="grid-item item-registro">1</div>
-                <div class="grid-item item-id_conta">24</div>
-                <div class="grid-item item-id_curso">31</div>
+                <%
+                    List<PermissaoCurso> lista = (List<PermissaoCurso>) request.getAttribute("listaPermissao_Curso");
+
+                    if (!lista.isEmpty()) {
+                        for (int i = 0; i < lista.size(); i++) {
+                %>
+                <div class="grid-item registro"><%= i+1 %></div>
+                <div class="grid-item"><%= lista.get(i).getDt_solicitaco() %></div>
+                <div class="grid-item"><%= lista.get(i).getPermissao() %></div>
                 <div class="grid-item">
-                    <button class="action view"><img src="img/olho.png" alt=""></button>
+                    <form action="autorizarPermissao_Curso" method="post">
+                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
+                        <button class="action permitido"><img src="img/correto.png" alt="excluir setor"></button>
+                    </form>
+                    <form action="buscarPermissaoCurso" method="post">
+                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
+                        <button class="action view"><img src="img/olho.png" alt="excluir setor"></button>
+                    </form>
+                    <form action="negarPermissao_Curso" method="post">
+                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
+                        <button class="action delete"><img src="img/X.png" alt="excluir setor"></button>
+                    </form>
                 </div>
-
-                <div class="grid-item item-registro">2</div>
-                <div class="grid-item item-id_conta">12</div>
-                <div class="grid-item item-id_curso">23</div>
-                <div class="grid-item">
-                    <button class="action view"><img src="img/olho.png" alt=""></button>
-                </div>  
+                <%
+                    }
+                } else {
+                %>
+                <div class="grid-item">Nenhum registro encontrado.</div>
+                <%
+                        System.out.println("Nenhum registro encontrado.");
+                    }
+                %>
 
 
                 <div id="popupID" style="display: none;">
                     <div class="popup">
                         <div class="popup-header">
-                            <h2 class="titulo">Informações da vaga</h2>
+                            <h2 class="titulo">Informações do curso</h2>
                             <button class="close-button">✖</button>
                         </div>
                         <form action="#" class="vaga-form">

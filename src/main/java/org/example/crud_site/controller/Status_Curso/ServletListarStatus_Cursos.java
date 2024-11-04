@@ -25,7 +25,7 @@ public class ServletListarStatus_Cursos extends HttpServlet {
         List<Status_Curso> status_Cursos = status_cursoDAO.listarStatus_Curso();
 
         // Define a lista de status de cursos como um atributo da requisição
-        req.setAttribute("status_cursoList", status_Cursos);
+        req.setAttribute("listarStatus_curso", status_Cursos);
 
         // Encaminha a requisição e a resposta para a página status_curso.jsp
         req.getRequestDispatcher("pages/statusCurso.jsp").forward(req, res);

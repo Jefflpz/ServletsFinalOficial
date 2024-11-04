@@ -1,3 +1,5 @@
+<%@ page import="org.example.crud_site.model.Setor" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,69 +61,48 @@
 
             <div class="grid-container">
                 <div class="grid-header registro">Registro</div>
-                <div class="grid-header UUID">UUID</div>
-                <div class="grid-header NOME">NOME</div>
+                <div class="grid-header NOME">Setor</div>
                 <div class="grid-header acoes">Ações</div>
 
-                <div class="grid-item item-registro">1</div>
-                <div class="grid-item item-UUID">admin1</div>
-                <div class="grid-item">*****</div>
-                <div class="grid-item">
-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
-                </div>
 
-                <div class="grid-item item-registro">2</div>
-                <div class="grid-item item-UUID">admin2</div>
-                <div class="grid-item">*****</div>
-                <div class="grid-item">
-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
-                </div>
+                <%
+                    List<Setor> lista = (List<Setor>) request.getAttribute("listarSetor");
 
-                <div class="grid-item item-registro">3</div>
-                <div class="grid-item item-UUID">admin3</div>
-                <div class="grid-item">*****</div>
+                    if (!lista.isEmpty()) {
+                        for (int i = 0; i < lista.size(); i++) {
+                %>
+                <div class="grid-item registro"><%= i+1 %></div>
+                <div class="grid-item username"><%= lista.get(i).getNome() %></div>
                 <div class="grid-item">
-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+                    <button class="action edit">
+                        <img src="img/lapis.png" alt="editar setor"></button>
+                    <form action="excluirSetor" method="post">
+                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
+                        <button class="action delete"><img src="img/lixo.png" alt="excluir setor"></button>
+                    </form>
                 </div>
-
-                <div class="grid-item item-registro">4</div>
-                <div class="grid-item item-UUID">admin4</div>
-                <div class="grid-item">*****</div>
-                <div class="grid-item">
-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
-                </div>
-
-                <div class="grid-item item-registro">5</div>
-                <div class="grid-item item-UUID">admin5</div>
-                <div class="grid-item">*****</div>
-                <div class="grid-item">
-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
-                </div>        
+                <%
+                    }
+                } else {
+                %>
+                <div class="grid-item">Nenhum registro encontrado.</div>
+                <%
+                        System.out.println("Nenhum registro encontrado.");
+                    }
+                %>
             </div>
 
         </main>
 
         <div id="popupID" style="display: none;">
             <div class="popup">
-                <form action="#" class="registrar">
+                <form action="inserirSetor" class="registrar">
                     <div class="bloco-titulo">
                         <h2 class="titulo">Cadastrar Setor</h2>
                     </div>
                     <div class="form-group">
-                        <label for="login" class="label">UUID:</label>
-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password" class="label">NOME:</label>
-                        <div class="password-container">
-                            <input type="password" placeholder="*" class="input password"/>
-                        </div>
+                        <label for="cadastrar" class="label">Setor:</label>
+                        <input type="text" id="cadastrar" name="cadastrar" placeholder="Aliementício" class="input" required />
                     </div>
 
 
@@ -135,22 +116,14 @@
 
         <div id="popupIDsetor" style="display: none;">
             <div class="popup">
-                <form action="#" class="registrar">
+                <form action="alterarNomeSetor" class="registrar">
                     <div class="bloco-titulo">
                         <h2 class="titulo">Editar Setor</h2>
                     </div>
                     <div class="form-group">
-                        <label for="login" class="label">UUID:</label>
-                        <input type="text" id="login" name="login" placeholder="ADMIM" class="input" required />
+                        <label for="editar" class="label">Setor:</label>
+                        <input type="text" id="editar" name="editar" class="input" required />
                     </div>
-
-                    <div class="form-group">
-                        <label for="password" class="label">NOME:</label>
-                        <div class="password-container">
-                            <input type="password" placeholder="BD" class="input password"/>
-                        </div>
-                    </div>
-
 
                     <button type="submit" class="b bt-registrar">Confirmar alterações</button>
                     <button type="button" class="b bt-cancelar-edit">Cancelar</button>
@@ -158,8 +131,6 @@
             </div>
         </div>
     </div>
-
-
 
   <script src="js/setor.js"></script>
 </body>
