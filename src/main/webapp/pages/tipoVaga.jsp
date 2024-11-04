@@ -66,7 +66,6 @@
                 <div class="grid-item item-username">admin1</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="img/olho.png" alt=""></button>
                     <button class="action edit"><img src="img/lapis.png" alt=""></button>
                     <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
@@ -75,7 +74,6 @@
                 <div class="grid-item item-username">admin2</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="img/olho.png" alt=""></button>
                     <button class="action edit"><img src="img/lapis.png" alt=""></button>
                     <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
@@ -84,7 +82,6 @@
                 <div class="grid-item item-username">admin3</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="img/olho.png" alt=""></button>
                     <button class="action edit"><img src="img/lapis.png" alt=""></button>
                     <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
@@ -93,7 +90,6 @@
                 <div class="grid-item item-username">admin4</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="img/olho.png" alt=""></button>
                     <button class="action edit"><img src="img/lapis.png" alt=""></button>
                     <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>
@@ -102,7 +98,6 @@
                 <div class="grid-item item-username">admin5</div>
                 <div class="grid-item">*****</div>
                 <div class="grid-item">
-                    <button class="action view"><img src="img/olho.png" alt=""></button>
                     <button class="action edit"><img src="img/lapis.png" alt=""></button>
                     <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </div>        

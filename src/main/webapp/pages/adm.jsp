@@ -4,7 +4,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/adm.css">
@@ -78,7 +78,7 @@
                     <img src="img/lapis.png" alt="editar adm"></button>
                 <form action="excluirAdm" method="post">
                     <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                    <button type="submit"><img src="img/lixo.png" alt="excluir adm"></button>
+                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
                 </form>
             </div>
             <%
