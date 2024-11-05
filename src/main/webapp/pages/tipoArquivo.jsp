@@ -74,8 +74,8 @@
                 <div class="grid-item">
                     <button class="action edit">
                         <img src="img/lapis.png" alt="editar status curso"></button>
-                    <form action="excluirStatusCurso" method="post">
-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
+                    <form action="excluirTipoArquivo" method="get">
+                        <input type="hidden" id="nome" name="id" value="<%=lista.get(i).getId()%>">
                         <button class="action delete"><img src="img/lixo.png" alt="excluir status curso"></button>
                     </form>
                 </div>
@@ -97,7 +97,7 @@
 
         <div id="popupID" style="display: none;">
             <div class="popup">
-                <form action="#" class="registrar">
+                <form action="inserirTipo_Arquivo" class="registrar" method="post">
                     <div class="bloco-titulo">
                         <h2 class="titulo">Inserir status curso</h2>
                     </div>

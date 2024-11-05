@@ -25,7 +25,7 @@ public class SetorDAO {
     }
 
     // Método para inserir um registro na tabela Setor.
-    public boolean inserir(Setor setor) {
+    public boolean inserir(String setor) {
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
@@ -35,7 +35,7 @@ public class SetorDAO {
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
             // Define os valores dos parâmetros da consulta.
-            conexao.pstmt.setString(1, setor.getNome());
+            conexao.pstmt.setString(1, setor);
 
             // Executa a instrução SQL e retorna true se bem-sucedido.
             return conexao.pstmt.executeUpdate() > 0;
@@ -49,7 +49,7 @@ public class SetorDAO {
     }
 
     // Método para alterar o nome de um setor existente na tabela Setor.
-    public boolean alterarNome(Setor setor, String nome) {
+    public boolean alterarNomeSetor(Setor setor, String nome) {
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();

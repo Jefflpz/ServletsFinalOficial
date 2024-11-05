@@ -76,8 +76,8 @@
                 <div class="grid-item">
                     <button class="action edit">
                         <img src="img/lapis.png" alt="editar setor"></button>
-                    <form action="excluirSetor" method="post">
-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
+                    <form action="excluirSetor" method="get">
+                        <input type="hidden" id="nome" name="nome" value="<%=lista.get(i).getNome()%>">
                         <button class="action delete"><img src="img/lixo.png" alt="excluir setor"></button>
                     </form>
                 </div>
@@ -96,7 +96,7 @@
 
         <div id="popupID" style="display: none;">
             <div class="popup">
-                <form action="inserirSetor" class="registrar">
+                <form action="inserirSetor" class="registrar" method="post">
                     <div class="bloco-titulo">
                         <h2 class="titulo">Cadastrar Setor</h2>
                     </div>
