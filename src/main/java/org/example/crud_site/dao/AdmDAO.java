@@ -65,7 +65,7 @@ public class AdmDAO{
         try {
 
             // Instrução SQL para inserir um administrador na tabela Adm.
-            String sql = "UPDATE adm SET senha=? WHERE username=? AND senha=?";
+            String sql = "UPDATE adm SET senha=? WHERE id=?";
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
             // Define os valores dos parâmetros na consulta SQL

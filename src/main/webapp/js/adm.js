@@ -6,6 +6,7 @@ const senhaEditada = document.getElementById('senhaEditada');
 const admEditado = document.getElementById('admEditado');
 const editarForm = document.getElementById('editarForm');
 const erroEditar = document.getElementById('erroEditar');
+let idAdm = null;
 
 // Regex para validação
 const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
@@ -43,12 +44,26 @@ document.addEventListener("DOMContentLoaded", function () {
     cancelADM.addEventListener('click', cancelPopup);
     cancelADMedi.addEventListener('click', cancelPopupedit);
 
-    inserirADM.addEventListener('click', (e) => {   togglePopup (e)});
+    inserirADM.addEventListener('click', togglePopup);
+
+    function togglePopup() {
+        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
+    }
 
     function togglePopupedit(e) {
         popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
         let usernameEdit = document.getElementById('admEditado');
         usernameEdit.value = e.currentTarget.getAttribute('data-username');
+
+        console.log(e.currentTarget);
+        idAdm = e.currentTarget.getAttribute('data-id');
+        console.log(id);
+    }
+
+    inserirADM.addEventListener('click', togglePopup);
+
+    function togglePopup() {
+        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
     }
 
     function cancelPopup() {
@@ -58,12 +73,52 @@ document.addEventListener("DOMContentLoaded", function () {
         popupADMedit.style.display = 'none';
     }
 
+    const form = filterBar.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const selectedField = this['filter-field'].value;
+        const searchTerm = this['search'].value.toLowerCase();
+
+        if (!selectedField) return;
+
+        const gridItems = document.querySelectorAll('.grid-container .grid-item');
+        gridItems.forEach(item => item.style.display = 'none');
+
+        let found = false;
+
+        for (let i = 0; i < gridItems.length; i += 4) {
+            const registro = gridItems[i];
+            const username = gridItems[i + 1];
+            const senha = gridItems[i + 2];
+            const acoes = gridItems[i + 3];
+
+            let shouldDisplay = false;
+            if (selectedField === 'todos') {
+                shouldDisplay = true;
+            } else if (selectedField === 'registro-filtro') {
+                shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'username-filtro') {
+                shouldDisplay = username.textContent.toLowerCase().includes(searchTerm);
+            }
+
+            if (shouldDisplay) {
+                registro.style.display = 'flex';
+                username.style.display = 'flex';
+                senha.style.display = 'flex';
+                acoes.style.display = 'flex';
+                found = true;
+            }
+        }
+
+        if (!found) {
+            alert('Nenhum item encontrado.');
+        }
+    });
+});
+
     editarForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        const id = e.currentTarget.getAttribute('data-id');
-
-        document.querySelector('input[name="id"]').value = id;
 
         erroEditar.textContent = '';
         let isValid = true;
@@ -76,9 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isValid) {
             const formData = {
-                adm: admEditado.value,
+                username: admEditado.value,
                 senha: senhaEditada.value,
-                id: document.querySelector('input[name="id"]').value
+                id: idAdm
             }
             const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarLoginAdm', {
                 method: 'POST',
@@ -133,6 +188,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.alert(result.message);
             }
         }});
-});
 
 
