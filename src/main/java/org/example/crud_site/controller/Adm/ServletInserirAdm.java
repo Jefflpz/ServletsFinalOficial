@@ -51,7 +51,7 @@ public class ServletInserirAdm extends HttpServlet {
         }
 
         try {
-            if (admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
+            if (admDAO.inserirAdm(adm.getAdm(), senhaHash)) {
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("{\"success\":true}");
             } else {
@@ -70,7 +70,7 @@ public class ServletInserirAdm extends HttpServlet {
         private String adm;
         private String senha;
 
-        public String getUsername() {
+        public String getAdm() {
             return this.adm;
         }
 

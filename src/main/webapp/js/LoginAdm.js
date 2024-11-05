@@ -45,7 +45,7 @@ form.addEventListener('submit', async (e) => {
 
     if (isValid) {
         const formData = {
-            adm: usuarioInput.value,
+            username: usuarioInput.value,
             senha: senhaInput.value
         }
         const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/login', {

@@ -52,7 +52,7 @@ public class ServletLogin extends HttpServlet {
 //        System.out.println("Senha: " + senha);
 
         try {
-            if (verificarLogin(adm.getAdm(), senhaHash)) {
+            if (verificarLogin(adm.getUsername(), senhaHash)) {
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("{\"success\":true}");
             } else {
@@ -76,11 +76,11 @@ public class ServletLogin extends HttpServlet {
     }
 
     private static class Login {
-        private String adm;
+        private String username;
         private String senha;
 
-        public String getAdm() {
-            return this.adm;
+        public String getUsername() {
+            return this.username;
         }
 
         public String getSenha() {

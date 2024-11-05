@@ -2,7 +2,10 @@ const novoAdmin = document.getElementById('novoAdm');
 const novaSenha = document.getElementById('novoSenha');
 const cadastroForm = document.getElementById('cadastroForm');
 const erro = document.getElementById('erro');
-const deletar = document.getElementById('delete');
+const senhaEditada = document.getElementById('senhaEditada');
+const admEditado = document.getElementById('admEditado');
+const editarForm = document.getElementById('editarForm');
+const erroEditar = document.getElementById('erroEditar');
 
 // Regex para validação
 const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
@@ -42,13 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inserirADM.addEventListener('click', (e) => {   togglePopup (e)});
 
-    function togglePopup(e) {
-        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
-    }
-
     function togglePopupedit(e) {
         popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
-        let usernameEdit = document.getElementById('login');
+        let usernameEdit = document.getElementById('admEditado');
         usernameEdit.value = e.currentTarget.getAttribute('data-username');
     }
 
@@ -58,6 +57,46 @@ document.addEventListener("DOMContentLoaded", function () {
     function cancelPopupedit() {
         popupADMedit.style.display = 'none';
     }
+
+    editarForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const id = e.currentTarget.getAttribute('data-id');
+
+        document.querySelector('input[name="id"]').value = id;
+
+        erroEditar.textContent = '';
+        let isValid = true;
+
+        // Validação do ADM
+        if (!patternAdm.test(admEditado.value) || !patternSenha.test(senhaEditada.value)) {
+            erroEditar.textContent = 'Administrador ou senha inválida(o)!';
+            isValid = false;
+        }
+
+        if (isValid) {
+            const formData = {
+                adm: admEditado.value,
+                senha: senhaEditada.value,
+                id: document.querySelector('input[name="id"]').value
+            }
+            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarLoginAdm', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            console.log(response);
+            if (response.ok) {
+                window.alert('Informações atualizadas com sucesso!');
+                location.reload();
+            } else {
+                const result = await response.json();
+                window.alert(result.message);
+            }
+        }});
 
     // Validação do login
     cadastroForm.addEventListener('submit', async (e) => {

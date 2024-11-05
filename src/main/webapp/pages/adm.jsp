@@ -101,7 +101,7 @@
                     <h2 class="titulo">Cadastrar administrador</h2>
                 </div>
                 <div class="form-group">
-                    <label for="login" class="label">Login:</label>
+                    <label for="novoAdm" class="label">Login:</label>
                     <input type="text" id="novoAdm" name="username" placeholder="avnadmin" class="input" required />
                 </div>
 
@@ -121,21 +121,22 @@
 
     <div id="popupIDadm" style="display: none;">
         <div class="popup">
-            <form action="#" class="registrar">
+            <form action="#" class="registrar" id="editarForm">
                 <div class="bloco-titulo">
                     <h2 class="titulo">Editar Adm</h2>
                 </div>
                 <div class="form-group">
-                    <label for="login" class="label">Login:</label>
-                    <input type="text" id="login" name="login" class="input" required />
+                    <label for="admEditado" class="label">Login:</label>
+                    <input type="text" id="admEditado" name="login" class="input" required />
                 </div>
 
                 <div class="form-group">
                     <label class="label">Digite a senha:</label>
                     <div class="password-container">
-                        <input type="password" placeholder="Senha" class="input password"/>
+                        <input type="password" id="senhaEditada" class="input password" required/>
                     </div>
                 </div>
+                <span id="erroEditar" class="mensagem-erro"></span>
 
                 <button type="submit" class="b bt-registrar">Confirmar alterações</button>
                 <button type="button" class="b bt-cancelar-edit">Cancelar</button>
