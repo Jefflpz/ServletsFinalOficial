@@ -16,7 +16,7 @@ import java.util.List;
 public class ServletListarAdministradores extends HttpServlet {
 
     // Método que lida com requisições Post
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // Cria uma instância do DAO para acessar dados de administradores
         AdmDAO admDAO = new AdmDAO();
         List<Adm> listaAdms = admDAO.listarAdms();  // Este método deve estar implementado no AdmDAO
@@ -24,8 +24,5 @@ public class ServletListarAdministradores extends HttpServlet {
 
         // Encaminha para a página JSP que exibirá os dados do administrador
         request.getRequestDispatcher("pages/adm.jsp").forward(request, response);
-    }
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);  // Redireciona GET para POST
     }
 }
