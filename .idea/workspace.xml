@@ -9,24 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="innitial commit do fim">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/adm/ServletExcluirAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/adm/ServletExcluirAdm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/adm/ServletInserirAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/adm/ServletInserirAdm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/setor/ServletExcluirSetor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/setor/ServletExcluirSetor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletListarTiposArquivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletListarTiposArquivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletExcluirTipoVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletExcluirTipoVaga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/SetorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/SetorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/TipoArquivoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/TipoArquivoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/setor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/setor.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/situacaoTrabalhista.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/situacaoTrabalhista.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/statusCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/statusCurso.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/tipoArquivo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/tipoArquivo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/tipoVaga.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/tipoVaga.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="innitial commit do fim" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,7 +211,7 @@
       <workItem from="1730798531678" duration="14822000" />
       <workItem from="1730823445290" duration="911000" />
       <workItem from="1730826759419" duration="15013000" />
-      <workItem from="1730892441720" duration="24012000" />
+      <workItem from="1730892441720" duration="24682000" />
     </task>
     <task id="LOCAL-00001" summary="Commit para o gustavo terminar a estilização do site">
       <option name="closed" value="true" />
@@ -358,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730927072302</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="innitial commit do fim">
+      <option name="closed" value="true" />
+      <created>1730927574814</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1730927574815</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
