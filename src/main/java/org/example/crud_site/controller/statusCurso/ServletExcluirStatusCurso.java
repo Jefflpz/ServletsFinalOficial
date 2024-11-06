@@ -19,7 +19,7 @@ public class ServletExcluirStatusCurso extends HttpServlet {
         StatusCursoDAO statusCursoDAO = new StatusCursoDAO();
 
         if (statusCursoDAO.excluirStautsCurso(nomeStatus)) {
-            request.getRequestDispatcher("listarStatus_Curso").forward(request, response);
+            request.getRequestDispatcher("listarStatusCurso").forward(request, response);
         }
         else{
             request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);

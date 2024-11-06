@@ -12,7 +12,7 @@ import org.example.crud_site.dao.StatusCursoDAO;
 import org.example.crud_site.model.StatusCurso;
 
 // Define a servlet que responde ao caminho /listarStatus_Curso
-@WebServlet("/listarStatus_Curso")
+@WebServlet("/listarStatusCurso")
 public class ServletListarStatusCursos extends HttpServlet {
 
     // Método que lida com requisições GET

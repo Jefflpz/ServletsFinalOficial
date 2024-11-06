@@ -9,16 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="innitial commit do fim">
+    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="Commit com tudo fincionando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletBuscarPermissaoCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletBuscarPermissaoCurso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletListarPermissoesCursos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletListarPermissoesCursos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletBuscarPermissaoVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletBuscarPermissaoVaga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletListarPermissoesVagas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletListarPermissoesVagas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/model/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/model/Curso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/model/PermissaoCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/model/PermissaoCurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletExcluirSituacaoTrabalhista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletExcluirSituacaoTrabalhista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletInserirSituacaoTrabalhista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletInserirSituacaoTrabalhista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletListarSituacoesTrabalhistas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletListarSituacoesTrabalhistas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletExcluirStatusCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletExcluirStatusCurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletInserirStatusCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletInserirStatusCurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletListarStatusCursos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletListarStatusCursos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletInserirTipoArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletInserirTipoArquivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletListarTiposArquivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletListarTiposArquivos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletExcluirTipoVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletExcluirTipoVaga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletInserirTipoVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletInserirTipoVaga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletListarTiposVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletListarTiposVaga.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoVaga.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoVaga.jsp" afterDir="false" />
@@ -229,7 +233,7 @@
       <workItem from="1730798531678" duration="14822000" />
       <workItem from="1730823445290" duration="911000" />
       <workItem from="1730826759419" duration="15013000" />
-      <workItem from="1730892441720" duration="30824000" />
+      <workItem from="1730892441720" duration="33106000" />
     </task>
     <task id="LOCAL-00001" summary="Commit para o gustavo terminar a estilização do site">
       <option name="closed" value="true" />
@@ -367,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730927574815</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Commit com tudo fincionando">
+      <option name="closed" value="true" />
+      <created>1730935240791</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1730935240791</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,18 +408,10 @@
     <MESSAGE value="DAOs certos" />
     <MESSAGE value="AJuste na PermissaoVaga" />
     <MESSAGE value="innitial commit do fim" />
-    <option name="LAST_COMMIT_MESSAGE" value="innitial commit do fim" />
+    <MESSAGE value="Commit com tudo fincionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit com tudo fincionando" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp</url>
-          <line>79</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
         <watch expression="e" language="JAVA" />

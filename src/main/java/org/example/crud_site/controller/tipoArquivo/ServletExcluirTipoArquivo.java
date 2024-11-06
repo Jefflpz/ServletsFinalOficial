@@ -21,7 +21,7 @@ public class ServletExcluirTipoArquivo extends HttpServlet {
 
         // Tenta excluir o setor e redireciona conforme o resultado
         if (tipoArquivoDAO.excluirTipoArquivo(nomeTipoArquivo)) {
-            request.getRequestDispatcher("listarTipoarquivo").forward(request, response);
+            request.getRequestDispatcher("listarTipoArquivo").forward(request, response);
         } else {
             request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
         }

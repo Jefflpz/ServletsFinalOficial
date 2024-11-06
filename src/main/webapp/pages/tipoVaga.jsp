@@ -22,11 +22,11 @@
             <li><a href="listarPermissaoVaga">Permissão Vaga</a></li>
             <li><a href="listarPermissaoCurso">Permissão Curso</a></li>
             <li><a href="listarSetor">Setores</a></li>
-            <li ><a href="listarTipoarquivo">Tipo de arquivo</a></li>
+            <li ><a href="listarTipoArquivo">Tipo de arquivo</a></li>
             <div class="elemento"></div>
             <li class="selecionado"><a href="#">Tipo de vaga</a></li>
-            <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
-            <li><a href="listarStatus_Curso">Status curso</a></li>
+            <li><a href="listarSituacaoTrabalhista">Situação trabalhista</a></li>
+            <li><a href="listarStatusCurso">Status curso</a></li>
             <li><a href="index.html" class="logout">Sair</a></li>
         </ul>
     </nav>
@@ -114,7 +114,7 @@
 
     <div id="popupIDTipoVaga" style="display: none;">
         <div class="popup">
-            <form action="atualizarTipo_Vaga" class="registrar" id="editarTipoVaga">
+            <form action="atualizarTipoVaga" class="registrar" id="editarTipoVaga">
                 <div class="bloco-titulo">
                     <h2 class="titulo">Editar tipo vaga</h2>
                 </div>

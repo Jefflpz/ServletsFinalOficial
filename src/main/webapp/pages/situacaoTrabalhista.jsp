@@ -22,11 +22,11 @@
             <li><a href="listarPermissaoVaga">Permissão Vaga</a></li>
             <li><a href="listarPermissaoCurso">Permissão Curso</a></li>
             <li><a href="listarSetor">Setores</a></li>
-            <li><a href="listarTipoarquivo">Tipo de arquivo</a></li>
-            <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
+            <li><a href="listarTipoArquivo">Tipo de arquivo</a></li>
+            <li><a href="listarTipoVaga">Tipo de vaga</a></li>
             <div class="elemento"></div>
             <li class="selecionado"><a href="#">Situação trabalhista</a></li>
-            <li><a href="listarStatus_Curso">Status curso</a></li>
+            <li><a href="listarStatusCurso">Status curso</a></li>
             <li><a href="index.html" class="logout">Sair</a></li>
         </ul>
     </nav>

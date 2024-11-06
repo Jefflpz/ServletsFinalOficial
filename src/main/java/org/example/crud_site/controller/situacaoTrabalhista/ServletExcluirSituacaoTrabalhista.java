@@ -19,7 +19,7 @@ public class ServletExcluirSituacaoTrabalhista extends HttpServlet {
         SituacaoTrabalhistaDAO situacaoTrabalhistaDAO = new SituacaoTrabalhistaDAO();
 
         if (situacaoTrabalhistaDAO.excluirSituacaoTrabalhista(nomeSituacao)) {
-            request.getRequestDispatcher("listarSituacao_Trabalhistas").forward(request, response);
+            request.getRequestDispatcher("listarSituacaoTrabalhista").forward(request, response);
         }
         else{
             request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);

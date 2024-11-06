@@ -10,7 +10,7 @@ import org.example.crud_site.model.StatusCurso;
 
 import java.io.IOException;
 
-@WebServlet("/inserirStatus_Curso")
+@WebServlet("/inserirStatusCurso")
 public class ServletInserirStatusCurso extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
@@ -21,7 +21,7 @@ public class ServletInserirStatusCurso extends HttpServlet {
         StatusCurso statusNovo = new StatusCurso(nomeStatusCurso);
         try {
             if (statusCursoDAO.inserirStatusCurso(statusNovo.getNome())) {
-                response.sendRedirect(request.getContextPath() + "/listarStatus_Curso");
+                response.sendRedirect(request.getContextPath() + "/listarStatusCurso");
             } else {
                 request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
             }

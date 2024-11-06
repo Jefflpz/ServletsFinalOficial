@@ -10,7 +10,7 @@ import org.example.crud_site.model.TipoArquivo;
 
 import java.io.IOException;
 
-@WebServlet("/inserirTipo_Arquivo")
+@WebServlet("/inserirTipoArquivo")
 public class ServletInserirTipoArquivo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
@@ -21,7 +21,7 @@ public class ServletInserirTipoArquivo extends HttpServlet {
         TipoArquivo tipoArquivoNovo = new TipoArquivo(nomeTipoArquivo);
         try {
             if (tipoArquivoDAO.inserirTipoArquivo(tipoArquivoNovo.getNome())) {
-                response.sendRedirect(request.getContextPath() + "/listarTipo_arquivo");
+                response.sendRedirect(request.getContextPath() + "/listarTipoArquivo");
             } else {
                 request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
             }

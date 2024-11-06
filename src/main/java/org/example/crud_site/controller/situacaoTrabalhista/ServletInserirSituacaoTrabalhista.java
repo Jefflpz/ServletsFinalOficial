@@ -21,7 +21,7 @@ public class ServletInserirSituacaoTrabalhista extends HttpServlet {
         SituacaoTrabalhista situacaoTrabalhistaNova = new SituacaoTrabalhista(nomeSituacao);
         try {
             if (situacaoTrabalhistaDAO.inserirSituacaoTrabalhista(situacaoTrabalhistaNova.getNome())) {
-                response.sendRedirect(request.getContextPath() + "/listarSituacao_Trabalhistas");
+                response.sendRedirect(request.getContextPath() + "/listarSituacaoTrabalhista");
             } else {
                 request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
             }

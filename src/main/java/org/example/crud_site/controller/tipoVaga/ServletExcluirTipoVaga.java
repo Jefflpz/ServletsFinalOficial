@@ -20,7 +20,7 @@ public class ServletExcluirTipoVaga extends HttpServlet {
 
         // Tenta excluir o tipo de vaga
         if (tipo_VagaDAO.excluirTipo_Vaga(nomeTipo_Vaga)){
-            req.getRequestDispatcher("listarTipo_Vaga").forward(req, res);
+            req.getRequestDispatcher("listarTipoVaga").forward(req, res);
         }
         req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }

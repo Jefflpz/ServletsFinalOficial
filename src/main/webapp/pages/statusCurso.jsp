@@ -22,9 +22,9 @@
             <li><a href="listarPermissaoVaga">Permissão Vaga</a></li>
             <li><a href="listarPermissaoCurso">Permissão Curso</a></li>
             <li><a href="listarSetor">Setores</a></li>
-            <li><a href="listarTipoarquivo">Tipo de arquivo</a></li>
-            <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
-            <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
+            <li><a href="listarTipoArquivo">Tipo de arquivo</a></li>
+            <li><a href="listarTipoVaga">Tipo de vaga</a></li>
+            <li><a href="listarSituacaoTrabalhista">Situação trabalhista</a></li>
             <div class="elemento"></div>
             <li class="selecionado"><a href="#">Status curso</a></li>
             <li><a href="index.html" class="logout">Sair</a></li>
@@ -99,7 +99,7 @@
 
     <div id="popupID" style="display: none;">
         <div class="popup">
-            <form action="inserirStatus_Curso" class="registrar" method="post">
+            <form action="inserirStatusCurso" class="registrar" method="post">
                 <div class="bloco-titulo">
                     <h2 class="titulo">Inserir Status Curso</h2>
                 </div>

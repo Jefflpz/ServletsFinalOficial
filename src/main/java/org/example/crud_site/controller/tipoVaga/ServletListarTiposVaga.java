@@ -12,7 +12,7 @@ import org.example.crud_site.dao.TipoVagaDAO;
 import org.example.crud_site.model.TipoVaga;
 
 // Define a servlet que responde ao caminho /listarTipo_Vaga
-@WebServlet("/listarTipo_Vaga")
+@WebServlet("/listarTipoVaga")
 public class ServletListarTiposVaga extends HttpServlet {
 
     // Método que lida com requisições GET

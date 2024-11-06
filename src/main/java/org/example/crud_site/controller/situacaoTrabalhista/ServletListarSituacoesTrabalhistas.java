@@ -12,7 +12,7 @@ import org.example.crud_site.dao.SituacaoTrabalhistaDAO;
 import org.example.crud_site.model.SituacaoTrabalhista;
 
 // Define a servlet que responde ao caminho /listarSituacao_Trabalhistas
-@WebServlet("/listarSituacao_Trabalhistas")
+@WebServlet("/listarSituacaoTrabalhista")
 public class ServletListarSituacoesTrabalhistas extends HttpServlet {
 
     // Método que lida com requisições GET

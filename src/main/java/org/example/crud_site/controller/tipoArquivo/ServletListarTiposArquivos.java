@@ -12,7 +12,7 @@ import org.example.crud_site.dao.TipoArquivoDAO;
 import org.example.crud_site.model.TipoArquivo;
 
 // Define a servlet que responde ao caminho /listarTipo_arquivo
-@WebServlet("/listarTipoarquivo")
+@WebServlet("/listarTipoArquivo")
 public class ServletListarTiposArquivos extends HttpServlet {
 
     // Método que lida com requisições GET

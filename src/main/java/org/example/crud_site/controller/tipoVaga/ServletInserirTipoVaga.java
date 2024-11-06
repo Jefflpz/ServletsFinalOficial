@@ -10,7 +10,7 @@ import org.example.crud_site.model.TipoVaga;
 
 import java.io.IOException;
 
-@WebServlet("/inserirTipo_Vaga")
+@WebServlet("/inserirTipoVaga")
 public class ServletInserirTipoVaga extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
@@ -21,7 +21,7 @@ public class ServletInserirTipoVaga extends HttpServlet {
         TipoVaga tipoVagaNovo = new TipoVaga(nomeTipoVaga);
         try {
             if (tipoVagaDAO.inserirTipo_Vaga(tipoVagaNovo.getNome())) {
-                response.sendRedirect(request.getContextPath() + "/listarTipo_Vaga");
+                response.sendRedirect(request.getContextPath() + "/listarTipoVaga");
             } else {
                 request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
             }
