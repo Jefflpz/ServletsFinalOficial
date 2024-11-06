@@ -45,13 +45,13 @@ public class StatusCursoDAO {
     }
 
     // Método para alterar o nome de um status de curso existente.
-    public boolean alterarNomeStatusCurso(StatusCurso status_curso, String nome) {
+    public boolean alterarNomeStatusCurso(UUID uuid, String novoStatusCurso) {
         conexao.conectar(); // Conecta ao banco de dados
-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE status_curso SET nome = ? WHERE nome = ?")){
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE status_curso SET nome = ? WHERE id = ?")){
 
             // Define os valores dos parâmetros da consulta
-            pstmt.setString(1, nome); // Novo nome
-            pstmt.setString(2, status_curso.getNome()); // Nome atual
+            pstmt.setString(1, novoStatusCurso); // Novo nome
+            pstmt.setObject(2, uuid); // Nome atual
 
             // Executa a instrução SQL e retorna true se alguma linha for alterada
             int rows = pstmt.executeUpdate();

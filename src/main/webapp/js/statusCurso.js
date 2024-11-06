@@ -1,11 +1,11 @@
-const editarStatusCurso = document.getElementById('editarStatusCurso');
+const editarStatusCursoForm = document.getElementById('editarStatusCurso');
 const statusCursoEditado = document.getElementById('editar');
 let idStatusCurso = null;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Exibir/ocultar senha
     document.querySelectorAll('.view-password').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const passwordCell = this.parentElement.previousElementSibling;
             passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
         });
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Remover linha (excluir)
     document.querySelectorAll('.delete').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = this.closest('.crud-row');
             if (row) {
                 row.remove();
@@ -68,6 +68,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function togglePopupEdit(e) {
         if (popupStatusCursoEdit) {
             popupStatusCursoEdit.style.display = popupStatusCursoEdit.style.display === 'none' ? 'flex' : 'none';
+            let nomeStatusCurso = document.getElementById('editar');
+            nomeStatusCurso.value = e.currentTarget.getAttribute('data-nomeStatusCurso');
+
+            idStatusCurso = e.currentTarget.getAttribute('data-uuid');
         }
     }
 
@@ -86,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Filtro de pesquisa
     const form = filterBar.querySelector('form');
     if (form) {
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
 
             const selectedField = this['filter-field'].value;
@@ -124,6 +128,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (!found) {
                 alert('Nenhum item encontrado.');
+            }
+        });
+
+        editarStatusCursoForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = {
+                statusCurso: statusCursoEditado.value,
+                uuid: idStatusCurso
+            }
+            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarStatusCurso', {
+                method: 'POST', body: JSON.stringify(formData), headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            console.log(response);
+            if (response.ok) {
+                window.alert('Informações atualizadas com sucesso!');
+                location.reload();
+            } else {
+                const result = await response.json();
+                window.alert(result.message);
             }
         });
     }
