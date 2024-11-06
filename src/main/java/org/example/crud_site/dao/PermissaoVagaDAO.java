@@ -2,6 +2,7 @@ package org.example.crud_site.dao;
 
 // Importando a classe Permissao_Vaga para usar os seus atributos e métodos.
 import org.example.crud_site.model.PermissaoVaga;
+import org.example.crud_site.model.Vaga;
 
 // Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.PreparedStatement;
@@ -116,14 +117,15 @@ public class PermissaoVagaDAO {
         }
     }
     // Método para buscar uma permissão de vaga pelo ID, incluindo atributos de Vaga
-    public PermissaoVaga buscarPermissaoVagaPorId(UUID id) {
+    public Vaga buscarPermissaoVagaPorId(UUID id) {
 
         // Conecta ao banco de dados
         conexao.conectar();
-
-        try(PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM vaga WHERE pc.id = ?"))
+        Vaga vaga = null;
+        try
         {
-
+            // Cria a instrução SQL para buscar uma permissão de vaga pelo ID
+            PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM vaga WHERE id = ?");
             // Define o valor do parâmetro na instrução SQL
             pstmt.setObject(1, id);
 
@@ -140,12 +142,9 @@ public class PermissaoVagaDAO {
 
 
                 // Cria e retorna um objeto Permissao_Vaga com os dados obtidos
-                return new PermissaoVaga(idId, nome, descricao, tipo_vaga, id_Empresa);
+                vaga = new Vaga(idId, tipo_vaga, descricao, nome, id_Empresa);
             }
-
-            // Retorna null se nenhum registro for encontrado
-            return null;
-
+            return vaga;
         } catch (SQLException e) {
             // Retorna null caso ocorra uma exceção
             return null;

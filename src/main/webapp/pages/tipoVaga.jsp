@@ -19,8 +19,8 @@
         <ul>
             <li><a href="#"><img src="img/casa.png">Home</a></li>
             <li ><a href="listarAdm">Adm</a></li>
-            <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
-            <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
+            <li><a href="listarPermissaoVaga">Permissão Vaga</a></li>
+            <li><a href="listarPermissaoCurso">Permissão Curso</a></li>
             <li><a href="listarSetor">Setores</a></li>
             <li ><a href="listarTipoarquivo">Tipo de arquivo</a></li>
             <div class="elemento"></div>

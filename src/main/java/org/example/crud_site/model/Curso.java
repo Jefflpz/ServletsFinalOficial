@@ -12,6 +12,7 @@ public class Curso {
     private String descricao;
     private char status;
     private UUID idConta;
+    private UUID id_autorizador;
 
     // Construtor que recebe os parâmetros necessários para criar um objeto da classe Curso
     // e atribui os valores aos atributos da classe
@@ -20,9 +21,21 @@ public class Curso {
         this.descricao = descricao;
         this.idConta = id_conta;
     }
-    public Curso(){}
+    public Curso(UUID idConta, String nome, String descricao, UUID idCurso, UUID idAutorizador) {
+        this.idConta = idConta;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.id = idCurso;
+        this.id_autorizador = idAutorizador;
+    }
 
     // Métodos Getters, que acessa os atributos da classe
+    public UUID getIdConta() {
+        return this.idConta;
+    }
+    public UUID getIdAutorizador() {
+        return this.id_autorizador;
+    }
     public UUID getId() {
         return this.id;
     }

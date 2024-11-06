@@ -26,7 +26,7 @@ public class PermissaoCurso extends Curso {
         this.id = id;
     }
     public PermissaoCurso(UUID id_autorizador, UUID id_curso, String dt_autorizacao, String dt_solicitaco, boolean permissao, UUID id, UUID id_conta) {
-        super();
+        super("","",UUID.randomUUID());
         this.idAutorizador = id_autorizador;
         this.idCurso = id_curso;
         this.dtAutorizacao = dt_autorizacao;

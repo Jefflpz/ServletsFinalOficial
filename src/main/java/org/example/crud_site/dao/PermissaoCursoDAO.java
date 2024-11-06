@@ -1,6 +1,7 @@
 package org.example.crud_site.dao;
 
 // Importando a classe Permissao_Curso para manipular permissões de cursos
+import org.example.crud_site.model.Curso;
 import org.example.crud_site.model.PermissaoCurso;
 
 import java.sql.PreparedStatement;
@@ -108,13 +109,14 @@ public class PermissaoCursoDAO {
     }
 
     // Método para buscar uma permissão de curso pelo ID, incluindo atributos de Curso
-    public PermissaoCurso buscarPermissaoCursoPorId(UUID id) {
+    public Curso buscarPermissaoCursoPorId(UUID id) {
 
         // Conecta ao banco de dados
-        conexao.conectar();
+        Curso curso = null;
+        try {
+            conexao.conectar();
 
-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT pc.id, c.nome, c.id_status, pc.id_conta, c.descricao FROM permissao_Curso pc JOIN curso c ON pc.id_curso = c.id WHERE pc.id = ?");){
-
+            PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM curso WHERE id = ?");
             // Define o valor do parâmetro na instrução SQL
             pstmt.setObject(1, id);
 
@@ -123,21 +125,16 @@ public class PermissaoCursoDAO {
 
             // Verifica se o ResultSet contém algum registro
             if (rs.next()) {
-                UUID idConta = (UUID) rs.getObject("id_conta");
-                boolean permissao = rs.getBoolean("permissao");
-                String dtSolicitacao = rs.getString("dt_solicitacao");
-                String dtAutorizacao = rs.getString("dt_autorizacao");
-                UUID idCurso = (UUID) rs.getObject("id_curso");
-                UUID idAutorizador = (UUID) rs.getObject("id_autorizador");
-                String nomeCurso = rs.getString("nome_curso");
-                String descricaoCurso = rs.getString("descricao_curso");
+                UUID idConta = (UUID) rs.getObject(1);
+                String nome  = rs.getString(2);
+                String descricao = rs.getString(3);
+                UUID idCurso = (UUID) rs.getObject(4);
+                UUID idAutorizador = (UUID) rs.getObject(5);
 
                 // Cria e retorna um objeto Permissao_Curso com os dados obtidos
-                return new PermissaoCurso(nomeCurso, descricaoCurso, idConta, idAutorizador, idCurso, dtAutorizacao, dtSolicitacao, permissao, idConta, id);
+                curso = new Curso(idConta, nome, descricao, idCurso, idAutorizador);
             }
-            // Retorna null se nenhum registro for encontrado
-            return null;
-
+            return curso;
         } catch (SQLException e) {
             // Retorna null caso ocorra uma exceção
             return null;

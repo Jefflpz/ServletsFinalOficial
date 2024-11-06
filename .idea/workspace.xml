@@ -9,7 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="innitial commit do fim" />
+    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="innitial commit do fim">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletBuscarPermissaoCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletBuscarPermissaoCurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletListarPermissoesCursos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletListarPermissoesCursos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletBuscarPermissaoVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletBuscarPermissaoVaga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletListarPermissoesVagas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletListarPermissoesVagas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/model/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/model/Curso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/model/PermissaoCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/model/PermissaoCurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoVaga.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoVaga.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/setor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/setor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/situacaoTrabalhista.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/situacaoTrabalhista.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/statusCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/statusCurso.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/tipoArquivo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/tipoArquivo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/tipoVaga.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/tipoVaga.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +46,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/Jefflpz/ServletsFinal.git",
+    "url": "https://github.com/Jefflpz/ServletsFinalOficial.git",
     "accountId": "680ddf12-abde-4a36-b030-2d765f761827"
   }
 }]]></component>
@@ -211,7 +229,7 @@
       <workItem from="1730798531678" duration="14822000" />
       <workItem from="1730823445290" duration="911000" />
       <workItem from="1730826759419" duration="15013000" />
-      <workItem from="1730892441720" duration="24682000" />
+      <workItem from="1730892441720" duration="30824000" />
     </task>
     <task id="LOCAL-00001" summary="Commit para o gustavo terminar a estilização do site">
       <option name="closed" value="true" />
@@ -384,19 +402,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="35" />
+          <url>file://$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp</url>
+          <line>79</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

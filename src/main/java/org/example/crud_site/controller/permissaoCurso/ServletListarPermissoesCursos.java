@@ -12,7 +12,7 @@ import org.example.crud_site.model.PermissaoCurso;
 import org.example.crud_site.dao.PermissaoCursoDAO;
 
 // Define a servlet que responde ao caminho /listarPermissao_Curso
-@WebServlet("/listarPermissao_Curso")
+@WebServlet("/listarPermissaoCurso")
 public class ServletListarPermissoesCursos extends HttpServlet {
 
     // Método que lida com requisições GET

@@ -22,9 +22,9 @@
                 <li><a href="listarAdm">Adm</a></li>
                 <div class="elemento"></div>
                 <li class="selecionado"><a href="#">Permissão Vaga</a></li>
-                <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
+                <li><a href="listarPermissaoCurso">Permissão Curso</a></li>
                 <li><a href="listarSetor">Setores</a></li>
-                <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+                <li><a href="listarTipoarquivo">Tipo de arquivo</a></li>
                 <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
                 <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
                 <li><a href="listarStatus_Curso">Status curso</a></li>
@@ -70,14 +70,14 @@
                     if (!lista.isEmpty()) {
                     for (int i = 0; i < lista.size(); i++) {
                         PermissaoVagaDAO permissaoVagaDAO = new PermissaoVagaDAO();
-                        Vaga vaga = permissaoVagaDAO.buscarPermissaoVagaPorId(lista.get(i).getId());
                 %>
                 <div class="grid-item registro"><%= i+1 %></div>
                 <div class="grid-item"><%= lista.get(i).getDtSolicitacao() %></div>
                 <div class="grid-item"><%= lista.get(i).getPermissao() %></div>
                 <div class="grid-item">
                     <form action="buscarPermissao_Vaga" method="post">
-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
+                        <%Vaga vaga = permissaoVagaDAO.buscarPermissaoVagaPorId(lista.get(i).getIdVaga());%>
+                        <input type="hidden" name="id" value="<%=vaga.getId()%>">
                         <button class="action view"
                                 data-id="<%= vaga.getId() %>"
                                 data-tipo="<%= vaga.getId_tipo() %>"

@@ -1,5 +1,8 @@
 <%@ page import="org.example.crud_site.model.PermissaoCurso" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.example.crud_site.dao.PermissaoCursoDAO" %>
+<%@ page import="org.example.crud_site.model.Vaga" %>
+<%@ page import="org.example.crud_site.model.Curso" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,7 +27,7 @@
             <ul>
                 <li><a href="#"><img src="img/casa.png" alt="Home">Home</a></li>
                 <li><a href="listarAdm">Adm</a></li>
-                <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
+                <li><a href="listarPermissaoVaga">Permissão Vaga</a></li>
                 <div class="elemento"></div>
                 <li class="selecionado"><a href="#">Permissão Curso</a></li>
                 <li><a href="listarSetor">Setores</a></li>
@@ -73,22 +76,23 @@
 
                     if (!lista.isEmpty()) {
                         for (int i = 0; i < lista.size(); i++) {
+                            PermissaoCursoDAO permissaoCursoDAO = new PermissaoCursoDAO();
+                            Curso curso = permissaoCursoDAO.buscarPermissaoCursoPorId(lista.get(i).getIdCurso());
                 %>
                 <div class="grid-item registro"><%= i+1 %></div>
                 <div class="grid-item"><%= lista.get(i).getDtSolicitaco() %></div>
                 <div class="grid-item"><%= lista.get(i).getPermissao() %></div>
                 <div class="grid-item">
                     <form action="autorizarPermissao_Curso" method="post">
-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                        <button class="action permitido"><img src="img/correto.png" alt="excluir setor"></button>
-                    </form>
-                    <form action="buscarPermissaoCurso" method="post">
-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                        <button class="action view"><img src="img/olho.png" alt="excluir setor"></button>
-                    </form>
-                    <form action="negarPermissao_Curso" method="post">
-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                        <button class="action delete"><img src="img/X.png" alt="excluir setor"></button>
+                        <%%>
+                        <input type="hidden" name="id" value="<%=curso.getId()%>">
+                        <button class="action permitido"
+                                data-id="<%= curso.getId() %>"
+                                data-tipo="<%= curso.getStatus() %>"
+                                data-nome="<%= curso.getNome() %>"
+                                data-idEmpresa="<%= curso.getIdConta() %>"
+                                data-descricao="<%= curso.getDescricao() %>">
+                            ><img src="img/correto.png" alt="excluir setor"></button>
                     </form>
                 </div>
                 <%
