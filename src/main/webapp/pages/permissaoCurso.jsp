@@ -42,7 +42,7 @@
         <main class="main-content">
             <div class="titulo">
                 <h1>Permissao Curso</h1>
-                <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
+                <button class="filtrar">Filtrar <span class="pesquisa"></span></button>
             </div>
 
             <!-- Barra de Filtro -->

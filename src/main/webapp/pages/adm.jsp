@@ -38,7 +38,7 @@
     <main class="main-content">
         <div class="titulo">
             <h1>Adm</h1>
-            <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
+            <button class="filtrar">Filtrar <span class="pesquisa"> </span></button>
             <button class="inserir-adm">Inserir Adm</button>
         </div>
 
@@ -76,7 +76,7 @@
                         data-username="<%= lista.get(i).getUsername() %>"
                         data-senha="<%= lista.get(i).getSenha() %>">
                     <img src="img/lapis.png" alt="editar adm"></button>
-                <form action="excluirAdm" method="post">
+                <form action="excluirAdm" method="get">
                     <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
                     <button id="delete" class="action delete"><img src="img/lixo.png" alt=""></button>
                 </form>

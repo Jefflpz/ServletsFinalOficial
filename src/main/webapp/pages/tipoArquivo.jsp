@@ -36,7 +36,7 @@
         <main class="main-content">
             <div class="titulo">
                 <h1>Tipo do Arquivo</h1>
-                <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
+                <button class="filtrar">Filtrar <span class="pesquisa"></span></button>
                 <button class="inserir-arquivo">Inserir Arquivo</button>
             </div>
 

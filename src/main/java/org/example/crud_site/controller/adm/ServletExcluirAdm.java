@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @WebServlet("/excluirAdm")
 public class ServletExcluirAdm extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtém os parâmetros da requisição
         String id = request.getParameter("id");
         UUID uuid = UUID.fromString(id);

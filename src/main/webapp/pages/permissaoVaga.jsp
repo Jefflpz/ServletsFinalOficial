@@ -36,7 +36,7 @@
         <main class="main-content">
             <div class="titulo">
                 <h1>Permissao vaga</h1>
-                <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
+                <button class="filtrar">Filtrar <span class="pesquisa"></span></button>
             </div>
 
             <!-- Barra de Filtro -->
@@ -72,17 +72,9 @@
                 <div class="grid-item"><%= lista.get(i).getDtSolicitacao() %></div>
                 <div class="grid-item"><%= lista.get(i).getPermissao() %></div>
                 <div class="grid-item">
-                    <form action="autorizarPermissao_Vaga" method="post">
-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                        <button class="action permitido"><img src="img/correto.png" alt="excluir setor"></button>
-                    </form>
                     <form action="buscarPermissao_Vaga" method="post">
                         <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                        <button class="action view"><img src="img/olho.png" alt="excluir setor"></button>
-                    </form>
-                    <form action="negarPermissao_Vaga" method="post">
-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                        <button class="action delete"><img src="img/X.png" alt="excluir setor"></button>
+                        <button class="action view"><img src="img/olho.png" alt=""></button>
                     </form>
                 </div>
                     <%

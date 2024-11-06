@@ -37,7 +37,7 @@
         <main class="main-content">
             <div class="titulo">
                 <h1>Status curso</h1>
-                <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
+                <button class="filtrar">Filtrar <span class="pesquisa"></span></button>
                 <button class="inserir-status-curso">Inserir Status Curso </button>
             </div>
 

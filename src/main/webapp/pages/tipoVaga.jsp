@@ -37,7 +37,7 @@
         <main class="main-content">
             <div class="titulo">
                 <h1>Tipo da vaga</h1>
-                <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
+                <button class="filtrar">Filtrar <span class="pesquisa"></span></button>
                 <button class="inserir-vaga">Inserir Vaga</button>
             </div>
 

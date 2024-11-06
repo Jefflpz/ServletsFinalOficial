@@ -37,7 +37,7 @@
         <main class="main-content">
             <div class="titulo">
                 <h1>Situação trabalhista</h1>
-                <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
+                <button class="filtrar">Filtrar <span class="pesquisa"></span></button>
                 <button class="inserir-situacao">Inserir Situação Trabalhista</button>
             </div>
 
