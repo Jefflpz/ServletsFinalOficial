@@ -72,7 +72,8 @@
                 <div class="grid-item registro"><%= i+1 %></div>
                 <div class="grid-item username"><%= lista.get(i).getNome() %></div>
                 <div class="grid-item">
-                    <button class="action edit">
+                    <button class="action edit"
+                            data-nomeStatusCurso="<%= lista.get(i).getNome() %>">
                         <img src="img/lapis.png" alt="editar status curso"></button>
                     <form action="excluirStatusCurso" method="get">
                         <input type="hidden" id="nome" name="nome" value="<%=lista.get(i).getNome()%>">

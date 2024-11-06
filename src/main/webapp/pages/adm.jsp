@@ -48,7 +48,7 @@
                     <option value="">Escolher campo</option>
                     <option value="todos">Todos</option>
                     <option value="registro-filtro">Registro</option>
-                    <option value="username-filtro">Username</option>
+                    <option value="username-filtro">Nome</option>
                 </select>
                 <input type="text" name="search" placeholder="Pesquisar...">
                 <button type="submit">Aplicar</button>
@@ -57,7 +57,7 @@
 
         <div class="grid-container">
             <div class="grid-header registro">Registro</div>
-            <div class="grid-header username">Username</div>
+            <div class="grid-header username">Nome</div>
             <div class="grid-header senha">Senha</div>
             <div class="grid-header acoes">Ações</div>
 

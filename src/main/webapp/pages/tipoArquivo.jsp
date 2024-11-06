@@ -70,8 +70,9 @@
                 <div class="grid-item registro"><%= i+1 %></div>
                 <div class="grid-item username"><%= lista.get(i).getNome() %></div>
                 <div class="grid-item">
-                    <button class="action edit">
-                        <img src="img/lapis.png" alt="editar status curso"></button>
+                    <button class="action edit"
+                            data-nomeTipoArquivo="<%= lista.get(i).getNome() %>">
+                        <img src="img/lapis.png" alt="editar tipo arquivo"></button>
                     <form action="excluirTipoArquivo" method="get">
                         <input type="hidden" id="nome" name="id" value="<%=lista.get(i).getId()%>">
                         <button class="action delete"><img src="img/lixo.png" alt="excluir status curso"></button>
