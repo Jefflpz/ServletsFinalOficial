@@ -37,7 +37,7 @@ public class Setor {
 
     // Método toString que retorna uma representação textual do objeto da classe
     public String toString() {
-        return "Setor{" +
+        return "Setor {" +
                 "\nid: " + this.id +
                 ";\nnome: '" + this.nome +
                 "\n}";

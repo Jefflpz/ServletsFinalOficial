@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.StatusCursoDAO;
-import org.example.crud_site.model.Status_Curso;
+import org.example.crud_site.model.StatusCurso;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class ServletInserirStatusCurso extends HttpServlet {
 
         // Instancia o DAO para interagir com o banco de dados.
         StatusCursoDAO statusCursoDAO = new StatusCursoDAO();
-        Status_Curso statusNovo = new Status_Curso(nomeStatusCurso);
+        StatusCurso statusNovo = new StatusCurso(nomeStatusCurso);
         try {
             if (statusCursoDAO.inserirStatusCurso(statusNovo.getNome())) {
                 response.sendRedirect(request.getContextPath() + "/listarStatus_Curso");

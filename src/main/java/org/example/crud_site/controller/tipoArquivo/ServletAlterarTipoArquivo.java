@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.TipoArquivoDAO;
-import org.example.crud_site.model.Tipo_Arquivo;
+import org.example.crud_site.model.TipoArquivo;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class ServletAlterarTipoArquivo extends HttpServlet {
         String novoNome = req.getParameter("novo_nome");
 
         // Cria uma instância do modelo Tipo_Arquivo e define o nome atual
-        Tipo_Arquivo tipo_arquivo = new Tipo_Arquivo(nomeAtual);
+        TipoArquivo tipo_arquivo = new TipoArquivo(nomeAtual);
 
         // Cria uma instância do DAO para realizar a alteração
         TipoArquivoDAO tipo_arquivoDAO = new TipoArquivoDAO();

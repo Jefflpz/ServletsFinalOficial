@@ -3,17 +3,17 @@ package org.example.crud_site.model;
 import java.util.UUID;
 
 // Classe Tipo_Vaga
-public class Tipo_Vaga {
+public class TipoVaga {
 
     // Atributos da classe
     private UUID id;
     private String nome;
 
     // Método construtor que recebe os parâmetros necessários para criar um objeto da classe
-    public Tipo_Vaga(String nome) {
+    public TipoVaga(String nome) {
         this.nome = nome;
     }
-    public Tipo_Vaga(UUID id,String nome) {
+    public TipoVaga(UUID id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -37,9 +37,9 @@ public class Tipo_Vaga {
     // Método toString que retorna uma representação textual do objeto
     @Override
     public String toString() {
-        return "Tipo_Vaga{" +
-                "\nid: " + id +
-                ";\nnome: " + nome +
+        return "Tipo Vaga {" +
+                "\nId: " + id +
+                ";\nNome: " + nome +
                 "}";
     }
 }

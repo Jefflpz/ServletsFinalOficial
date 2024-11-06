@@ -11,14 +11,14 @@ public class Curso {
     private String nome;
     private String descricao;
     private char status;
-    private UUID id_conta;
+    private UUID idConta;
 
     // Construtor que recebe os parâmetros necessários para criar um objeto da classe Curso
     // e atribui os valores aos atributos da classe
     public Curso(String nome, String descricao, UUID id_conta) {
         this.nome = nome;
         this.descricao = descricao;
-        this.id_conta = id_conta;
+        this.idConta = id_conta;
     }
     public Curso(){}
 
@@ -46,10 +46,10 @@ public class Curso {
 
     // Método toString, uma representação do objeto em forma de String
     public String toString() {
-        return "Curso:" +
-                "\n id: " + this.id +
-                "\n nome: " + this.nome +
-                "\n descricao: " + this.descricao +
-                "\n status: " + this.status;
+        return "Curso {" +
+                "\n Id: " + this.id +
+                "\n Nome: " + this.nome +
+                "\n Descricao: " + this.descricao +
+                "\n Status: " + this.status;
     }
 }

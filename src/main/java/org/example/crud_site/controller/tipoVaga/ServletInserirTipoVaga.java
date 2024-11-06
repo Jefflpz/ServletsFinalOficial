@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.TipoVagaDAO;
-import org.example.crud_site.model.Tipo_Vaga;
+import org.example.crud_site.model.TipoVaga;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class ServletInserirTipoVaga extends HttpServlet {
 
         // Instancia o DAO para interagir com o banco de dados.
         TipoVagaDAO tipoVagaDAO = new TipoVagaDAO();
-        Tipo_Vaga tipoVagaNovo = new Tipo_Vaga(nomeTipoVaga);
+        TipoVaga tipoVagaNovo = new TipoVaga(nomeTipoVaga);
         try {
             if (tipoVagaDAO.inserirTipo_Vaga(tipoVagaNovo.getNome())) {
                 response.sendRedirect(request.getContextPath() + "/listarTipo_Vaga");

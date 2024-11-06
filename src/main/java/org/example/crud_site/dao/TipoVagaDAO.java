@@ -1,7 +1,7 @@
 package org.example.crud_site.dao;
 
 // Importando a classe Tipo_Vaga para manipular os dados relacionados.
-import org.example.crud_site.model.Tipo_Vaga;
+import org.example.crud_site.model.TipoVaga;
 
 // Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
@@ -45,7 +45,7 @@ public class TipoVagaDAO {
     }
 
     // Método para atualizar um tipo de vaga
-    public boolean alterarTipo_Vaga(Tipo_Vaga tipo_vaga, String nome) {
+    public boolean alterarTipo_Vaga(TipoVaga tipo_vaga, String nome) {
         conexao.conectar();
         try {
             // Instrução SQL para atualizar o nome do tipo de vaga
@@ -93,7 +93,7 @@ public class TipoVagaDAO {
     }
 
     // Método para buscar um tipo de vaga pelo nome
-    public Tipo_Vaga buscarTipo_Vaga(String nomeTipo_Vaga) {
+    public TipoVaga buscarTipo_Vaga(String nomeTipo_Vaga) {
         conexao.conectar();
         try {
             // Instrução SQL para buscar um tipo de vaga na tabela tipo_vaga
@@ -108,7 +108,7 @@ public class TipoVagaDAO {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);
                 // Cria um objeto Tipo_Vaga com os dados do ResultSet
-                return new Tipo_Vaga(id, nome);
+                return new TipoVaga(id, nome);
             }
             // Retorna null se não encontrar o tipo de vaga
             return null;
@@ -120,10 +120,10 @@ public class TipoVagaDAO {
     }
 
     // Método para listar todos os tipos de vaga na tabela tipo_vaga
-    public List<Tipo_Vaga> listarTipo_Vaga() {
+    public List<TipoVaga> listarTipo_Vaga() {
         // Instrução SQL para listar todos os tipos de vaga
         String sql = "SELECT * FROM tipo_vaga";
-        List<Tipo_Vaga> tipos_vagas = new ArrayList<>();
+        List<TipoVaga> tipos_vagas = new ArrayList<>();
         conexao.conectar();
 
         try {
@@ -136,7 +136,7 @@ public class TipoVagaDAO {
             while (conexao.rs.next()) {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);
-                Tipo_Vaga tipo_vaga = new Tipo_Vaga(id, nome);
+                TipoVaga tipo_vaga = new TipoVaga(id, nome);
                 // Adiciona o objeto Tipo_Vaga na lista
                 tipos_vagas.add(tipo_vaga);
             }

@@ -3,16 +3,16 @@ package org.example.crud_site.model;
 import java.util.UUID;
 
 // Classe Status_curso
-public class Status_Curso {
+public class StatusCurso {
     // Atributos da classe
     private UUID id;
     private String nome;
 
     // Método construtor que recebe os parâmetros necessários para criar um objeto da classe
-    public Status_Curso(String nome) {
+    public StatusCurso(String nome) {
         this.nome = nome;
     }
-    public Status_Curso(UUID id, String nome) {
+    public StatusCurso(UUID id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -35,9 +35,9 @@ public class Status_Curso {
 
     // Método toString que retorna uma representação textual do objeto da classe.
     public String toString() {
-        return "Status_curso{" +
-                "\nid: " + id +
-                ";\nnome: " + nome +
+        return "Status curso {" +
+                "\nId: " + id +
+                ";\nNome: " + nome +
                 "\n";
     }
 }

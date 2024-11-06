@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import org.example.crud_site.dao.TipoVagaDAO;
-import org.example.crud_site.model.Tipo_Vaga;
+import org.example.crud_site.model.TipoVaga;
 
 // Define a servlet que responde ao caminho /listarTipo_Vaga
 @WebServlet("/listarTipo_Vaga")
@@ -22,7 +22,7 @@ public class ServletListarTiposVaga extends HttpServlet {
         TipoVagaDAO tipo_VagaDAO = new TipoVagaDAO();
 
         // Obtém a lista de tipos de vaga através do DAO
-        List<Tipo_Vaga> tipos_Vaga = tipo_VagaDAO.listarTipo_Vaga();
+        List<TipoVaga> tipos_Vaga = tipo_VagaDAO.listarTipo_Vaga();
 
         // Define a lista de tipos de vaga como um atributo da requisição
     req.setAttribute("listarTipo_Vaga", tipos_Vaga);

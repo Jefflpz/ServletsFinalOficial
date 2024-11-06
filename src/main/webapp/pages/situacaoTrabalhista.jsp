@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.crud_site.model.Situacao_Trabalhista" %>
+<%@ page import="org.example.crud_site.model.SituacaoTrabalhista" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -65,7 +65,7 @@
 
 
                 <%
-                    List<Situacao_Trabalhista> lista = (List<Situacao_Trabalhista>) request.getAttribute("listarSituacoes_Trabalhistas");
+                    List<SituacaoTrabalhista> lista = (List<SituacaoTrabalhista>) request.getAttribute("listarSituacoes_Trabalhistas");
 
                     if (!lista.isEmpty()) {
                         for (int i = 0; i < lista.size(); i++) {

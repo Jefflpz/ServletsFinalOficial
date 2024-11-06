@@ -4,16 +4,16 @@ package org.example.crud_site.model;
 import java.util.UUID;
 
 // Classe Situacao_Trabalhista
-public class Situacao_Trabalhista {
+public class SituacaoTrabalhista {
     // Atributos da Classe
     private UUID id;
     private String nome;
 
     // Método construtor que recebe os parâmetros necessários para criar um objeto da classe
-    public Situacao_Trabalhista(String nome) {
+    public SituacaoTrabalhista(String nome) {
         this.nome = nome;
     }
-    public Situacao_Trabalhista(UUID id ,String nome) {
+    public SituacaoTrabalhista(UUID id , String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -36,9 +36,9 @@ public class Situacao_Trabalhista {
 
     // Método toString que retorna uma representação textual do objeto
     public String toString() {
-        return "Situacao_Trabalhista{" +
-                "\nid: " + this.id +
-                ";\nnome: " + this.nome +
+        return "Situacao Trabalhista {" +
+                "\nId: " + this.id +
+                ";\nNome: " + this.nome +
                 "\n}";
     }
 }

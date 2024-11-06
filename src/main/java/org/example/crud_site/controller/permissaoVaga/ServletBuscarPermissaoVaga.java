@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @WebServlet("/buscarPermissao_Vaga")
-public class ServletBuscarPermissao_Vaga extends HttpServlet {
+public class ServletBuscarPermissaoVaga extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o parâmetro "id" da requisição

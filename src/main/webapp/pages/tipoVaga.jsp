@@ -1,6 +1,6 @@
-<%@ page import="org.example.crud_site.model.Tipo_Arquivo" %>
+<%@ page import="org.example.crud_site.model.TipoArquivo" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.crud_site.model.Tipo_Vaga" %>
+<%@ page import="org.example.crud_site.model.TipoVaga" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -65,7 +65,7 @@
               <div class="grid-header acoes">Ações</div>
 
                 <%
-                    List<Tipo_Vaga> lista = (List<Tipo_Vaga>) request.getAttribute("listarTipo_Vaga");
+                    List<TipoVaga> lista = (List<TipoVaga>) request.getAttribute("listarTipo_Vaga");
 
                     if (!lista.isEmpty()) {
                         for (int i = 0; i < lista.size(); i++) {

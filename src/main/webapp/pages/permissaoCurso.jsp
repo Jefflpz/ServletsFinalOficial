@@ -75,7 +75,7 @@
                         for (int i = 0; i < lista.size(); i++) {
                 %>
                 <div class="grid-item registro"><%= i+1 %></div>
-                <div class="grid-item"><%= lista.get(i).getDt_solicitaco() %></div>
+                <div class="grid-item"><%= lista.get(i).getDtSolicitaco() %></div>
                 <div class="grid-item"><%= lista.get(i).getPermissao() %></div>
                 <div class="grid-item">
                     <form action="autorizarPermissao_Curso" method="post">

@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.SituacaoTrabalhistaDAO;
-import org.example.crud_site.model.Situacao_Trabalhista;
+import org.example.crud_site.model.SituacaoTrabalhista;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class ServletInserirSituacaoTrabalhista extends HttpServlet {
 
         // Instancia o DAO para interagir com o banco de dados.
         SituacaoTrabalhistaDAO situacaoTrabalhistaDAO = new SituacaoTrabalhistaDAO();
-        Situacao_Trabalhista situacaoTrabalhistaNova = new Situacao_Trabalhista(nomeSituacao);
+        SituacaoTrabalhista situacaoTrabalhistaNova = new SituacaoTrabalhista(nomeSituacao);
         try {
             if (situacaoTrabalhistaDAO.inserirSituacaoTrabalhista(situacaoTrabalhistaNova.getNome())) {
                 response.sendRedirect(request.getContextPath() + "/listarSituacao_Trabalhistas");

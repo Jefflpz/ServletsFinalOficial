@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import org.example.crud_site.dao.SituacaoTrabalhistaDAO;
-import org.example.crud_site.model.Situacao_Trabalhista;
+import org.example.crud_site.model.SituacaoTrabalhista;
 
 // Define a servlet que responde ao caminho /listarSituacao_Trabalhistas
 @WebServlet("/listarSituacao_Trabalhistas")
@@ -22,7 +22,7 @@ public class ServletListarSituacoesTrabalhistas extends HttpServlet {
         SituacaoTrabalhistaDAO situacao_TrabalhistaDAO = new SituacaoTrabalhistaDAO();
 
         // Obtém a lista de situações trabalhistas através do DAO
-        List<Situacao_Trabalhista> situacoes_Trabalhistas = situacao_TrabalhistaDAO.listarSituacaoTrabalhista();
+        List<SituacaoTrabalhista> situacoes_Trabalhistas = situacao_TrabalhistaDAO.listarSituacaoTrabalhista();
 
         // Define a lista de situações trabalhistas como um atributo da requisição
         req.setAttribute("listarSituacoes_Trabalhistas", situacoes_Trabalhistas);

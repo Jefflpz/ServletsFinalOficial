@@ -4,16 +4,16 @@ package org.example.crud_site.model;
 import java.util.UUID;
 
 // Classe Tipo_Arquivo
-public class Tipo_Arquivo {
+public class TipoArquivo {
     // Atributos da classe
     private UUID id;
     private String nome;
 
     // Método construtor que recebe os parâmetros necessários para criar um objeto da classe
-    public Tipo_Arquivo(String nome) {
+    public TipoArquivo(String nome) {
         this.nome = nome;
     }
-    public Tipo_Arquivo(UUID id, String nome) {
+    public TipoArquivo(UUID id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -31,9 +31,9 @@ public class Tipo_Arquivo {
     // Método toString que retorna uma representação textual do objeto da classe
     @Override
     public String toString() {
-        return "Tipo_Arquivo{" +
-                "\nid: " + id +
-                ";\nnome: " + nome +
+        return "Tipo Arquivo {" +
+                "\nId: " + id +
+                ";\nNome: " + nome +
                 "\n}";
     }
 }

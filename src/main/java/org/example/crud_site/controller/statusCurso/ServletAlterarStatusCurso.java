@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.StatusCursoDAO;
-import org.example.crud_site.model.Status_Curso;
+import org.example.crud_site.model.StatusCurso;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class ServletAlterarStatusCurso extends HttpServlet {
         String nomeNovo = req.getParameter("nome_novo");
 
         // Cria uma instância do Status_Curso e define o nome atual
-        Status_Curso status_Curso = new Status_Curso(nomeAtual);
+        StatusCurso status_Curso = new StatusCurso(nomeAtual);
 
         // Cria uma instância do DAO para realizar a alteração
         StatusCursoDAO status_CursoDAO = new StatusCursoDAO();

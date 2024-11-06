@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.TipoArquivoDAO;
-import org.example.crud_site.model.Tipo_Arquivo;
+import org.example.crud_site.model.TipoArquivo;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class ServletInserirTipoArquivo extends HttpServlet {
 
         // Instancia o DAO para interagir com o banco de dados.
         TipoArquivoDAO tipoArquivoDAO = new TipoArquivoDAO();
-        Tipo_Arquivo tipoArquivoNovo = new Tipo_Arquivo(nomeTipoArquivo);
+        TipoArquivo tipoArquivoNovo = new TipoArquivo(nomeTipoArquivo);
         try {
             if (tipoArquivoDAO.inserirTipoArquivo(tipoArquivoNovo.getNome())) {
                 response.sendRedirect(request.getContextPath() + "/listarTipo_arquivo");

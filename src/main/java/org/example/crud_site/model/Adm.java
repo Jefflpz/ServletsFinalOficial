@@ -50,10 +50,10 @@ public class Adm {
 
     // Método toString que retorna uma representação textual do objeto da classe
     public String toString() {
-        return "Adm{" +
-                "\nid: " + this.id +
-                ";\nusername: " +  username +
-                ";\nsenha: " + senha +
+        return "Adm {" +
+                "\nId: " + this.id +
+                ";\nUsername: " +  username +
+                ";\nSenha: " + senha +
                 "\n}";
     }
 }

@@ -1,7 +1,7 @@
 package org.example.crud_site.dao;
 
 // Importando a classe Situacao_Trabalhista para manipular os dados relacionados.
-import org.example.crud_site.model.Situacao_Trabalhista;
+import org.example.crud_site.model.SituacaoTrabalhista;
 
 // Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
@@ -102,9 +102,9 @@ public class SituacaoTrabalhistaDAO {
     }
 
     // Método para buscar uma situação trabalhista pelo nome.
-    public Situacao_Trabalhista buscarSituacaoTrabalhista(String nomeSituacao_Trabalhista) {
+    public SituacaoTrabalhista buscarSituacaoTrabalhista(String nomeSituacao_Trabalhista) {
         // Objeto para armazenar a situação trabalhista encontrada.
-        Situacao_Trabalhista situacao_trabalhista;
+        SituacaoTrabalhista situacao_trabalhista;
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
@@ -124,7 +124,7 @@ public class SituacaoTrabalhistaDAO {
                 String nome = conexao.rs.getString(2);
 
                 // Cria um novo objeto Situacao_Trabalhista com os dados retornados.
-                return new Situacao_Trabalhista(id, nome);
+                return new SituacaoTrabalhista(id, nome);
             }
             // Retorna null se não houver nenhum resultado.
             return null;
@@ -139,12 +139,12 @@ public class SituacaoTrabalhistaDAO {
     }
 
     // Método para listar todas as situações trabalhistas.
-    public List<Situacao_Trabalhista> listarSituacaoTrabalhista() {
+    public List<SituacaoTrabalhista> listarSituacaoTrabalhista() {
         // Instrução SQL para listar todas as situações trabalhistas.
         String sql = "SELECT * FROM situacao_trabalhista";
 
         // Cria uma lista vazia de situações trabalhistas.
-        List<Situacao_Trabalhista> situacoes_trabalhistas = new ArrayList<>();
+        List<SituacaoTrabalhista> situacoes_trabalhistas = new ArrayList<>();
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
@@ -161,7 +161,7 @@ public class SituacaoTrabalhistaDAO {
                 String nome = conexao.rs.getString(2);
 
                 // Cria um novo objeto Situacao_Trabalhista e o adiciona à lista.
-                Situacao_Trabalhista situacao_trabalhista = new Situacao_Trabalhista(id, nome);
+                SituacaoTrabalhista situacao_trabalhista = new SituacaoTrabalhista(id, nome);
                 situacoes_trabalhistas.add(situacao_trabalhista);
             }
         } catch (SQLException e) {

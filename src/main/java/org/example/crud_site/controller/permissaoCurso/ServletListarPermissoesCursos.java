@@ -13,7 +13,7 @@ import org.example.crud_site.dao.PermissaoCursoDAO;
 
 // Define a servlet que responde ao caminho /listarPermissao_Curso
 @WebServlet("/listarPermissao_Curso")
-public class ServletListarPermissoes_Cursos extends HttpServlet {
+public class ServletListarPermissoesCursos extends HttpServlet {
 
     // Método que lida com requisições GET
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

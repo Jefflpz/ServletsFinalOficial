@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.UUID;
 import org.example.crud_site.dao.PermissaoVagaDAO;
 
-@WebServlet("/negarPermissao_Vaga")
-public class ServletNegarPermissao_Vaga extends HttpServlet {
+@WebServlet("/autorizarPermissao_Vaga")
+public class ServletAutorizarPermissaoVaga extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o ID da vaga a partir da requisição.
         String idVagaParam = req.getParameter("id_vaga");
@@ -19,14 +19,17 @@ public class ServletNegarPermissao_Vaga extends HttpServlet {
         // Instancia o DAO para interagir com o banco de dados.
         PermissaoVagaDAO permissaoVagaDAO = new PermissaoVagaDAO();
 
-        // Chama o método para negar a permissão.
-        boolean resultado = permissaoVagaDAO.negarPermissao(idVaga);
+        // Chama o método para autorizar a permissão.
+        boolean resultado = permissaoVagaDAO.autorizarPermissao(idVaga);
 
-        // Verifica se a operação foi bem-sucedida e redireciona para a página apropriada.
+        // Define um atributo para a requisição com o resultado da operação.
+        req.setAttribute("resultado", resultado);
+
+        // Redireciona para a página apropriada, com base no resultado da operação.
         if (resultado) {
-            req.getRequestDispatcher("pages/permissaoVaga.jsp").forward(req, res);
+            req.getRequestDispatcher("pages/permissaoCurso.jsp").forward(req, res);
         }
+
         req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }
-

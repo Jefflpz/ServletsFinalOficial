@@ -13,7 +13,7 @@ import org.example.crud_site.model.PermissaoVaga;
 
 // Define a servlet que responde ao caminho /listarPermissao_Vaga
 @WebServlet("/listarPermissao_Vaga")
-public class ServletListarPermissoes_Vagas extends HttpServlet {
+public class ServletListarPermissoesVagas extends HttpServlet {
 
     // Método que lida com requisições GET
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

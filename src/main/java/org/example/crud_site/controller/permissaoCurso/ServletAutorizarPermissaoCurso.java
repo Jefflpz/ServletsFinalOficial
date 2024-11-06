@@ -1,4 +1,4 @@
-package org.example.crud_site.controller.permissaoVaga;
+package org.example.crud_site.controller.permissaoCurso;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,29 +7,29 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
-import org.example.crud_site.dao.PermissaoVagaDAO;
+import org.example.crud_site.dao.PermissaoCursoDAO;
 
-@WebServlet("/autorizarPermissao_Vaga")
-public class ServletAutorizarPermissao_Vaga extends HttpServlet {
+@WebServlet("/autorizarPermissao_Curso")
+public class ServletAutorizarPermissaoCurso extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        // Obtém o ID da vaga a partir da requisição.
-        String idVagaParam = req.getParameter("id_vaga");
-        UUID idVaga = UUID.fromString(idVagaParam);
+        // Obtém o ID do curso a partir da requisição.
+        String idCursoParam = req.getParameter("id_curso");
+        UUID idCurso = UUID.fromString(idCursoParam);
 
         // Instancia o DAO para interagir com o banco de dados.
-        PermissaoVagaDAO permissaoVagaDAO = new PermissaoVagaDAO();
+        PermissaoCursoDAO permissaoCursoDAO = new PermissaoCursoDAO();
 
         // Chama o método para autorizar a permissão.
-        boolean resultado = permissaoVagaDAO.autorizarPermissao(idVaga);
+        boolean resultado = permissaoCursoDAO.autorizarPermissao(idCurso);
 
         // Define um atributo para a requisição com o resultado da operação.
         req.setAttribute("resultado", resultado);
 
         // Redireciona para a página apropriada, com base no resultado da operação.
         if (resultado) {
-            req.getRequestDispatcher("pages/permissaoCurso.jsp").forward(req, res);
+            req.getRequestDispatcher("permissao_autorizada.jsp").forward(req, res);
         }
-
+        // Redireciona para a página de erro, caso a operação não tenha sido bem-sucedida.
         req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
     }
 }

@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.TipoVagaDAO;
-import org.example.crud_site.model.Tipo_Vaga;
+import org.example.crud_site.model.TipoVaga;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class ServletAlterarTipoVaga extends HttpServlet {
         String nomeNovo = req.getParameter("nome_novo");
 
         // Cria uma instância do modelo com o nome atual
-        Tipo_Vaga tipo_Vaga = new Tipo_Vaga(nomeAtual);
+        TipoVaga tipo_Vaga = new TipoVaga(nomeAtual);
         TipoVagaDAO tipo_VagaDAO = new TipoVagaDAO();
 
         // Atualiza o tipo de vaga e verifica se a operação foi bem-sucedida

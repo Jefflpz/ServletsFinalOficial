@@ -6,33 +6,33 @@ public class PermissaoCurso extends Curso {
 
     //Atributos da classe
     private UUID id;
-    private UUID id_conta;
+    private UUID idConta;
     private boolean permissao = false;
-    private String dt_solicitaco;
-    private String dt_autorizacao;
-    private UUID id_curso;
-    private UUID id_autorizador;
+    private String dtSolicitaco;
+    private String dtAutorizacao;
+    private UUID idCurso;
+    private UUID idAutorizador;
 
     // Método construtor que recebe os parâmetros necessários para criar um objeto da classe
 
     public PermissaoCurso(String nome, String descricao, UUID id_conta, UUID id_autorizador, UUID id_curso, String dt_autorizacao, String dt_solicitaco, boolean permissao, UUID id_conta1, UUID id) {
         super(nome, descricao, id_conta);
-        this.id_autorizador = id_autorizador;
-        this.id_curso = id_curso;
-        this.dt_autorizacao = dt_autorizacao;
-        this.dt_solicitaco = dt_solicitaco;
+        this.idAutorizador = id_autorizador;
+        this.idCurso = id_curso;
+        this.dtAutorizacao = dt_autorizacao;
+        this.dtSolicitaco = dt_solicitaco;
         this.permissao = permissao;
-        this.id_conta = id_conta1;
+        this.idConta = id_conta1;
         this.id = id;
     }
     public PermissaoCurso(UUID id_autorizador, UUID id_curso, String dt_autorizacao, String dt_solicitaco, boolean permissao, UUID id, UUID id_conta) {
         super();
-        this.id_autorizador = id_autorizador;
-        this.id_curso = id_curso;
-        this.dt_autorizacao = dt_autorizacao;
-        this.dt_solicitaco = dt_solicitaco;
+        this.idAutorizador = id_autorizador;
+        this.idCurso = id_curso;
+        this.dtAutorizacao = dt_autorizacao;
+        this.dtSolicitaco = dt_solicitaco;
         this.permissao = permissao;
-        this.id_conta = id_conta;
+        this.idConta = id_conta;
         this.id = id;
     }
     // Métodos Getters que retornam os valores dos atributos da classe
@@ -41,29 +41,29 @@ public class PermissaoCurso extends Curso {
         // Retorna o valor do atributo id
         return this.id;
     }
-    public UUID getId_conta() {
+    public UUID getIdConta() {
         // Retorna o valor do atributo id_conta
-        return id_conta;
+        return idConta;
     }
     public boolean getPermissao() {
         // Retorna o valor do atributo permissao
         return permissao;
     }
-    public String getDt_solicitaco() {
+    public String getDtSolicitaco() {
         // Retorna o valor do atributo dt_solicitaco
-        return dt_solicitaco;
+        return dtSolicitaco;
     }
-    public String getDt_autorizador() {
+    public String getDtAutorizador() {
         // Retorna o valor do atributo dt_autorizador
-        return dt_autorizacao;
+        return dtAutorizacao;
     }
-    public UUID getId_curso() {
+    public UUID getIdCurso() {
         // Retorna o valor do atributo id_curso
-        return id_curso;
+        return idCurso;
     }
-    public UUID getId_autorizador() {
+    public UUID getIdAutorizador() {
         // Retorna o valor do atributo id_autorizador
-        return id_autorizador;
+        return idAutorizador;
     }
     // Métodos 'Setter's que alteram os valores dos atributos da classe
     public void setPermissao(boolean permissao) {
@@ -73,14 +73,14 @@ public class PermissaoCurso extends Curso {
 
     // Método toString que retorna uma representação textual do objeto da classe
     public String toString() {
-        return "Permissao_Curso{" +
-                "\nid: " + this.id +
-                ";\nid_conta: " + this.id_conta +
-                ";\npermissao: " + this.permissao +
-                ";\ndt_solicitaco: " + this.dt_solicitaco +
-                ";\ndt_autorizacao: " + this.dt_autorizacao +
-                ";\nid_curso: " + this.id_curso +
-                ";\nid_autorizador: " + this.id_autorizador +
+        return "Permissao_Curso {" +
+                "\nId: " + this.id +
+                ";\nId Conta: " + this.idConta +
+                ";\nPermissao: " + this.permissao +
+                ";\nDt Solicitaco: " + this.dtSolicitaco +
+                ";\nDt Autorizacao: " + this.dtAutorizacao +
+                ";\nId Curso: " + this.idCurso +
+                ";\nId autorizador: " + this.idAutorizador +
                 "\n}";
     }
 }

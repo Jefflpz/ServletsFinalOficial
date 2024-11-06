@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @WebServlet("/buscarPermissaoCurso")
-public class ServletBuscarPermissao_Curso extends HttpServlet {
+public class ServletBuscarPermissaoCurso extends HttpServlet {
 
     // Método que trata requisições do tipo POST
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {

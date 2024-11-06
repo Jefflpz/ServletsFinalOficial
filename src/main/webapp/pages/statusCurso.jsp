@@ -1,4 +1,4 @@
-<%@ page import="org.example.crud_site.model.Status_Curso" %>
+<%@ page import="org.example.crud_site.model.StatusCurso" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -65,7 +65,7 @@
 
 
                 <%
-                    List<Status_Curso> lista = (List<Status_Curso>) request.getAttribute("listarStatus_curso");
+                    List<StatusCurso> lista = (List<StatusCurso>) request.getAttribute("listarStatus_curso");
 
                     if (!lista.isEmpty()) {
                         for (int i = 0; i < lista.size(); i++) {

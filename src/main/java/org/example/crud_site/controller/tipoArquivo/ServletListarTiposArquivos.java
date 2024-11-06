@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import org.example.crud_site.dao.TipoArquivoDAO;
-import org.example.crud_site.model.Tipo_Arquivo;
+import org.example.crud_site.model.TipoArquivo;
 
 // Define a servlet que responde ao caminho /listarTipo_arquivo
 @WebServlet("/listarTipo_arquivo")
@@ -22,7 +22,7 @@ public class ServletListarTiposArquivos extends HttpServlet {
         TipoArquivoDAO tipo_ArquivoDAO = new TipoArquivoDAO();
 
         // Obtém a lista de tipos de arquivos através do DAO
-        List<Tipo_Arquivo> tipos_Arquivos = tipo_ArquivoDAO.listarTipoArquivo();
+        List<TipoArquivo> tipos_Arquivos = tipo_ArquivoDAO.listarTipoArquivo();
 
         // Define a lista de tipos de arquivos como um atributo da requisição
         req.setAttribute("listarTipo_Arquivo", tipos_Arquivos);

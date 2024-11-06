@@ -70,7 +70,7 @@
                 for (int i = 0; i < lista.size(); i++) {
                 %>
                 <div class="grid-item registro"><%= i+1 %></div>
-                <div class="grid-item"><%= lista.get(i).getDt_solicitacao() %></div>
+                <div class="grid-item"><%= lista.get(i).getDtSolicitacao() %></div>
                 <div class="grid-item"><%= lista.get(i).getPermissao() %></div>
                 <div class="grid-item">
                     <form action="autorizarPermissao_Vaga" method="post">

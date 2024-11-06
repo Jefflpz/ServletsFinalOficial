@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import org.example.crud_site.dao.StatusCursoDAO;
-import org.example.crud_site.model.Status_Curso;
+import org.example.crud_site.model.StatusCurso;
 
 // Define a servlet que responde ao caminho /listarStatus_Curso
 @WebServlet("/listarStatus_Curso")
@@ -22,7 +22,7 @@ public class ServletListarStatusCursos extends HttpServlet {
         StatusCursoDAO status_cursoDAO = new StatusCursoDAO();
 
         // Obtém a lista de status de cursos através do DAO
-        List<Status_Curso> status_Cursos = status_cursoDAO.listarStatusCurso();
+        List<StatusCurso> status_Cursos = status_cursoDAO.listarStatusCurso();
 
         // Define a lista de status de cursos como um atributo da requisição
         req.setAttribute("listarStatus_curso", status_Cursos);

@@ -10,7 +10,7 @@ import java.util.UUID;
 import org.example.crud_site.dao.PermissaoCursoDAO;
 
 @WebServlet("/negarPermissao_Curso")
-public class ServletNegarPermissao_Curso extends HttpServlet {
+public class ServletNegarPermissaoCurso extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o ID do curso a partir da requisição.
         String idCursoParam = req.getParameter("id_curso");

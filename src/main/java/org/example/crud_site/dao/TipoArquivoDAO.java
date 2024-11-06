@@ -1,7 +1,7 @@
 package org.example.crud_site.dao;
 
 // Importando a classe Tipo_Arquivo para manipular os dados relacionados.
-import org.example.crud_site.model.Tipo_Arquivo;
+import org.example.crud_site.model.TipoArquivo;
 
 // Importando a classe SQLException para tratar os erros de SQL.
 import java.sql.SQLException;
@@ -45,7 +45,7 @@ public class TipoArquivoDAO {
     }
 
     // Método para alterar o nome de um tipo de arquivo
-    public boolean alterarNomeTipoArquivo(Tipo_Arquivo tipo_arquivo, String nome) {
+    public boolean alterarNomeTipoArquivo(TipoArquivo tipo_arquivo, String nome) {
         conexao.conectar();
         try {
             String sql = "UPDATE tipo_arquivo SET nome = ? WHERE nome = ?";
@@ -92,7 +92,7 @@ public class TipoArquivoDAO {
     }
 
     // Método para buscar um tipo de arquivo pelo nome
-    public Tipo_Arquivo buscarTipoArquivo(String nomeTipo_Arquivo) {
+    public TipoArquivo buscarTipoArquivo(String nomeTipo_Arquivo) {
         conexao.conectar();
         try {
             // Instrução SQL para buscar um tipo de arquivo na tabela tipo_arquivo
@@ -107,7 +107,7 @@ public class TipoArquivoDAO {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);
                 // Cria um objeto Tipo_Arquivo com os dados do ResultSet
-                return new Tipo_Arquivo(id, nome);
+                return new TipoArquivo(id, nome);
             }
             // Retorna null se não encontrar o tipo de arquivo
             return null;
@@ -120,10 +120,10 @@ public class TipoArquivoDAO {
     }
 
     // Método para listar todos os tipos de arquivo na tabela tipo_arquivo
-    public List<Tipo_Arquivo> listarTipoArquivo() {
+    public List<TipoArquivo> listarTipoArquivo() {
         // Instrução SQL para listar todos os tipos de arquivo
         String sql = "SELECT * FROM tipo_arquivo";
-        List<Tipo_Arquivo> tipos_arquivos = new ArrayList<>();
+        List<TipoArquivo> tipos_arquivos = new ArrayList<>();
         conexao.conectar();
 
         try {
@@ -136,7 +136,7 @@ public class TipoArquivoDAO {
             while (conexao.rs.next()) {
                 UUID id = (UUID) conexao.rs.getObject(1);
                 String nome = conexao.rs.getString(2);
-                Tipo_Arquivo tipo_arquivo = new Tipo_Arquivo(id, nome);
+                TipoArquivo tipo_arquivo = new TipoArquivo(id, nome);
                 // Adiciona o objeto Tipo_Arquivo na lista
                 tipos_arquivos.add(tipo_arquivo);
             }
