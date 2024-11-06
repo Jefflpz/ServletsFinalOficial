@@ -1,3 +1,7 @@
+const editarSituacaoTrabalhistaForm = document.getElementById('editarSituacaoTrabalhista');
+const situacaoTrabalhistaEditada = document.getElementById('editar');
+let idSituacaoTrabalhista = null;
+
 document.addEventListener("DOMContentLoaded", function() {
     // Exibir/ocultar senha
     document.querySelectorAll('.view-password').forEach(button => {
@@ -45,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     editSituacaoButtons.forEach(button => {
-        button.addEventListener('click', togglePopupEdit);
+        button.addEventListener('click', (e) => togglePopupEdit(e));
     });
 
     if (cancelSituacaoButton) {
@@ -61,9 +65,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function togglePopupEdit() {
+    function togglePopupEdit(e) {
         if (popupSituacaoEdit) {
             popupSituacaoEdit.style.display = popupSituacaoEdit.style.display === 'none' ? 'flex' : 'none';
+            let nomeSituacaoTrabalhista = document.getElementById('editar');
+            nomeSituacaoTrabalhista.value = e.currentTarget.getAttribute('data-nomeSituacaoTrabalhista');
+
+            idSituacaoTrabalhista = e.currentTarget.getAttribute('data-uuid');
         }
     }
 
@@ -119,6 +127,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (!found) {
             alert('Nenhum item encontrado.');
+        }
+    });
+
+    editarSituacaoTrabalhistaForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = {
+            situacaoTrabalhista: situacaoTrabalhistaEditada.value,
+            uuid: idSituacaoTrabalhista,
+        }
+        const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarSituacaoTrabalhista', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        console.log(response);
+        if (response.ok) {
+            window.alert('Informações atualizadas com sucesso!');
+            location.reload();
+        } else {
+            const result = await response.json();
+            window.alert(result.message);
         }
     });
 });

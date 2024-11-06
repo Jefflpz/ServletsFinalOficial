@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
         nomeSetor.value = e.currentTarget.getAttribute('data-setor');
 
         idSetor = e.currentTarget.getAttribute('data-uuid');
-        console.log(id);
     }
 
     // Filtro de pesquisa

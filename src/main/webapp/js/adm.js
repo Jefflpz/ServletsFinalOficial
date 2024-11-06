@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
         usernameEdit.value = e.currentTarget.getAttribute('data-username');
 
         idAdm = e.currentTarget.getAttribute('data-id');
-        console.log(id);
     }
 
     inserirADM.addEventListener('click', togglePopup);

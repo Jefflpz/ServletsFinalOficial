@@ -1,3 +1,7 @@
+const editarStatusCurso = document.getElementById('editarStatusCurso');
+const statusCursoEditado = document.getElementById('editar');
+let idStatusCurso = null;
+
 document.addEventListener("DOMContentLoaded", function() {
     // Exibir/ocultar senha
     document.querySelectorAll('.view-password').forEach(button => {
@@ -45,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     editStatusCursoButtons.forEach(button => {
-        button.addEventListener('click', togglePopupEdit);
+        button.addEventListener('click', (e) => togglePopupEdit(e));
     });
 
     if (cancelStatusCursoButton) {
@@ -61,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function togglePopupEdit() {
+    function togglePopupEdit(e) {
         if (popupStatusCursoEdit) {
             popupStatusCursoEdit.style.display = popupStatusCursoEdit.style.display === 'none' ? 'flex' : 'none';
         }

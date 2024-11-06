@@ -117,7 +117,7 @@
 
     <div id="popupIDsetor" style="display: none;">
         <div class="popup">
-            <form action="alterarNomeSetor" id="editarSetor" class="registrar" action="alterarNomeSetor" method="post">
+            <form action="alterarNomeSetor" id="editarSetor" class="registrar" method="post">
                 <div class="bloco-titulo">
                     <h2 class="titulo">Editar Setor</h2>
                 </div>
