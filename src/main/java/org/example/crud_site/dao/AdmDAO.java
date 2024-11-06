@@ -5,6 +5,8 @@ package org.example.crud_site.dao;
 import org.example.crud_site.model.Adm;
 
 //importando a classe SQLException para tratar os erros de SQL.
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // Importando a classe ArrayList para criar uma lista de administradores
@@ -29,31 +31,16 @@ public class AdmDAO{
     public boolean inserirAdm(String username, String senha) {
 
         conexao.conectar();
-        try{
-
-            // Instrução SQL para inserir um administrador na tabela Adm.
-            String sql = "INSERT INTO adm (username, senha) VALUES (?,?)";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO adm (username, senha) VALUES (?,?)")){
 
             // Define os valores dos parâmetros da consulta
-            conexao.pstmt.setString(1, username);
-            conexao.pstmt.setString(2, senha);
+            pstmt.setString(1, username);
+            pstmt.setString(2, senha);
 
-            //Executa a instrução SQL e se o numero de linhas afetadas for maior que 0 insere um usuário no banco de dados.
-            if (conexao.pstmt.executeUpdate() > 0) {
-
-                // Instrução SQL pra inserir um administrador no banco
-                conexao.pstmt = conexao.conn.prepareStatement("CREATE USER " + username + " WITH PASSWORD '" + senha + "'"  );
-                // Executa a instrução SQL
-                conexao.pstmt.executeUpdate();
-
-                //retorna true se não der erro
-                return true;
-            }
             return false;
 
         }catch (SQLException e) {
-            throw new RuntimeException(e);
+            return false;
         }finally {
             conexao.desconectar();
         }
@@ -62,18 +49,14 @@ public class AdmDAO{
     // Método para alterar a senha de um administrador na tabela Adm
     public boolean alterarSenhaAdm(String novaSenha, UUID id) {
         conexao.conectar();
-        try {
-
-            // Instrução SQL para inserir um administrador na tabela Adm.
-            String sql = "UPDATE adm SET senha=? WHERE id=?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE adm SET senha=? WHERE id=?")){
 
             // Define os valores dos parâmetros na consulta SQL
-            conexao.pstmt.setString(1, novaSenha);
-            conexao.pstmt.setObject(2, id);
+            pstmt.setString(1, novaSenha);
+            pstmt.setObject(2, id);
 
             // Executa a instrução SQL.
-            int rows = conexao.pstmt.executeUpdate();
+            int rows = pstmt.executeUpdate();
 
             // Verifica se a instrução SQL alterou algum registro.
             if (rows == 0) {
@@ -91,18 +74,14 @@ public class AdmDAO{
     // Método para alterar o login de um administrador na tabela Adm
     public boolean alterarLoginAdm(String novoUsername, UUID id) {
         conexao.conectar();
-        try {
-
-            // Instrução SQL para inserir um administrador na tabela Adm.
-            String sql = "UPDATE adm SET username=? WHERE id = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE adm SET username=? WHERE id = ?")) {
 
             // Define os valores dos parâmetros na consulta SQL
-            conexao.pstmt.setString(1, novoUsername);
-            conexao.pstmt.setObject(2, id);
+            pstmt.setString(1, novoUsername);
+            pstmt.setObject(2, id);
 
             // Executa a instrução SQL.
-            int rows = conexao.pstmt.executeUpdate();
+            int rows = pstmt.executeUpdate();
 
             // Verifica se a instrução SQL alterou algum registro.
             if (rows == 0) {
@@ -111,8 +90,6 @@ public class AdmDAO{
             return rows > 0;
         }catch (SQLException e){
             return false;
-//            throw new RuntimeException("Erro ao atualizar o registro.", e);
-
         }finally {
             conexao.desconectar();
         }
@@ -122,40 +99,14 @@ public class AdmDAO{
     // Método para excluir um administrador na tabela Adm
     public boolean excluirAdm(UUID id) {
         conexao.conectar();
-        try {
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM adm WHERE id = ?")){
             // Primeiro, obtemos o nome do usuário associado ao administrador que será excluído
-            String getUserSql = "SELECT username FROM adm WHERE id = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(getUserSql);
-            conexao.pstmt.setObject(1, id);
-            conexao.rs = conexao.pstmt.executeQuery();
 
-            String username = null;
-            if (conexao.rs.next()) {
-                username = conexao.rs.getString("username");
-            }
+            pstmt.setObject(1, id);
+            return  pstmt.execute();
 
-            // Verifica se o usuário foi encontrado
-            if (username == null) {
-                throw new RuntimeException("Administrador não encontrado com o ID fornecido.");
-            }
-
-            // Exclui o administrador da tabela `adm`
-            String deleteSql = "DELETE FROM adm WHERE id = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(deleteSql);
-            conexao.pstmt.setObject(1, id);
-            int rowsAffected = conexao.pstmt.executeUpdate();
-
-            // Se o administrador foi excluído com sucesso, tenta excluir o usuário do banco
-            if (rowsAffected > 0) {
-                // Exclui o usuário associado no banco
-                String dropUserSql = "DROP USER " + username;
-                conexao.pstmt = conexao.conn.prepareStatement(dropUserSql);
-                conexao.pstmt.executeUpdate();
-            }
-
-            return true;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao excluir o administrador ou usuário do banco.", e);
+            return false;
         } finally {
             conexao.desconectar();
         }
@@ -168,21 +119,19 @@ public class AdmDAO{
     public Adm buscarAdm(String username){
         conexao.conectar();
 
-        try {
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM adm WHERE username = ?");
+        ) {
 
-            // Instrução SQL para excluir um administrador na tabela Adm
-            String sql = "SELECT * FROM adm WHERE username = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-            conexao.pstmt.setString(1, username);
+            pstmt.setString(1, username);
 
             // Armazena o resultado da consulta no objeto ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             /// Obtem os dados do ResultSet
-            if (conexao.rs.next()) {
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String login = conexao.rs.getString(2);
-                String senha = conexao.rs.getString(3);
+            if (rs.next()) {
+                UUID id = (UUID) rs.getObject(1);
+                String login = rs.getString(2);
+                String senha = rs.getString(3);
 
                 // Cria um objeto Adm com os dados do ResultSet
                 return new Adm(id,login, senha);
@@ -200,22 +149,19 @@ public class AdmDAO{
     public Adm buscarAdm(String username, String senha){
         conexao.conectar();
 
-        try {
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM adm WHERE username = ? AND senha = ?")){
 
-            // Instrução SQL para excluir um administrador na tabela Adm
-            String sql = "SELECT * FROM adm WHERE username = ? AND senha = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-            conexao.pstmt.setString(1, username);
-            conexao.pstmt.setString(2, senha);
+            pstmt.setString(1, username);
+            pstmt.setString(2, senha);
 
             // Armazena o resultado da consulta no objeto ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             /// Obtem os dados do ResultSet
-            if (conexao.rs.next()) {
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String login = conexao.rs.getString(2);
-                String senhaAtualizada = conexao.rs.getString(3);
+            if (rs.next()) {
+                UUID id = (UUID) rs.getObject(1);
+                String login = rs.getString(2);
+                String senhaAtualizada = rs.getString(3);
 
                 // Cria um objeto Adm com os dados do ResultSet
                 return new Adm(id,login, senhaAtualizada);
@@ -232,8 +178,6 @@ public class AdmDAO{
     // Método para listar todos os administradores na tabela Adm
     public List<Adm> listarAdms(){
 
-        // Instrução SQL para listar todos os administradores na tabela Adm
-        String sql = "SELECT * FROM adm";
 
         // Essa linha cria uma lista vazia chamada adms, pronta para armazenar objetos do tipo Adm.
         // Usamos o ArrayList para faciliar a manipulação da lista.
@@ -241,21 +185,21 @@ public class AdmDAO{
 
         conexao.conectar();
 
-        try {
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM adm")){
 
             // Prepara a instrução SQL para executar a consulta.
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+
             // Armazena o resultado da consulta no objeto ResultSet.
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Obtem os dados do ResultSet e armazena na lista de administradores.
             // Usamos o while para percorrer o ResultSet caso haja mais de um registro.
-            while (conexao.rs.next()) {
+            while (rs.next()) {
 
                 // Pega os dados do ResultSet
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String login = conexao.rs.getString(2);
-                String senha = conexao.rs.getString(3);
+                UUID id = (UUID) rs.getObject(1);
+                String login = rs.getString(2);
+                String senha = rs.getString(3);
 
                 // Cria um objeto Adm com os dados do ResultSet
                 Adm adm = new Adm(id, login, senha);

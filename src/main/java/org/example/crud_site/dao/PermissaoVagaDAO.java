@@ -4,6 +4,8 @@ package org.example.crud_site.dao;
 import org.example.crud_site.model.PermissaoVaga;
 
 // Importando a classe SQLException para tratar os erros de SQL.
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // Importando a classe ArrayList para criar uma lista de permissões.
@@ -29,19 +31,13 @@ public class PermissaoVagaDAO {
 
         // Conecta ao banco de dados.
         conexao.conectar();
-        try {
-
-            // Instrução SQL para alterar a permissão de uma vaga.
-            String sql = "UPDATE permissao_vaga SET permissao = TRUE WHERE id_vaga = ?";
-
-            // Prepara a instrução SQL para ser executada.
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE permissao_vaga SET permissao = TRUE WHERE id_vaga = ?")) {
 
             // Define os valores dos parâmetros na consulta SQL.
-            conexao.pstmt.setObject(1, id_Vaga);
+            pstmt.setObject(1, id_Vaga);
 
             // Retorna se o comando SQL foi executado com sucesso.
-            return conexao.pstmt.executeUpdate() > 0;
+            return pstmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
             // Retorna false se ocorrer algum erro na execução do comando SQL.
@@ -57,19 +53,13 @@ public class PermissaoVagaDAO {
 
         // Conecta ao banco de dados.
         conexao.conectar();
-        try {
-
-            // Instrução SQL para alterar a permissão de uma vaga.
-            String sql = "UPDATE permissao_vaga SET permissao = FALSE WHERE id_vaga = ?";
-
-            // Prepara a instrução SQL para ser executada.
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE permissao_vaga SET permissao = FALSE WHERE id_vaga = ?")){
 
             // Define os valores dos parâmetros na consulta SQL.
-            conexao.pstmt.setObject(1, id_Vaga);
+            pstmt.setObject(1, id_Vaga);
 
             // Retorna se o comando SQL foi executado com sucesso.
-            return conexao.pstmt.executeUpdate() > 0;
+            return pstmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
             // Retorna false se ocorrer algum erro na execução do comando SQL.
@@ -85,31 +75,27 @@ public class PermissaoVagaDAO {
 
         // Conecta ao banco de dados.
         conexao.conectar();
-
-        // Instrução SQL para listar todas as permissões de vagas.
-        String sql = "SELECT * FROM permissao_vaga";
-
         // Cria uma lista vazia de Permissao_Vaga.
         List<PermissaoVaga> permissoes_Vaga = new ArrayList<>();
 
-        try {
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM permissao_vaga")){
 
             // Prepara a instrução SQL para ser executada.
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+
 
             // Executa a instrução SQL e armazena os resultados em um ResultSet.
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Enquanto houver registros no ResultSet, adiciona os dados na lista de permissões.
-            while (conexao.rs.next()) {
+            while (rs.next()) {
 
                 // Pega os dados de cada registro e cria um objeto Permissao_Vaga.
-                UUID id_Empresa = (UUID) conexao.rs.getObject(2);
-                boolean permissao = conexao.rs.getBoolean(3);
-                String dt_Solicitacao = conexao.rs.getString(4);
-                String dt_Autorizacao = conexao.rs.getString(5);
-                UUID id_Vaga = (UUID) conexao.rs.getObject(6);
-                UUID id_Autorizador = (UUID) conexao.rs.getObject(7);
+                UUID id_Empresa = (UUID) rs.getObject(2);
+                boolean permissao = rs.getBoolean(3);
+                String dt_Solicitacao = rs.getString(4);
+                String dt_Autorizacao = rs.getString(5);
+                UUID id_Vaga = (UUID) rs.getObject(6);
+                UUID id_Autorizador = (UUID) rs.getObject(7);
 
                 // Cria um objeto Permissao_Vaga e adiciona na lista.
                 PermissaoVaga permissao_Vaga = new PermissaoVaga(null, id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);
@@ -134,35 +120,25 @@ public class PermissaoVagaDAO {
         // Conecta ao banco de dados
         conexao.conectar();
 
-        try {
-            // Declara a instrução SQL para buscar uma permissão de vaga pelo ID, incluindo atributos da Vaga
-            String sql = """
-                     SELECT pv.id, pv.id_empresa, pv.permissao, pv.dt_solicitacao, pv.dt_autorizacao,
-                            pv.id_vaga, pv.id_autorizador, v.nome AS nome_vaga, v.descricao AS descricao_vaga
-                     FROM Permissao_Vaga pv
-                     JOIN Vaga v ON pv.id_vaga = v.id
-                     WHERE pv.id = ?
-                     """;
-
-            // Prepara a instrução SQL
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try(PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT pc.id, c.id_tipo , c.nome, pc.id_empresa, c.descricao FROM permissao_vaga pc JOIN vaga c ON pc.id_curso = c.id WHERE pc.id = ?"))
+        {
 
             // Define o valor do parâmetro na instrução SQL
-            conexao.pstmt.setObject(1, id);
+            pstmt.setObject(1, id);
 
             // Executa a consulta e armazena o resultado em ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Verifica se o ResultSet contém algum registro
-            if (conexao.rs.next()) {
-                UUID idEmpresa = (UUID) conexao.rs.getObject("id_empresa");
-                boolean permissao = conexao.rs.getBoolean("permissao");
-                String dtSolicitacao = conexao.rs.getString("dt_solicitacao");
-                String dtAutorizacao = conexao.rs.getString("dt_autorizacao");
-                UUID idVaga = (UUID) conexao.rs.getObject("id_vaga");
-                UUID idAutorizador = (UUID) conexao.rs.getObject("id_autorizador");
-                String nomeVaga = conexao.rs.getString("nome_vaga");
-                String descricaoVaga = conexao.rs.getString("descricao_vaga");
+            if (rs.next()) {
+                UUID idEmpresa = (UUID) rs.getObject("id_empresa");
+                boolean permissao = rs.getBoolean("permissao");
+                String dtSolicitacao = rs.getString("dt_solicitacao");
+                String dtAutorizacao = rs.getString("dt_autorizacao");
+                UUID idVaga = (UUID) rs.getObject("id_vaga");
+                UUID idAutorizador = (UUID) rs.getObject("id_autorizador");
+                String nomeVaga = rs.getString("nome_vaga");
+                String descricaoVaga = rs.getString("descricao_vaga");
 
                 // Cria e retorna um objeto Permissao_Vaga com os dados obtidos
                 return new PermissaoVaga(nomeVaga, descricaoVaga, idEmpresa, id, idEmpresa, permissao, dtSolicitacao, dtAutorizacao, idVaga, idAutorizador);

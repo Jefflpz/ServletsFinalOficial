@@ -10,9 +10,7 @@ import java.sql.*;
 public class Conexao {
 
     // Atributos públicos usados em todas as outras classes
-    public Connection conn;
-    public PreparedStatement pstmt;
-    public ResultSet rs;
+    private Connection conn;
 
     //Método para estabelecer a conexão com o banco de dados
     public void conectar() {
@@ -49,5 +47,10 @@ public class Conexao {
             // Se houver algum erro ao fechar a conexão, exibe a mensagem de erro
             e.printStackTrace();
         }
+    }
+
+
+    public Connection getConn() {
+        return conn;
     }
 }

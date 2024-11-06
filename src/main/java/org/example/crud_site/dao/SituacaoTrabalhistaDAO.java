@@ -4,6 +4,8 @@ package org.example.crud_site.dao;
 import org.example.crud_site.model.SituacaoTrabalhista;
 
 // Importando a classe SQLException para tratar os erros de SQL.
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // Importando a classe ArrayList para criar uma lista das situações trabalhistas.
@@ -28,16 +30,12 @@ public class SituacaoTrabalhistaDAO {
     public boolean inserirSituacaoTrabalhista(String situacao_trabalhista) {
         // Estabelece conexão com o banco de dados.
         conexao.conectar();
-        try {
-            // Instrução SQL para inserir uma nova situação trabalhista.
-            String sql = "INSERT INTO situacao_trabalhista (nome) VALUES (?)";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO situacao_trabalhista (nome) VALUES (?)")){
             // Define o valor do nome da situação trabalhista.
-            conexao.pstmt.setString(1, situacao_trabalhista);
+            pstmt.setString(1, situacao_trabalhista);
 
             // Executa a instrução SQL e retorna true se a inserção foi bem-sucedida.
-            return conexao.pstmt.executeUpdate() > 0;
+            return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             // Lança uma exceção se ocorrer algum erro.
             throw new RuntimeException(e);
@@ -51,17 +49,14 @@ public class SituacaoTrabalhistaDAO {
     public boolean alterarNomeSituacaoTrabalhista(String situacao_trabalhista, String nome) {
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
-        try {
-            // Instrução SQL para alterar o nome de uma situação trabalhista.
-            String sql = "UPDATE situacao_trabalhista SET nome = ? WHERE nome = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE situacao_trabalhista SET nome = ? WHERE nome = ?")){
 
             // Define os parâmetros da consulta: o novo nome e o nome atual.
-            conexao.pstmt.setString(1, nome);
-            conexao.pstmt.setString(2, situacao_trabalhista);
+            pstmt.setString(1, nome);
+            pstmt.setString(2, situacao_trabalhista);
 
             // Executa a consulta SQL.
-            int rows = conexao.pstmt.executeUpdate();
+            int rows = pstmt.executeUpdate();
 
             // Verifica se algum registro foi alterado. Se não, lança uma exceção.
             if (rows == 0) {
@@ -81,16 +76,13 @@ public class SituacaoTrabalhistaDAO {
     public boolean excluirSituacaoTrabalhista(String nomeSituacao_Trabalhista) {
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
-        try {
-            // Instrução SQL para excluir uma situação trabalhista pelo nome.
-            String sql = "DELETE FROM situacao_trabalhista WHERE nome=?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM situacao_trabalhista WHERE nome = ?")) {
 
             // Define o valor do nome da situação trabalhista a ser excluída.
-            conexao.pstmt.setString(1, nomeSituacao_Trabalhista);
+            pstmt.setString(1, nomeSituacao_Trabalhista);
 
             // Executa a instrução SQL de exclusão.
-            conexao.pstmt.execute();
+            pstmt.execute();
             return true;
         } catch (SQLException e) {
             // Lança uma exceção em caso de erro.
@@ -108,20 +100,18 @@ public class SituacaoTrabalhistaDAO {
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
-        try {
-            // Instrução SQL para buscar uma situação trabalhista pelo nome.
-            String sql = "SELECT * FROM situacao_trabalhista WHERE nome = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-            conexao.pstmt.setString(1, nomeSituacao_Trabalhista);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM situacao_trabalhista WHERE nome = ?")) {
+            // Define o valor do nome da situação trabalhista a ser excluída.
+            pstmt.setString(1, nomeSituacao_Trabalhista);
 
             // Executa a consulta e armazena o resultado.
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Verifica se a consulta retornou algum resultado.
-            if (conexao.rs.next()) {
+            if (rs.next()) {
                 // Obtém os dados da situação trabalhista do ResultSet.
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String nome = conexao.rs.getString(2);
+                UUID id = (UUID) rs.getObject(1);
+                String nome = rs.getString(2);
 
                 // Cria um novo objeto Situacao_Trabalhista com os dados retornados.
                 return new SituacaoTrabalhista(id, nome);
@@ -148,17 +138,15 @@ public class SituacaoTrabalhistaDAO {
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
-        try {
-            // Prepara a instrução SQL para executar a consulta.
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM situacao_trabalhista")){
             // Executa a consulta e armazena o resultado.
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Percorre os resultados e armazena cada situação trabalhista na lista.
-            while (conexao.rs.next()) {
+            while (rs.next()) {
                 // Obtém os dados do ResultSet.
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String nome = conexao.rs.getString(2);
+                UUID id = (UUID) rs.getObject(1);
+                String nome = rs.getString(2);
 
                 // Cria um novo objeto Situacao_Trabalhista e o adiciona à lista.
                 SituacaoTrabalhista situacao_trabalhista = new SituacaoTrabalhista(id, nome);

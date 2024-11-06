@@ -1,4 +1,3 @@
-<%@ page import="org.example.crud_site.model.TipoArquivo" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.crud_site.model.TipoVaga" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

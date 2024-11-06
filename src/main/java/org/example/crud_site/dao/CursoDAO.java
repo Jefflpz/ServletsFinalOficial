@@ -1,6 +1,9 @@
 package org.example.crud_site.dao;
 
 import org.example.crud_site.model.Curso;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,20 +23,17 @@ public class CursoDAO {
     // Método para inserir um novo curso na tabela Curso
     public boolean inserirCurso(String nome, String descricao, UUID idConta) {
         conexao.conectar();
-        try {
-            // Instrução SQL para inserir um curso na tabela Curso
-            String sql = "INSERT INTO curso (nome, descricao, id_conta) VALUES (?, ?, ?)";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO curso (nome, descricao, id_conta) VALUES (?, ?, ?)")){
 
             // Define os valores dos parâmetros da consulta
-            conexao.pstmt.setString(1, nome);
-            conexao.pstmt.setString(2, descricao);
-            conexao.pstmt.setObject(3, idConta);
+            pstmt.setString(1, nome);
+            pstmt.setString(2, descricao);
+            pstmt.setObject(3, idConta);
 
             // Executa a instrução SQL e retorna true se a inserção foi bem-sucedida
-            return conexao.pstmt.executeUpdate() > 0;
+            return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return false;
         } finally {
             // Fecha a conexão com o banco de dados
             conexao.desconectar();
@@ -43,18 +43,15 @@ public class CursoDAO {
     // Método para alterar o nome e descrição de um curso na tabela Curso
     public boolean alterarCurso(UUID id, String novoNome, String novaDescricao) {
         conexao.conectar();
-        try {
-            // Instrução SQL para atualizar nome e descrição de um curso
-            String sql = "UPDATE curso SET nome = ?, descricao = ? WHERE id = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE curso SET nome = ?, descricao = ? WHERE id = ?")){
 
             // Define os valores dos parâmetros na consulta SQL
-            conexao.pstmt.setString(1, novoNome);
-            conexao.pstmt.setString(2, novaDescricao);
-            conexao.pstmt.setObject(3, id);
+            pstmt.setString(1, novoNome);
+            pstmt.setString(2, novaDescricao);
+            pstmt.setObject(3, id);
 
             // Executa a instrução SQL e verifica se algum registro foi alterado
-            int rows = conexao.pstmt.executeUpdate();
+            int rows = pstmt.executeUpdate();
             if (rows == 0) {
                 throw new RuntimeException("Nenhum registro encontrado.");
             }
@@ -70,19 +67,16 @@ public class CursoDAO {
     // Método para excluir um curso na tabela Curso
     public boolean excluirCurso(UUID id) {
         conexao.conectar();
-        try {
-            // Instrução SQL para excluir um curso na tabela Curso
-            String sql = "DELETE FROM curso WHERE id = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM curso WHERE id = ?")){
 
             // Define o valor do parâmetro na consulta SQL
-            conexao.pstmt.setObject(1, id);
+            pstmt.setObject(1, id);
 
             // Executa a instrução SQL de exclusão
-            conexao.pstmt.executeUpdate();
+            pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao excluir o curso.", e);
+            return false;
         } finally {
             // Fecha a conexão com o banco de dados
             conexao.desconectar();
@@ -92,22 +86,20 @@ public class CursoDAO {
     // Método para buscar um curso específico pelo ID
     public Curso buscarCurso(UUID id) {
         conexao.conectar();
-        try {
-            // Instrução SQL para buscar um curso pelo ID
-            String sql = "SELECT * FROM curso WHERE id = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-            conexao.pstmt.setObject(1, id);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM curso WHERE id = ?")){
+
+            pstmt.setObject(1, id);
 
             // Armazena o resultado da consulta no objeto ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Obtém os dados do ResultSet e cria um objeto Curso
-            if (conexao.rs.next()) {
-                UUID cursoId = (UUID) conexao.rs.getObject("id");
-                String nome = conexao.rs.getString("nome");
-                String descricao = conexao.rs.getString("descricao");
-                char status = conexao.rs.getString("status").charAt(0);
-                UUID idConta = (UUID) conexao.rs.getObject("id_conta");
+            if (rs.next()) {
+                UUID cursoId = (UUID) rs.getObject("id");
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                char status = rs.getString("status").charAt(0);
+                UUID idConta = (UUID) rs.getObject("id_conta");
 
                 Curso curso = new Curso(nome, descricao, idConta);
                 curso.setStatus(status);
@@ -124,27 +116,23 @@ public class CursoDAO {
 
     // Método para listar todos os cursos na tabela Curso
     public List<Curso> listarCursos() {
-        // Instrução SQL para listar todos os cursos na tabela Curso
-        String sql = "SELECT * FROM curso";
 
         // Lista para armazenar os cursos recuperados
         List<Curso> cursos = new ArrayList<>();
         conexao.conectar();
 
-        try {
-            // Prepara a instrução SQL para executar a consulta
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM curso")){
 
             // Armazena o resultado da consulta no objeto ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Obtém os dados do ResultSet e armazena na lista de cursos
-            while (conexao.rs.next()) {
-                UUID id = (UUID) conexao.rs.getObject("id");
-                String nome = conexao.rs.getString("nome");
-                String descricao = conexao.rs.getString("descricao");
-                char status = conexao.rs.getString("status").charAt(0);
-                UUID idConta = (UUID) conexao.rs.getObject("id_conta");
+            while (rs.next()) {
+                UUID id = (UUID) rs.getObject("id");
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                char status = rs.getString("status").charAt(0);
+                UUID idConta = (UUID) rs.getObject("id_conta");
 
                 Curso curso = new Curso(nome, descricao, idConta);
                 curso.setStatus(status);

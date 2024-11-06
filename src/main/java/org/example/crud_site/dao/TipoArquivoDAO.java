@@ -4,6 +4,8 @@ package org.example.crud_site.dao;
 import org.example.crud_site.model.TipoArquivo;
 
 // Importando a classe SQLException para tratar os erros de SQL.
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // Importando a classe ArrayList para criar uma lista de tipos de arquivos.
@@ -27,16 +29,12 @@ public class TipoArquivoDAO {
     // Método para inserir um novo tipo de arquivo
     public boolean inserirTipoArquivo(String tipo_arquivo) {
         conexao.conectar();
-        try {
-            // Instrução SQL para inserir registro na tabela tipo_arquivo
-            String sql = "INSERT INTO tipo_arquivo (nome) VALUES (?)";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO tipo_arquivo (nome) VALUES (?)")){
             // Define os valores dos parâmetros de consulta
-            conexao.pstmt.setString(1, tipo_arquivo);
+            pstmt.setString(1, tipo_arquivo);
 
             // Executa a instrução SQL
-            return conexao.pstmt.executeUpdate() > 0;
+            return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -47,16 +45,13 @@ public class TipoArquivoDAO {
     // Método para alterar o nome de um tipo de arquivo
     public boolean alterarNomeTipoArquivo(TipoArquivo tipo_arquivo, String nome) {
         conexao.conectar();
-        try {
-            String sql = "UPDATE tipo_arquivo SET nome = ? WHERE nome = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE tipo_arquivo SET nome = ? WHERE nome = ?")){
             // Define os valores dos parâmetros da consulta SQL
-            conexao.pstmt.setString(1, nome);
-            conexao.pstmt.setString(2, tipo_arquivo.getNome());
+            pstmt.setString(1, nome);
+            pstmt.setString(2, tipo_arquivo.getNome());
 
             // Executa a instrução SQL
-            int rows = conexao.pstmt.executeUpdate();
+            int rows = pstmt.executeUpdate();
 
             // Verifica se a instrução SQL alterou algum registro
             if (rows == 0) {
@@ -73,16 +68,12 @@ public class TipoArquivoDAO {
     // Método para excluir um tipo de arquivo
     public boolean excluirTipoArquivo(String nomeTipo_Arquivo) {
         conexao.conectar();
-        try {
-            // Instrução SQL para excluir um tipo de arquivo na tabela tipo_arquivo
-            String sql = "DELETE FROM tipo_arquivo WHERE nome=?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM tipo_arquivo WHERE nome = ?")){
             // Define o valor do parâmetro na consulta SQL
-            conexao.pstmt.setString(1, nomeTipo_Arquivo);
+            pstmt.setString(1, nomeTipo_Arquivo);
 
             // Executa a instrução SQL
-            conexao.pstmt.execute();
+            pstmt.execute();
             return true;
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir o registro.", e);
@@ -94,18 +85,16 @@ public class TipoArquivoDAO {
     // Método para buscar um tipo de arquivo pelo nome
     public TipoArquivo buscarTipoArquivo(String nomeTipo_Arquivo) {
         conexao.conectar();
-        try {
-            // Instrução SQL para buscar um tipo de arquivo na tabela tipo_arquivo
-            String sql = "SELECT * FROM tipo_arquivo WHERE nome = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-            conexao.pstmt.setString(1, nomeTipo_Arquivo);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM tipo_arquivo WHERE nome = ?")){
+
+            pstmt.setString(1, nomeTipo_Arquivo);
 
             // Armazena o resultado da consulta no objeto ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
-            if (conexao.rs.next()) {
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String nome = conexao.rs.getString(2);
+            if (rs.next()) {
+                UUID id = (UUID) rs.getObject(1);
+                String nome = rs.getString(2);
                 // Cria um objeto Tipo_Arquivo com os dados do ResultSet
                 return new TipoArquivo(id, nome);
             }
@@ -121,21 +110,19 @@ public class TipoArquivoDAO {
 
     // Método para listar todos os tipos de arquivo na tabela tipo_arquivo
     public List<TipoArquivo> listarTipoArquivo() {
-        // Instrução SQL para listar todos os tipos de arquivo
-        String sql = "SELECT * FROM tipo_arquivo";
+
         List<TipoArquivo> tipos_arquivos = new ArrayList<>();
         conexao.conectar();
 
-        try {
-            // Prepara a instrução SQL para executar a consulta
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM tipo_arquivo")){
+
             // Armazena o resultado da consulta no objeto ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Obtém os dados do ResultSet e armazena na lista de tipos de arquivo
-            while (conexao.rs.next()) {
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String nome = conexao.rs.getString(2);
+            while (rs.next()) {
+                UUID id = (UUID) rs.getObject(1);
+                String nome = rs.getString(2);
                 TipoArquivo tipo_arquivo = new TipoArquivo(id, nome);
                 // Adiciona o objeto Tipo_Arquivo na lista
                 tipos_arquivos.add(tipo_arquivo);

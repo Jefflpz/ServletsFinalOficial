@@ -4,6 +4,8 @@ package org.example.crud_site.dao;
 import org.example.crud_site.model.TipoVaga;
 
 // Importando a classe SQLException para tratar os erros de SQL.
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // Importando a classe ArrayList para criar uma lista dos tipos de vaga.
@@ -27,16 +29,14 @@ public class TipoVagaDAO {
     // Método para inserir um novo tipo de vaga
     public boolean inserirTipo_Vaga(String tipo_vaga) {
         conexao.conectar();
-        try {
-            // Instrução SQL para inserir registro na tabela tipo_vaga
-            String sql = "INSERT INTO tipo_vaga (nome) VALUES (?)";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO tipo_vaga (nome) VALUES (?)")){
+
 
             // Define os valores dos parâmetros de consulta
-            conexao.pstmt.setString(1, tipo_vaga);
+            pstmt.setString(1, tipo_vaga);
 
             // Executa a instrução SQL
-            return conexao.pstmt.executeUpdate() > 0;
+            return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -47,17 +47,15 @@ public class TipoVagaDAO {
     // Método para atualizar um tipo de vaga
     public boolean alterarTipo_Vaga(TipoVaga tipo_vaga, String nome) {
         conexao.conectar();
-        try {
-            // Instrução SQL para atualizar o nome do tipo de vaga
-            String sql = "UPDATE tipo_vaga SET nome = ? WHERE nome = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try( PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE tipo_vaga SET nome = ? WHERE nome = ?")) {
+
 
             // Define os valores dos parâmetros da consulta SQL
-            conexao.pstmt.setString(1, nome);
-            conexao.pstmt.setString(2, tipo_vaga.getNome());
+            pstmt.setString(1, nome);
+            pstmt.setString(2, tipo_vaga.getNome());
 
             // Executa a instrução SQL
-            int rows = conexao.pstmt.executeUpdate();
+            int rows = pstmt.executeUpdate();
 
             // Verifica se a instrução SQL alterou algum registro
             if (rows == 0) {
@@ -74,16 +72,14 @@ public class TipoVagaDAO {
     // Método para excluir um tipo de vaga
     public boolean excluirTipo_Vaga(String nomeTipo_Vaga) {
         conexao.conectar();
-        try {
-            // Instrução SQL para excluir um tipo de vaga na tabela tipo_vaga
-            String sql = "DELETE FROM tipo_vaga WHERE nome=?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM tipo_vaga WHERE nome = ?")){
+
 
             // Define o valor do parâmetro na consulta SQL
-            conexao.pstmt.setString(1, nomeTipo_Vaga);
+            pstmt.setString(1, nomeTipo_Vaga);
 
             // Executa a instrução SQL
-            conexao.pstmt.execute();
+            pstmt.execute();
             return true;
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir o registro.", e);
@@ -95,18 +91,17 @@ public class TipoVagaDAO {
     // Método para buscar um tipo de vaga pelo nome
     public TipoVaga buscarTipo_Vaga(String nomeTipo_Vaga) {
         conexao.conectar();
-        try {
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM tipo_vaga WHERE nome = ?")){
             // Instrução SQL para buscar um tipo de vaga na tabela tipo_vaga
-            String sql = "SELECT * FROM tipo_vaga WHERE nome = ?";
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
-            conexao.pstmt.setString(1, nomeTipo_Vaga);
+
+            pstmt.setString(1, nomeTipo_Vaga);
 
             // Armazena o resultado da consulta no objeto ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
-            if (conexao.rs.next()) {
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String nome = conexao.rs.getString(2);
+            if (rs.next()) {
+                UUID id = (UUID) rs.getObject(1);
+                String nome = rs.getString(2);
                 // Cria um objeto Tipo_Vaga com os dados do ResultSet
                 return new TipoVaga(id, nome);
             }
@@ -121,21 +116,19 @@ public class TipoVagaDAO {
 
     // Método para listar todos os tipos de vaga na tabela tipo_vaga
     public List<TipoVaga> listarTipo_Vaga() {
-        // Instrução SQL para listar todos os tipos de vaga
-        String sql = "SELECT * FROM tipo_vaga";
+
         List<TipoVaga> tipos_vagas = new ArrayList<>();
         conexao.conectar();
 
-        try {
-            // Prepara a instrução SQL para executar a consulta
-            conexao.pstmt = conexao.conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM tipo_vaga")){
+
             // Armazena o resultado da consulta no objeto ResultSet
-            conexao.rs = conexao.pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             // Obtém os dados do ResultSet e armazena na lista de tipos de vaga
-            while (conexao.rs.next()) {
-                UUID id = (UUID) conexao.rs.getObject(1);
-                String nome = conexao.rs.getString(2);
+            while (rs.next()) {
+                UUID id = (UUID) rs.getObject(1);
+                String nome = rs.getString(2);
                 TipoVaga tipo_vaga = new TipoVaga(id, nome);
                 // Adiciona o objeto Tipo_Vaga na lista
                 tipos_vagas.add(tipo_vaga);
