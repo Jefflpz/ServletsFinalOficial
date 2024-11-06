@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault();
         const formData = {
             tipoArquivo: tipoArquivoEditado.value,
-            uuid: idTipoArquivo,
+            uuid: idTipoArquivo
         }
         const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarTipoArquivo', {
             method: 'POST', body: JSON.stringify(formData), headers: {

@@ -1,5 +1,6 @@
 package org.example.crud_site.controller.tipoVaga;
 
+import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,30 +9,59 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.TipoVagaDAO;
 import org.example.crud_site.model.TipoVaga;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.UUID;
 
-@WebServlet("/atualizarTipo_Vaga")
+@WebServlet("/atualizarTipoVaga")
 public class ServletAlterarTipoVaga extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        // Obtém o nome atual e o novo nome do tipo de vaga a partir da requisição
-        String nomeAtual = req.getParameter("nome_atual");
-        String nomeNovo = req.getParameter("nome_novo");
+    private final Gson gson = new Gson();
 
-        // Cria uma instância do modelo com o nome atual
-        TipoVaga tipo_Vaga = new TipoVaga(nomeAtual);
-        TipoVagaDAO tipo_VagaDAO = new TipoVagaDAO();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
 
-        // Atualiza o tipo de vaga e verifica se a operação foi bem-sucedida
-        boolean atualizado = tipo_VagaDAO.alterarTipo_Vaga(tipo_Vaga, nomeNovo);
-        if (atualizado) {
-            // Redireciona para a página de sucesso
-            req.setAttribute("mensagem", "Tipo de vaga atualizado com sucesso.");
-            req.getRequestDispatcher("pages/tipoVaga.jsp").forward(req, res);
+        StringBuilder requestBody = new StringBuilder();
+        String line;
+        try (BufferedReader reader = request.getReader()) {
+            while ((line = reader.readLine()) != null) {
+                requestBody.append(line);
+            }
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
+            e.printStackTrace();
             return;
         }
 
-        // Caso contrário, redireciona para a página de erro
-        req.setAttribute("erro", "Falha ao atualizar o tipo de vaga.");
-        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
+        TipoVagaDAO tipoVagaDAO = new TipoVagaDAO();
+
+        EditarTipoVaga editarTipoVaga = gson.fromJson(requestBody.toString(), EditarTipoVaga.class);
+
+        try {
+            if (tipoVagaDAO.alterarTipoVaga(editarTipoVaga.getUuid(), editarTipoVaga.getTipoVaga())) {
+                response.setStatus(HttpServletResponse.SC_OK);
+                response.getWriter().println("{\"success\":true}");
+            } else {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("{\"success\": false, \"message\": \"Não foi possível alterar o nome do setor.\"}");
+            }
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
+            e.printStackTrace();
+        }
+    }
+
+    private static class EditarTipoVaga {
+        private String tipoVaga;
+        private UUID uuid;
+
+        public String getTipoVaga() {
+            return this.tipoVaga;
+        }
+
+        public UUID getUuid() {
+            return this.uuid;
+        }
     }
 }

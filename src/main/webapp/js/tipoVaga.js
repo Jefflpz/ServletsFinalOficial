@@ -1,3 +1,7 @@
+const editarTipoVagaForm = document.getElementById('editarTipoVaga');
+const tipoVagaEditado = document.getElementById('editar');
+let idTipoVaga = null;
+
 document.addEventListener("DOMContentLoaded", function() {
     // Alternar visibilidade da senha
     document.querySelectorAll('.view-password').forEach(button => {
@@ -40,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     editVagaButtons.forEach(button => {
-        button.addEventListener('click', togglePopupEdit);
+        button.addEventListener('click', (e) => togglePopupEdit(e));
     });
 
     if (cancelVagaButton) {
@@ -54,8 +58,12 @@ document.addEventListener("DOMContentLoaded", function() {
         popupVaga.style.display = popupVaga.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function togglePopupEdit() {
+    function togglePopupEdit(e) {
         popupVagaEdit.style.display = popupVagaEdit.style.display === 'none' ? 'flex' : 'none';
+        let nomeTipoVaga = document.getElementById('editar');
+        nomeTipoVaga.value = e.currentTarget.getAttribute('data-nomeTipoVaga');
+
+        idTipoVaga = e.currentTarget.getAttribute('data-uuid');
     }
 
     function closePopup() {
@@ -105,6 +113,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (!found) {
             alert('Nenhum item encontrado.');
+        }
+    });
+
+
+    editarTipoVagaForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = {
+            tipoVaga: tipoVagaEditado.value,
+            uuid: idTipoVaga
+        }
+        const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/atualizarTipoVaga', {
+            method: 'POST', body: JSON.stringify(formData), headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        console.log(response);
+        if (response.ok) {
+            window.alert('Informações atualizadas com sucesso!');
+            location.reload();
+        } else {
+            const result = await response.json();
+            window.alert(result.message);
         }
     });
 });

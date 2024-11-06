@@ -45,14 +45,14 @@ public class TipoVagaDAO {
     }
 
     // Método para atualizar um tipo de vaga
-    public boolean alterarTipo_Vaga(TipoVaga tipo_vaga, String nome) {
+    public boolean alterarTipoVaga(UUID uuid, String novoTipoVaga) {
         conexao.conectar();
-        try( PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE tipo_vaga SET nome = ? WHERE nome = ?")) {
+        try( PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE tipo_vaga SET nome = ? WHERE id = ?")) {
 
 
             // Define os valores dos parâmetros da consulta SQL
-            pstmt.setString(1, nome);
-            pstmt.setString(2, tipo_vaga.getNome());
+            pstmt.setString(1, novoTipoVaga);
+            pstmt.setObject(2, uuid);
 
             // Executa a instrução SQL
             int rows = pstmt.executeUpdate();
