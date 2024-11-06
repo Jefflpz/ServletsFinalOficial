@@ -49,18 +49,18 @@ public class SetorDAO {
     }
 
     // Método para alterar o nome de um setor existente na tabela Setor.
-    public boolean alterarNomeSetor(Setor setor, String nome) {
+    public boolean alterarNomeSetor(UUID uuid, String novoSetor) {
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
         try {
             // Instrução SQL para atualizar o nome de um setor.
-            String sql = "UPDATE Setor SET nome = ? WHERE nome = ?";
+            String sql = "UPDATE Setor SET nome = ? WHERE id = ?";
             conexao.pstmt = conexao.conn.prepareStatement(sql);
 
             // Define os valores dos parâmetros da consulta SQL.
-            conexao.pstmt.setString(1, nome);
-            conexao.pstmt.setString(2, setor.getNome());
+            conexao.pstmt.setString(1, novoSetor);
+            conexao.pstmt.setObject(2, uuid);
 
             // Executa a instrução SQL e verifica se algum registro foi alterado.
             int rows = conexao.pstmt.executeUpdate();

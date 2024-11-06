@@ -1,16 +1,20 @@
+const editarSetorForm = document.getElementById('editarSetor');
+const setorEditado = document.getElementById('editar');
+let idSetor = null;
+
 document.querySelectorAll('.view-password').forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         const passwordCell = this.parentElement.previousElementSibling;
         passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
     });
 });
 
 document.querySelectorAll('.delete').forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         this.closest('.crud-row').remove();
     });
 });
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const filterButton = document.querySelector('.filtrar');
     const filterBar = document.getElementById('filtrar-bar');
     filterButton.addEventListener('click', toggleFilterBar);
@@ -28,32 +32,37 @@ document.addEventListener("DOMContentLoaded", function() {
     const popupEdit = document.getElementById('popupIDsetor');
 
     // Evento para abrir o popup de inserção
-    inserirSetorButton.addEventListener('click', function() {
+    inserirSetorButton.addEventListener('click', function () {
         togglePopup(popupInsert);
     });
 
     // Evento para cada botão de edição abrir o popup de edição
     editButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            togglePopup(popupEdit);
+        button.addEventListener('click', (e) => {
+            togglePopup(popupEdit, e);
         });
     });
 
     // Cancelar popups
-    cancelButton.addEventListener('click', function() {
+    cancelButton.addEventListener('click', function () {
         popupInsert.style.display = 'none';
     });
-    cancelEditButton.addEventListener('click', function() {
+    cancelEditButton.addEventListener('click', function () {
         popupEdit.style.display = 'none';
     });
 
-    function togglePopup(popup) {
+    function togglePopup(popup, e) {
         popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
+        let nomeSetor = document.getElementById('editar');
+        nomeSetor.value = e.currentTarget.getAttribute('data-setor');
+
+        idSetor = e.currentTarget.getAttribute('data-uuid');
+        console.log(id);
     }
 
     // Filtro de pesquisa
     const form = filterBar.querySelector('form');
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
         event.preventDefault();
 
         const selectedField = this['filter-field'].value;
@@ -90,6 +99,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (!found) {
             alert('Nenhum item encontrado.');
+        }
+    });
+
+    editarSetorForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = {
+            setor: setorEditado.value,
+            uuid: idSetor
+        }
+        const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarNomeSetor', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        console.log(response);
+        if (response.ok) {
+            window.alert('Informações atualizadas com sucesso!');
+            location.reload();
+        } else {
+            const result = await response.json();
+            window.alert(result.message);
         }
     });
 });

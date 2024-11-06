@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let usernameEdit = document.getElementById('admEditado');
         usernameEdit.value = e.currentTarget.getAttribute('data-username');
 
-        console.log(e.currentTarget);
         idAdm = e.currentTarget.getAttribute('data-id');
         console.log(id);
     }

@@ -54,7 +54,7 @@ public class ServletInserirAdm extends HttpServlet {
                 response.getWriter().println("{\"success\":true}");
             } else {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("{\"success\": false, \"message\": \"Usuário ou senha incorretos\"}");
+                response.getWriter().write("{\"success\": false, \"message\": \"Não foi possível inserir o administrador.\"}");
             }
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
