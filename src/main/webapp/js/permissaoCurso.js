@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const filterButton = document.querySelector('.filtrar');
-    const filterBar = document.getElementById('filter-bar'); // Corrigido o ID aqui
+    const filterBar = document.getElementById('filter-bar');
     filterButton.addEventListener('click', toggleFilterBar);
 
     function toggleFilterBar() {
@@ -9,10 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const editADM = document.querySelectorAll('.view');
     const cancelADM = document.querySelector('.close-button');
-
     const popupADM = document.getElementById('popupID');
 
-    // Corrigido: iteração adequada sobre 'editADM'
     editADM.forEach(button => {
         button.addEventListener('click', togglePopupedit);
     });
@@ -35,9 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
 
             const selectedField = this['filter-field'].value;
-            const searchTerm = this['search'].value.toLowerCase();
+            const searchTerm = this['search'].value.trim(); // Remove espaços extras
 
-            if (!selectedField) return; // Verificação extra
+            if (!selectedField) return;
 
             const gridItems = document.querySelectorAll('.grid-container .grid-item');
             gridItems.forEach(item => item.style.display = 'none');
@@ -46,25 +44,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
             for (let i = 0; i < gridItems.length; i += 4) {
                 const registro = gridItems[i];
-                const idConta = gridItems[i + 1];
-                const idCurso = gridItems[i + 2];
+                const data = gridItems[i + 1];
+                const permissao = gridItems[i + 2];
                 const acoes = gridItems[i + 3];
 
                 let shouldDisplay = false;
                 if (selectedField === 'todos') {
                     shouldDisplay = true;
                 } else if (selectedField === 'registro-filtro') {
-                    shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
-                } else if (selectedField === 'id_conta-filtro') {
-                    shouldDisplay = idConta.textContent.toLowerCase().includes(searchTerm);
-                } else if (selectedField === 'id_curso-filtro') {
-                    shouldDisplay = idCurso.textContent.toLowerCase().includes(searchTerm);
+                    shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm.toLowerCase());
+                } else if (selectedField === 'data-filtro') {
+                    shouldDisplay = data.textContent.trim() === searchTerm; // Compara a data diretamente, sem alterar o formato
+                } else if (selectedField === 'permissao-filtro') {
+                    shouldDisplay = permissao.textContent.toLowerCase().includes(searchTerm.toLowerCase());
                 }
 
                 if (shouldDisplay) {
                     registro.style.display = 'flex';
-                    idConta.style.display = 'flex';
-                    idCurso.style.display = 'flex';
+                    data.style.display = 'flex';
+                    permissao.style.display = 'flex';
                     acoes.style.display = 'flex';
                     found = true;
                 }

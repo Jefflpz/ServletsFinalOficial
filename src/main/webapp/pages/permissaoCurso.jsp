@@ -41,7 +41,7 @@
     <div class="container">
         <main class="main-content">
             <div class="titulo">
-                <h1>Permissao curso</h1>
+                <h1>Permissao Curso</h1>
                 <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
             </div>
 
@@ -52,8 +52,8 @@
                         <option value="">Escolher campo</option>
                         <option value="todos">Todos</option>
                         <option value="registro-filtro">Registro</option>
-                        <option value="id_conta-filtro">id_conta</option>
-                        <option value="id_curso-filtro">id_curso</option>
+                        <option value="data-filtro">Data de Solicitação</option>
+                        <option value="permissao-filtro">Permissão</option>
                     </select>
 
                     <input type="text" name="search" placeholder="Pesquisar...">
@@ -64,7 +64,7 @@
 
             <div class="grid-container">
                 <div class="grid-header registro">Registro</div>
-                <div class="grid-header id_conta">Data da solicitação</div>
+                <div class="grid-header id_conta">Data da Solicitação</div>
                 <div class="grid-header id_curso">Permissão</div>
                 <div class="grid-header acoes">Ações</div>
 

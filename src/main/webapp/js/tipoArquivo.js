@@ -1,17 +1,20 @@
-document.querySelectorAll('.view-password').forEach(button => {
-    button.addEventListener('click', function() {
-        const passwordCell = this.parentElement.previousElementSibling;
-        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
-    });
-});
-
-document.querySelectorAll('.delete').forEach(button => {
-    button.addEventListener('click', function() {
-        this.closest('.crud-row').remove();
-    });
-});
-
 document.addEventListener("DOMContentLoaded", function() {
+    // Alternar visibilidade da senha
+    document.querySelectorAll('.view-password').forEach(button => {
+        button.addEventListener('click', function() {
+            const passwordCell = this.parentElement.previousElementSibling;
+            passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
+        });
+    });
+
+    // Remover linha ao clicar no botão de exclusão
+    document.querySelectorAll('.delete').forEach(button => {
+        button.addEventListener('click', function() {
+            this.closest('.crud-row').remove();
+        });
+    });
+
+    // Alternar barra de filtro
     const filterButton = document.querySelector('.filtrar');
     const filterBar = document.getElementById('filtrar-bar');
     filterButton.addEventListener('click', toggleFilterBar);
@@ -20,39 +23,38 @@ document.addEventListener("DOMContentLoaded", function() {
         filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    const inserirArquivo = document.querySelector('.inserir-arquivo');
-    const editAquivo = document.querySelectorAll('.edit');
-    const cancelArquivo = document.querySelector('.bt-cancelar');
-    const cancelARQUIVOedi = document.querySelector('.bt-cancelar-edit');
+    // Popups de inserção e edição
+    const inserirArquivoButton = document.querySelector('.inserir-arquivo');
+    const editArquivoButtons = document.querySelectorAll('.edit');
+    const cancelArquivoButton = document.querySelector('.bt-cancelar');
+    const cancelArquivoEditButton = document.querySelector('.bt-cancelar-edit');
 
     const popupArquivo = document.getElementById('popupID');
-    const popupArquivoedit = document.getElementById('popupIDArquivo');
+    const popupArquivoEdit = document.getElementById('popupIDArquivo');
 
-    let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editAquivo.length; i++) {
-        editAquivo[i].addEventListener('click', togglePopupedit);
-    }
+    inserirArquivoButton.addEventListener('click', togglePopup);
 
-    cancelArquivo.addEventListener('click', cancelPopup);
-    cancelARQUIVOedi.addEventListener('click', cancelPopupedit);
+    editArquivoButtons.forEach(button => {
+        button.addEventListener('click', togglePopupEdit);
+    });
 
-    inserirArquivo.addEventListener('click', togglePopup);
+    cancelArquivoButton.addEventListener('click', () => {
+        popupArquivo.style.display = 'none';
+    });
+
+    cancelArquivoEditButton.addEventListener('click', () => {
+        popupArquivoEdit.style.display = 'none';
+    });
 
     function togglePopup() {
         popupArquivo.style.display = popupArquivo.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function togglePopupedit() {
-        popupArquivoedit.style.display = popupArquivoedit.style.display === 'none' ? 'flex' : 'none';
+    function togglePopupEdit() {
+        popupArquivoEdit.style.display = popupArquivoEdit.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function cancelPopup() {
-        popupArquivo.style.display = 'none';
-    }
-    function cancelPopupedit() {
-        popupArquivoedit.style.display = 'none';
-    }
-
+    // Filtro de pesquisa
     const form = filterBar.querySelector('form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -60,34 +62,30 @@ document.addEventListener("DOMContentLoaded", function() {
         const selectedField = this['filter-field'].value;
         const searchTerm = this['search'].value.toLowerCase();
 
-        if (!selectedField) return; // Verificação extra
+        if (!selectedField) return;
 
         const gridItems = document.querySelectorAll('.grid-container .grid-item');
         gridItems.forEach(item => item.style.display = 'none');
 
         let found = false;
 
-        for (let i = 0; i < gridItems.length; i += 4) {
+        for (let i = 0; i < gridItems.length; i += 3) { // Ajustado para agrupar em três itens
             const registro = gridItems[i];
-            const uuid = gridItems[i + 1];
-            const nome = gridItems[i + 2];
-            const acoes = gridItems[i + 3];
+            const tipoArquivo = gridItems[i + 1];
+            const acoes = gridItems[i + 2];
 
             let shouldDisplay = false;
             if (selectedField === 'todos') {
                 shouldDisplay = true;
             } else if (selectedField === 'registro-filtro') {
                 shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
-            } else if (selectedField === 'nome-filtro') {
-                shouldDisplay = nome.textContent.toLowerCase().includes(searchTerm);
-            } else if (selectedField === 'uuid-filtro') {
-                shouldDisplay = uuid.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'tipoArquivo-filtro') {
+                shouldDisplay = tipoArquivo.textContent.toLowerCase().includes(searchTerm);
             }
 
             if (shouldDisplay) {
                 registro.style.display = 'flex';
-                nome.style.display = 'flex';
-                uuid.style.display = 'flex';
+                tipoArquivo.style.display = 'flex';
                 acoes.style.display = 'flex';
                 found = true;
             }
@@ -98,3 +96,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+

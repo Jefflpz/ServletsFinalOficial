@@ -48,8 +48,7 @@
                         <option value="">Escolher campo</option>
                         <option value="todos">Todos</option>
                         <option value="registro-filtro">Registro</option>
-                        <option value="nome-filtro">Nome</option>
-                        <option value="status-filtro">Status</option>
+                        <option value="situacao-filtro">Situação Trabalhistas</option>
                     </select>
 
                     <input type="text" name="search" placeholder="Pesquisar...">
@@ -108,7 +107,7 @@
                     </div>
 
                     <button type="submit" class="b bt-registrar">Cadastrar</button>
-                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                    <button type="button" class="b bt-cancelar">Cancelar</button>
                 </form>
             </div>
         </div>
@@ -125,7 +124,8 @@
                     </div>
 
                     <button type="submit" class="b bt-registrar">Cadastrar</button>
-                    <button type="button" class="b bt-cancelar">Cancelar</button>
+                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+
                 </form>
             </div>
         </div>

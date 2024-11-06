@@ -45,10 +45,9 @@
                     <select name="filter-field">
                         <option value="">Escolher campo</option>
                         <option value="todos">Todos</option>
-                        <option v
-                        alue="registro-filtro">Registro</option>
-                        <option value="id_conta-filtro">id_conta</option>
-                        <option value="id_vaga-filtro">id_vaga</option>
+                        <option value="registro-filtro">Registro</option>
+                        <option value="data-filtro">Data de Solicitação</option>
+                        <option value="permissao-filtro">Permissão</option>
                     </select>
 
                     <input type="text" name="search" placeholder="Pesquisar...">

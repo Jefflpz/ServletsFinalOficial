@@ -104,7 +104,8 @@ body {
 
 .titulo {
     font-size: 25px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -150,7 +151,7 @@ h1 {
 }
 
 .sidebar ul {
-    margin-top: 80px;
+    margin-top: 60px;
     list-style-type: none;
 }
 
@@ -175,18 +176,22 @@ h1 {
 }
 
 .logout {
-    margin-left: 35px;
     width: 120px;
     padding: 15px 30px;
     background-color: #ffffff;
     border: 1px solid #2B46D3;
     border-radius: 11px;
-    color: #000000;
+    color: #0000F9;
     cursor: pointer;
     font-size: 20px;
     transition: 0.5s;
-    color: #0000F9;
+    text-align: center; /* Centraliza o texto */
+    display: flex;
+    justify-content: center; /* Centraliza o texto horizontalmente */
+    align-items: center; /* Centraliza o texto verticalmente */
+    height: 50px; /* Defina uma altura para o botão */
 }
+
 
 .sidebar ul li a:hover {
     color: #2B46D3;
@@ -194,7 +199,7 @@ h1 {
 
 
 .logout:hover {
-    background-color: #d3d3d3;
+    background-color: #2B46D3;
 }
 
 .main-content {

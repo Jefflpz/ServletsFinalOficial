@@ -10,7 +10,6 @@ document.querySelectorAll('.delete').forEach(button => {
         this.closest('.crud-row').remove();
     });
 });
-
 document.addEventListener("DOMContentLoaded", function() {
     const filterButton = document.querySelector('.filtrar');
     const filterBar = document.getElementById('filtrar-bar');
@@ -20,39 +19,39 @@ document.addEventListener("DOMContentLoaded", function() {
         filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    const inserirSetor = document.querySelector('.inserir-setor');
-    const editSetor = document.querySelectorAll('.edit');
-    const cancelSetor = document.querySelector('.bt-cancelar');
-    const cancelSetorEdit = document.querySelector('.bt-cancelar-edit');
+    const inserirSetorButton = document.querySelector('.inserir-setor');
+    const editButtons = document.querySelectorAll('.edit');
+    const cancelButton = document.querySelector('.bt-cancelar');
+    const cancelEditButton = document.querySelector('.bt-cancelar-edit');
 
-    const popupSetor = document.getElementById('popupID');
-    const popupSetorEdit = document.getElementById('popupIDsetor');
+    const popupInsert = document.getElementById('popupID');
+    const popupEdit = document.getElementById('popupIDsetor');
 
-    let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editSetor.length; i++) {
-        editSetor[i].addEventListener('click', togglePopupEdit);
+    // Evento para abrir o popup de inserção
+    inserirSetorButton.addEventListener('click', function() {
+        togglePopup(popupInsert);
+    });
+
+    // Evento para cada botão de edição abrir o popup de edição
+    editButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            togglePopup(popupEdit);
+        });
+    });
+
+    // Cancelar popups
+    cancelButton.addEventListener('click', function() {
+        popupInsert.style.display = 'none';
+    });
+    cancelEditButton.addEventListener('click', function() {
+        popupEdit.style.display = 'none';
+    });
+
+    function togglePopup(popup) {
+        popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
     }
 
-    cancelSetor.addEventListener('click', cancelPopup);
-    cancelSetorEdit.addEventListener('click', cancelPopupEdit);
-
-    inserirSetor.addEventListener('click', togglePopup);
-
-    function togglePopup() {
-        popupSetor.style.display = popupSetor.style.display === 'none' ? 'flex' : 'none';
-    }
-
-    function togglePopupEdit() {
-        popupSetorEdit.style.display = popupSetorEdit.style.display === 'none' ? 'flex' : 'none';
-    }
-
-    function cancelPopup() {
-        popupSetor.style.display = 'none';
-    }
-    function cancelPopupEdit() {
-        popupSetorEdit.style.display = 'none';
-    }
-
+    // Filtro de pesquisa
     const form = filterBar.querySelector('form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -67,27 +66,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let found = false;
 
-        for (let i = 0; i < gridItems.length; i += 4) {
+        for (let i = 0; i < gridItems.length; i += 3) {
             const registro = gridItems[i];
-            const UUID = gridItems[i + 1];
-            const nome = gridItems[i + 2];
-            const acoes = gridItems[i + 3];
+            const setor = gridItems[i + 1];
+            const acoes = gridItems[i + 2];
 
             let shouldDisplay = false;
             if (selectedField === 'todos') {
                 shouldDisplay = true;
             } else if (selectedField === 'registro-filtro') {
                 shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
-            } else if (selectedField === 'UUID-filtro') {
-                shouldDisplay = UUID.textContent.toLowerCase().includes(searchTerm);
-            } else if (selectedField === 'nome-filtro') {
-                shouldDisplay = nome.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'setor-filtro') {
+                shouldDisplay = setor.textContent.toLowerCase().includes(searchTerm);
             }
 
             if (shouldDisplay) {
                 registro.style.display = 'flex';
-                UUID.style.display = 'flex';
-                nome.style.display = 'flex';
+                setor.style.display = 'flex';
                 acoes.style.display = 'flex';
                 found = true;
             }

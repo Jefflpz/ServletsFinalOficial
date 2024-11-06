@@ -1,17 +1,23 @@
-document.querySelectorAll('.view-password').forEach(button => {
-    button.addEventListener('click', function() {
-        const passwordCell = this.parentElement.previousElementSibling;
-        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
-    });
-});
-
-document.querySelectorAll('.delete').forEach(button => {
-    button.addEventListener('click', function() {
-        this.closest('.crud-row').remove();
-    });
-});
-
 document.addEventListener("DOMContentLoaded", function() {
+    // Alternar visibilidade da senha
+    document.querySelectorAll('.view-password').forEach(button => {
+        button.addEventListener('click', function() {
+            const passwordCell = this.parentElement.previousElementSibling;
+            passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
+        });
+    });
+
+    // Remover linha ao clicar no botão de exclusão
+    document.querySelectorAll('.delete').forEach(button => {
+        button.addEventListener('click', function() {
+            const row = this.closest('.crud-row');
+            if (row) {
+                row.remove();
+            }
+        });
+    });
+
+    // Alternar barra de filtro
     const filterButton = document.querySelector('.filtrar');
     const filterBar = document.getElementById('filtrar-bar');
     filterButton.addEventListener('click', toggleFilterBar);
@@ -20,39 +26,47 @@ document.addEventListener("DOMContentLoaded", function() {
         filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
     }
 
-    const inserirVaga = document.querySelector('.inserir-vaga');
-    const editVaga = document.querySelectorAll('.edit');
-    const cancelVaga = document.querySelector('.bt-cancelar');
-    const cancelVAGAedi = document.querySelector('.bt-cancelar-edit');
+    // Popups de inserção e edição de vaga
+    const inserirVagaButton = document.querySelector('.inserir-vaga');
+    const editVagaButtons = document.querySelectorAll('.edit');
+    const cancelVagaButton = document.querySelector('.bt-cancelar');
+    const cancelVagaEditButton = document.querySelector('.bt-cancelar-edit');
 
     const popupVaga = document.getElementById('popupID');
-    const popupVagaedit = document.getElementById('popupIDVaga');
+    const popupVagaEdit = document.getElementById('popupIDTipoVaga');
 
-    let i = 0; // Corrigido: declaração do índice
-    for (i = 0; i < editVaga.length; i++) {
-        editVaga[i].addEventListener('click', togglePopupedit);
+    if (inserirVagaButton) {
+        inserirVagaButton.addEventListener('click', togglePopup);
     }
 
-    cancelVaga.addEventListener('click', cancelPopup);
-    cancelVAGAedi.addEventListener('click', cancelPopupedit);
+    editVagaButtons.forEach(button => {
+        button.addEventListener('click', togglePopupEdit);
+    });
 
-    inserirVaga.addEventListener('click', togglePopup);
+    if (cancelVagaButton) {
+        cancelVagaButton.addEventListener('click', closePopup);
+    }
+    if (cancelVagaEditButton) {
+        cancelVagaEditButton.addEventListener('click', closePopupEdit);
+    }
 
     function togglePopup() {
         popupVaga.style.display = popupVaga.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function togglePopupedit() {
-        popupVagaedit.style.display = popupVagaedit.style.display === 'none' ? 'flex' : 'none';
+    function togglePopupEdit() {
+        popupVagaEdit.style.display = popupVagaEdit.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function cancelPopup() {
+    function closePopup() {
         popupVaga.style.display = 'none';
     }
-    function cancelPopupedit() {
-        popupVagaedit.style.display = 'none';
+
+    function closePopupEdit() {
+        popupVagaEdit.style.display = 'none';
     }
 
+    // Filtro de pesquisa
     const form = filterBar.querySelector('form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -60,34 +74,30 @@ document.addEventListener("DOMContentLoaded", function() {
         const selectedField = this['filter-field'].value;
         const searchTerm = this['search'].value.toLowerCase();
 
-        if (!selectedField) return; // Verificação extra
+        if (!selectedField) return;
 
         const gridItems = document.querySelectorAll('.grid-container .grid-item');
         gridItems.forEach(item => item.style.display = 'none');
 
         let found = false;
 
-        for (let i = 0; i < gridItems.length; i += 4) {
+        for (let i = 0; i < gridItems.length; i += 3) {
             const registro = gridItems[i];
-            const uuid = gridItems[i + 1];
-            const nome = gridItems[i + 2];
-            const acoes = gridItems[i + 3];
+            const tipoVaga = gridItems[i + 1];
+            const acoes = gridItems[i + 2];
 
             let shouldDisplay = false;
             if (selectedField === 'todos') {
                 shouldDisplay = true;
             } else if (selectedField === 'registro-filtro') {
                 shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
-            } else if (selectedField === 'nome-filtro') {
-                shouldDisplay = nome.textContent.toLowerCase().includes(searchTerm);
-            } else if (selectedField === 'uuid-filtro') {
-                shouldDisplay = uuid.textContent.toLowerCase().includes(searchTerm);
+            } else if (selectedField === 'tipoVaga-filtro') {
+                shouldDisplay = tipoVaga.textContent.toLowerCase().includes(searchTerm);
             }
 
             if (shouldDisplay) {
                 registro.style.display = 'flex';
-                nome.style.display = 'flex';
-                uuid.style.display = 'flex';
+                tipoVaga.style.display = 'flex';
                 acoes.style.display = 'flex';
                 found = true;
             }

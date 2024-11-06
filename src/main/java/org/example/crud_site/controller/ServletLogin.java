@@ -1,12 +1,11 @@
 package org.example.crud_site.controller;
-
+import org.example.crud_site.dao.AdmDAO;
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.crud_site.dao.AdmDAO;
 import org.example.crud_site.dao.HashSenha;
 
 import java.io.BufferedReader;
@@ -71,7 +70,7 @@ public class ServletLogin extends HttpServlet {
     }
 
     private boolean verificarLogin(String usuario, String senha) {
-        AdmDAO admDAO = new AdmDAO();
+        AdmDAO  admDAO = new AdmDAO();
         return admDAO.buscarAdm(usuario, senha) != null;
     }
 

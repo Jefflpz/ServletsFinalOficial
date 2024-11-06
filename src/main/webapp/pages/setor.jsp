@@ -49,8 +49,7 @@
                         <option value="">Escolher campo</option>
                         <option value="todos">Todos</option>
                         <option value="registro-filtro">Registro</option>
-                        <option value="UUID-filtro">UUID</option>
-                        <option value="nome-filtro">NOME</option>
+                        <option value="setor-filtro">Setor</option>
                     </select>
 
                     <input type="text" name="search" placeholder="Pesquisar...">

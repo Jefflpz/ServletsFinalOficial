@@ -24,6 +24,7 @@ public class Conexao {
             String url = System.getenv("DATABASE_URL");
             String user = System.getenv("DATABASE_USER");
             String password = System.getenv("DATABASE_PASSWORD");
+            System.out.println(url + " / " + user + " / " + password);
 
         // Atribui a conn a Conexao que o "DriverManager.getConnection(url, user, password);" retorna
             this.conn = DriverManager.getConnection(url, user, password);

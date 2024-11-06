@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/adm.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crud Adm</title>
+    <title>Adm</title>
 </head>
 <body>
 <aside class="sidebar">
