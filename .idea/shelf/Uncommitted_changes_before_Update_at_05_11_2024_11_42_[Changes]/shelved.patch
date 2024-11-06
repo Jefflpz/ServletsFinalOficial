@@ -1,0 +1,812 @@
+Index: src/main/webapp/css/statusCurso.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    display: flex;\r\n    height: 100vh;\r\n    background-color:#dbecfe;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: start;\r\n    justify-content: start;\r\n    width: 80%;\r\n    height: 90%;\r\n    padding: 3%;\r\n    background-color: white;\r\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\r\n    border-radius: 30px;\r\n    margin: 0 auto;\r\n    margin-top: 3%;\r\n    margin-bottom: 5%;\r\n}\r\n\r\n.grid-container {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr 2fr;\r\n    grid-auto-rows: 58px;\r\n    width: 100%;\r\n    background-color: #c3e0fe;\r\n    border-radius: 30px 30px 0 0;\r\n    border: 0.5px solid #c3e0fe;\r\n    height: 410px;\r\n    overflow-y: auto;\r\n    position: relative;\r\n    scrollbar-width: none;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.grid-header {\r\n    font-weight: bold;\r\n    text-align: center;\r\n    padding: 18px;\r\n    border: 1px  solid #c3e0fe;\r\n    border-bottom: 4px solid  #c3e0fe ;\r\n    background-color: white;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 10;\r\n    color: #0f0fe0;\r\n}\r\n\r\n.grid-container::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.grid-item {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 10px;\r\n    border: 1px solid #c3e0fe;\r\n    background-color: white;\r\n}\r\n\r\n.grid-item.empty {\r\n    background-color: #f0f0f0;\r\n}\r\n\r\n.action {\r\n    background: none;\r\n    border: none;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.action.view {\r\n    color: #5b4fff;\r\n}\r\n\r\n.action.edit {\r\n    color: #1ca8ff;\r\n}\r\n\r\n.action.delete {\r\n    color: #ff4b5b;\r\n}\r\n\r\n.action:hover {\r\n    transform: scale(1.2);\r\n}\r\n\r\n.grid-item:hover {\r\n    background-color: #f0f8ff;\r\n}\r\n\r\n.titulo {\r\n    font-size: 25px;\r\n    margin-bottom: 40px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\nh1 {\r\n    color: #2C46D1;\r\n    font-size: 35px;\r\n    margin-left: 20px;\r\n}\r\n\r\n.crud_adm{\r\n    font-weight: 350;\r\n}\r\n\r\n.inclus {\r\n    font-size: 30px;\r\n    color: mediumblue;\r\n}\r\n\r\n.es {\r\n\r\n    font-size: 30px;\r\n    color: blueviolet;\r\n}\r\n\r\n.sidebar {\r\n    width: 260px;\r\n    height: 100%;\r\n    background-image: url(../img/sidebar.png);\r\n    background-size: cover;\r\n    padding: 20px;\r\n    color: #ecf0f1;\r\n}\r\n\r\n.sidebar ul {\r\n    margin-top: 80px;\r\n    list-style-type: none;\r\n}\r\n\r\n.sidebar ul li {\r\n    margin-bottom: 35px;\r\n    margin-left: 20px;\r\n    font-size: 18px;\r\n    font-weight: bolder;\r\n}\r\n\r\n.sidebar ul li a {\r\n    text-decoration: none;\r\n    color: #c7c7c7;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar ul li a img {\r\n    width: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.logout {\r\n    margin-left: 35px;\r\n    width: 120px;\r\n    padding: 15px 30px;\r\n    background-color: #ffffff;\r\n    border: 1px solid #2B46D3;\r\n    border-radius: 11px;\r\n    color: #000000;\r\n    cursor: pointer;\r\n    font-size: 20px;\r\n    transition: 0.5s;\r\n    color: #0000F9;\r\n}\r\n\r\n.sidebar ul li a:hover {\r\n    color: #2B46D3;\r\n}\r\n\r\n\r\n.logout:hover {\r\n    background-color: #d3d3d3;\r\n}\r\n\r\n.main-content {\r\n    width: 100%;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.inserir-status-curso{\r\n    padding: 15px 30px;\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    border: none;\r\n    cursor: pointer;\r\n    border-radius: 10px;\r\n    font-size: 14px;\r\n    margin-right: 40PX;\r\n    font-weight: bold;\r\n}\r\n\r\n.elemento{\r\n    background-color: #0866FF;\r\n    height: 9px;\r\n    width: 23px;\r\n    border: none;\r\n    border-radius: 75px;\r\n    transform: rotate(90deg);\r\n    position: relative;\r\n    top: 13px;\r\n    right: 0.2px;\r\n}\r\n.filtrar {\r\n    position: relative;\r\n    right: -22%;\r\n    border-radius: 10px;\r\n    padding: 15px 30px;\r\n    color: #0000F9;\r\n    font-weight: bold;\r\n    background-color: white;\r\n    border: #2C46D1 1px solid;\r\n}\r\n#filtrar-bar {\r\n    display: flex;\r\n    align-items: center; /* Alinhamento dos itens no centro verticalmente */\r\n    gap: 10px; /* Espaçamento entre o botão e a barra de pesquisa */\r\n    margin-bottom: 30px;\r\n    justify-content: flex-end; /* Mantém os itens à direita */\r\n}\r\n\r\n\r\n.pesquisa {\r\n    color: #D9D9D9;\r\n}\r\n.action{\r\n    height: 37px;\r\n    width: 65px;\r\n    border-radius: 10px;\r\n    padding-top: 4px;\r\n}\r\n\r\n.view {\r\n    background-color: #9747FF;\r\n}\r\n\r\n.edit {\r\n    background-color: #69B1FF;\r\n}\r\n\r\n.delete {\r\n    background-color: #FFA8A8;\r\n}\r\n\r\n#filtrar-bar input {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar button {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar select{\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\n#filtrar-bar button {\r\n    background-color: #69B1FF;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n#filtrar-bar button:hover {\r\n    background-color: #007bb5;\r\n}\r\n\r\n.sidebar ul li.selecionado a {\r\n    color: #2B46D3; /* Azul desejado */\r\n}\r\n\r\n#popupID,\r\n#popupIDCurso {\r\n    display: none; /* Para ocultar inicialmente */\r\n    position: fixed; /* Alterado */\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.35);\r\n    z-index: 100;\r\n    align-items: center; /* Alinhamento vertical */\r\n    justify-content: center; /* Alinhamento horizontal */\r\n}\r\n\r\n.popup{\r\n    display: flex;\r\n    background-color: white;\r\n    width: 430px;\r\n    height: 450px;\r\n    justify-content: center;\r\n    border-radius: 20px;\r\n}\r\n\r\n.b{\r\n    width: 80%;\r\n    height: 40px;\r\n    margin-left: 30px;\r\n    margin-bottom: 20px;\r\n    border-radius: 10px;\r\n}\r\n\r\n.label{\r\n    display: block;\r\n    margin-top: 20px;\r\n\r\n\r\n}\r\n\r\n.input{\r\n    padding: 10px;\r\n    border: 1px solid #000000;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    width: 100%;\r\n    height: 50px;\r\n    margin-top: 20px;\r\n}\r\n.registrar .titulo{\r\n    margin-top: 33px;\r\n    color: #0866FF;\r\n}\r\n\r\n.password{\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.bt-registrar{\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    cursor: pointer;\r\n}\r\n.bt-cancelar-edit{\r\n    background-color: white;\r\n    color:#FF1B1F;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n.bt-cancelar{\r\n    background-color: white;\r\n    color:#3f3ff5;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n@media (max-width: 904px) {\r\n    .titulo h1 {\r\n        font-size: 20px;\r\n    }\r\n\r\n    .filtrar, .inserir-curso{\r\n        font-size: 10px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .grid-item {\r\n        font-size: 12px;\r\n    }\r\n\r\n    .sidebar ul li {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .logout {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .action {\r\n        height: 27px;\r\n        width: 35px;\r\n        margin-left: 10px;\r\n\r\n    }\r\n    .action img {\r\n        height: 18px;\r\n        width: 18px;\r\n    }\r\n\r\n    .permitido, .edit, .delete {\r\n        font-size: 12px;\r\n    }\r\n\r\n    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {\r\n        font-size: 12px;\r\n    }\r\n    .filtrar{\r\n        margin-left: 30%;\r\n    }\r\n    .sidebar {\r\n        margin-right: 20px;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/css/statusCurso.css b/src/main/webapp/css/statusCurso.css
+--- a/src/main/webapp/css/statusCurso.css	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/webapp/css/statusCurso.css	(date 1730815316012)
+@@ -362,7 +362,7 @@
+ }
+ .bt-cancelar-edit{
+     background-color: white;
+-    color:#FF1B1F;
++    color: #0000f7;
+     border: #0000F9 1px solid;
+     font-size: 18px;
+     font-weight: 700;
+Index: src/main/java/org/example/crud_site/controller/Status_Curso/ServletInserirStatus_Curso.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Status_Curso;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.dao.Status_CursoDAO;\r\nimport org.example.crud_site.model.Status_Curso;\r\n\r\nimport java.io.IOException;\r\n\r\n@WebServlet(\"/inserirStatus_Curso\")\r\npublic class ServletInserirStatus_Curso extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n        // Obtém o nome do status de curso a partir da requisição\r\n        String nomeStatus_Curso = req.getParameter(\"nome_status_curso\");\r\n\r\n        // Cria uma instância do modelo e do DAO para inserir o status de curso\r\n        Status_Curso status_Curso = new Status_Curso(nomeStatus_Curso);\r\n        Status_CursoDAO status_CursoDAO = new Status_CursoDAO();\r\n\r\n        // Insere o status de curso e verifica se foi bem-sucedido\r\n        boolean inserido = status_CursoDAO.inserirStatus_curso(status_Curso);\r\n        if (inserido) {\r\n            // Redireciona para a página de sucesso\r\n            req.setAttribute(\"mensagem\", \"Status de curso inserido com sucesso.\");\r\n            req.getRequestDispatcher(\"pages/statusCurso.jsp\").forward(req, res);\r\n            return;\r\n        }\r\n\r\n        // Caso contrário, redireciona para a página de erro\r\n        req.setAttribute(\"erro\", \"Falha ao inserir o status de curso.\");\r\n        req.getRequestDispatcher(\"pages/errorPage.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Status_Curso/ServletInserirStatus_Curso.java b/src/main/java/org/example/crud_site/controller/Status_Curso/ServletInserirStatus_Curso.java
+--- a/src/main/java/org/example/crud_site/controller/Status_Curso/ServletInserirStatus_Curso.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/controller/Status_Curso/ServletInserirStatus_Curso.java	(date 1730814984875)
+@@ -5,32 +5,30 @@
+ import jakarta.servlet.http.HttpServlet;
+ import jakarta.servlet.http.HttpServletRequest;
+ import jakarta.servlet.http.HttpServletResponse;
++import org.example.crud_site.dao.SetorDAO;
+ import org.example.crud_site.dao.Status_CursoDAO;
++import org.example.crud_site.model.Setor;
+ import org.example.crud_site.model.Status_Curso;
+ 
+ import java.io.IOException;
+ 
+ @WebServlet("/inserirStatus_Curso")
+ public class ServletInserirStatus_Curso extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+-        // Obtém o nome do status de curso a partir da requisição
+-        String nomeStatus_Curso = req.getParameter("nome_status_curso");
+-
+-        // Cria uma instância do modelo e do DAO para inserir o status de curso
+-        Status_Curso status_Curso = new Status_Curso(nomeStatus_Curso);
+-        Status_CursoDAO status_CursoDAO = new Status_CursoDAO();
++    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
++        response.setContentType("application/json");
++        String nomeStatusCurso = request.getParameter("cadastrar");
+ 
+-        // Insere o status de curso e verifica se foi bem-sucedido
+-        boolean inserido = status_CursoDAO.inserirStatus_curso(status_Curso);
+-        if (inserido) {
+-            // Redireciona para a página de sucesso
+-            req.setAttribute("mensagem", "Status de curso inserido com sucesso.");
+-            req.getRequestDispatcher("pages/statusCurso.jsp").forward(req, res);
+-            return;
++        // Instancia o DAO para interagir com o banco de dados.
++        Status_CursoDAO statusCursoDAO = new Status_CursoDAO();
++        Status_Curso statusNovo = new Status_Curso(nomeStatusCurso);
++        try {
++            if (statusCursoDAO.inserirStatus_curso(statusNovo.getNome())) {
++                response.sendRedirect(request.getContextPath() + "/listarStatus_Curso");
++            } else {
++                request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
++            }
++        } catch (Exception e) {
++            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
+         }
+-
+-        // Caso contrário, redireciona para a página de erro
+-        req.setAttribute("erro", "Falha ao inserir o status de curso.");
+-        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
+     }
+ }
+Index: src/main/java/org/example/crud_site/controller/Status_Curso/ServletExcluirStatus_Curso.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Status_Curso;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.dao.Status_CursoDAO;\r\n\r\nimport java.io.IOException;\r\n\r\n@WebServlet(\"/excluirStatusCurso\")\r\npublic class ServletExcluirStatus_Curso extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n        // Obtém o nome do status de curso a partir da requisição\r\n        String nomeStatus_Curso = req.getParameter(\"nome_status_curso\");\r\n\r\n        // Cria uma instância do DAO para realizar a exclusão\r\n        Status_CursoDAO status_CursoDAO = new Status_CursoDAO();\r\n\r\n        // Tenta excluir o status de curso\r\n        if (status_CursoDAO.excluirStauts_Curso(nomeStatus_Curso)){\r\n            req.getRequestDispatcher(\"listarStatus_Curso\").forward(req, res);\r\n        }\r\n        req.getRequestDispatcher(\"pages/errorPage.jsp\").forward(req, res);\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Status_Curso/ServletExcluirStatus_Curso.java b/src/main/java/org/example/crud_site/controller/Status_Curso/ServletExcluirStatus_Curso.java
+--- a/src/main/java/org/example/crud_site/controller/Status_Curso/ServletExcluirStatus_Curso.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/controller/Status_Curso/ServletExcluirStatus_Curso.java	(date 1730814984896)
+@@ -5,24 +5,25 @@
+ import jakarta.servlet.http.HttpServlet;
+ import jakarta.servlet.http.HttpServletRequest;
+ import jakarta.servlet.http.HttpServletResponse;
++import org.example.crud_site.dao.Situacao_TrabalhistaDAO;
+ import org.example.crud_site.dao.Status_CursoDAO;
+ 
+ import java.io.IOException;
+ 
+ @WebServlet("/excluirStatusCurso")
+ public class ServletExcluirStatus_Curso extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+-        // Obtém o nome do status de curso a partir da requisição
+-        String nomeStatus_Curso = req.getParameter("nome_status_curso");
++    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
++        // Obtém os parâmetros da requisição
++        String nomeStatus = request.getParameter("nome");
+ 
+         // Cria uma instância do DAO para realizar a exclusão
+-        Status_CursoDAO status_CursoDAO = new Status_CursoDAO();
++        Status_CursoDAO statusCursoDAO = new Status_CursoDAO();
+ 
+-        // Tenta excluir o status de curso
+-        if (status_CursoDAO.excluirStauts_Curso(nomeStatus_Curso)){
+-            req.getRequestDispatcher("listarStatus_Curso").forward(req, res);
++        if (statusCursoDAO.excluirStauts_Curso(nomeStatus)) {
++            request.getRequestDispatcher("listarStatus_Curso").forward(request, response);
+         }
+-        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
+-
++        else{
++            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
++        }
+     }
+ }
+Index: src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletExcluirTipo_Arquivo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Tipo_Arquivo;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.dao.Tipo_ArquivoDAO;\r\n\r\nimport java.io.IOException;\r\n\r\n@WebServlet(\"/excluirTipoArquivo\")\r\npublic class ServletExcluirTipo_Arquivo extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n        // Obtém o nome do tipo de arquivo a partir da requisição\r\n        String nomeTipo_Arquivo = req.getParameter(\"nome_tipo_arquivo\");\r\n\r\n        // Cria uma instância do DAO para realizar a exclusão\r\n        Tipo_ArquivoDAO tipo_ArquivoDAO = new Tipo_ArquivoDAO();\r\n\r\n        // Tenta excluir o tipo de arquivo\r\n        if (tipo_ArquivoDAO.excluirTipo_Arquivo(nomeTipo_Arquivo)){\r\n            req.getRequestDispatcher(\"listarTipo_Arquivo\").forward(req, res);\r\n        }\r\n        req.getRequestDispatcher(\"pages/errorPage.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletExcluirTipo_Arquivo.java b/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletExcluirTipo_Arquivo.java
+--- a/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletExcluirTipo_Arquivo.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletExcluirTipo_Arquivo.java	(date 1730815651455)
+@@ -5,23 +5,25 @@
+ import jakarta.servlet.http.HttpServlet;
+ import jakarta.servlet.http.HttpServletRequest;
+ import jakarta.servlet.http.HttpServletResponse;
++import org.example.crud_site.dao.Status_CursoDAO;
+ import org.example.crud_site.dao.Tipo_ArquivoDAO;
+ 
+ import java.io.IOException;
+ 
+ @WebServlet("/excluirTipoArquivo")
+ public class ServletExcluirTipo_Arquivo extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+-        // Obtém o nome do tipo de arquivo a partir da requisição
+-        String nomeTipo_Arquivo = req.getParameter("nome_tipo_arquivo");
++    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
++        // Obtém os parâmetros da requisição
++        String nomeTipoArquivo = request.getParameter("nome");
+ 
+         // Cria uma instância do DAO para realizar a exclusão
+-        Tipo_ArquivoDAO tipo_ArquivoDAO = new Tipo_ArquivoDAO();
++        Tipo_ArquivoDAO tipoArquivoDAO = new Tipo_ArquivoDAO();
+ 
+-        // Tenta excluir o tipo de arquivo
+-        if (tipo_ArquivoDAO.excluirTipo_Arquivo(nomeTipo_Arquivo)){
+-            req.getRequestDispatcher("listarTipo_Arquivo").forward(req, res);
++        if (tipoArquivoDAO.excluirTipo_Arquivo(nomeTipoArquivo)) {
++            request.getRequestDispatcher("listarTipo_arquivo").forward(request, response);
+         }
+-        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
++        else{
++            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
++        }
+     }
+ }
+Index: src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletInserirTipo_Arquivo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Tipo_Arquivo;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.dao.Tipo_ArquivoDAO;\r\nimport org.example.crud_site.model.Tipo_Arquivo;\r\n\r\nimport java.io.IOException;\r\n\r\n@WebServlet(\"/inserirTipo_Arquivo\")\r\npublic class ServletInserirTipo_Arquivo extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n        // Obtém o nome do tipo de arquivo a partir da requisição\r\n        String nomeTipo_Arquivo = req.getParameter(\"nome_tipo_arquivo\");\r\n\r\n        // Cria uma instância do modelo e do DAO para inserir o tipo de arquivo\r\n        Tipo_Arquivo tipo_Arquivo = new Tipo_Arquivo(nomeTipo_Arquivo);\r\n        Tipo_ArquivoDAO tipo_ArquivoDAO = new Tipo_ArquivoDAO();\r\n\r\n        // Insere o tipo de arquivo e verifica se foi bem-sucedido\r\n        boolean inserido = tipo_ArquivoDAO.inserirTipo_Arquivo(tipo_Arquivo);\r\n        if (inserido) {\r\n            // Redireciona para a página de sucesso\r\n            req.setAttribute(\"mensagem\", \"Tipo de arquivo inserido com sucesso.\");\r\n            req.getRequestDispatcher(\"pages/tipoArquivo.jsp\").forward(req, res);\r\n            return;\r\n        }\r\n\r\n        // Caso contrário, redireciona para a página de erro\r\n        req.setAttribute(\"erro\", \"Falha ao inserir o tipo de arquivo.\");\r\n        req.getRequestDispatcher(\"pages/errorPage.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletInserirTipo_Arquivo.java b/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletInserirTipo_Arquivo.java
+--- a/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletInserirTipo_Arquivo.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletInserirTipo_Arquivo.java	(date 1730815580425)
+@@ -5,32 +5,30 @@
+ import jakarta.servlet.http.HttpServlet;
+ import jakarta.servlet.http.HttpServletRequest;
+ import jakarta.servlet.http.HttpServletResponse;
++import org.example.crud_site.dao.Status_CursoDAO;
+ import org.example.crud_site.dao.Tipo_ArquivoDAO;
++import org.example.crud_site.model.Status_Curso;
+ import org.example.crud_site.model.Tipo_Arquivo;
+ 
+ import java.io.IOException;
+ 
+ @WebServlet("/inserirTipo_Arquivo")
+ public class ServletInserirTipo_Arquivo extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+-        // Obtém o nome do tipo de arquivo a partir da requisição
+-        String nomeTipo_Arquivo = req.getParameter("nome_tipo_arquivo");
+-
+-        // Cria uma instância do modelo e do DAO para inserir o tipo de arquivo
+-        Tipo_Arquivo tipo_Arquivo = new Tipo_Arquivo(nomeTipo_Arquivo);
+-        Tipo_ArquivoDAO tipo_ArquivoDAO = new Tipo_ArquivoDAO();
++    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
++        response.setContentType("application/json");
++        String nomeTipoArquivo = request.getParameter("cadastrar");
+ 
+-        // Insere o tipo de arquivo e verifica se foi bem-sucedido
+-        boolean inserido = tipo_ArquivoDAO.inserirTipo_Arquivo(tipo_Arquivo);
+-        if (inserido) {
+-            // Redireciona para a página de sucesso
+-            req.setAttribute("mensagem", "Tipo de arquivo inserido com sucesso.");
+-            req.getRequestDispatcher("pages/tipoArquivo.jsp").forward(req, res);
+-            return;
++        // Instancia o DAO para interagir com o banco de dados.
++        Tipo_ArquivoDAO tipoArquivoDAO = new Tipo_ArquivoDAO();
++        Tipo_Arquivo tipoArquivoNovo = new Tipo_Arquivo(nomeTipoArquivo);
++        try {
++            if (tipoArquivoDAO.inserirTipo_Arquivo(tipoArquivoNovo.getNome())) {
++                response.sendRedirect(request.getContextPath() + "/listarTipo_arquivo");
++            } else {
++                request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
++            }
++        } catch (Exception e) {
++            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
+         }
+-
+-        // Caso contrário, redireciona para a página de erro
+-        req.setAttribute("erro", "Falha ao inserir o tipo de arquivo.");
+-        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
+     }
+ }
+Index: src/main/webapp/pages/tipoArquivo.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page import=\"org.example.crud_site.model.Tipo_Arquivo\" %>\r\n<%@ page import=\"java.util.List\" %>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>CRUD Adm</title>\r\n  <link rel=\"stylesheet\" href=\"css/tipoArquivo.css\">\r\n</head>\r\n<body>\r\n\r\n    <aside class=\"sidebar\">\r\n        <div class=\"titulo\">\r\n            <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n        </div>\r\n        <nav>\r\n            <ul>\r\n                <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n                <li ><a href=\"listarAdm\">Adm</a></li>\r\n                <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n                <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n                <li><a href=\"listarSetor\">Setores</a></li>\r\n                <div class=\"elemento\"></div>\r\n                <li class=\"selecionado\"><a href=\"#\">Tipo de arquivo</a></li>\r\n                <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n                <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n                <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n                <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n            </ul>\r\n        </nav>\r\n    </aside>\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Tipo do Arquivo</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-arquivo\">Inserir Arquivo</button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"nome-filtro\">Nome</option>\r\n                        <option value=\"uuid-filtro\">UUID</option>\r\n\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n              <div class=\"grid-header registro\">Registro</div>\r\n              <div class=\"grid-header senha\">Tipo do arquivo</div>\r\n              <div class=\"grid-header acoes\">Ações</div>\r\n\r\n                <%\r\n                    List<Tipo_Arquivo> lista = (List<Tipo_Arquivo>) request.getAttribute(\"listarTipo_Arquivo\");\r\n\r\n                    if (!lista.isEmpty()) {\r\n                        for (int i = 0; i < lista.size(); i++) {\r\n                %>\r\n                <div class=\"grid-item registro\"><%= i+1 %></div>\r\n                <div class=\"grid-item username\"><%= lista.get(i).getNome() %></div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\">\r\n                        <img src=\"img/lapis.png\" alt=\"editar status curso\"></button>\r\n                    <form action=\"excluirStatusCurso\" method=\"post\">\r\n                        <input type=\"hidden\" name=\"id\" value=\"<%=lista.get(i).getId()%>\">\r\n                        <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"excluir status curso\"></button>\r\n                    </form>\r\n                </div>\r\n                <%\r\n                    }\r\n                } else {\r\n                %>\r\n                <div class=\"grid-item\">Nenhum registro encontrado.</div>\r\n                <%\r\n                        System.out.println(\"Nenhum registro encontrado.\");\r\n                    }\r\n                %>\r\n            </div>\r\n\r\n        </main>\r\n\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Inserir status curso</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"cadastrar\" class=\"label\">Status curso:</label>\r\n                        <input type=\"text\" id=\"cadastrar\" name=\"cadastrar\" placeholder=\"em andamento\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <div id=\"popupIDSituacaoTrabalhista\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar status curso</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"editar\" class=\"label\">Status curso:</label>\r\n                        <input type=\"text\" id=\"editar\" name=\"editar\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n        </div>\r\n    </div>\r\n  <script src=\"js/tipoArquivo.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/tipoArquivo.jsp b/src/main/webapp/pages/tipoArquivo.jsp
+--- a/src/main/webapp/pages/tipoArquivo.jsp	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/webapp/pages/tipoArquivo.jsp	(date 1730816019352)
+@@ -74,8 +74,8 @@
+                 <div class="grid-item">
+                     <button class="action edit">
+                         <img src="img/lapis.png" alt="editar status curso"></button>
+-                    <form action="excluirStatusCurso" method="post">
+-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                    <form action="excluirTipoArquivo" method="get">
++                        <input type="hidden" id="nome" name="id" value="<%=lista.get(i).getId()%>">
+                         <button class="action delete"><img src="img/lixo.png" alt="excluir status curso"></button>
+                     </form>
+                 </div>
+@@ -97,7 +97,7 @@
+ 
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+-                <form action="#" class="registrar">
++                <form action="inserirTipo_Arquivo" class="registrar" method="post">
+                     <div class="bloco-titulo">
+                         <h2 class="titulo">Inserir status curso</h2>
+                     </div>
+Index: src/main/java/org/example/crud_site/dao/Tipo_ArquivoDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.dao;\r\n\r\n// Importando a classe Tipo_Arquivo para manipular os dados relacionados.\r\nimport org.example.crud_site.model.Tipo_Arquivo;\r\n\r\n// Importando a classe SQLException para tratar os erros de SQL.\r\nimport java.sql.SQLException;\r\n\r\n// Importando a classe ArrayList para criar uma lista de tipos de arquivos.\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n// Importando a classe UUID para usar nos ids.\r\nimport java.util.UUID;\r\n\r\n// Classe Tipo_ArquivoDAO\r\npublic class Tipo_ArquivoDAO {\r\n\r\n    // Objeto responsável por gerenciar a conexão com o banco de dados\r\n    private Conexao conexao;\r\n\r\n    // Construtor que inicializa a conexão com uma nova instância de Conexao().\r\n    public Tipo_ArquivoDAO() {\r\n        conexao = new Conexao();\r\n    }\r\n\r\n    // Método para inserir um novo tipo de arquivo\r\n    public boolean inserirTipo_Arquivo(Tipo_Arquivo tipo_arquivo) {\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para inserir registro na tabela tipo_arquivo\r\n            String sql = \"INSERT INTO tipo_arquivo (nome) VALUES (?)\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros de consulta\r\n            conexao.pstmt.setString(1, tipo_arquivo.getNome());\r\n\r\n            // Executa a instrução SQL\r\n            return conexao.pstmt.executeUpdate() > 0;\r\n        } catch (SQLException e) {\r\n            throw new RuntimeException(e);\r\n        } finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para alterar o nome de um tipo de arquivo\r\n    public boolean alterarNome(Tipo_Arquivo tipo_arquivo, String nome) {\r\n        conexao.conectar();\r\n        try {\r\n            String sql = \"UPDATE tipo_arquivo SET nome = ? WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros da consulta SQL\r\n            conexao.pstmt.setString(1, nome);\r\n            conexao.pstmt.setString(2, tipo_arquivo.getNome());\r\n\r\n            // Executa a instrução SQL\r\n            int rows = conexao.pstmt.executeUpdate();\r\n\r\n            // Verifica se a instrução SQL alterou algum registro\r\n            if (rows == 0) {\r\n                throw new RuntimeException(\"Nenhum registro encontrado.\");\r\n            }\r\n            return rows > 0;\r\n        } catch (SQLException e) {\r\n            throw new RuntimeException(\"Erro ao atualizar o registro.\", e);\r\n        } finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para excluir um tipo de arquivo\r\n    public boolean excluirTipo_Arquivo(String nomeTipo_Arquivo) {\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para excluir um tipo de arquivo na tabela tipo_arquivo\r\n            String sql = \"DELETE FROM tipo_arquivo WHERE nome=?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define o valor do parâmetro na consulta SQL\r\n            conexao.pstmt.setString(1, nomeTipo_Arquivo);\r\n\r\n            // Executa a instrução SQL\r\n            conexao.pstmt.execute();\r\n            return true;\r\n        } catch (SQLException e) {\r\n            throw new RuntimeException(\"Erro ao excluir o registro.\", e);\r\n        } finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para buscar um tipo de arquivo pelo nome\r\n    public Tipo_Arquivo buscarTipo_Arquivo(String nomeTipo_Arquivo) {\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para buscar um tipo de arquivo na tabela tipo_arquivo\r\n            String sql = \"SELECT * FROM tipo_arquivo WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            conexao.pstmt.setString(1, nomeTipo_Arquivo);\r\n\r\n            // Armazena o resultado da consulta no objeto ResultSet\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            if (conexao.rs.next()) {\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String nome = conexao.rs.getString(2);\r\n                // Cria um objeto Tipo_Arquivo com os dados do ResultSet\r\n                return new Tipo_Arquivo(id, nome);\r\n            }\r\n            // Retorna null se não encontrar o tipo de arquivo\r\n            return null;\r\n\r\n        } catch (SQLException e) {\r\n            return null; // Retorna null caso ocorra algum erro\r\n        } finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para listar todos os tipos de arquivo na tabela tipo_arquivo\r\n    public List<Tipo_Arquivo> listarTipo_Arquivo() {\r\n        // Instrução SQL para listar todos os tipos de arquivo\r\n        String sql = \"SELECT * FROM tipo_arquivo\";\r\n        List<Tipo_Arquivo> tipos_arquivos = new ArrayList<>();\r\n        conexao.conectar();\r\n\r\n        try {\r\n            // Prepara a instrução SQL para executar a consulta\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            // Armazena o resultado da consulta no objeto ResultSet\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            // Obtém os dados do ResultSet e armazena na lista de tipos de arquivo\r\n            while (conexao.rs.next()) {\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String nome = conexao.rs.getString(2);\r\n                Tipo_Arquivo tipo_arquivo = new Tipo_Arquivo(id, nome);\r\n                // Adiciona o objeto Tipo_Arquivo na lista\r\n                tipos_arquivos.add(tipo_arquivo);\r\n            }\r\n        } catch (SQLException e) {\r\n            return null; // Retorna null caso ocorra algum erro\r\n        } finally {\r\n            conexao.desconectar();\r\n        }\r\n\r\n        // Retorna a lista de tipos de arquivo\r\n        return tipos_arquivos;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/Tipo_ArquivoDAO.java b/src/main/java/org/example/crud_site/dao/Tipo_ArquivoDAO.java
+--- a/src/main/java/org/example/crud_site/dao/Tipo_ArquivoDAO.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/dao/Tipo_ArquivoDAO.java	(date 1730815580405)
+@@ -25,7 +25,7 @@
+     }
+ 
+     // Método para inserir um novo tipo de arquivo
+-    public boolean inserirTipo_Arquivo(Tipo_Arquivo tipo_arquivo) {
++    public boolean inserirTipo_Arquivo(String tipo_arquivo) {
+         conexao.conectar();
+         try {
+             // Instrução SQL para inserir registro na tabela tipo_arquivo
+@@ -33,7 +33,7 @@
+             conexao.pstmt = conexao.conn.prepareStatement(sql);
+ 
+             // Define os valores dos parâmetros de consulta
+-            conexao.pstmt.setString(1, tipo_arquivo.getNome());
++            conexao.pstmt.setString(1, tipo_arquivo);
+ 
+             // Executa a instrução SQL
+             return conexao.pstmt.executeUpdate() > 0;
+Index: src/main/java/org/example/crud_site/dao/Status_CursoDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.dao;\r\n\r\n// Importando a classe Status_Curso para manipular os dados relacionados.\r\nimport org.example.crud_site.model.Status_Curso;\r\n\r\n// Importando a classe SQLException para tratar os erros de SQL.\r\nimport java.sql.SQLException;\r\n\r\n// Importando a classe ArrayList para criar uma lista de status de curso.\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n// Importando a classe UUID para usar nos ids.\r\nimport java.util.UUID;\r\n\r\n// Classe DAO responsável pelas operações de CRUD relacionadas ao status do curso.\r\npublic class Status_CursoDAO {\r\n\r\n    // Objeto responsável por gerenciar a conexão com o banco de dados.\r\n    private Conexao conexao;\r\n\r\n    // Construtor que inicializa a conexão com uma nova instância de Conexao().\r\n    public Status_CursoDAO() {\r\n        conexao = new Conexao();\r\n    }\r\n\r\n    // Método para inserir um novo status de curso no banco de dados.\r\n    public boolean inserirStatus_curso(Status_Curso status_curso) {\r\n        conexao.conectar(); // Conecta ao banco de dados\r\n        try {\r\n            // Instrução SQL para inserir um novo status de curso na tabela\r\n            String sql = \"INSERT INTO Status_curso (nome) VALUES (?)\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define o valor do parâmetro 'nome' a partir do objeto Status_curso\r\n            conexao.pstmt.setString(1, status_curso.getNome());\r\n\r\n            // Executa a instrução SQL e retorna true se o número de linhas afetadas for maior que 0\r\n            return conexao.pstmt.executeUpdate() > 0;\r\n        } catch (SQLException e) {\r\n            throw new RuntimeException(e);\r\n        } finally {\r\n            // Desconecta do banco de dados após a operação\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para alterar o nome de um status de curso existente.\r\n    public boolean alterarNomeSatus_curso(Status_Curso status_curso, String nome) {\r\n        conexao.conectar(); // Conecta ao banco de dados\r\n        try {\r\n            // Instrução SQL para atualizar o nome do status de curso\r\n            String sql = \"UPDATE status_curso SET nome = ? WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros da consulta\r\n            conexao.pstmt.setString(1, nome); // Novo nome\r\n            conexao.pstmt.setString(2, status_curso.getNome()); // Nome atual\r\n\r\n            // Executa a instrução SQL e retorna true se alguma linha for alterada\r\n            int rows = conexao.pstmt.executeUpdate();\r\n            if (rows == 0) {\r\n                throw new RuntimeException(\"Nenhum registro encontrado.\");\r\n            }\r\n            return rows > 0;\r\n        } catch (SQLException e) {\r\n            throw new RuntimeException(\"Erro ao atualizar o registro.\", e);\r\n        } finally {\r\n            // Desconecta do banco de dados após a operação\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para excluir um status de curso pelo nome.\r\n    public boolean excluirStauts_Curso(String nomeStatus_curso) {\r\n        conexao.conectar(); // Conecta ao banco de dados\r\n        try {\r\n            // Instrução SQL para excluir um status de curso\r\n            String sql = \"DELETE FROM status_curso WHERE nome=?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define o valor do parâmetro 'nome' a ser excluído\r\n            conexao.pstmt.setString(1, nomeStatus_curso);\r\n\r\n            // Executa a instrução SQL para exclusão\r\n            conexao.pstmt.execute();\r\n            return true;\r\n        } catch (SQLException e) {\r\n            throw new RuntimeException(\"Erro ao excluir o registro.\", e);\r\n        } finally {\r\n            // Desconecta do banco de dados após a operação\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para buscar um status de curso pelo nome.\r\n    public Status_Curso buscarStatus_Curso(String nomeStatus_curso) {\r\n        conexao.conectar(); // Conecta ao banco de dados\r\n        try {\r\n            // Instrução SQL para selecionar um status de curso pelo nome\r\n            String sql = \"SELECT * FROM status_curso WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            conexao.pstmt.setString(1, nomeStatus_curso);\r\n\r\n            // Executa a consulta e armazena o resultado\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            // Se o registro existir, cria um objeto Status_Curso com os dados obtidos\r\n            if (conexao.rs.next()) {\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String nome = conexao.rs.getString(2);\r\n                return new Status_Curso(id, nome);\r\n            }\r\n            // Caso não encontre o status, retorna null\r\n            return null;\r\n\r\n        } catch (SQLException e) {\r\n            return null;\r\n        } finally {\r\n            // Desconecta do banco de dados após a operação\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para listar todos os status de curso cadastrados no banco de dados.\r\n    public List<Status_Curso> listarStatus_Curso() {\r\n        // Instrução SQL para listar todos os registros na tabela status_curso\r\n        String sql = \"SELECT * FROM status_curso\";\r\n\r\n        // Cria uma lista vazia para armazenar os resultados\r\n        List<Status_Curso> status_Cursos = new ArrayList<>();\r\n        conexao.conectar(); // Conecta ao banco de dados\r\n\r\n        try {\r\n            // Prepara e executa a consulta SQL\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            // Enquanto houver registros no ResultSet, cria objetos Status_Curso e os adiciona à lista\r\n            while (conexao.rs.next()) {\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String nome = conexao.rs.getString(2);\r\n                Status_Curso status_Curso = new Status_Curso(id, nome);\r\n                status_Cursos.add(status_Curso);\r\n            }\r\n        } catch (SQLException e) {\r\n            return null;\r\n        } finally {\r\n            // Desconecta do banco de dados após a operação\r\n            conexao.desconectar();\r\n        }\r\n\r\n        // Retorna a lista de status de curso\r\n        return status_Cursos;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/Status_CursoDAO.java b/src/main/java/org/example/crud_site/dao/Status_CursoDAO.java
+--- a/src/main/java/org/example/crud_site/dao/Status_CursoDAO.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/dao/Status_CursoDAO.java	(date 1730815057332)
+@@ -25,7 +25,7 @@
+     }
+ 
+     // Método para inserir um novo status de curso no banco de dados.
+-    public boolean inserirStatus_curso(Status_Curso status_curso) {
++    public boolean inserirStatus_curso(String status_curso) {
+         conexao.conectar(); // Conecta ao banco de dados
+         try {
+             // Instrução SQL para inserir um novo status de curso na tabela
+@@ -33,7 +33,7 @@
+             conexao.pstmt = conexao.conn.prepareStatement(sql);
+ 
+             // Define o valor do parâmetro 'nome' a partir do objeto Status_curso
+-            conexao.pstmt.setString(1, status_curso.getNome());
++            conexao.pstmt.setString(1, status_curso);
+ 
+             // Executa a instrução SQL e retorna true se o número de linhas afetadas for maior que 0
+             return conexao.pstmt.executeUpdate() > 0;
+Index: src/main/webapp/pages/statusCurso.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page import=\"org.example.crud_site.model.Status_Curso\" %>\r\n<%@ page import=\"java.util.List\" %>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>CRUD status curso</title>\r\n  <link rel=\"stylesheet\" href=\"css/statusCurso.css\">\r\n</head>\r\n<body>\r\n\r\n  <aside class=\"sidebar\">\r\n    <div class=\"titulo\">\r\n        <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n    </div>\r\n    <nav>\r\n        <ul>\r\n            <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n            <li><a href=\"listarAdm\">Adm</a></li>\r\n            <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n            <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n            <li><a href=\"listarSetor\">Setores</a></li>\r\n            <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n            <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n            <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n            <div class=\"elemento\"></div>\r\n            <li class=\"selecionado\"><a href=\"#\">Status curso</a></li>\r\n            <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n        </ul>\r\n    </nav>\r\n    </aside>\r\n\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Status curso</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-status-curso\">Inserir Status Curso </button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"uuid-filtro\">UUID</option>\r\n                        <option value=\"status-filtro\">Status</option>\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header Nome\">Status do curso</div>\r\n                <div class=\"grid-header ações\">Ações</div>\r\n\r\n\r\n                <%\r\n                    List<Status_Curso> lista = (List<Status_Curso>) request.getAttribute(\"listarStatus_curso\");\r\n\r\n                    if (!lista.isEmpty()) {\r\n                        for (int i = 0; i < lista.size(); i++) {\r\n                %>\r\n                <div class=\"grid-item registro\"><%= i+1 %></div>\r\n                <div class=\"grid-item username\"><%= lista.get(i).getNome() %></div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\">\r\n                        <img src=\"img/lapis.png\" alt=\"editar status curso\"></button>\r\n                    <form action=\"excluirStatusCurso\" method=\"post\">\r\n                        <input type=\"hidden\" name=\"id\" value=\"<%=lista.get(i).getId()%>\">\r\n                        <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"excluir status curso\"></button>\r\n                    </form>\r\n                </div>\r\n                <%\r\n                    }\r\n                } else {\r\n                %>\r\n                <div class=\"grid-item\">Nenhum registro encontrado.</div>\r\n                <%\r\n                        System.out.println(\"Nenhum registro encontrado.\");\r\n                    }\r\n                %>\r\n            </div>\r\n\r\n        </main>\r\n\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Inserir Status Curso</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"cadastrar\" class=\"label\">Status curso:</label>\r\n                        <input type=\"text\" id=\"cadastrar\" name=\"cadastrar\" placeholder=\"Em andamento\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <div id=\"popupIDStatusCurso\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar status curso</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"editar\" class=\"label\">Status curso:</label>\r\n                        <input type=\"text\" id=\"editar\" name=\"editar\" placeholder=\"cancelado\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n  <script src=\"js/statusCurso.js\"></script>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/statusCurso.jsp b/src/main/webapp/pages/statusCurso.jsp
+--- a/src/main/webapp/pages/statusCurso.jsp	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/webapp/pages/statusCurso.jsp	(date 1730815130915)
+@@ -75,8 +75,8 @@
+                 <div class="grid-item">
+                     <button class="action edit">
+                         <img src="img/lapis.png" alt="editar status curso"></button>
+-                    <form action="excluirStatusCurso" method="post">
+-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                    <form action="excluirStatusCurso" method="get">
++                        <input type="hidden" id="nome" name="nome" value="<%=lista.get(i).getNome()%>">
+                         <button class="action delete"><img src="img/lixo.png" alt="excluir status curso"></button>
+                     </form>
+                 </div>
+@@ -98,7 +98,7 @@
+ 
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+-                <form action="#" class="registrar">
++                <form action="inserirStatus_Curso" class="registrar" method="post">
+                     <div class="bloco-titulo">
+                         <h2 class="titulo">Inserir Status Curso</h2>
+                     </div>
+@@ -115,7 +115,7 @@
+ 
+         <div id="popupIDStatusCurso" style="display: none;">
+             <div class="popup">
+-                <form action="#" class="registrar">
++                <form action="" class="registrar">
+                     <div class="bloco-titulo">
+                         <h2 class="titulo">Editar status curso</h2>
+                     </div>
+Index: src/main/java/org/example/crud_site/controller/Setor/ServletExcluirSetor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Setor;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.dao.SetorDAO;\r\n\r\nimport java.io.IOException;\r\n\r\n@WebServlet(\"/excluirSetor\")\r\npublic class ServletExcluirSetor extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n        // Obtém o nome do setor a partir da requisição\r\n        String nomeSetor = req.getParameter(\"nome_setor\");\r\n        // Cria uma instância do DAO para realizar a exclusão\r\n        SetorDAO setorDAO = new SetorDAO();\r\n        if (setorDAO.excluirSetor(nomeSetor)){\r\n            req.getRequestDispatcher(\"listarSetor\").forward(req, res);\r\n        }\r\n        req.getRequestDispatcher(\"pages/errorPage.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Setor/ServletExcluirSetor.java b/src/main/java/org/example/crud_site/controller/Setor/ServletExcluirSetor.java
+--- a/src/main/java/org/example/crud_site/controller/Setor/ServletExcluirSetor.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/controller/Setor/ServletExcluirSetor.java	(date 1730814455312)
+@@ -5,20 +5,25 @@
+ import jakarta.servlet.http.HttpServlet;
+ import jakarta.servlet.http.HttpServletRequest;
+ import jakarta.servlet.http.HttpServletResponse;
++import org.example.crud_site.dao.AdmDAO;
+ import org.example.crud_site.dao.SetorDAO;
+ 
+ import java.io.IOException;
++import java.util.UUID;
+ 
+ @WebServlet("/excluirSetor")
+ public class ServletExcluirSetor extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+-        // Obtém o nome do setor a partir da requisição
+-        String nomeSetor = req.getParameter("nome_setor");
++    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
++        // Obtém os parâmetros da requisição
++        String nomeSetor = request.getParameter("nome");
++
+         // Cria uma instância do DAO para realizar a exclusão
+         SetorDAO setorDAO = new SetorDAO();
+-        if (setorDAO.excluirSetor(nomeSetor)){
+-            req.getRequestDispatcher("listarSetor").forward(req, res);
++
++        if (setorDAO.excluirSetor(nomeSetor)) {
++            request.getRequestDispatcher("listarSetor").forward(request, response);
++        }else{
++            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
+         }
+-        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
+     }
+ }
+Index: src/main/webapp/pages/situacaoTrabalhista.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page import=\"java.util.List\" %>\r\n<%@ page import=\"org.example.crud_site.model.Situacao_Trabalhista\" %>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>CRUD status curso</title>\r\n    <link rel=\"stylesheet\" href=\"css/situacaoTrabalhista.css\">\r\n</head>\r\n<body>\r\n\r\n  <aside class=\"sidebar\">\r\n    <div class=\"titulo\">\r\n        <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n    </div>\r\n    <nav>\r\n        <ul>\r\n            <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n            <li><a href=\"listarAdm\">Adm</a></li>\r\n            <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n            <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n            <li><a href=\"listarSetor\">Setores</a></li>\r\n            <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n            <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n            <div class=\"elemento\"></div>\r\n            <li class=\"selecionado\"><a href=\"#\">Situação trabalhista</a></li>\r\n            <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n            <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n        </ul>\r\n    </nav>\r\n  </aside>\r\n\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Situação trabalhista</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-situacao\">Inserir Situação Trabalhista</button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"nome-filtro\">Nome</option>\r\n                        <option value=\"status-filtro\">Status</option>\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header username\">Situação Trabalhista</div>\r\n                <div class=\"grid-header acoes\">Ações</div>\r\n\r\n\r\n                <%\r\n                    List<Situacao_Trabalhista> lista = (List<Situacao_Trabalhista>) request.getAttribute(\"listarSituacoes_Trabalhistas\");\r\n\r\n                    if (!lista.isEmpty()) {\r\n                        for (int i = 0; i < lista.size(); i++) {\r\n                %>\r\n                <div class=\"grid-item registro\"><%= i+1 %></div>\r\n                <div class=\"grid-item username\"><%= lista.get(i).getNome() %></div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\">\r\n                        <img src=\"img/lapis.png\" alt=\"editar situacao trabalhista\"></button>\r\n                    <form action=\"excluirSituacaoTrabalhista\" method=\"post\">\r\n                        <input type=\"hidden\" name=\"id\" value=\"<%=lista.get(i).getId()%>\">\r\n                        <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"excluir situacao trabalhista\"></button>\r\n                    </form>\r\n                </div>\r\n                <%\r\n                    }\r\n                } else {\r\n                %>\r\n                <div class=\"grid-item\">Nenhum registro encontrado.</div>\r\n                <%\r\n                        System.out.println(\"Nenhum registro encontrado.\");\r\n                    }\r\n                %>\r\n            </div>\r\n\r\n        </main>\r\n\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"inserirSituacaoTrabalhista\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Inserir Situação Trabalhista</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"cadastrar\" class=\"label\">Situação trabalhista:</label>\r\n                        <input type=\"text\" id=\"cadastrar\" name=\"cadastrar\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <div id=\"popupIDSituacaoTrabalhista\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"alterarSituacaoTrabalhista\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar situação trabalhista</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"editar\" class=\"label\">Situação trabalhista:</label>\r\n                        <input type=\"text\" id=\"editar\" name=\"editar\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- AQUI -->\r\n    </div>\r\n\r\n\r\n<script src=\"js/situacaoTrabalhista.js\"></script>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/situacaoTrabalhista.jsp b/src/main/webapp/pages/situacaoTrabalhista.jsp
+--- a/src/main/webapp/pages/situacaoTrabalhista.jsp	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/webapp/pages/situacaoTrabalhista.jsp	(date 1730814341277)
+@@ -75,8 +75,8 @@
+                 <div class="grid-item">
+                     <button class="action edit">
+                         <img src="img/lapis.png" alt="editar situacao trabalhista"></button>
+-                    <form action="excluirSituacaoTrabalhista" method="post">
+-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                    <form action="excluirSituacaoTrabalhista" method="get">
++                        <input type="hidden" id="nome" name="nome" value="<%=lista.get(i).getNome()%>">
+                         <button class="action delete"><img src="img/lixo.png" alt="excluir situacao trabalhista"></button>
+                     </form>
+                 </div>
+@@ -98,7 +98,7 @@
+ 
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+-                <form action="inserirSituacaoTrabalhista" class="registrar">
++                <form action="inserirSituacaoTrabalhista" class="registrar" method="post">
+                     <div class="bloco-titulo">
+                         <h2 class="titulo">Inserir Situação Trabalhista</h2>
+                     </div>
+@@ -115,7 +115,7 @@
+ 
+         <div id="popupIDSituacaoTrabalhista" style="display: none;">
+             <div class="popup">
+-                <form action="alterarSituacaoTrabalhista" class="registrar">
++                <form action="alterarSituacaoTrabalhista" class="registrar" method="post">
+                     <div class="bloco-titulo">
+                         <h2 class="titulo">Editar situação trabalhista</h2>
+                     </div>
+Index: src/main/webapp/js/adm.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const novoAdmin = document.getElementById('novoAdm');\r\nconst novaSenha = document.getElementById('novoSenha');\r\nconst cadastroForm = document.getElementById('cadastroForm');\r\nconst erro = document.getElementById('erro');\r\nconst senhaEditada = document.getElementById('senhaEditada');\r\nconst admEditado = document.getElementById('admEditado');\r\nconst editarForm = document.getElementById('editarForm');\r\nconst erroEditar = document.getElementById('erroEditar');\r\n\r\n// Regex para validação\r\nconst patternSenha = /^(?=.*[A-Z])(?=.*\\d)(?=.*[a-z])(?=.*[áàâãéèêíïóôõöú])?(?=.*[\\!\\@\\#\\$%\\^\\&\\(\\)\\_\\-\\+\\=\\[\\]\\{\\}\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?]).{8,}$/;\r\nconst patternAdm = /^adm((?=.[A-Z]{1,})?|(?=.[a-z]{1,}))(?=.\\d{1,})?(?=.[!@#$%^&*()_\\-+=[]\\{}\\|;:'\",\\.<>\\/\\?])?.{3,}/;\r\n\r\ndocument.querySelectorAll('.view-password').forEach(button => {\r\n    button.addEventListener('click', function () {\r\n        const passwordCell = this.parentElement.previousElementSibling;\r\n        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';\r\n    });\r\n});\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", function () {\r\n    const filterButton = document.querySelector('.filtrar');\r\n    const filterBar = document.getElementById('filtrar-bar');\r\n    filterButton.addEventListener('click', toggleFilterBar);\r\n\r\n    function toggleFilterBar() {\r\n        filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';\r\n    }\r\n\r\n    const inserirADM = document.querySelector('.inserir-adm');\r\n    const editADM = document.querySelectorAll('.edit');\r\n    const cancelADM = document.querySelector('.bt-cancelar');\r\n    const cancelADMedi = document.querySelector('.bt-cancelar-edit');\r\n\r\n    const popupADM = document.getElementById('popupID');\r\n    const popupADMedit = document.getElementById('popupIDadm');\r\n\r\n    let i = 0; // Corrigido: declaração do índice\r\n    for (i = 0; i < editADM.length; i++) {\r\n        editADM[i].addEventListener('click', (e) => togglePopupedit(e));\r\n    }\r\n\r\n    cancelADM.addEventListener('click', cancelPopup);\r\n    cancelADMedi.addEventListener('click', cancelPopupedit);\r\n\r\n    inserirADM.addEventListener('click', (e) => {   togglePopup (e)});\r\n\r\n    function togglePopupedit(e) {\r\n        popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';\r\n        let usernameEdit = document.getElementById('admEditado');\r\n        usernameEdit.value = e.currentTarget.getAttribute('data-username');\r\n    }\r\n\r\n    function cancelPopup() {\r\n        popupADM.style.display = 'none';\r\n    }\r\n    function cancelPopupedit() {\r\n        popupADMedit.style.display = 'none';\r\n    }\r\n\r\n    editarForm.addEventListener('submit', async (e) => {\r\n        e.preventDefault();\r\n\r\n        const id = e.currentTarget.getAttribute('data-id');\r\n\r\n        document.querySelector('input[name=\"id\"]').value = id;\r\n\r\n        erroEditar.textContent = '';\r\n        let isValid = true;\r\n\r\n        // Validação do ADM\r\n        if (!patternAdm.test(admEditado.value) || !patternSenha.test(senhaEditada.value)) {\r\n            erroEditar.textContent = 'Administrador ou senha inválida(o)!';\r\n            isValid = false;\r\n        }\r\n\r\n        if (isValid) {\r\n            const formData = {\r\n                adm: admEditado.value,\r\n                senha: senhaEditada.value,\r\n                id: document.querySelector('input[name=\"id\"]').value\r\n            }\r\n            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarLoginAdm', {\r\n                method: 'POST',\r\n                body: JSON.stringify(formData),\r\n                headers: {\r\n                    'Content-Type': 'application/json',\r\n                }\r\n            });\r\n\r\n            console.log(response);\r\n            if (response.ok) {\r\n                window.alert('Informações atualizadas com sucesso!');\r\n                location.reload();\r\n            } else {\r\n                const result = await response.json();\r\n                window.alert(result.message);\r\n            }\r\n        }});\r\n\r\n    // Validação do login\r\n    cadastroForm.addEventListener('submit', async (e) => {\r\n        e.preventDefault();\r\n\r\n        erro.textContent = '';\r\n        let isValid = true;\r\n\r\n        // Validação do ADM\r\n        if (!patternAdm.test(novoAdmin.value) || !patternSenha.test(novaSenha.value)) {\r\n            erro.textContent = 'Administrador ou senha inválida(o)!';\r\n            isValid = false;\r\n        }\r\n\r\n        if (isValid) {\r\n            const formData = {\r\n                adm: novoAdmin.value,\r\n                senha: novaSenha.value\r\n            }\r\n            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/inserirAdm', {\r\n                method: 'POST',\r\n                body: JSON.stringify(formData),\r\n                headers: {\r\n                    'Content-Type': 'application/json',\r\n                }\r\n            });\r\n\r\n            console.log(response);\r\n            if (response.ok) {\r\n                window.alert('Cadastro realizado com sucesso!');\r\n                location.reload();\r\n            } else {\r\n                const result = await response.json();\r\n                window.alert(result.message);\r\n            }\r\n        }});\r\n});\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/js/adm.js b/src/main/webapp/js/adm.js
+--- a/src/main/webapp/js/adm.js	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/webapp/js/adm.js	(date 1730773729849)
+@@ -2,10 +2,7 @@
+ const novaSenha = document.getElementById('novoSenha');
+ const cadastroForm = document.getElementById('cadastroForm');
+ const erro = document.getElementById('erro');
+-const senhaEditada = document.getElementById('senhaEditada');
+-const admEditado = document.getElementById('admEditado');
+-const editarForm = document.getElementById('editarForm');
+-const erroEditar = document.getElementById('erroEditar');
++const deletar = document.getElementById('delete');
+ 
+ // Regex para validação
+ const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
+@@ -45,9 +42,13 @@
+ 
+     inserirADM.addEventListener('click', (e) => {   togglePopup (e)});
+ 
++    function togglePopup(e) {
++        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
++    }
++
+     function togglePopupedit(e) {
+         popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';
+-        let usernameEdit = document.getElementById('admEditado');
++        let usernameEdit = document.getElementById('login');
+         usernameEdit.value = e.currentTarget.getAttribute('data-username');
+     }
+ 
+@@ -58,46 +59,6 @@
+         popupADMedit.style.display = 'none';
+     }
+ 
+-    editarForm.addEventListener('submit', async (e) => {
+-        e.preventDefault();
+-
+-        const id = e.currentTarget.getAttribute('data-id');
+-
+-        document.querySelector('input[name="id"]').value = id;
+-
+-        erroEditar.textContent = '';
+-        let isValid = true;
+-
+-        // Validação do ADM
+-        if (!patternAdm.test(admEditado.value) || !patternSenha.test(senhaEditada.value)) {
+-            erroEditar.textContent = 'Administrador ou senha inválida(o)!';
+-            isValid = false;
+-        }
+-
+-        if (isValid) {
+-            const formData = {
+-                adm: admEditado.value,
+-                senha: senhaEditada.value,
+-                id: document.querySelector('input[name="id"]').value
+-            }
+-            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarLoginAdm', {
+-                method: 'POST',
+-                body: JSON.stringify(formData),
+-                headers: {
+-                    'Content-Type': 'application/json',
+-                }
+-            });
+-
+-            console.log(response);
+-            if (response.ok) {
+-                window.alert('Informações atualizadas com sucesso!');
+-                location.reload();
+-            } else {
+-                const result = await response.json();
+-                window.alert(result.message);
+-            }
+-        }});
+-
+     // Validação do login
+     cadastroForm.addEventListener('submit', async (e) => {
+         e.preventDefault();
+Index: src/main/webapp/css/adm.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    display: flex;\r\n    height: 100vh;\r\n    background-color:#dbecfe;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: start;\r\n    justify-content: start;\r\n    width: 80%;\r\n    height: 90%;\r\n    padding: 3%;\r\n    background-color: white;\r\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\r\n    border-radius: 30px;\r\n    margin: 0 auto;\r\n    margin-top: 3%;\r\n    margin-bottom: 5%;\r\n}\r\n\r\n.grid-container {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr 2fr 2fr;\r\n    grid-auto-rows: 58px;\r\n    width: 100%;\r\n    background-color: #c3e0fe;\r\n    border-radius: 30px 30px 0 0;\r\n    border: 0.5px solid #c3e0fe;\r\n    height: 410px;\r\n    overflow-y: auto;\r\n    position: relative;\r\n    scrollbar-width: none;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.grid-header {\r\n    font-weight: bold;\r\n    text-align: center;\r\n    padding: 18px;\r\n    border: 1px  solid #c3e0fe;\r\n    border-bottom: 4px solid  #c3e0fe ;\r\n    background-color: white;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 10;\r\n    color: #0f0fe0;\r\n}\r\n\r\n.grid-container::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.grid-item {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 10px;\r\n    border: 1px solid #c3e0fe;\r\n    background-color: white;\r\n}\r\n\r\n.grid-item.empty {\r\n    background-color: #f0f0f0;\r\n}\r\n\r\n.action {\r\n    background: none;\r\n    border: none;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.action.view {\r\n    color: #5b4fff;\r\n}\r\n\r\n.action.edit {\r\n    color: #1ca8ff;\r\n}\r\n\r\n.action.delete {\r\n    color: #ff4b5b;\r\n}\r\n\r\n.action:hover {\r\n    transform: scale(1.2);\r\n}\r\n\r\n.grid-item:hover {\r\n    background-color: #f0f8ff;\r\n}\r\n\r\n.titulo {\r\n    font-size: 25px;\r\n    margin-bottom: 40px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\nh1 {\r\n    color: #2C46D1;\r\n    font-size: 35px;\r\n    margin-left: 20px;\r\n}\r\n\r\n.crud_adm{\r\n    font-weight: 350;\r\n}\r\n\r\n.inclus {\r\n    font-size: 30px;\r\n    color: mediumblue;\r\n}\r\n\r\n.es {\r\n\r\n    font-size: 30px;\r\n    color: blueviolet;\r\n}\r\n\r\n.mensagem-erro{\r\n    display: block;\r\n    position: relative;\r\n    bottom: 25px;\r\n    left: 2px;\r\n    font-size: 11px;\r\n    text-align: start;\r\n    color: red;\r\n}\r\n\r\n.sidebar {\r\n    width: 260px;\r\n    height: 100%;\r\n    background-image: url(../img/sidebar.png);\r\n    background-size: cover;\r\n    padding: 20px;\r\n    color: #ecf0f1;\r\n}\r\n\r\n.sidebar ul {\r\n    margin-top: 80px;\r\n    list-style-type: none;\r\n}\r\n\r\n.sidebar ul li {\r\n    margin-bottom: 35px;\r\n    margin-left: 20px;\r\n    font-size: 18px;\r\n    font-weight: bolder;\r\n}\r\n\r\n.sidebar ul li a {\r\n    text-decoration: none;\r\n    color: #c7c7c7;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar ul li a img {\r\n    width: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.logout {\r\n    margin-left: 35px;\r\n    width: 120px;\r\n    padding: 15px 30px;\r\n    background-color: #ffffff;\r\n    border: 1px solid #2B46D3;\r\n    border-radius: 11px;\r\n    color: #000000;\r\n    cursor: pointer;\r\n    font-size: 20px;\r\n    transition: 0.5s;\r\n    color: #0000F9;\r\n}\r\n\r\n.sidebar ul li a:hover {\r\n    color: #2B46D3;\r\n}\r\n\r\n\r\n.logout:hover {\r\n    background-color: #d3d3d3;\r\n}\r\n\r\n.main-content {\r\n    width: 100%;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.inserir-adm {\r\n    padding: 15px 30px;\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    border: none;\r\n    cursor: pointer;\r\n    border-radius: 10px;\r\n    font-size: 14px;\r\n    margin-right: 40PX;\r\n    font-weight: bold;\r\n}\r\n\r\n.elemento{\r\n    background-color: #0866FF;\r\n    height: 9px;\r\n    width: 23px;\r\n    border: none;\r\n    border-radius: 75px;\r\n    transform: rotate(90deg);\r\n    position: relative;\r\n    top: 13px;\r\n    right: 5px;\r\n}\r\n\r\n.filtrar {\r\n    position: relative;\r\n    right: -30%;\r\n    border-radius: 10px;\r\n    padding: 15px 30px;\r\n    color: #0000F9;\r\n    font-weight: bold;\r\n    background-color: white;\r\n    border: #2C46D1 1px solid;\r\n}\r\n#filtrar-bar {\r\n    display: flex;\r\n    align-items: center; /* Alinhamento dos itens no centro verticalmente */\r\n    gap: 10px; /* Espaçamento entre o botão e a barra de pesquisa */\r\n    margin-bottom: 30px;\r\n    justify-content: flex-end; /* Mantém os itens à direita */\r\n}\r\n\r\n.pesquisa {\r\n    color: #D9D9D9;\r\n}\r\n.action{\r\n    height: 37px;\r\n    width: 65px;\r\n    border-radius: 10px;\r\n    padding-top: 4px;\r\n}\r\n\r\n.view {\r\n    background-color: #9747FF;\r\n}\r\n\r\n.edit {\r\n    background-color: #69B1FF;\r\n}\r\n\r\n.delete {\r\n    background-color: #FFA8A8;\r\n}\r\n\r\n#filtrar-bar input {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar button {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar select{\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\n#filtrar-bar button {\r\n    background-color: #69B1FF;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n#filtrar-bar button:hover {\r\n    background-color: #007bb5;\r\n}\r\n\r\n.sidebar ul li.selecionado a {\r\n    color: #2B46D3; /* Azul desejado */\r\n}\r\n\r\n#popupID,\r\n#popupIDadm {\r\n    display: none; /* Para ocultar inicialmente */\r\n    position: fixed; /* Alterado */\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.35);\r\n    z-index: 100;\r\n    align-items: center; /* Alinhamento vertical */\r\n    justify-content: center; /* Alinhamento horizontal */\r\n}\r\n\r\n.popup{\r\n    display: flex;\r\n    background-color: white;\r\n    width: 430px;\r\n    height: 450px;\r\n    justify-content: center;\r\n    border-radius: 20px;\r\n}\r\n\r\n.b{\r\n    width: 80%;\r\n    height: 40px;\r\n    margin-left: 30px;\r\n    margin-bottom: 20px;\r\n    border-radius: 10px;\r\n}\r\n\r\n.label{\r\n    display: block;\r\n    margin-top: 20px;\r\n\r\n\r\n}\r\n\r\n.input{\r\n    padding: 10px;\r\n    border: 1px solid #000000;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    width: 100%;\r\n    height: 50px;\r\n    margin-top: 20px;\r\n}\r\n.registrar .titulo{\r\n    margin-top: 33px;\r\n    color: #0866FF;\r\n}\r\n\r\n.password{\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.bt-registrar{\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    cursor: pointer;\r\n}\r\n.bt-cancelar-edit{\r\n    background-color: white;\r\n    color:#FF1B1F;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n.bt-cancelar{\r\n    background-color: white;\r\n    color:#3f3ff5;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n@media (max-width: 904px) {\r\n    .titulo h1 {\r\n        font-size: 20px;\r\n    }\r\n\r\n    .filtrar, .inserir-arquivo {\r\n        font-size: 10px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .grid-item {\r\n        font-size: 12px;\r\n    }\r\n\r\n    .sidebar ul li {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .logout {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .action {\r\n        height: 27px;\r\n        width: 35px;\r\n        margin-left: 10px;\r\n\r\n    }\r\n    .action img {\r\n        height: 18px;\r\n        width: 18px;\r\n    }\r\n\r\n    .permitido, .edit, .delete {\r\n        font-size: 12px;\r\n    }\r\n\r\n    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {\r\n        font-size: 12px;\r\n    }\r\n    .filtrar{\r\n        margin-left: 30%;\r\n    }\r\n    .sidebar {\r\n        margin-right:20px;\r\n        }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/css/adm.css b/src/main/webapp/css/adm.css
+--- a/src/main/webapp/css/adm.css	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/webapp/css/adm.css	(date 1730767766832)
+@@ -91,7 +91,7 @@
+ }
+ 
+ .action.delete {
+-    color: #ff4b5b;
++    color: #2B46D3;
+ }
+ 
+ .action:hover {
+Index: src/main/webapp/pages/setor.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page import=\"org.example.crud_site.model.Setor\" %>\r\n<%@ page import=\"java.util.List\" %>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>CRUD Setor</title>\r\n  <link rel=\"stylesheet\" href=\"css/setor.css\">\r\n</head>\r\n<body>\r\n\r\n\r\n  <aside class=\"sidebar\">\r\n    <div class=\"titulo\">\r\n        <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n    </div>\r\n      <nav>\r\n        <ul>\r\n            <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n            <li><a href=\"listarAdm\">Adm</a></li>\r\n            <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n            <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n            <div class=\"elemento\"></div>\r\n            <li class=\"selecionado\"><a href=\"#\">Setores</a></li>\r\n            <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n            <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n            <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n            <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n            <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n        </ul>\r\n    </nav>\r\n  </aside>\r\n\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Setor</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-setor\">Inserir Setor</button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"UUID-filtro\">UUID</option>\r\n                        <option value=\"nome-filtro\">NOME</option>\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header NOME\">Setor</div>\r\n                <div class=\"grid-header acoes\">Ações</div>\r\n\r\n\r\n                <%\r\n                    List<Setor> lista = (List<Setor>) request.getAttribute(\"listarSetor\");\r\n\r\n                    if (!lista.isEmpty()) {\r\n                        for (int i = 0; i < lista.size(); i++) {\r\n                %>\r\n                <div class=\"grid-item registro\"><%= i+1 %></div>\r\n                <div class=\"grid-item username\"><%= lista.get(i).getNome() %></div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\">\r\n                        <img src=\"img/lapis.png\" alt=\"editar setor\"></button>\r\n                    <form action=\"excluirSetor\" method=\"post\">\r\n                        <input type=\"hidden\" name=\"id\" value=\"<%=lista.get(i).getId()%>\">\r\n                        <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"excluir setor\"></button>\r\n                    </form>\r\n                </div>\r\n                <%\r\n                    }\r\n                } else {\r\n                %>\r\n                <div class=\"grid-item\">Nenhum registro encontrado.</div>\r\n                <%\r\n                        System.out.println(\"Nenhum registro encontrado.\");\r\n                    }\r\n                %>\r\n            </div>\r\n\r\n        </main>\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"inserirSetor\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Cadastrar Setor</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"cadastrar\" class=\"label\">Setor:</label>\r\n                        <input type=\"text\" id=\"cadastrar\" name=\"cadastrar\" placeholder=\"Aliementício\" class=\"input\" required />\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupIDsetor\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"alterarNomeSetor\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar Setor</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"editar\" class=\"label\">Setor:</label>\r\n                        <input type=\"text\" id=\"editar\" name=\"editar\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n  <script src=\"js/setor.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/setor.jsp b/src/main/webapp/pages/setor.jsp
+--- a/src/main/webapp/pages/setor.jsp	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/webapp/pages/setor.jsp	(date 1730805990558)
+@@ -76,8 +76,8 @@
+                 <div class="grid-item">
+                     <button class="action edit">
+                         <img src="img/lapis.png" alt="editar setor"></button>
+-                    <form action="excluirSetor" method="post">
+-                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                    <form action="excluirSetor" method="get">
++                        <input type="hidden" id="nome" name="nome" value="<%=lista.get(i).getNome()%>">
+                         <button class="action delete"><img src="img/lixo.png" alt="excluir setor"></button>
+                     </form>
+                 </div>
+@@ -96,7 +96,7 @@
+ 
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+-                <form action="inserirSetor" class="registrar">
++                <form action="inserirSetor" class="registrar" method="post">
+                     <div class="bloco-titulo">
+                         <h2 class="titulo">Cadastrar Setor</h2>
+                     </div>
+Index: src/main/java/org/example/crud_site/dao/Situacao_TrabalhistaDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.dao;\r\n\r\n// Importando a classe Situacao_Trabalhista para manipular os dados relacionados.\r\nimport org.example.crud_site.model.Situacao_Trabalhista;\r\n\r\n// Importando a classe SQLException para tratar os erros de SQL.\r\nimport java.sql.SQLException;\r\n\r\n// Importando a classe ArrayList para criar uma lista das situações trabalhistas.\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n// Importando a classe UUID para usar nos ids.\r\nimport java.util.UUID;\r\n\r\n// Classe que gerencia as operações de banco de dados relacionadas à tabela \"Situacao_Trabalhista\".\r\npublic class Situacao_TrabalhistaDAO {\r\n\r\n    // Atributo para gerenciar a conexão com o banco de dados.\r\n    private Conexao conexao;\r\n\r\n    // Construtor que inicializa a conexão com uma nova instância de Conexao().\r\n    public Situacao_TrabalhistaDAO() {\r\n        conexao = new Conexao();\r\n    }\r\n\r\n    // Método para inserir um novo registro na tabela \"Situacao_Trabalhista\".\r\n    public boolean inserirSetor(Situacao_Trabalhista situacao_trabalhista) {\r\n        // Estabelece conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para inserir uma nova situação trabalhista.\r\n            String sql = \"INSERT INTO situacao_trabalhista (nome) VALUES (?)\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define o valor do nome da situação trabalhista.\r\n            conexao.pstmt.setString(1, situacao_trabalhista.getNome());\r\n\r\n            // Executa a instrução SQL e retorna true se a inserção foi bem-sucedida.\r\n            return conexao.pstmt.executeUpdate() > 0;\r\n        } catch (SQLException e) {\r\n            // Lança uma exceção se ocorrer algum erro.\r\n            throw new RuntimeException(e);\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para alterar o nome de uma situação trabalhista.\r\n    public boolean alterarNome(String situacao_trabalhista, String nome) {\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para alterar o nome de uma situação trabalhista.\r\n            String sql = \"UPDATE situacao_trabalhista SET nome = ? WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os parâmetros da consulta: o novo nome e o nome atual.\r\n            conexao.pstmt.setString(1, nome);\r\n            conexao.pstmt.setString(2, situacao_trabalhista);\r\n\r\n            // Executa a consulta SQL.\r\n            int rows = conexao.pstmt.executeUpdate();\r\n\r\n            // Verifica se algum registro foi alterado. Se não, lança uma exceção.\r\n            if (rows == 0) {\r\n                throw new RuntimeException(\"Nenhum registro encontrado.\");\r\n            }\r\n            return rows > 0;\r\n        } catch (SQLException e) {\r\n            // Lança uma exceção se ocorrer algum erro.\r\n            throw new RuntimeException(\"Erro ao atualizar o registro.\", e);\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para excluir uma situação trabalhista da tabela.\r\n    public boolean excluirSituacao_Trabalhista(String nomeSituacao_Trabalhista) {\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para excluir uma situação trabalhista pelo nome.\r\n            String sql = \"DELETE FROM situacao_trabalhista WHERE nome=?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define o valor do nome da situação trabalhista a ser excluída.\r\n            conexao.pstmt.setString(1, nomeSituacao_Trabalhista);\r\n\r\n            // Executa a instrução SQL de exclusão.\r\n            conexao.pstmt.execute();\r\n            return true;\r\n        } catch (SQLException e) {\r\n            // Lança uma exceção em caso de erro.\r\n            throw new RuntimeException(\"Erro ao excluir o registro.\", e);\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para buscar uma situação trabalhista pelo nome.\r\n    public Situacao_Trabalhista buscarSituacao_Trabalhista(String nomeSituacao_Trabalhista) {\r\n        // Objeto para armazenar a situação trabalhista encontrada.\r\n        Situacao_Trabalhista situacao_trabalhista;\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para buscar uma situação trabalhista pelo nome.\r\n            String sql = \"SELECT * FROM situacao_trabalhista WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            conexao.pstmt.setString(1, nomeSituacao_Trabalhista);\r\n\r\n            // Executa a consulta e armazena o resultado.\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            // Verifica se a consulta retornou algum resultado.\r\n            if (conexao.rs.next()) {\r\n                // Obtém os dados da situação trabalhista do ResultSet.\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String nome = conexao.rs.getString(2);\r\n\r\n                // Cria um novo objeto Situacao_Trabalhista com os dados retornados.\r\n                return new Situacao_Trabalhista(id, nome);\r\n            }\r\n            // Retorna null se não houver nenhum resultado.\r\n            return null;\r\n\r\n        } catch (SQLException e) {\r\n            // Retorna null em caso de erro.\r\n            return null;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para listar todas as situações trabalhistas.\r\n    public List<Situacao_Trabalhista> listarSituacao_Trabalhista() {\r\n        // Instrução SQL para listar todas as situações trabalhistas.\r\n        String sql = \"SELECT * FROM situacao_trabalhista\";\r\n\r\n        // Cria uma lista vazia de situações trabalhistas.\r\n        List<Situacao_Trabalhista> situacoes_trabalhistas = new ArrayList<>();\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Prepara a instrução SQL para executar a consulta.\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            // Executa a consulta e armazena o resultado.\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            // Percorre os resultados e armazena cada situação trabalhista na lista.\r\n            while (conexao.rs.next()) {\r\n                // Obtém os dados do ResultSet.\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String nome = conexao.rs.getString(2);\r\n\r\n                // Cria um novo objeto Situacao_Trabalhista e o adiciona à lista.\r\n                Situacao_Trabalhista situacao_trabalhista = new Situacao_Trabalhista(id, nome);\r\n                situacoes_trabalhistas.add(situacao_trabalhista);\r\n            }\r\n        } catch (SQLException e) {\r\n            // Retorna null em caso de erro.\r\n            return null;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n\r\n        // Retorna a lista de situações trabalhistas.\r\n        return situacoes_trabalhistas;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/Situacao_TrabalhistaDAO.java b/src/main/java/org/example/crud_site/dao/Situacao_TrabalhistaDAO.java
+--- a/src/main/java/org/example/crud_site/dao/Situacao_TrabalhistaDAO.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/dao/Situacao_TrabalhistaDAO.java	(date 1730806393105)
+@@ -25,7 +25,7 @@
+     }
+ 
+     // Método para inserir um novo registro na tabela "Situacao_Trabalhista".
+-    public boolean inserirSetor(Situacao_Trabalhista situacao_trabalhista) {
++    public boolean inserirSituacao_Trabalhista(String situacao_trabalhista) {
+         // Estabelece conexão com o banco de dados.
+         conexao.conectar();
+         try {
+@@ -34,7 +34,7 @@
+             conexao.pstmt = conexao.conn.prepareStatement(sql);
+ 
+             // Define o valor do nome da situação trabalhista.
+-            conexao.pstmt.setString(1, situacao_trabalhista.getNome());
++            conexao.pstmt.setString(1, situacao_trabalhista);
+ 
+             // Executa a instrução SQL e retorna true se a inserção foi bem-sucedida.
+             return conexao.pstmt.executeUpdate() > 0;
+Index: src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletExcluirSituacao_Trabalhista.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Situacao_Trabalhista;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.dao.Situacao_TrabalhistaDAO;\r\n\r\nimport java.io.IOException;\r\n\r\n@WebServlet(\"/excluirSituacaoTrabalhista\")\r\npublic class ServletExcluirSituacao_Trabalhista extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n        // Obtém o nome da situação trabalhista a partir da requisição\r\n        String nomeSituacaoTrabalhista = req.getParameter(\"nome_situacao_trabalhista\");\r\n\r\n        // Cria uma instância do DAO para realizar a exclusão\r\n        Situacao_TrabalhistaDAO situacaoTrabalhistaDAO = new Situacao_TrabalhistaDAO();\r\n\r\n        // Tenta excluir a situação trabalhista\r\n        if (situacaoTrabalhistaDAO.excluirSituacao_Trabalhista(nomeSituacaoTrabalhista)) {\r\n            req.getRequestDispatcher(\"listarSituacao_Trabalhistas\").forward(req, res);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletExcluirSituacao_Trabalhista.java b/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletExcluirSituacao_Trabalhista.java
+--- a/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletExcluirSituacao_Trabalhista.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletExcluirSituacao_Trabalhista.java	(date 1730814455298)
+@@ -5,22 +5,25 @@
+ import jakarta.servlet.http.HttpServlet;
+ import jakarta.servlet.http.HttpServletRequest;
+ import jakarta.servlet.http.HttpServletResponse;
++import org.example.crud_site.dao.SetorDAO;
+ import org.example.crud_site.dao.Situacao_TrabalhistaDAO;
+ 
+ import java.io.IOException;
+ 
+ @WebServlet("/excluirSituacaoTrabalhista")
+ public class ServletExcluirSituacao_Trabalhista extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+-        // Obtém o nome da situação trabalhista a partir da requisição
+-        String nomeSituacaoTrabalhista = req.getParameter("nome_situacao_trabalhista");
++    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
++        // Obtém os parâmetros da requisição
++        String nomeSituacao = request.getParameter("nome");
+ 
+         // Cria uma instância do DAO para realizar a exclusão
+         Situacao_TrabalhistaDAO situacaoTrabalhistaDAO = new Situacao_TrabalhistaDAO();
+ 
+-        // Tenta excluir a situação trabalhista
+-        if (situacaoTrabalhistaDAO.excluirSituacao_Trabalhista(nomeSituacaoTrabalhista)) {
+-            req.getRequestDispatcher("listarSituacao_Trabalhistas").forward(req, res);
++        if (situacaoTrabalhistaDAO.excluirSituacao_Trabalhista(nomeSituacao)) {
++            request.getRequestDispatcher("listarSituacao_Trabalhistas").forward(request, response);
++        }
++        else{
++            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
+         }
+     }
+ }
+Index: src/main/java/org/example/crud_site/controller/Setor/ServletInserirSetor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Setor;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\nimport org.example.crud_site.dao.SetorDAO;\r\nimport org.example.crud_site.model.Setor;\r\n\r\n@WebServlet(\"/inserirSetor\")\r\npublic class ServletInserirSetor extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n        // Obtém o nome do setor a partir da requisição.\r\n        String nomeSetor = req.getParameter(\"nome\");\r\n\r\n        // Cria uma nova instância de Setor com o nome obtido.\r\n        Setor setor = new Setor(nomeSetor);\r\n\r\n        // Instancia o DAO para interagir com o banco de dados.\r\n        SetorDAO setorDAO = new SetorDAO();\r\n\r\n        // Chama o método para inserir o setor.\r\n        boolean resultado = setorDAO.inserir(setor);\r\n\r\n        // Se a operação falhar, redireciona para erro.jsp.\r\n        if (resultado) {\r\n            req.getRequestDispatcher(\"pages/errorPage.jsp\").forward(req, res);\r\n        }\r\n\r\n        // Redireciona para a página de sucesso (ou outra página apropriada).\r\n        req.getRequestDispatcher(\"pages/setor.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Setor/ServletInserirSetor.java b/src/main/java/org/example/crud_site/controller/Setor/ServletInserirSetor.java
+--- a/src/main/java/org/example/crud_site/controller/Setor/ServletInserirSetor.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/controller/Setor/ServletInserirSetor.java	(date 1730805056744)
+@@ -1,35 +1,36 @@
+ package org.example.crud_site.controller.Setor;
+ 
++import com.google.gson.Gson;
+ import jakarta.servlet.ServletException;
+ import jakarta.servlet.annotation.WebServlet;
+ import jakarta.servlet.http.HttpServlet;
+ import jakarta.servlet.http.HttpServletRequest;
+ import jakarta.servlet.http.HttpServletResponse;
++
+ import java.io.IOException;
+ import org.example.crud_site.dao.SetorDAO;
+ import org.example.crud_site.model.Setor;
+ 
+ @WebServlet("/inserirSetor")
+ public class ServletInserirSetor extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+-        // Obtém o nome do setor a partir da requisição.
+-        String nomeSetor = req.getParameter("nome");
+ 
+-        // Cria uma nova instância de Setor com o nome obtido.
+-        Setor setor = new Setor(nomeSetor);
++    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
++        response.setContentType("application/json");
++        String nomeSetor = request.getParameter("cadastrar");
+ 
+         // Instancia o DAO para interagir com o banco de dados.
+         SetorDAO setorDAO = new SetorDAO();
+-
+-        // Chama o método para inserir o setor.
+-        boolean resultado = setorDAO.inserir(setor);
++        Setor setorNovo = new Setor(nomeSetor);
++        try {
++            if (setorDAO.inserir(setorNovo.getNome())) {
++                response.sendRedirect(request.getContextPath() + "/listarSetor");
++            } else {
++                request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
++            }
++        } catch (Exception e) {
++            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
+ 
+-        // Se a operação falhar, redireciona para erro.jsp.
+-        if (resultado) {
+-            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
+         }
+ 
+-        // Redireciona para a página de sucesso (ou outra página apropriada).
+-        req.getRequestDispatcher("pages/setor.jsp").forward(req, res);
+     }
+ }
+Index: src/main/java/org/example/crud_site/dao/SetorDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.dao;\r\n\r\n// Importando a classe Setor para utilizar seus atributos e métodos.\r\nimport org.example.crud_site.model.Setor;\r\n\r\n// Importando a classe SQLException para tratar os erros de SQL.\r\nimport java.sql.SQLException;\r\n\r\n// Importando a classe ArrayList para criar uma lista de setores.\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n// Importando a classe UUID para usar nos ids.\r\nimport java.util.UUID;\r\n\r\n// Classe SetorDAO\r\npublic class SetorDAO {\r\n\r\n    // Objeto que acessa os atributos que gerenciam a conexão com o banco de dados.\r\n    private Conexao conexao;\r\n\r\n    // Construtor que inicializa a conexão com o banco de dados.\r\n    public SetorDAO() {\r\n        conexao = new Conexao();\r\n    }\r\n\r\n    // Método para inserir um registro na tabela Setor.\r\n    public boolean inserir(Setor setor) {\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para inserir um novo setor no banco de dados.\r\n            String sql = \"INSERT INTO Setor (nome) VALUES (?)\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros da consulta.\r\n            conexao.pstmt.setString(1, setor.getNome());\r\n\r\n            // Executa a instrução SQL e retorna true se bem-sucedido.\r\n            return conexao.pstmt.executeUpdate() > 0;\r\n        } catch (SQLException e) {\r\n            // Retorna false se ocorrer algum erro.\r\n            return false;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para alterar o nome de um setor existente na tabela Setor.\r\n    public boolean alterarNome(Setor setor, String nome) {\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para atualizar o nome de um setor.\r\n            String sql = \"UPDATE Setor SET nome = ? WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros da consulta SQL.\r\n            conexao.pstmt.setString(1, nome);\r\n            conexao.pstmt.setString(2, setor.getNome());\r\n\r\n            // Executa a instrução SQL e verifica se algum registro foi alterado.\r\n            int rows = conexao.pstmt.executeUpdate();\r\n            if (rows == 0) {\r\n                throw new RuntimeException(\"Nenhum registro encontrado.\");\r\n            }\r\n\r\n            // Retorna true se a alteração foi bem-sucedida.\r\n            return rows > 0;\r\n        } catch (SQLException e) {\r\n            // Retorna false em caso de erro.\r\n            return false;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para excluir um setor da tabela Setor.\r\n    public boolean excluirSetor(String nomeSetor) {\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para excluir um setor da tabela Setor.\r\n            String sql = \"DELETE FROM Setor WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define o valor do parâmetro na consulta SQL.\r\n            conexao.pstmt.setString(1, nomeSetor);\r\n\r\n            // Executa a instrução SQL.\r\n            conexao.pstmt.execute();\r\n            // Retorna true se a exclusão foi bem-sucedida.\r\n            return true;\r\n        } catch (SQLException e) {\r\n            // Lança uma exceção em caso de erro.\r\n            throw new RuntimeException(\"Erro ao excluir o registro.\", e);\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para buscar um setor pelo nome na tabela Setor.\r\n    public Setor buscarSetor(String nomeSetor) {\r\n\r\n        // Cria um objeto Setor para armazenar os dados obtidos da consulta.\r\n        Setor setor;\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para buscar um setor pelo nome.\r\n            String sql = \"SELECT * FROM Setor WHERE nome = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            conexao.pstmt.setString(1, nomeSetor);\r\n\r\n            // Executa a consulta e armazena o resultado no ResultSet.\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            // Verifica se o ResultSet contém dados.\r\n            if (conexao.rs.next()) {\r\n                // Obtém o nome do setor do ResultSet.\r\n                String nome = conexao.rs.getString(1);\r\n\r\n                // Cria um novo objeto Setor com os dados obtidos.\r\n                return new Setor(nome);\r\n            }\r\n            // Retorna null se não houver nenhum setor com o nome informado.\r\n            return null;\r\n        } catch (SQLException e) {\r\n            // Retorna null em caso de erro.\r\n            return null;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n\r\n        // Retorna o objeto Setor encontrado.\r\n\r\n    }\r\n\r\n    // Método para listar todos os setores da tabela Setor.\r\n    public List<Setor> listarSetores() {\r\n\r\n        // Instrução SQL para listar todos os setores.\r\n        String sql = \"SELECT * FROM Setor\";\r\n\r\n        // Cria uma lista vazia para armazenar os setores.\r\n        List<Setor> setores = new ArrayList<>();\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try {\r\n\r\n            // Prepara e executa a consulta SQL.\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            // Percorre o ResultSet e armazena os dados dos setores na lista.\r\n            while (conexao.rs.next()) {\r\n\r\n                // Pega os dados do setor do ResultSet.\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String nome = conexao.rs.getString(2);\r\n\r\n                // Cria um objeto Setor com os dados obtidos.\r\n                Setor setor = new Setor(id, nome);\r\n\r\n                // Adiciona o setor à lista.\r\n                setores.add(setor);\r\n            }\r\n        } catch (SQLException e) {\r\n            // Retorna null em caso de erro.\r\n            return null;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n\r\n        // Retorna a lista de setores.\r\n        return setores;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/SetorDAO.java b/src/main/java/org/example/crud_site/dao/SetorDAO.java
+--- a/src/main/java/org/example/crud_site/dao/SetorDAO.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/dao/SetorDAO.java	(date 1730803645985)
+@@ -25,7 +25,7 @@
+     }
+ 
+     // Método para inserir um registro na tabela Setor.
+-    public boolean inserir(Setor setor) {
++    public boolean inserir(String setor) {
+ 
+         // Estabelece a conexão com o banco de dados.
+         conexao.conectar();
+@@ -35,7 +35,7 @@
+             conexao.pstmt = conexao.conn.prepareStatement(sql);
+ 
+             // Define os valores dos parâmetros da consulta.
+-            conexao.pstmt.setString(1, setor.getNome());
++            conexao.pstmt.setString(1, setor);
+ 
+             // Executa a instrução SQL e retorna true se bem-sucedido.
+             return conexao.pstmt.executeUpdate() > 0;
+Index: src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletInserirSituacao_Trabalhista.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Situacao_Trabalhista;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.dao.Situacao_TrabalhistaDAO;\r\nimport org.example.crud_site.model.Situacao_Trabalhista;\r\n\r\nimport java.io.IOException;\r\n\r\n@WebServlet(\"/inserirSituacaoTrabalhista\")\r\npublic class ServletInserirSituacao_Trabalhista extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {\r\n        // Obtém o parâmetro do nome da situação trabalhista da requisição\r\n        String nomeSituacao = req.getParameter(\"nome\");\r\n\r\n        // Cria uma instância do DAO para realizar a inserção\r\n        Situacao_TrabalhistaDAO situacaoTrabalhistaDAO = new Situacao_TrabalhistaDAO();\r\n        Situacao_Trabalhista situacaoTrabalhista = new Situacao_Trabalhista(nomeSituacao);\r\n\r\n        // Chama o método para inserir a nova situação trabalhista\r\n        boolean resultado = situacaoTrabalhistaDAO.inserirSetor(situacaoTrabalhista);\r\n\r\n        // Verifica se a inserção foi bem-sucedida\r\n        if (resultado) {\r\n            // Se a inserção foi bem-sucedida, redireciona para a página de sucesso\r\n            req.setAttribute(\"mensagem\", \"Situação trabalhista inserida com sucesso.\");\r\n            req.getRequestDispatcher(\"pages/situacaoTrabalhista.jsp\").forward(req, res);\r\n            return; // Para evitar a execução do código abaixo\r\n        }\r\n\r\n        // Se não for bem-sucedida, define uma mensagem de erro e encaminha para uma página de erro\r\n        req.setAttribute(\"erro\", \"Falha ao inserir a situação trabalhista.\");\r\n        req.getRequestDispatcher(\"pages/errorPage.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletInserirSituacao_Trabalhista.java b/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletInserirSituacao_Trabalhista.java
+--- a/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletInserirSituacao_Trabalhista.java	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletInserirSituacao_Trabalhista.java	(date 1730806407598)
+@@ -5,34 +5,31 @@
+ import jakarta.servlet.http.HttpServlet;
+ import jakarta.servlet.http.HttpServletRequest;
+ import jakarta.servlet.http.HttpServletResponse;
++import org.example.crud_site.dao.SetorDAO;
+ import org.example.crud_site.dao.Situacao_TrabalhistaDAO;
++import org.example.crud_site.model.Setor;
+ import org.example.crud_site.model.Situacao_Trabalhista;
+ 
+ import java.io.IOException;
+ 
+ @WebServlet("/inserirSituacaoTrabalhista")
+ public class ServletInserirSituacao_Trabalhista extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+-        // Obtém o parâmetro do nome da situação trabalhista da requisição
+-        String nomeSituacao = req.getParameter("nome");
++    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
++        response.setContentType("application/json");
++        String nomeSituacao = request.getParameter("cadastrar");
+ 
+-        // Cria uma instância do DAO para realizar a inserção
++        // Instancia o DAO para interagir com o banco de dados.
+         Situacao_TrabalhistaDAO situacaoTrabalhistaDAO = new Situacao_TrabalhistaDAO();
+-        Situacao_Trabalhista situacaoTrabalhista = new Situacao_Trabalhista(nomeSituacao);
+-
+-        // Chama o método para inserir a nova situação trabalhista
+-        boolean resultado = situacaoTrabalhistaDAO.inserirSetor(situacaoTrabalhista);
++        Situacao_Trabalhista situacaoTrabalhistaNova = new Situacao_Trabalhista(nomeSituacao);
++        try {
++            if (situacaoTrabalhistaDAO.inserirSituacao_Trabalhista(situacaoTrabalhistaNova.getNome())) {
++                response.sendRedirect(request.getContextPath() + "/listarSituacao_Trabalhistas");
++            } else {
++                request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
++            }
++        } catch (Exception e) {
++            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
+ 
+-        // Verifica se a inserção foi bem-sucedida
+-        if (resultado) {
+-            // Se a inserção foi bem-sucedida, redireciona para a página de sucesso
+-            req.setAttribute("mensagem", "Situação trabalhista inserida com sucesso.");
+-            req.getRequestDispatcher("pages/situacaoTrabalhista.jsp").forward(req, res);
+-            return; // Para evitar a execução do código abaixo
+         }
+-
+-        // Se não for bem-sucedida, define uma mensagem de erro e encaminha para uma página de erro
+-        req.setAttribute("erro", "Falha ao inserir a situação trabalhista.");
+-        req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
+     }
+ }
+Index: src/main/webapp/css/situacaoTrabalhista.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    display: flex;\r\n    height: 100vh;\r\n    background-color:#dbecfe;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: start;\r\n    justify-content: start;\r\n    width: 80%;\r\n    height: 90%;\r\n    padding: 3%;\r\n    background-color: white;\r\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\r\n    border-radius: 30px;\r\n    margin: 0 auto;\r\n    margin-top: 3%;\r\n    margin-bottom: 5%;\r\n}\r\n.grid-container {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr 2fr;\r\n    grid-auto-rows: 58px;\r\n    width: 100%;\r\n    background-color: #c3e0fe;\r\n    border-radius: 30px 30px 0 0;\r\n    border: 0.5px solid #c3e0fe;\r\n    height: 410px;\r\n    overflow-y: auto;\r\n    position: relative;\r\n    scrollbar-width: none;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.grid-header {\r\n    font-weight: bold;\r\n    text-align: center;\r\n    padding: 18px;\r\n    border: 1px  solid #c3e0fe;\r\n    border-bottom: 4px solid  #c3e0fe ;\r\n    background-color: white;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 10;\r\n    color: #0f0fe0;\r\n}\r\n\r\n.grid-container::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.grid-item {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 10px;\r\n    border: 1px solid #c3e0fe;\r\n    background-color: white;\r\n}\r\n\r\n.grid-item.empty {\r\n    background-color: #f0f0f0;\r\n}\r\n\r\n.action {\r\n    background: none;\r\n    border: none;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.elemento{\r\n    background-color: #0866FF;\r\n    height: 9px;\r\n    width: 23px;\r\n    border: none;\r\n    border-radius: 75px;\r\n    transform: rotate(90deg);\r\n    position: relative;\r\n    top: 13px;\r\n    right: 5px;\r\n}\r\n\r\n.action.view {\r\n    color: #5b4fff;\r\n}\r\n\r\n.action.edit {\r\n    color: #1ca8ff;\r\n}\r\n\r\n.action.delete {\r\n    color: #ff4b5b;\r\n}\r\n\r\n.action:hover {\r\n    transform: scale(1.2);\r\n}\r\n\r\n.grid-item:hover {\r\n    background-color: #f0f8ff;\r\n}\r\n\r\n.titulo {\r\n    font-size: 25px;\r\n    margin-bottom: 40px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\nh1 {\r\n    color: #2C46D1;\r\n    font-size: 35px;\r\n    margin-left: 20px;\r\n}\r\n\r\n.crud_adm{\r\n    font-weight: 350;\r\n}\r\n\r\n.inclus {\r\n    font-size: 30px;\r\n    color: mediumblue;\r\n}\r\n\r\n.es {\r\n\r\n    font-size: 30px;\r\n    color: blueviolet;\r\n}\r\n\r\n.sidebar {\r\n    width: 260px;\r\n    height: 100%;\r\n    background-image: url(../img/sidebar.png);\r\n    background-size: cover;\r\n    padding: 20px;\r\n    color: #ecf0f1;\r\n}\r\n\r\n.sidebar ul {\r\n    margin-top: 80px;\r\n    list-style-type: none;\r\n}\r\n\r\n.sidebar ul li {\r\n    margin-bottom: 35px;\r\n    margin-left: 20px;\r\n    font-size: 18px;\r\n    font-weight: bolder;\r\n}\r\n\r\n.sidebar ul li a {\r\n    text-decoration: none;\r\n    color: #c7c7c7;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar ul li a img {\r\n    width: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.logout {\r\n    margin-left: 35px;\r\n    width: 120px;\r\n    padding: 15px 30px;\r\n    background-color: #ffffff;\r\n    border: 1px solid #2B46D3;\r\n    border-radius: 11px;\r\n    color: #000000;\r\n    cursor: pointer;\r\n    font-size: 20px;\r\n    transition: 0.5s;\r\n    color: #0000F9;\r\n}\r\n\r\n.sidebar ul li a:hover {\r\n    color: #2B46D3;\r\n}\r\n\r\n\r\n.logout:hover {\r\n    background-color: #d3d3d3;\r\n}\r\n\r\n\r\n.main-content {\r\n    width: 100%;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.inserir-situacao {\r\n    padding: 15px 30px;\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    border: none;\r\n    cursor: pointer;\r\n    border-radius: 10px;\r\n    font-size: 14px;\r\n    margin-right: 40PX;\r\n    font-weight: bold;\r\n}\r\n\r\n.filtrar {\r\n    position: relative;\r\n    right: -15%;\r\n    border-radius: 10px;\r\n    padding: 15px 30px;\r\n    color: #0000F9;\r\n    font-weight: bold;\r\n    background-color: white;\r\n    border: #2C46D1 1px solid;\r\n}\r\n#filtrar-bar {\r\n    display: flex;\r\n    align-items: center; /* Alinhamento dos itens no centro verticalmente */\r\n    gap: 10px; /* Espaçamento entre o botão e a barra de pesquisa */\r\n    margin-bottom: 30px;\r\n    justify-content: flex-end; /* Mantém os itens à direita */\r\n}\r\n\r\n\r\n.pesquisa {\r\n    color: #D9D9D9;\r\n}\r\n.action{\r\n    height: 37px;\r\n    width: 65px;\r\n    border-radius: 10px;\r\n    padding-top: 4px;\r\n}\r\n\r\n.view {\r\n    background-color: #9747FF;\r\n}\r\n\r\n.edit {\r\n    background-color: #69B1FF;\r\n}\r\n\r\n.delete {\r\n    background-color: #FFA8A8;\r\n}\r\n\r\n#filtrar-bar input {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar button {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar select{\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\n#filtrar-bar button {\r\n    background-color: #69B1FF;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n#filtrar-bar button:hover {\r\n    background-color: #007bb5;\r\n}\r\n\r\n.sidebar ul li.selecionado a {\r\n    color: #2B46D3; /* Azul desejado */\r\n}\r\n\r\n#popupID,\r\n#popupIDsituacao {\r\n    display: none; /* Para ocultar inicialmente */\r\n    position: fixed; /* Alterado */\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.35);\r\n    z-index: 100;\r\n    align-items: center; /* Alinhamento vertical */\r\n    justify-content: center; /* Alinhamento horizontal */\r\n}\r\n\r\n.popup{\r\n    display: flex;\r\n    background-color: white;\r\n    width: 430px;\r\n    height: 450px;\r\n    justify-content: center;\r\n    border-radius: 20px;\r\n}\r\n\r\n.b{\r\n    width: 80%;\r\n    height: 40px;\r\n    margin-left: 30px;\r\n    margin-bottom: 20px;\r\n    border-radius: 10px;\r\n}\r\n\r\n.label{\r\n    display: block;\r\n    margin-top: 20px;\r\n\r\n\r\n}\r\n\r\n.input{\r\n    padding: 10px;\r\n    border: 1px solid #000000;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    width: 100%;\r\n    height: 50px;\r\n    margin-top: 20px;\r\n}\r\n.registrar .titulo{\r\n    margin-top: 33px;\r\n    color: #0866FF;\r\n}\r\n\r\n.password{\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.bt-registrar{\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    font-size: 18px;\r\n    font-weight: 400;\r\n    cursor: pointer;\r\n}\r\n.bt-cancelar-edit{\r\n    background-color: white;\r\n    color:#FF1B1F;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n.bt-cancelar{\r\n    background-color: white;\r\n    color:#3f3ff5;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n@media (max-width: 904px) {\r\n    .titulo h1 {\r\n        font-size: 20px;\r\n    }\r\n\r\n    .filtrar, .inserir-status {\r\n        font-size: 10px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .grid-item {\r\n        font-size: 12px;\r\n    }\r\n\r\n    .sidebar ul li {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .logout {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .action {\r\n        height: 27px;\r\n        width: 35px;\r\n        margin-left: 10px;\r\n\r\n    }\r\n    .action img {\r\n        height: 18px;\r\n        width: 18px;\r\n    }\r\n\r\n    .permitido, .edit, .delete {\r\n        font-size: 12px;\r\n    }\r\n\r\n    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {\r\n        font-size: 12px;\r\n    }\r\n    .filtrar{\r\n        margin-left: 30%;\r\n    }\r\n    .sidebar {\r\n        margin-right: 20px;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/css/situacaoTrabalhista.css b/src/main/webapp/css/situacaoTrabalhista.css
+--- a/src/main/webapp/css/situacaoTrabalhista.css	(revision 79208b4cc7bc013ae4e7bc1721aedd5216644599)
++++ b/src/main/webapp/css/situacaoTrabalhista.css	(date 1730814144386)
+@@ -354,7 +354,8 @@
+     margin-bottom: 30px;
+ }
+ 
+-.bt-registrar{
++.bt-registrar{]
++    margin-top: 33px;
+     background-color: #2C46D1;
+     color: white;
+     font-size: 18px;
+@@ -363,7 +364,7 @@
+ }
+ .bt-cancelar-edit{
+     background-color: white;
+-    color:#FF1B1F;
++    color: #0000f7;
+     border: #0000F9 1px solid;
+     font-size: 18px;
+     font-weight: 700;

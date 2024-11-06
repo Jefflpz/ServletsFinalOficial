@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CRUD_Site:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="innitial commit do fim">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/adm/ServletExcluirAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/adm/ServletExcluirAdm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/adm/ServletInserirAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/adm/ServletInserirAdm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/setor/ServletExcluirSetor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/setor/ServletExcluirSetor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletListarTiposArquivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletListarTiposArquivos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletExcluirTipoVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletExcluirTipoVaga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/SetorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/SetorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/TipoArquivoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/TipoArquivoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/setor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/setor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/situacaoTrabalhista.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/situacaoTrabalhista.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/statusCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/statusCurso.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/tipoArquivo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/tipoArquivo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/tipoVaga.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/tipoVaga.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Jefflpz&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Jefflpz/ServletsFinal.git",
+    "accountId": "680ddf12-abde-4a36-b030-2d765f761827"
+  }
+}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2oFcKUBbdh9ZW93beML8UVFe4t2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.tipoArquivo.jsp.executor": "Coverage",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 10.1.281.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "openjdk-21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jeffersonlopes-ieg/IdeaProjects/ServletsOficial/.env",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\TipoVaga" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\css" />
+      <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\js" />
+      <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\pages" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 10.1.281" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.281" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="CRUD_Site:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/CRUD_Site_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="4e329bff-780b-48b0-bace-7930348125e1" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="true" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+          <ENTRY IS_ENABLED="true" PARSER="env" IS_EXECUTABLE="false" PATH=".env" />
+        </ENTRIES>
+      </extension>
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="52491" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="CRUD_Site:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.387" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.387" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="" />
+      <created>1730468701622</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730468701622</updated>
+      <workItem from="1730468706590" duration="5392000" />
+      <workItem from="1730488649972" duration="59683000" />
+      <workItem from="1730798531678" duration="14822000" />
+      <workItem from="1730823445290" duration="911000" />
+      <workItem from="1730826759419" duration="15013000" />
+      <workItem from="1730892441720" duration="24012000" />
+    </task>
+    <task id="LOCAL-00001" summary="Commit para o gustavo terminar a estilização do site">
+      <option name="closed" value="true" />
+      <created>1730582191046</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730582191046</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Commit para o gustavo terminar a estilização do site">
+      <option name="closed" value="true" />
+      <created>1730588116298</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730588116298</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Push pra terminar o servlets">
+      <option name="closed" value="true" />
+      <created>1730662815729</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730662815729</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Push pra terminar o servlets">
+      <option name="closed" value="true" />
+      <created>1730663358494</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730663358494</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Push pra terminar o servlets">
+      <option name="closed" value="true" />
+      <created>1730663851814</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730663851814</updated>
+    </task>
+    <task id="LOCAL-00006" summary="excluir dando certo">
+      <option name="closed" value="true" />
+      <created>1730677231159</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730677231160</updated>
+    </task>
+    <task id="LOCAL-00007" summary="arrumem o filtrar">
+      <option name="closed" value="true" />
+      <created>1730728450579</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730728450579</updated>
+    </task>
+    <task id="LOCAL-00008" summary="filtrar dano certo">
+      <option name="closed" value="true" />
+      <created>1730730307656</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730730307656</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Inserir e excluir de todos dando certo">
+      <option name="closed" value="true" />
+      <created>1730822572839</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1730822572839</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Inserir e deletar rodando">
+      <option name="closed" value="true" />
+      <created>1730838391499</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730838391499</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Preparei para fazer o alterar">
+      <option name="closed" value="true" />
+      <created>1730890432062</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1730890432062</updated>
+    </task>
+    <task id="LOCAL-00012" summary="DAOs certos">
+      <option name="closed" value="true" />
+      <created>1730898291782</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1730898291782</updated>
+    </task>
+    <task id="LOCAL-00013" summary="AJuste na PermissaoVaga">
+      <option name="closed" value="true" />
+      <created>1730908430933</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1730908430933</updated>
+    </task>
+    <task id="LOCAL-00014" summary="AJuste na PermissaoVaga">
+      <option name="closed" value="true" />
+      <created>1730911561510</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1730911561510</updated>
+    </task>
+    <task id="LOCAL-00015" summary="innitial commit do fim">
+      <option name="closed" value="true" />
+      <created>1730926876349</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1730926876349</updated>
+    </task>
+    <task id="LOCAL-00016" summary="innitial commit do fim">
+      <option name="closed" value="true" />
+      <created>1730927072302</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1730927072302</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit para o gustavo terminar a estilização do site" />
+    <MESSAGE value="Push pra terminar o servlets" />
+    <MESSAGE value="excluir dando certo" />
+    <MESSAGE value="arrumem o filtrar" />
+    <MESSAGE value="filtrar dano certo" />
+    <MESSAGE value="Inserir e excluir de todos dando certo" />
+    <MESSAGE value="Inserir e deletar rodando" />
+    <MESSAGE value="Preparei para fazer o alterar" />
+    <MESSAGE value="DAOs certos" />
+    <MESSAGE value="AJuste na PermissaoVaga" />
+    <MESSAGE value="innitial commit do fim" />
+    <option name="LAST_COMMIT_MESSAGE" value="innitial commit do fim" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="e" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

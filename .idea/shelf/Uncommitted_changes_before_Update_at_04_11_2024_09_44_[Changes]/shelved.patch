@@ -1,0 +1,1277 @@
+Index: src/main/webapp/pages/permissaoCurso.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Crud Permissao curso</title>\r\n  <link rel=\"stylesheet\" href=\"css/permissaoCurso.css\">\r\n</head>\r\n<body>\r\n\r\n    <aside class=\"sidebar\">\r\n        <div class=\"titulo\">\r\n            <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n        </div>\r\n        <nav>\r\n            <ul>\r\n                <li><a href=\"#\"><img src=\"img/casa.png\" alt=\"Home\">Home</a></li>\r\n                <li><a href=\"listarAdm\">Adm</a></li>\r\n                <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n                <div class=\"elemento\"></div>\r\n                <li class=\"selecionado\"><a href=\"#\">Permissão Curso</a></li>\r\n                <li><a href=\"listarSetor\">Setores</a></li>\r\n                <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n                <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n                <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n                <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n                <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n            </ul>\r\n        </nav>\r\n    </aside>\r\n\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Permissao curso</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filter-bar\" style=\"display: none;\">\r\n                <form action=\"#\" method=\"GET\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"id_conta-filtro\">id_conta</option>\r\n                        <option value=\"id_curso-filtro\">id_curso</option>\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header id_conta\">id_conta</div>\r\n                <div class=\"grid-header id_curso\">id_curso</div>\r\n                <div class=\"grid-header acoes\">Permissão</div>\r\n\r\n                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-id_conta\">24</div>\r\n                <div class=\"grid-item item-id_curso\">31</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action view\"><img src=\"img/olho.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">2</div>\r\n                <div class=\"grid-item item-id_conta\">12</div>\r\n                <div class=\"grid-item item-id_curso\">23</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action view\"><img src=\"img/olho.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n\r\n                <div id=\"popupID\" style=\"display: none;\">\r\n                    <div class=\"popup\">\r\n                        <div class=\"popup-header\">\r\n                            <h2 class=\"titulo\">Informações da vaga</h2>\r\n                            <button class=\"close-button\">✖</button>\r\n                        </div>\r\n                        <form action=\"#\" class=\"vaga-form\">\r\n                            <div class=\"form-row\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"uuid\" class=\"label\">UUID:</label>\r\n                                    <input type=\"text\" id=\"uuid\" name=\"uuid\" class=\"input\" />\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"id_tipo\" class=\"label\">Id_status:</label>\r\n                                    <input type=\"text\" id=\"id_tipo\" name=\"id_tipo\" class=\"input\" />\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-row\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"nome\" class=\"label\">Nome:</label>\r\n                                    <input type=\"text\" id=\"nome\" name=\"nome\" class=\"input\" />\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"id_empresa\" class=\"label\">id_conta:</label>\r\n                                    <input type=\"text\" id=\"id_empresa\" name=\"id_empresa\" class=\"input\" />\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"descricao\" class=\"label\">Descrição:</label>\r\n                                <textarea id=\"descricao\" name=\"descricao\" class=\"input\" maxlength=\"500\"></textarea>\r\n                                <span class=\"char-count\">0/500</span>\r\n                            </div>\r\n                            <div class=\"form-buttons\">\r\n                                <button type=\"submit\" class=\"b bt-confirmar\"><img src=\"img/correto.png\" alt=\"\"></button>\r\n                                <button type=\"button\" class=\"b bt-cancelar\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                            </div>\r\n                        </form>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </main>\r\n    </div>\r\n    <script src=\"js/permissaoCurso.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/permissaoCurso.jsp b/src/main/webapp/pages/permissaoCurso.jsp
+--- a/src/main/webapp/pages/permissaoCurso.jsp	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/pages/permissaoCurso.jsp	(date 1730724263788)
+@@ -1,3 +1,5 @@
++<%@ page import="org.example.crud_site.model.PermissaoCurso" %>
++<%@ page import="java.util.List" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <!DOCTYPE html>
+ <html lang="pt-br">
+@@ -57,29 +59,48 @@
+ 
+             <div class="grid-container">
+                 <div class="grid-header registro">Registro</div>
+-                <div class="grid-header id_conta">id_conta</div>
+-                <div class="grid-header id_curso">id_curso</div>
+-                <div class="grid-header acoes">Permissão</div>
++                <div class="grid-header id_conta">Data da solicitação</div>
++                <div class="grid-header id_curso">Permissão</div>
++                <div class="grid-header acoes">Ações</div>
+ 
+-                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-id_conta">24</div>
+-                <div class="grid-item item-id_curso">31</div>
++                <%
++                    List<PermissaoCurso> lista = (List<PermissaoCurso>) request.getAttribute("listaPermissao_Curso");
++
++                    if (!lista.isEmpty()) {
++                        for (int i = 0; i < lista.size(); i++) {
++                %>
++                <div class="grid-item registro"><%= i+1 %></div>
++                <div class="grid-item"><%= lista.get(i).getDt_solicitaco() %></div>
++                <div class="grid-item"><%= lista.get(i).getPermissao() %></div>
+                 <div class="grid-item">
+-                    <button class="action view"><img src="img/olho.png" alt=""></button>
++                    <form action="autorizarPermissao_Curso" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action permitido"><img src="img/correto.png" alt="excluir setor"></button>
++                    </form>
++                    <form action="buscarPermissaoCurso" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action view"><img src="img/olho.png" alt="excluir setor"></button>
++                    </form>
++                    <form action="negarPermissao_Curso" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action delete"><img src="img/X.png" alt="excluir setor"></button>
++                    </form>
+                 </div>
+-
+-                <div class="grid-item item-registro">2</div>
+-                <div class="grid-item item-id_conta">12</div>
+-                <div class="grid-item item-id_curso">23</div>
+-                <div class="grid-item">
+-                    <button class="action view"><img src="img/olho.png" alt=""></button>
+-                </div>  
++                <%
++                    }
++                } else {
++                %>
++                <div class="grid-item">Nenhum registro encontrado.</div>
++                <%
++                        System.out.println("Nenhum registro encontrado.");
++                    }
++                %>
+ 
+ 
+                 <div id="popupID" style="display: none;">
+                     <div class="popup">
+                         <div class="popup-header">
+-                            <h2 class="titulo">Informações da vaga</h2>
++                            <h2 class="titulo">Informações do curso</h2>
+                             <button class="close-button">✖</button>
+                         </div>
+                         <form action="#" class="vaga-form">
+Index: src/main/webapp/pages/permissaoVaga.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Crud Permissao vaga</title>\r\n    <link rel=\"stylesheet\" href=\"css/permissaoVaga.css\">\r\n</head>\r\n<body>\r\n    <aside class=\"sidebar\">\r\n        <div class=\"titulo\">\r\n            <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n        </div>\r\n        <nav>\r\n            <ul>\r\n                <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n                <li><a href=\"listarAdm\">Adm</a></li>\r\n                <div class=\"elemento\"></div>\r\n                <li class=\"selecionado\"><a href=\"#\">Permissão Vaga</a></li>\r\n                <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n                <li><a href=\"listarSetor\">Setores</a></li>\r\n                <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n                <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n                <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n                <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n                <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n            </ul>\r\n        </nav>\r\n    </aside>\r\n\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Permissao vaga</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filter-bar\" style=\"display: none;\">\r\n                <form action=\"#\" method=\"GET\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option v\r\n                        alue=\"registro-filtro\">Registro</option>\r\n                        <option value=\"id_conta-filtro\">id_conta</option>\r\n                        <option value=\"id_vaga-filtro\">id_vaga</option>\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header id_conta\">id_conta</div>\r\n                <div class=\"grid-header id_conta\">id_vaga</div>\r\n                <div class=\"grid-header acoes\">Permissão</div>\r\n\r\n                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-id_conta\">24</div>\r\n                <div class=\"grid-item item-id_vaga\">31</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action view\"><img src=\"img/olho.png\" alt=\"\"></button>\r\n                </div>\r\n                                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-id_conta\">24</div>\r\n                <div class=\"grid-item item-id_vaga\">31</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action view\"><img src=\"img/olho.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">2</div>\r\n                <div class=\"grid-item item-id_conta\">12</div>\r\n                <div class=\"grid-item item-id_vaga\">23</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action view\"><img src=\"img/olho.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n\r\n                <div id=\"popupID\" style=\"display: none;\">\r\n                    <div class=\"popup\">\r\n                        <div class=\"popup-header\">\r\n                            <h2 class=\"titulo\">Informações da vaga</h2>\r\n                            <button class=\"close-button\">✖</button>\r\n                        </div>\r\n                        <form action=\"#\" class=\"vaga-form\">\r\n                            <div class=\"form-row\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"uuid\" class=\"label\">UUID:</label>\r\n                                    <input type=\"text\" id=\"uuid\" name=\"uuid\" class=\"input\" />\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"id_tipo\" class=\"label\">Id_tipo:</label>\r\n                                    <input type=\"text\" id=\"id_tipo\" name=\"id_tipo\" class=\"input\" />\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-row\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"nome\" class=\"label\">Nome:</label>\r\n                                    <input type=\"text\" id=\"nome\" name=\"nome\" class=\"input\" />\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"id_empresa\" class=\"label\">Id_empresa:</label>\r\n                                    <input type=\"text\" id=\"id_empresa\" name=\"id_empresa\" class=\"input\" />\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"descricao\" class=\"label\">Descrição:</label>\r\n                                <textarea id=\"descricao\" name=\"descricao\" class=\"input\" maxlength=\"500\"></textarea>\r\n                                <span class=\"char-count\">0/500</span>\r\n                            </div>\r\n                            <div class=\"form-buttons\">\r\n                                <button type=\"submit\" class=\"b bt-confirmar\"><img src=\"img/correto.png\" alt=\"\"></button>\r\n                                <button type=\"button\" class=\"b bt-cancelar\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                            </div>\r\n                        </form>\r\n                    </div>\r\n                </div>\r\n                </div>\r\n        </main>\r\n    </div>\r\n                \r\n        <script src=\"js/permissaoVaga.js\"></script>\r\n    </body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/permissaoVaga.jsp b/src/main/webapp/pages/permissaoVaga.jsp
+--- a/src/main/webapp/pages/permissaoVaga.jsp	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/pages/permissaoVaga.jsp	(date 1730724263767)
+@@ -1,3 +1,5 @@
++<%@ page import="org.example.crud_site.model.PermissaoVaga" %>
++<%@ page import="java.util.List" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <!DOCTYPE html>
+ <html lang="pt-br">
+@@ -57,29 +59,42 @@
+ 
+             <div class="grid-container">
+                 <div class="grid-header registro">Registro</div>
+-                <div class="grid-header id_conta">id_conta</div>
+-                <div class="grid-header id_conta">id_vaga</div>
+-                <div class="grid-header acoes">Permissão</div>
++                <div class="grid-header id_conta">Data de solicitação</div>
++                <div class="grid-header id_conta">Permissão</div>
++                <div class="grid-header acoes">Ações</div>
+ 
+-                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-id_conta">24</div>
+-                <div class="grid-item item-id_vaga">31</div>
++                <%
++                List<PermissaoVaga> lista = (List<PermissaoVaga>) request.getAttribute("listaPermissao_Vaga");
++
++                if (!lista.isEmpty()) {
++                for (int i = 0; i < lista.size(); i++) {
++                %>
++                <div class="grid-item registro"><%= i+1 %></div>
++                <div class="grid-item"><%= lista.get(i).getDt_solicitacao() %></div>
++                <div class="grid-item"><%= lista.get(i).getPermissao() %></div>
+                 <div class="grid-item">
+-                    <button class="action view"><img src="img/olho.png" alt=""></button>
++                    <form action="autorizarPermissao_Vaga" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action permitido"><img src="img/correto.png" alt="excluir setor"></button>
++                    </form>
++                    <form action="buscarPermissao_Vaga" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action view"><img src="img/olho.png" alt="excluir setor"></button>
++                    </form>
++                    <form action="negarPermissao_Vaga" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action delete"><img src="img/X.png" alt="excluir setor"></button>
++                    </form>
+                 </div>
+-                                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-id_conta">24</div>
+-                <div class="grid-item item-id_vaga">31</div>
+-                <div class="grid-item">
+-                    <button class="action view"><img src="img/olho.png" alt=""></button>
+-                </div>
+-
+-                <div class="grid-item item-registro">2</div>
+-                <div class="grid-item item-id_conta">12</div>
+-                <div class="grid-item item-id_vaga">23</div>
+-                <div class="grid-item">
+-                    <button class="action view"><img src="img/olho.png" alt=""></button>
+-                </div>  
++                    <%
++                    }
++                } else {
++                %>
++                <div class="grid-item">Nenhum registro encontrado.</div>
++                    <%
++                        System.out.println("Nenhum registro encontrado.");
++                    }
++                %>
+ 
+ 
+                 <div id="popupID" style="display: none;">
+Index: src/main/webapp/css/statusCurso.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    display: flex;\r\n    height: 100vh;\r\n    background-color:#dbecfe;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: start;\r\n    justify-content: start;\r\n    width: 80%;\r\n    height: 85%;\r\n    padding: 3%;\r\n    background-color: white;\r\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\r\n    border-radius: 30px;\r\n    margin: 0 auto;\r\n    margin-top: 6%;\r\n    margin-bottom: 5%;\r\n}\r\n\r\n.grid-container {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr 2fr 2fr;\r\n    grid-auto-rows: 58px;\r\n    width: 100%;\r\n    background-color: #c3e0fe;\r\n    border-radius: 30px 30px 0 0;\r\n    border: 0.5px solid #c3e0fe;\r\n    height: 410px;\r\n    overflow-y: auto;\r\n    position: relative;\r\n    scrollbar-width: none;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.grid-header {\r\n    font-weight: bold;\r\n    text-align: center;\r\n    padding: 18px;\r\n    border: 1px  solid #c3e0fe;\r\n    border-bottom: 4px solid  #c3e0fe ;\r\n    background-color: white;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 10;\r\n    color: #0f0fe0;\r\n}\r\n\r\n.grid-container::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.grid-item {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 10px;\r\n    border: 1px solid #c3e0fe;\r\n    background-color: white;\r\n}\r\n\r\n.grid-item.empty {\r\n    background-color: #f0f0f0;\r\n}\r\n\r\n.action {\r\n    background: none;\r\n    border: none;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.action.view {\r\n    color: #5b4fff;\r\n}\r\n\r\n.action.edit {\r\n    color: #1ca8ff;\r\n}\r\n\r\n.action.delete {\r\n    color: #ff4b5b;\r\n}\r\n\r\n.action:hover {\r\n    transform: scale(1.2);\r\n}\r\n\r\n.grid-item:hover {\r\n    background-color: #f0f8ff;\r\n}\r\n\r\n.titulo {\r\n    font-size: 25px;\r\n    margin-bottom: 40px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\nh1 {\r\n    color: #2C46D1;\r\n    font-size: 35px;\r\n    margin-left: 20px;\r\n}\r\n\r\n.crud_adm{\r\n    font-weight: 350;\r\n}\r\n\r\n.inclus {\r\n    font-size: 30px;\r\n    color: mediumblue;\r\n}\r\n\r\n.es {\r\n\r\n    font-size: 30px;\r\n    color: blueviolet;\r\n}\r\n\r\n.sidebar {\r\n    width: 260px;\r\n    height: 100%;\r\n    background-image: url(../img/sidebar.png);\r\n    background-size: cover;\r\n    padding: 20px;\r\n    color: #ecf0f1;\r\n}\r\n\r\n.sidebar ul {\r\n    margin-top: 80px;\r\n    list-style-type: none;\r\n}\r\n\r\n.sidebar ul li {\r\n    margin-bottom: 35px;\r\n    margin-left: 20px;\r\n    font-size: 18px;\r\n    font-weight: bolder;\r\n}\r\n\r\n.sidebar ul li a {\r\n    text-decoration: none;\r\n    color: #c7c7c7;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar ul li a img {\r\n    width: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.logout {\r\n    margin-left: 35px;\r\n    width: 120px;\r\n    padding: 15px 30px;\r\n    background-color: #ffffff;\r\n    border: 1px solid #2B46D3;\r\n    border-radius: 11px;\r\n    color: #000000;\r\n    cursor: pointer;\r\n    font-size: 20px;\r\n    transition: 0.5s;\r\n    color: #0000F9;\r\n}\r\n\r\n.sidebar ul li a:hover {\r\n    color: #2B46D3;\r\n}\r\n\r\n\r\n.logout:hover {\r\n    background-color: #d3d3d3;\r\n}\r\n\r\n.main-content {\r\n    width: 100%;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.inserir-status-curso{\r\n    padding: 18px 30px;\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    border: none;\r\n    cursor: pointer;\r\n    border-radius: 10px;\r\n    font-size: 14px;\r\n    margin-right: 40PX;\r\n    font-weight: bold;\r\n}\r\n\r\n.elemento{\r\n    background-color: #0866FF;\r\n    height: 9px;\r\n    width: 23px;\r\n    border: none;\r\n    border-radius: 75px;\r\n    transform: rotate(90deg);\r\n    position: relative;\r\n    top: 13px;\r\n    right: 0.2px;\r\n}\r\n\r\n.filtrar {\r\n    text-align: center;\r\n    border-radius: 10px;\r\n    padding: 15px 30px;\r\n    color: #0000F9;\r\n    font-weight: bold;\r\n    border: 0;\r\n    background-color: white;\r\n    border: rgb(177, 177, 177) 1px solid;\r\n    position: absolute;\r\n    margin-left: 17%;\r\n}\r\n\r\n#filtrar-bar {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    margin-bottom: 30px;\r\n    gap: 10px;\r\n}\r\n\r\n.pesquisa {\r\n    color: #D9D9D9;\r\n}\r\n.action{\r\n    height: 37px;\r\n    width: 65px;\r\n    border-radius: 10px;\r\n    padding-top: 4px;\r\n}\r\n\r\n.view {\r\n    background-color: #9747FF;\r\n}\r\n\r\n.edit {\r\n    background-color: #69B1FF;\r\n}\r\n\r\n.delete {\r\n    background-color: #FFA8A8;\r\n}\r\n\r\n#filtrar-bar input {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar button {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar select{\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\n#filtrar-bar button {\r\n    background-color: #69B1FF;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n#filtrar-bar button:hover {\r\n    background-color: #007bb5;\r\n}\r\n\r\n.sidebar ul li.selecionado a {\r\n    color: #2B46D3; /* Azul desejado */\r\n}\r\n\r\n#popupID,\r\n#popupIDCurso {\r\n    display: none; /* Para ocultar inicialmente */\r\n    position: fixed; /* Alterado */\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.35);\r\n    z-index: 100;\r\n    align-items: center; /* Alinhamento vertical */\r\n    justify-content: center; /* Alinhamento horizontal */\r\n}\r\n\r\n.popup{\r\n    display: flex;\r\n    background-color: white;\r\n    width: 430px;\r\n    height: 450px;\r\n    justify-content: center;\r\n    border-radius: 20px;\r\n}\r\n\r\n.b{\r\n    width: 80%;\r\n    height: 40px;\r\n    margin-left: 30px;\r\n    margin-bottom: 20px;\r\n    border-radius: 10px;\r\n}\r\n\r\n.label{\r\n    display: block;\r\n    margin-top: 20px;\r\n\r\n\r\n}\r\n\r\n.input{\r\n    padding: 10px;\r\n    border: 1px solid #000000;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    width: 100%;\r\n    height: 50px;\r\n    margin-top: 20px;\r\n}\r\n.registrar .titulo{\r\n    margin-top: 33px;\r\n    color: #0866FF;\r\n}\r\n\r\n.password{\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.bt-registrar{\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    cursor: pointer;\r\n}\r\n.bt-cancelar-edit{\r\n    background-color: white;\r\n    color:#FF1B1F;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n.bt-cancelar{\r\n    background-color: white;\r\n    color:#3f3ff5;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n@media (max-width: 904px) {\r\n    .titulo h1 {\r\n        font-size: 20px;\r\n    }\r\n\r\n    .filtrar, .inserir-curso{\r\n        font-size: 10px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .grid-item {\r\n        font-size: 12px;\r\n    }\r\n\r\n    .sidebar ul li {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .logout {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .action {\r\n        height: 27px;\r\n        width: 35px;\r\n        margin-left: 10px;\r\n\r\n    }\r\n    .action img {\r\n        height: 18px;\r\n        width: 18px;\r\n    }\r\n\r\n    .permitido, .edit, .delete {\r\n        font-size: 12px;\r\n    }\r\n\r\n    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {\r\n        font-size: 12px;\r\n    }\r\n    .filtrar{\r\n        margin-left: 30%;\r\n    }\r\n    .sidebar {\r\n        margin-right: 20px;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/css/statusCurso.css b/src/main/webapp/css/statusCurso.css
+--- a/src/main/webapp/css/statusCurso.css	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/css/statusCurso.css	(date 1730719729336)
+@@ -29,7 +29,7 @@
+ 
+ .grid-container {
+     display: grid;
+-    grid-template-columns: 1fr 4fr 2fr 2fr;
++    grid-template-columns: 1fr 4fr 2fr;
+     grid-auto-rows: 58px;
+     width: 100%;
+     background-color: #c3e0fe;
+Index: src/main/webapp/pages/adm.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page import=\"org.example.crud_site.dao.AdmDAO\" %>\r\n<%@ page import=\"org.example.crud_site.model.Adm\" %>\r\n<%@ page import=\"java.util.List\" %>\r\n<%@ page import=\"java.util.ArrayList\" %>\r\n<%@ page contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <link rel=\"stylesheet\" href=\"css/adm.css\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Crud Adm</title>\r\n</head>\r\n<body>\r\n<aside class=\"sidebar\">\r\n    <div class=\"titulo\">\r\n        <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n    </div>\r\n    <nav>\r\n        <ul>\r\n            <li><a href=\"#\"><img src=\"img/house.png\">Home</a></li>\r\n            <div class=\"elemento\"></div>\r\n            <li class=\"selecionado\"><a href=\"#\">Adm</a></li>\r\n            <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n            <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n            <li><a href=\"listarSetor\">Setores</a></li>\r\n            <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n            <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n            <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n            <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n            <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n        </ul>\r\n    </nav>\r\n\r\n</aside>\r\n\r\n<div class=\"container\">\r\n    <main class=\"main-content\">\r\n        <div class=\"titulo\">\r\n            <h1>Adm</h1>\r\n            <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n            <button class=\"inserir-adm\">Inserir Adm</button>\r\n        </div>\r\n\r\n        <div id=\"filtrar-bar\" style=\"display: none;\">\r\n            <form action=\"#\" method=\"get\">\r\n                <select name=\"filter-field\">\r\n                    <option value=\"\">Escolher campo</option>\r\n                    <option value=\"todos\">Todos</option>\r\n                    <option value=\"registro-filtro\">Registro</option>\r\n                    <option value=\"username-filtro\">Username</option>\r\n                </select>\r\n                <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n                <button type=\"submit\">Aplicar</button>\r\n            </form>\r\n        </div>\r\n\r\n        <div class=\"grid-container\">\r\n            <div class=\"grid-header registro\">Registro</div>\r\n            <div class=\"grid-header username\">Username</div>\r\n            <div class=\"grid-header senha\">Senha</div>\r\n            <div class=\"grid-header acoes\">Ações</div>\r\n\r\n            <%\r\n                List<Adm> lista = (List<Adm>) request.getAttribute(\"listarAdm\");\r\n\r\n                if (!lista.isEmpty()) {\r\n                    for (int i = 0; i < lista.size(); i++) {\r\n            %>\r\n            <div class=\"grid-item registro\"><%= i+1 %></div>\r\n            <div class=\"grid-item username\"><%= lista.get(i).getUsername() %></div>\r\n            <div class=\"grid-item\"> <%= (lista.get(i).getSenha() != null) ? \"*\".repeat(lista.get(i).getSenha().length()) : \"\" %></div>\r\n            <div class=\"grid-item\">\r\n                <button class=\"action edit\"\r\n                        data-id=\"<%= lista.get(i).getId() %>\"\r\n                        data-username=\"<%= lista.get(i).getUsername() %>\"\r\n                        data-senha=\"<%= lista.get(i).getSenha() %>\">\r\n                    <img src=\"img/lapis.png\" alt=\"editar adm\"></button>\r\n                <form action=\"excluirAdm\" method=\"post\">\r\n                    <input type=\"hidden\" name=\"id\" value=\"<%=lista.get(i).getId()%>\">\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </form>\r\n            </div>\r\n            <%\r\n                }\r\n            } else {\r\n            %>\r\n            <div class=\"grid-item\">Nenhum registro encontrado.</div>\r\n            <%\r\n                    System.out.println(\"Nenhum registro encontrado.\");\r\n                }\r\n            %>\r\n        </div>\r\n\r\n    </main>\r\n\r\n    <div id=\"popupID\" style=\"display: none;\">\r\n        <div class=\"popup\">\r\n            <form id=\"cadastroForm\" action=\"inserirAdm\" method=\"post\" class=\"registrar\">\r\n                <div class=\"bloco-titulo\">\r\n                    <h2 class=\"titulo\">Cadastrar administrador</h2>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"login\" class=\"label\">Login:</label>\r\n                    <input type=\"text\" id=\"novoAdm\" name=\"username\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <label class=\"label\">Digite a senha:</label>\r\n                    <div class=\"password-container\">\r\n                        <input type=\"password\" placeholder=\"*\" id=\"novoSenha\" name=\"senha\" class=\"input password\" required/>\r\n                    </div>\r\n                </div>\r\n                <span id=\"erro\" class=\"mensagem-erro\"></span>\r\n\r\n                <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div id=\"popupIDadm\" style=\"display: none;\">\r\n        <div class=\"popup\">\r\n            <form action=\"#\" class=\"registrar\">\r\n                <div class=\"bloco-titulo\">\r\n                    <h2 class=\"titulo\">Editar Adm</h2>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"login\" class=\"label\">Login:</label>\r\n                    <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <label class=\"label\">Digite a senha:</label>\r\n                    <div class=\"password-container\">\r\n                        <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                    </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<script src=\"js/adm.js\"></script>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/adm.jsp b/src/main/webapp/pages/adm.jsp
+--- a/src/main/webapp/pages/adm.jsp	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/pages/adm.jsp	(date 1730720567797)
+@@ -76,7 +76,7 @@
+                         data-username="<%= lista.get(i).getUsername() %>"
+                         data-senha="<%= lista.get(i).getSenha() %>">
+                     <img src="img/lapis.png" alt="editar adm"></button>
+-                <form action="excluirAdm" method="post">
++                <form action="/excluirAdm" method="post">
+                     <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
+                     <button class="action delete"><img src="img/lixo.png" alt=""></button>
+                 </form>
+Index: src/main/java/org/example/crud_site/controller/Tipo_Vaga/ServletListarTipos_Vagas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Tipo_Vaga;\r\n\r\nimport java.util.List;\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\n\r\nimport org.example.crud_site.dao.Tipo_VagaDAO;\r\nimport org.example.crud_site.model.Tipo_Vaga;\r\n\r\n// Define a servlet que responde ao caminho /listarTipo_Vaga\r\n@WebServlet(\"/listarTipo_Vaga\")\r\npublic class ServletListarTipos_Vagas extends HttpServlet {\r\n\r\n    // Método que lida com requisições GET\r\n    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n\r\n        // Cria uma instância do DAO para acessar dados de tipo de vaga\r\n        Tipo_VagaDAO tipo_VagaDAO = new Tipo_VagaDAO();\r\n\r\n        // Obtém a lista de tipos de vaga através do DAO\r\n        List<Tipo_Vaga> tipos_Vaga = tipo_VagaDAO.listarTipo_Vaga();\r\n\r\n        // Define a lista de tipos de vaga como um atributo da requisição\r\n        req.setAttribute(\"tipos_Vaga\", tipos_Vaga);\r\n\r\n        // Encaminha a requisição e a resposta para a página listarTipo_Vaga.jsp\r\n        req.getRequestDispatcher(\"pages/tipoVaga.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Tipo_Vaga/ServletListarTipos_Vagas.java b/src/main/java/org/example/crud_site/controller/Tipo_Vaga/ServletListarTipos_Vagas.java
+--- a/src/main/java/org/example/crud_site/controller/Tipo_Vaga/ServletListarTipos_Vagas.java	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/java/org/example/crud_site/controller/Tipo_Vaga/ServletListarTipos_Vagas.java	(date 1730722825431)
+@@ -25,7 +25,7 @@
+         List<Tipo_Vaga> tipos_Vaga = tipo_VagaDAO.listarTipo_Vaga();
+ 
+         // Define a lista de tipos de vaga como um atributo da requisição
+-        req.setAttribute("tipos_Vaga", tipos_Vaga);
++    req.setAttribute("listarTipo_Vaga", tipos_Vaga);
+ 
+         // Encaminha a requisição e a resposta para a página listarTipo_Vaga.jsp
+         req.getRequestDispatcher("pages/tipoVaga.jsp").forward(req, res);
+Index: src/main/webapp/pages/situacaoTrabalhista.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>CRUD status curso</title>\r\n    <link rel=\"stylesheet\" href=\"css/situacaoTrabalhista.css\">\r\n</head>\r\n<body>\r\n\r\n  <aside class=\"sidebar\">\r\n    <div class=\"titulo\">\r\n        <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n    </div>\r\n    <nav>\r\n        <ul>\r\n            <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n            <li><a href=\"listarAdm\">Adm</a></li>\r\n            <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n            <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n            <li><a href=\"listarSetor\">Setores</a></li>\r\n            <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n            <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n            <div class=\"elemento\"></div>\r\n            <li class=\"selecionado\"><a href=\"#\">Situação trabalhista</a></li>\r\n            <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n            <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n        </ul>\r\n    </nav>\r\n  </aside>\r\n\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Situação trabalhista</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-situacao\">Inserir Situação Trabalhista</button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"nome-filtro\">Nome</option>\r\n                        <option value=\"status-filtro\">Status</option>\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header username\">Nome</div>\r\n                <div class=\"grid-header status\">Status</div>\r\n                <div class=\"grid-header acoes\">Ações</div>\r\n   \r\n\r\n                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-username\">admin1</div>\r\n                <div class=\"grid-item\">Em andamento</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n                <div class=\"grid-item item-registro\">2</div>\r\n                <div class=\"grid-item item-username\">admin2</div>\r\n                <div class=\"grid-item\">Concluido</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n                <div class=\"grid-item item-registro\">3</div>\r\n                <div class=\"grid-item item-username\">admin3</div>\r\n                <div class=\"grid-item\">Concluido</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n                <div class=\"grid-item item-registro\">4</div>\r\n                <div class=\"grid-item item-username\">admin4</div>\r\n                <div class=\"grid-item\">Cancelado</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n                <div class=\"grid-item item-registro\">5</div>\r\n                <div class=\"grid-item item-username\">admin5</div>\r\n                <div class=\"grid-item\">Em andamento </div> \r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>         \r\n            </div>\r\n\r\n        </main>\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Inserir Situação trabalhista</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupIDsituacao\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar Situação Trabalhista</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div><div id=\"popupID\" style=\"display: none;\">\r\n        <div class=\"popup\">\r\n            <form action=\"#\" class=\"registrar\">\r\n                <div class=\"bloco-titulo\">\r\n                    <h2 class=\"titulo\">Inserir Situação trabalhista</h2>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"login\" class=\"label\">Login:</label>\r\n                    <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <label for=\"password\" class=\"label\">Digite a senha:</label>\r\n                    <div class=\"password-container\">\r\n                        <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                    </div>\r\n                </div>\r\n\r\n\r\n                <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupIDsituacao\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar Situação Trabalhista</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n<script src=\"js/situacaoTrabalhista.js\"></script>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/situacaoTrabalhista.jsp b/src/main/webapp/pages/situacaoTrabalhista.jsp
+--- a/src/main/webapp/pages/situacaoTrabalhista.jsp	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/pages/situacaoTrabalhista.jsp	(date 1730722825415)
+@@ -1,3 +1,5 @@
++<%@ page import="java.util.List" %>
++<%@ page import="org.example.crud_site.model.Situacao_Trabalhista" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <!DOCTYPE html>
+ <html lang="pt-br">
+@@ -58,155 +60,77 @@
+ 
+             <div class="grid-container">
+                 <div class="grid-header registro">Registro</div>
+-                <div class="grid-header username">Nome</div>
+-                <div class="grid-header status">Status</div>
++                <div class="grid-header username">Situação Trabalhista</div>
+                 <div class="grid-header acoes">Ações</div>
+-   
+ 
+-                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-username">admin1</div>
+-                <div class="grid-item">Em andamento</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>  
+ 
+-                <div class="grid-item item-registro">2</div>
+-                <div class="grid-item item-username">admin2</div>
+-                <div class="grid-item">Concluido</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>  
++                <%
++                    List<Situacao_Trabalhista> lista = (List<Situacao_Trabalhista>) request.getAttribute("listarSituacoes_Trabalhistas");
+ 
+-                <div class="grid-item item-registro">3</div>
+-                <div class="grid-item item-username">admin3</div>
+-                <div class="grid-item">Concluido</div>
++                    if (!lista.isEmpty()) {
++                        for (int i = 0; i < lista.size(); i++) {
++                %>
++                <div class="grid-item registro"><%= i+1 %></div>
++                <div class="grid-item username"><%= lista.get(i).getNome() %></div>
+                 <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>  
+-
+-                <div class="grid-item item-registro">4</div>
+-                <div class="grid-item item-username">admin4</div>
+-                <div class="grid-item">Cancelado</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>  
+-
+-                <div class="grid-item item-registro">5</div>
+-                <div class="grid-item item-username">admin5</div>
+-                <div class="grid-item">Em andamento </div> 
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>         
++                    <button class="action edit">
++                        <img src="img/lapis.png" alt="editar situacao trabalhista"></button>
++                    <form action="excluirSituacaoTrabalhista" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action delete"><img src="img/lixo.png" alt="excluir situacao trabalhista"></button>
++                    </form>
++                </div>
++                <%
++                    }
++                } else {
++                %>
++                <div class="grid-item">Nenhum registro encontrado.</div>
++                <%
++                        System.out.println("Nenhum registro encontrado.");
++                    }
++                %>
+             </div>
+ 
+         </main>
+ 
++
++        <!-- AQUI -->
++
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+-                <form action="#" class="registrar">
++                <form action="inserirSituacaoTrabalhista" class="registrar">
+                     <div class="bloco-titulo">
+-                        <h2 class="titulo">Inserir Situação trabalhista</h2>
++                        <h2 class="titulo">Inserir Situação Trabalhista</h2>
+                     </div>
+                     <div class="form-group">
+-                        <label for="login" class="label">Login:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
++                        <label for="cadastrar" class="label">Situação trabalhista:</label>
++                        <input type="text" id="cadastrar" name="cadastrar" placeholder="avnadmin" class="input" required />
+                     </div>
+ 
+-                    <div class="form-group">
+-                        <label for="password" class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
+-                    </div>
+-
+-
+                     <button type="submit" class="b bt-registrar">Cadastrar</button>
+-                    <button type="button" class="b bt-cancelar">Cancelar</button>
+-                </form>
+-            </div>
+-        </div>
+-
+-        <!-- AQUI -->
+-
+-        <div id="popupIDsituacao" style="display: none;">
+-            <div class="popup">
+-                <form action="#" class="registrar">
+-                    <div class="bloco-titulo">
+-                        <h2 class="titulo">Editar Situação Trabalhista</h2>
+-                    </div>
+-                    <div class="form-group">
+-                        <label for="login" class="label">Login:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+-                    </div>
+-
+-                    <div class="form-group">
+-                        <label for="password" class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
+-                    </div>
+-
+-
+-                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+                     <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                 </form>
+             </div>
+-        </div><div id="popupID" style="display: none;">
+-        <div class="popup">
+-            <form action="#" class="registrar">
+-                <div class="bloco-titulo">
+-                    <h2 class="titulo">Inserir Situação trabalhista</h2>
+-                </div>
+-                <div class="form-group">
+-                    <label for="login" class="label">Login:</label>
+-                    <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+-                </div>
++        </div>
++
++        <div id="popupIDSituacaoTrabalhista" style="display: none;">
++            <div class="popup">
++                <form action="alterarSituacaoTrabalhista" class="registrar">
++                    <div class="bloco-titulo">
++                        <h2 class="titulo">Editar situação trabalhista</h2>
++                    </div>
++                    <div class="form-group">
++                        <label for="editar" class="label">Situação trabalhista:</label>
++                        <input type="text" id="editar" name="editar" placeholder="avnadmin" class="input" required />
++                    </div>
+ 
+-                <div class="form-group">
+-                    <label for="password" class="label">Digite a senha:</label>
+-                    <div class="password-container">
+-                        <input type="password" placeholder="*" class="input password"/>
+-                    </div>
+-                </div>
+-
+-
+-                <button type="submit" class="b bt-registrar">Cadastrar</button>
+-                <button type="button" class="b bt-cancelar">Cancelar</button>
+-            </form>
+-        </div>
+-    </div>
++                    <button type="submit" class="b bt-registrar">Cadastrar</button>
++                    <button type="button" class="b bt-cancelar">Cancelar</button>
++                </form>
++            </div>
++        </div>
+ 
+         <!-- AQUI -->
+-
+-        <div id="popupIDsituacao" style="display: none;">
+-            <div class="popup">
+-                <form action="#" class="registrar">
+-                    <div class="bloco-titulo">
+-                        <h2 class="titulo">Editar Situação Trabalhista</h2>
+-                    </div>
+-                    <div class="form-group">
+-                        <label for="login" class="label">Login:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+-                    </div>
+-
+-                    <div class="form-group">
+-                        <label for="password" class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
+-                    </div>
+-
+-
+-                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+-                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+-                </form>
+-            </div>
+-        </div>
+     </div>
+ 
+ 
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_23\" default=\"true\" project-jdk-name=\"openjdk-21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/.idea/misc.xml	(date 1730720847672)
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-21" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="openjdk-21" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/org/example/crud_site/controller/Status_Curso/ServletListarStatus_Cursos.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Status_Curso;\r\n\r\nimport java.util.List;\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\n\r\nimport org.example.crud_site.dao.Status_CursoDAO;\r\nimport org.example.crud_site.model.Status_Curso;\r\n\r\n// Define a servlet que responde ao caminho /listarStatus_Curso\r\n@WebServlet(\"/listarStatus_Curso\")\r\npublic class ServletListarStatus_Cursos extends HttpServlet {\r\n\r\n    // Método que lida com requisições GET\r\n    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n\r\n        // Cria uma instância do DAO para acessar dados de status de curso\r\n        Status_CursoDAO status_cursoDAO = new Status_CursoDAO();\r\n\r\n        // Obtém a lista de status de cursos através do DAO\r\n        List<Status_Curso> status_Cursos = status_cursoDAO.listarStatus_Curso();\r\n\r\n        // Define a lista de status de cursos como um atributo da requisição\r\n        req.setAttribute(\"status_cursoList\", status_Cursos);\r\n\r\n        // Encaminha a requisição e a resposta para a página status_curso.jsp\r\n        req.getRequestDispatcher(\"pages/statusCurso.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Status_Curso/ServletListarStatus_Cursos.java b/src/main/java/org/example/crud_site/controller/Status_Curso/ServletListarStatus_Cursos.java
+--- a/src/main/java/org/example/crud_site/controller/Status_Curso/ServletListarStatus_Cursos.java	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/java/org/example/crud_site/controller/Status_Curso/ServletListarStatus_Cursos.java	(date 1730721529506)
+@@ -25,7 +25,7 @@
+         List<Status_Curso> status_Cursos = status_cursoDAO.listarStatus_Curso();
+ 
+         // Define a lista de status de cursos como um atributo da requisição
+-        req.setAttribute("status_cursoList", status_Cursos);
++        req.setAttribute("listarStatus_curso", status_Cursos);
+ 
+         // Encaminha a requisição e a resposta para a página status_curso.jsp
+         req.getRequestDispatcher("pages/statusCurso.jsp").forward(req, res);
+Index: src/main/webapp/pages/tipoVaga.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>CRUD Adm</title>\r\n  <link rel=\"stylesheet\" href=\"css/tipoVaga.css\">\r\n</head>\r\n<body>\r\n\r\n    <aside class=\"sidebar\">\r\n        <div class=\"titulo\">\r\n            <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n        </div>\r\n        <nav>\r\n            <ul>\r\n                <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n                <li ><a href=\"listarAdm\">Adm</a></li>\r\n                <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n                <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n                <li><a href=\"listarSetor\">Setores</a></li>\r\n                <li ><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n                <div class=\"elemento\"></div>\r\n                <li class=\"selecionado\"><a href=\"#\">Tipo de vaga</a></li>\r\n                <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n                <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n                <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n            </ul>\r\n        </nav>\r\n    </aside>\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Tipo da vaga</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-vaga\">Inserir Vaga</button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"nome-filtro\">Nome</option>\r\n                        <option value=\"uuid-filtro\">UUID</option>\r\n\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n              <div class=\"grid-header registro\">Registro</div>\r\n              <div class=\"grid-header username\">UUID</div>\r\n              <div class=\"grid-header senha\">Nome</div>\r\n              <div class=\"grid-header acoes\">Ações</div>\r\n\r\n                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-username\">admin1</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">2</div>\r\n                <div class=\"grid-item item-username\">admin2</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">3</div>\r\n                <div class=\"grid-item item-username\">admin3</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">4</div>\r\n                <div class=\"grid-item item-username\">admin4</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">5</div>\r\n                <div class=\"grid-item item-username\">admin5</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>        \r\n            </div>\r\n\r\n        </main>\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Cadastrar Tipo do arquivo</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupIDVaga\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar Tipo da vaga</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n  <script src=\"js/tipoVaga.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/tipoVaga.jsp b/src/main/webapp/pages/tipoVaga.jsp
+--- a/src/main/webapp/pages/tipoVaga.jsp	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/pages/tipoVaga.jsp	(date 1730723030352)
+@@ -1,3 +1,6 @@
++<%@ page import="org.example.crud_site.model.Tipo_Arquivo" %>
++<%@ page import="java.util.List" %>
++<%@ page import="org.example.crud_site.model.Tipo_Vaga" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <!DOCTYPE html>
+ <html lang="pt-br">
+@@ -58,103 +61,75 @@
+ 
+             <div class="grid-container">
+               <div class="grid-header registro">Registro</div>
+-              <div class="grid-header username">UUID</div>
+-              <div class="grid-header senha">Nome</div>
++              <div class="grid-header username">Tipo da vaga</div>
+               <div class="grid-header acoes">Ações</div>
+ 
+-                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-username">admin1</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
++                <%
++                    List<Tipo_Vaga> lista = (List<Tipo_Vaga>) request.getAttribute("listarTipo_Vaga");
+ 
+-                <div class="grid-item item-registro">2</div>
+-                <div class="grid-item item-username">admin2</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
+-
+-                <div class="grid-item item-registro">3</div>
+-                <div class="grid-item item-username">admin3</div>
+-                <div class="grid-item">*****</div>
++                    if (!lista.isEmpty()) {
++                        for (int i = 0; i < lista.size(); i++) {
++                %>
++                <div class="grid-item registro"><%= i+1 %></div>
++                <div class="grid-item username"><%= lista.get(i).getNome() %></div>
+                 <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
++                    <button class="action edit">
++                        <img src="img/lapis.png" alt="editar tipo vaga"></button>
++                    <form action="excluirTipo_Vaga" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action delete"><img src="img/lixo.png" alt="excluir tipo vaga"></button>
++                    </form>
+                 </div>
+-
+-                <div class="grid-item item-registro">4</div>
+-                <div class="grid-item item-username">admin4</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
+-
+-                <div class="grid-item item-registro">5</div>
+-                <div class="grid-item item-username">admin5</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>        
++                <%
++                    }
++                } else {
++                %>
++                <div class="grid-item">Nenhum registro encontrado.</div>
++                <%
++                        System.out.println("Nenhum registro encontrado.");
++                    }
++                %>
+             </div>
+ 
+         </main>
+ 
++
++        <!-- AQUI -->
++
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+-                <form action="#" class="registrar">
++                <form action="inserirTipo_Vaga" class="registrar">
+                     <div class="bloco-titulo">
+-                        <h2 class="titulo">Cadastrar Tipo do arquivo</h2>
+-                    </div>
+-                    <div class="form-group">
+-                        <label for="login" class="label">Login:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
++                        <h2 class="titulo">Inserir tipo vaga</h2>
+                     </div>
+-
+                     <div class="form-group">
+-                        <label for="password" class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
++                        <label for="cadastrar" class="label">Tipo vaga:</label>
++                        <input type="text" id="cadastrar" name="cadastrar" placeholder="Em andamento" class="input" required />
+                     </div>
+-
+ 
+                     <button type="submit" class="b bt-registrar">Cadastrar</button>
+-                    <button type="button" class="b bt-cancelar">Cancelar</button>
++                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                 </form>
+             </div>
+         </div>
+ 
+-        <!-- AQUI -->
+-
+-        <div id="popupIDVaga" style="display: none;">
++        <div id="popupIDStatusCurso" style="display: none;">
+             <div class="popup">
+-                <form action="#" class="registrar">
++                <form action="atualizarTipo_Vaga" class="registrar">
+                     <div class="bloco-titulo">
+-                        <h2 class="titulo">Editar Tipo da vaga</h2>
++                        <h2 class="titulo">Editar tipo vaga</h2>
+                     </div>
+                     <div class="form-group">
+-                        <label for="login" class="label">Login:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
++                        <label for="editar" class="label">Tipo vaga:</label>
++                        <input type="text" id="editar" name="editar" placeholder="cancelado" class="input" required />
+                     </div>
+ 
+-                    <div class="form-group">
+-                        <label for="password" class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
+-                    </div>
+-
+-
+-                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+-                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+-                </form>
+-            </div>
++                    <button type="submit" class="b bt-registrar">Cadastrar</button>
++                    <button type="button" class="b bt-cancelar">Cancelar</button>
++                </form>
++            </div>
++        </div>
++    </div>
+         </div>
+     </div>
+   <script src="js/tipoVaga.js"></script>
+Index: src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletListarTipos_Arquivos.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Tipo_Arquivo;\r\n\r\nimport java.util.List;\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\n\r\nimport org.example.crud_site.dao.Tipo_ArquivoDAO;\r\nimport org.example.crud_site.model.Tipo_Arquivo;\r\n\r\n// Define a servlet que responde ao caminho /listarTipo_arquivo\r\n@WebServlet(\"/listarTipo_arquivo\")\r\npublic class ServletListarTipos_Arquivos extends HttpServlet {\r\n\r\n    // Método que lida com requisições GET\r\n    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n\r\n        // Cria uma instância do DAO para acessar dados de tipo de arquivo\r\n        Tipo_ArquivoDAO tipo_ArquivoDAO = new Tipo_ArquivoDAO();\r\n\r\n        // Obtém a lista de tipos de arquivos através do DAO\r\n        List<Tipo_Arquivo> tipos_Arquivos = tipo_ArquivoDAO.listarTipo_Arquivo();\r\n\r\n        // Define a lista de tipos de arquivos como um atributo da requisição\r\n        req.setAttribute(\"tipos_Arquivos\", tipos_Arquivos);\r\n\r\n        // Encaminha a requisição e a resposta para a página listarTipo_arquivo.jsp\r\n        req.getRequestDispatcher(\"pages/tipoArquivo.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletListarTipos_Arquivos.java b/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletListarTipos_Arquivos.java
+--- a/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletListarTipos_Arquivos.java	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/java/org/example/crud_site/controller/Tipo_Arquivo/ServletListarTipos_Arquivos.java	(date 1730722038649)
+@@ -25,7 +25,7 @@
+         List<Tipo_Arquivo> tipos_Arquivos = tipo_ArquivoDAO.listarTipo_Arquivo();
+ 
+         // Define a lista de tipos de arquivos como um atributo da requisição
+-        req.setAttribute("tipos_Arquivos", tipos_Arquivos);
++        req.setAttribute("listarTipo_Arquivo", tipos_Arquivos);
+ 
+         // Encaminha a requisição e a resposta para a página listarTipo_arquivo.jsp
+         req.getRequestDispatcher("pages/tipoArquivo.jsp").forward(req, res);
+Index: src/main/webapp/pages/setor.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>CRUD Setor</title>\r\n  <link rel=\"stylesheet\" href=\"css/setor.css\">\r\n</head>\r\n<body>\r\n\r\n\r\n  <aside class=\"sidebar\">\r\n    <div class=\"titulo\">\r\n        <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n    </div>\r\n      <nav>\r\n        <ul>\r\n            <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n            <li><a href=\"listarAdm\">Adm</a></li>\r\n            <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n            <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n            <div class=\"elemento\"></div>\r\n            <li class=\"selecionado\"><a href=\"#\">Setores</a></li>\r\n            <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n            <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n            <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n            <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n            <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n        </ul>\r\n    </nav>\r\n  </aside>\r\n\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Setor</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-setor\">Inserir Setor</button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"UUID-filtro\">UUID</option>\r\n                        <option value=\"nome-filtro\">NOME</option>\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header UUID\">UUID</div>\r\n                <div class=\"grid-header NOME\">NOME</div>\r\n                <div class=\"grid-header acoes\">Ações</div>\r\n\r\n                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-UUID\">admin1</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">2</div>\r\n                <div class=\"grid-item item-UUID\">admin2</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">3</div>\r\n                <div class=\"grid-item item-UUID\">admin3</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">4</div>\r\n                <div class=\"grid-item item-UUID\">admin4</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">5</div>\r\n                <div class=\"grid-item item-UUID\">admin5</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>        \r\n            </div>\r\n\r\n        </main>\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Cadastrar Setor</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">UUID:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">NOME:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupIDsetor\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar Setor</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">UUID:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"ADMIM\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">NOME:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"BD\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n  <script src=\"js/setor.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/setor.jsp b/src/main/webapp/pages/setor.jsp
+--- a/src/main/webapp/pages/setor.jsp	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/pages/setor.jsp	(date 1730721529550)
+@@ -1,3 +1,5 @@
++<%@ page import="org.example.crud_site.model.Setor" %>
++<%@ page import="java.util.List" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <!DOCTYPE html>
+ <html lang="pt-br">
+@@ -59,69 +61,48 @@
+ 
+             <div class="grid-container">
+                 <div class="grid-header registro">Registro</div>
+-                <div class="grid-header UUID">UUID</div>
+-                <div class="grid-header NOME">NOME</div>
++                <div class="grid-header NOME">Setor</div>
+                 <div class="grid-header acoes">Ações</div>
+ 
+-                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-UUID">admin1</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
+ 
+-                <div class="grid-item item-registro">2</div>
+-                <div class="grid-item item-UUID">admin2</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
++                <%
++                    List<Setor> lista = (List<Setor>) request.getAttribute("listarSetor");
+ 
+-                <div class="grid-item item-registro">3</div>
+-                <div class="grid-item item-UUID">admin3</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
+-
+-                <div class="grid-item item-registro">4</div>
+-                <div class="grid-item item-UUID">admin4</div>
+-                <div class="grid-item">*****</div>
++                    if (!lista.isEmpty()) {
++                        for (int i = 0; i < lista.size(); i++) {
++                %>
++                <div class="grid-item registro"><%= i+1 %></div>
++                <div class="grid-item username"><%= lista.get(i).getNome() %></div>
+                 <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
++                    <button class="action edit">
++                        <img src="img/lapis.png" alt="editar setor"></button>
++                    <form action="excluirSetor" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action delete"><img src="img/lixo.png" alt="excluir setor"></button>
++                    </form>
+                 </div>
+-
+-                <div class="grid-item item-registro">5</div>
+-                <div class="grid-item item-UUID">admin5</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>        
++                <%
++                    }
++                } else {
++                %>
++                <div class="grid-item">Nenhum registro encontrado.</div>
++                <%
++                        System.out.println("Nenhum registro encontrado.");
++                    }
++                %>
+             </div>
+ 
+         </main>
+ 
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+-                <form action="#" class="registrar">
++                <form action="inserirSetor" class="registrar">
+                     <div class="bloco-titulo">
+                         <h2 class="titulo">Cadastrar Setor</h2>
+                     </div>
+                     <div class="form-group">
+-                        <label for="login" class="label">UUID:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
+-                    </div>
+-
+-                    <div class="form-group">
+-                        <label for="password" class="label">NOME:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
++                        <label for="cadastrar" class="label">Setor:</label>
++                        <input type="text" id="cadastrar" name="cadastrar" placeholder="Aliementício" class="input" required />
+                     </div>
+ 
+ 
+@@ -135,23 +116,15 @@
+ 
+         <div id="popupIDsetor" style="display: none;">
+             <div class="popup">
+-                <form action="#" class="registrar">
++                <form action="alterarNomeSetor" class="registrar">
+                     <div class="bloco-titulo">
+                         <h2 class="titulo">Editar Setor</h2>
+                     </div>
+                     <div class="form-group">
+-                        <label for="login" class="label">UUID:</label>
+-                        <input type="text" id="login" name="login" placeholder="ADMIM" class="input" required />
+-                    </div>
+-
+-                    <div class="form-group">
+-                        <label for="password" class="label">NOME:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="BD" class="input password"/>
+-                        </div>
++                        <label for="editar" class="label">Setor:</label>
++                        <input type="text" id="editar" name="editar" class="input" required />
+                     </div>
+ 
+-
+                     <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+                     <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                 </form>
+@@ -159,8 +132,6 @@
+         </div>
+     </div>
+ 
+-
+-
+   <script src="js/setor.js"></script>
+ </body>
+ </html>
+Index: src/main/webapp/css/setor.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    display: flex;\r\n    height: 100vh;\r\n    background-color:#dbecfe;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: start;\r\n    justify-content: start;\r\n    width: 80%;\r\n    height: 85%;\r\n    padding: 3%;\r\n    background-color: white;\r\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\r\n    border-radius: 30px;\r\n    margin: 0 auto;\r\n    margin-top: 6%;\r\n    margin-bottom: 5%;\r\n}\r\n\r\n.grid-container {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr 2fr 2fr;\r\n    grid-auto-rows: 58px;\r\n    width: 100%;\r\n    background-color: #c3e0fe;\r\n    border-radius: 30px 30px 0 0;\r\n    border: 0.5px solid #c3e0fe;\r\n    height: 410px;\r\n    overflow-y: auto;\r\n    position: relative;\r\n    scrollbar-width: none;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.grid-header {\r\n    font-weight: bold;\r\n    text-align: center;\r\n    padding: 18px;\r\n    border: 1px  solid #c3e0fe;\r\n    border-bottom: 4px solid  #c3e0fe ;\r\n    background-color: white;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 10;\r\n    color: #0f0fe0;\r\n}\r\n\r\n.grid-container::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.grid-item {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 10px;\r\n    border: 1px solid #c3e0fe;\r\n    background-color: white;\r\n}\r\n\r\n.grid-item.empty {\r\n    background-color: #f0f0f0;\r\n}\r\n\r\n.action {\r\n    background: none;\r\n    border: none;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.action.view {\r\n    color: #5b4fff;\r\n}\r\n\r\n.action.edit {\r\n    color: #1ca8ff;\r\n}\r\n\r\n.action.delete {\r\n    color: #ff4b5b;\r\n}\r\n\r\n.action:hover {\r\n    transform: scale(1.2);\r\n}\r\n\r\n.grid-item:hover {\r\n    background-color: #f0f8ff;\r\n}\r\n\r\n.titulo {\r\n    font-size: 25px;\r\n    margin-bottom: 40px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\nh1 {\r\n    color: #2C46D1;\r\n    font-size: 35px;\r\n    margin-left: 20px;\r\n}\r\n\r\n.crud_adm{\r\n    font-weight: 350;\r\n}\r\n\r\n.inclus {\r\n    font-size: 30px;\r\n    color: mediumblue;\r\n}\r\n\r\n.es {\r\n\r\n    font-size: 30px;\r\n    color: blueviolet;\r\n}\r\n\r\n.sidebar {\r\n    width: 260px;\r\n    height: 100%;\r\n    background-image: url(../img/sidebar.png);\r\n    background-size: cover;\r\n    padding: 20px;\r\n    color: #ecf0f1;\r\n}\r\n\r\n.sidebar ul {\r\n    margin-top: 80px;\r\n    list-style-type: none;\r\n}\r\n\r\n.sidebar ul li {\r\n    margin-bottom: 35px;\r\n    margin-left: 20px;\r\n    font-size: 18px;\r\n    font-weight: bolder;\r\n}\r\n\r\n.sidebar ul li a {\r\n    text-decoration: none;\r\n    color: #c7c7c7;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar ul li a img {\r\n    width: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.logout {\r\n    margin-left: 35px;\r\n    width: 120px;\r\n    padding: 15px 30px;\r\n    background-color: #ffffff;\r\n    border: 1px solid #2B46D3;\r\n    border-radius: 11px;\r\n    color: #000000;\r\n    cursor: pointer;\r\n    font-size: 20px;\r\n    transition: 0.5s;\r\n    color: #0000F9;\r\n}\r\n\r\n.sidebar ul li a:hover {\r\n    color: #2B46D3;\r\n}\r\n\r\n\r\n.logout:hover {\r\n    background-color: #d3d3d3;\r\n}\r\n\r\n\r\n.main-content {\r\n    width: 100%;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.inserir-setor {\r\n    padding: 15px 20px;\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    border: none;\r\n    cursor: pointer;\r\n    border-radius: 10px;\r\n    font-size: 14px;\r\n    font-weight: bold;\r\n}\r\n\r\n.elemento{\r\n    background-color: #0866FF;\r\n    height: 9px;\r\n    width: 23px;\r\n    border: none;\r\n    border-radius: 75px;\r\n    transform: rotate(90deg);\r\n    position: relative;\r\n    top: 13px;\r\n    right: 5px;\r\n}\r\n\r\n.filtrar {\r\n    text-align: center;\r\n    border-radius: 10px;\r\n    padding: 15px 30px;\r\n    color: #0000F9;\r\n    font-weight: bold;\r\n    border: 0;\r\n    background-color: white;\r\n    border: rgb(177, 177, 177) 1px solid;\r\n    position: absolute;\r\n    margin-left: 10%;\r\n}\r\n\r\n#filtrar-bar {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    margin-bottom: 30px;\r\n    gap: 10px;\r\n}\r\n\r\n.pesquisa {\r\n    color: #D9D9D9;\r\n}\r\n.action{\r\n    height: 37px;\r\n    width: 65px;\r\n    border-radius: 10px;\r\n    padding-top: 4px;\r\n}\r\n\r\n.view {\r\n    background-color: #9747FF;\r\n}\r\n\r\n.edit {\r\n    background-color: #69B1FF;\r\n}\r\n\r\n.delete {\r\n    background-color: #FFA8A8;\r\n}\r\n\r\n#filtrar-bar input {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar button {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar select{\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\n#filtrar-bar button {\r\n    background-color: #69B1FF;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n#filtrar-bar button:hover {\r\n    background-color: #007bb5;\r\n}\r\n\r\n.sidebar ul li.selecionado a {\r\n    color: #2B46D3; /* Azul desejado */\r\n}\r\n\r\n/* Estilo para o popup principal e o popup administrativo */\r\n#popupID,\r\n#popupIDsetor {\r\n    display: none; /* Oculto inicialmente */\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.35); /* Fundo escurecido semi-transparente */\r\n    z-index: 100;\r\n    display: flex;\r\n    align-items: center; /* Alinhamento vertical */\r\n    justify-content: center; /* Alinhamento horizontal */\r\n}\r\n\r\n/* Container do popup */\r\n.popup {\r\n    display: flex;\r\n    flex-direction: column;\r\n    background-color: white;\r\n    width: 430px;\r\n    height: 450px;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-radius: 20px;\r\n    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);\r\n    padding: 20px;\r\n    animation: fadeIn 0.3s ease-out;\r\n}\r\n\r\n/* Animação de fade-in para o popup */\r\n@keyframes fadeIn {\r\n    from {\r\n        opacity: 0;\r\n        transform: scale(0.9);\r\n    }\r\n    to {\r\n        opacity: 1;\r\n        transform: scale(1);\r\n    }\r\n}\r\n\r\n/* Botões gerais */\r\n.b {\r\n    width: 100%;\r\n    height: 40px;\r\n    margin-bottom: 20px;\r\n    border-radius: 10px;\r\n    border: none;\r\n    font-size: 16px;\r\n    cursor: pointer;\r\n}\r\n\r\n/* Estilo das labels */\r\n.label {\r\n    display: block;\r\n    margin-top: 20px;\r\n    font-weight: bold;\r\n    font-size: 14px;\r\n    color: #333;\r\n}\r\n\r\n/* Estilo dos inputs */\r\n.input {\r\n    padding: 10px;\r\n    border: 1px solid #000000;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    width: 100%;\r\n    height: 50px;\r\n    margin-top: 20px;\r\n    box-sizing: border-box;\r\n}\r\n\r\n/* Título dentro do popup */\r\n.registrar .titulo {\r\n    margin-top: 33px;\r\n    color: #0866FF;\r\n    font-size: 22px;\r\n    font-weight: bold;\r\n}\r\n\r\n/* Estilo específico para campos de senha */\r\n.password {\r\n    margin-bottom: 30px;\r\n}\r\n\r\n/* Botão de registro */\r\n.bt-registrar {\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    cursor: pointer;\r\n    border: none;\r\n}\r\n\r\n/* Botão de cancelar edição */\r\n.bt-cancelar-edit {\r\n    background-color: white;\r\n    color: #FF1B1F;\r\n    border: 1px solid #0000F9;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    transition: background-color 0.2s ease, color 0.2s ease;\r\n}\r\n\r\n/* Botão de cancelar */\r\n.bt-cancelar {\r\n    background-color: white;\r\n    color: #3f3ff5;\r\n    border: 1px solid #0000F9;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    transition: background-color 0.2s ease, color 0.2s ease;\r\n}\r\n\r\n/* Hover e interações visuais para os botões */\r\n.bt-cancelar-edit:hover,\r\n.bt-cancelar:hover {\r\n    background-color: #f0f0f0;\r\n    color: #333;\r\n}\r\n\r\n\r\n@media (max-width: 904px) {\r\n    .titulo h1 {\r\n        font-size: 20px;\r\n    }\r\n\r\n    .filtrar, .inserir-setor {\r\n        font-size: 10px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .grid-item {\r\n        font-size: 12px;\r\n    }\r\n\r\n    .sidebar ul li {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .logout {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .action {\r\n        height: 27px;\r\n        width: 35px;\r\n        margin-left: 10px;\r\n\r\n    }\r\n    .action img {\r\n        height: 18px;\r\n        width: 18px;\r\n    }\r\n\r\n    .permitido, .edit, .delete {\r\n        font-size: 12px;\r\n    }\r\n\r\n    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {\r\n        font-size: 12px;\r\n    }\r\n    .filtrar{\r\n        margin-left: 30%;\r\n    }\r\n    .sidebar {\r\n        margin-right: 20px;\r\n    }\r\n    .popup {\r\n        width: 90%;\r\n        height: auto;\r\n        padding: 15px;\r\n    }\r\n\r\n    .b {\r\n        width: 100%;\r\n        margin: 10px 0;\r\n    }\r\n\r\n    .input {\r\n        height: 40px;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/css/setor.css b/src/main/webapp/css/setor.css
+--- a/src/main/webapp/css/setor.css	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/css/setor.css	(date 1730720458948)
+@@ -29,7 +29,7 @@
+ 
+ .grid-container {
+     display: grid;
+-    grid-template-columns: 1fr 4fr 2fr 2fr;
++    grid-template-columns: 1fr 4fr 2fr;
+     grid-auto-rows: 58px;
+     width: 100%;
+     background-color: #c3e0fe;
+@@ -91,7 +91,7 @@
+ }
+ 
+ .action.delete {
+-    color: #ff4b5b;
++    color: #5a4efd;
+ }
+ 
+ .action:hover {
+@@ -320,8 +320,8 @@
+     display: flex;
+     flex-direction: column;
+     background-color: white;
+-    width: 430px;
+-    height: 450px;
++    width: 350px;
++    height: 350px;
+     justify-content: center;
+     align-items: center;
+     border-radius: 20px;
+@@ -389,10 +389,11 @@
+ 
+ /* Botão de registro */
+ .bt-registrar {
++    margin-top: 33px;
+     background-color: #2C46D1;
+     color: white;
+     font-size: 18px;
+-    font-weight: 600;
++    font-weight: 400;
+     cursor: pointer;
+     border: none;
+ }
+@@ -400,8 +401,8 @@
+ /* Botão de cancelar edição */
+ .bt-cancelar-edit {
+     background-color: white;
+-    color: #FF1B1F;
+-    border: 1px solid #0000F9;
++    color: #2c45cf;
++    border: 1px solid #2c45cf;
+     font-size: 18px;
+     font-weight: 700;
+     cursor: pointer;
+@@ -412,7 +413,7 @@
+ .bt-cancelar {
+     background-color: white;
+     color: #3f3ff5;
+-    border: 1px solid #0000F9;
++    border: 1px solid #2c45cf;
+     font-size: 18px;
+     font-weight: 700;
+     cursor: pointer;
+Index: src/main/webapp/css/tipoArquivo.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    display: flex;\r\n    height: 100vh;\r\n    background-color:#dbecfe;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: start;\r\n    justify-content: start;\r\n    width: 80%;\r\n    height: 85%;\r\n    padding: 3%;\r\n    background-color: white;\r\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\r\n    border-radius: 30px;\r\n    margin: 0 auto;\r\n    margin-top: 6%;\r\n    margin-bottom: 5%;\r\n}\r\n\r\n.grid-container {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr 2fr 2fr;\r\n    grid-auto-rows: 58px;\r\n    width: 100%;\r\n    background-color: #c3e0fe;\r\n    border-radius: 30px 30px 0 0;\r\n    border: 0.5px solid #c3e0fe;\r\n    height: 410px;\r\n    overflow-y: auto;\r\n    position: relative;\r\n    scrollbar-width: none;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.grid-header {\r\n    font-weight: bold;\r\n    text-align: center;\r\n    padding: 18px;\r\n    border: 1px  solid #c3e0fe;\r\n    border-bottom: 4px solid  #c3e0fe ;\r\n    background-color: white;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 10;\r\n    color: #0f0fe0;\r\n}\r\n\r\n.grid-container::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.grid-item {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 10px;\r\n    border: 1px solid #c3e0fe;\r\n    background-color: white;\r\n}\r\n\r\n.grid-item.empty {\r\n    background-color: #f0f0f0;\r\n}\r\n\r\n.action {\r\n    background: none;\r\n    border: none;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.action.view {\r\n    color: #5b4fff;\r\n}\r\n\r\n.action.edit {\r\n    color: #1ca8ff;\r\n}\r\n\r\n.action.delete {\r\n    color: #ff4b5b;\r\n}\r\n\r\n.action:hover {\r\n    transform: scale(1.2);\r\n}\r\n\r\n.grid-item:hover {\r\n    background-color: #f0f8ff;\r\n}\r\n\r\n.titulo {\r\n    font-size: 25px;\r\n    margin-bottom: 40px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\nh1 {\r\n    color: #2C46D1;\r\n    font-size: 35px;\r\n    margin-left: 20px;\r\n}\r\n\r\n.crud_adm{\r\n    font-weight: 350;\r\n}\r\n\r\n.inclus {\r\n    font-size: 30px;\r\n    color: mediumblue;\r\n}\r\n\r\n.es {\r\n\r\n    font-size: 30px;\r\n    color: blueviolet;\r\n}\r\n\r\n.sidebar {\r\n    width: 260px;\r\n    height: 100%;\r\n    background-image: url(../img/sidebar.png);\r\n    background-size: cover;\r\n    padding: 20px;\r\n    color: #ecf0f1;\r\n}\r\n\r\n.sidebar ul {\r\n    margin-top: 80px;\r\n    list-style-type: none;\r\n}\r\n\r\n.sidebar ul li {\r\n    margin-bottom: 35px;\r\n    margin-left: 20px;\r\n    font-size: 18px;\r\n    font-weight: bolder;\r\n}\r\n\r\n.sidebar ul li a {\r\n    text-decoration: none;\r\n    color: #c7c7c7;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar ul li a img {\r\n    width: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.logout {\r\n    margin-left: 35px;\r\n    width: 120px;\r\n    padding: 15px 30px;\r\n    background-color: #ffffff;\r\n    border: 1px solid #2B46D3;\r\n    border-radius: 11px;\r\n    color: #000000;\r\n    cursor: pointer;\r\n    font-size: 20px;\r\n    transition: 0.5s;\r\n    color: #0000F9;\r\n}\r\n\r\n.sidebar ul li a:hover {\r\n    color: #2B46D3;\r\n}\r\n\r\n\r\n.logout:hover {\r\n    background-color: #d3d3d3;\r\n}\r\n\r\n.main-content {\r\n    width: 100%;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.inserir-arquivo {\r\n    padding: 18px 30px;\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    border: none;\r\n    cursor: pointer;\r\n    border-radius: 10px;\r\n    font-size: 14px;\r\n    margin-right: 40PX;\r\n    font-weight: bold;\r\n}\r\n\r\n.elemento{\r\n    background-color: #0866FF;\r\n    height: 9px;\r\n    width: 23px;\r\n    border: none;\r\n    border-radius: 75px;\r\n    transform: rotate(90deg);\r\n    position: relative;\r\n    top: 13px;\r\n    right: 5px;\r\n}\r\n\r\n.filtrar {\r\n    text-align: center;\r\n    border-radius: 10px;\r\n    padding: 15px 30px;\r\n    color: #0000F9;\r\n    font-weight: bold;\r\n    border: 0;\r\n    background-color: white;\r\n    border: rgb(177, 177, 177) 1px solid;\r\n    position: absolute;\r\n    margin-left: 20%;\r\n}\r\n#filtrar-bar {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    margin-bottom: 30px;\r\n    gap: 10px;\r\n}\r\n\r\n.pesquisa {\r\n    color: #D9D9D9;\r\n}\r\n.action{\r\n    height: 37px;\r\n    width: 65px;\r\n    border-radius: 10px;\r\n    padding-top: 4px;\r\n}\r\n\r\n.view {\r\n    background-color: #9747FF;\r\n}\r\n\r\n.edit {\r\n    background-color: #69B1FF;\r\n}\r\n\r\n.delete {\r\n    background-color: #FFA8A8;\r\n}\r\n\r\n#filtrar-bar input {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar button {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar select{\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\n#filtrar-bar button {\r\n    background-color: #69B1FF;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n#filtrar-bar button:hover {\r\n    background-color: #007bb5;\r\n}\r\n\r\n.sidebar ul li.selecionado a {\r\n    color: #2B46D3; /* Azul desejado */\r\n}\r\n\r\n#popupID,\r\n#popupIDArquivo {\r\n    display: none; /* Para ocultar inicialmente */\r\n    position: fixed; /* Alterado */\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.35);\r\n    z-index: 100;\r\n    align-items: center; /* Alinhamento vertical */\r\n    justify-content: center; /* Alinhamento horizontal */\r\n}\r\n\r\n.popup{\r\n    display: flex;\r\n    background-color: white;\r\n    width: 430px;\r\n    height: 450px;\r\n    justify-content: center;\r\n    border-radius: 20px;\r\n}\r\n\r\n.b{\r\n    width: 80%;\r\n    height: 40px;\r\n    margin-left: 30px;\r\n    margin-bottom: 20px;\r\n    border-radius: 10px;\r\n}\r\n\r\n.label{\r\n    display: block;\r\n    margin-top: 20px;\r\n\r\n\r\n}\r\n\r\n.input{\r\n    padding: 10px;\r\n    border: 1px solid #000000;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    width: 100%;\r\n    height: 50px;\r\n    margin-top: 20px;\r\n}\r\n.registrar .titulo{\r\n    margin-top: 33px;\r\n    color: #0866FF;\r\n}\r\n\r\n.password{\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.bt-registrar{\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    cursor: pointer;\r\n}\r\n.bt-cancelar-edit{\r\n    background-color: white;\r\n    color:#FF1B1F;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n.bt-cancelar{\r\n    background-color: white;\r\n    color:#3f3ff5;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n@media (max-width: 904px) {\r\n    .titulo h1 {\r\n        font-size: 20px;\r\n    }\r\n\r\n    .filtrar, .inserir-arquivo {\r\n        font-size: 10px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .grid-item {\r\n        font-size: 12px;\r\n    }\r\n\r\n    .sidebar ul li {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .logout {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .action {\r\n        height: 27px;\r\n        width: 35px;\r\n        margin-left: 10px;\r\n\r\n    }\r\n    .action img {\r\n        height: 18px;\r\n        width: 18px;\r\n    }\r\n\r\n    .permitido, .edit, .delete {\r\n        font-size: 12px;\r\n    }\r\n\r\n    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {\r\n        font-size: 12px;\r\n    }\r\n    .filtrar{\r\n        margin-left: 30%;\r\n    }\r\n    .sidebar {\r\n        margin-right: 20px;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/css/tipoArquivo.css b/src/main/webapp/css/tipoArquivo.css
+--- a/src/main/webapp/css/tipoArquivo.css	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/css/tipoArquivo.css	(date 1730719729374)
+@@ -29,7 +29,7 @@
+ 
+ .grid-container {
+     display: grid;
+-    grid-template-columns: 1fr 4fr 2fr 2fr;
++    grid-template-columns: 1fr 4fr 2fr;
+     grid-auto-rows: 58px;
+     width: 100%;
+     background-color: #c3e0fe;
+Index: src/main/webapp/pages/tipoArquivo.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>CRUD Adm</title>\r\n  <link rel=\"stylesheet\" href=\"css/tipoArquivo.css\">\r\n</head>\r\n<body>\r\n\r\n    <aside class=\"sidebar\">\r\n        <div class=\"titulo\">\r\n            <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n        </div>\r\n        <nav>\r\n            <ul>\r\n                <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n                <li ><a href=\"listarAdm\">Adm</a></li>\r\n                <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n                <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n                <li><a href=\"listarSetor\">Setores</a></li>\r\n                <div class=\"elemento\"></div>\r\n                <li class=\"selecionado\"><a href=\"#\">Tipo de arquivo</a></li>\r\n                <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n                <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n                <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n                <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n            </ul>\r\n        </nav>\r\n    </aside>\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Tipo do Arquivo</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-arquivo\">Inserir Arquivo</button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"nome-filtro\">Nome</option>\r\n                        <option value=\"uuid-filtro\">UUID</option>\r\n\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n              <div class=\"grid-header registro\">Registro</div>\r\n              <div class=\"grid-header username\">UUID</div>\r\n              <div class=\"grid-header senha\">Nome</div>\r\n              <div class=\"grid-header acoes\">Ações</div>\r\n\r\n                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-username\">admin1</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n=                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">2</div>\r\n                <div class=\"grid-item item-username\">admin2</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">3</div>\r\n                <div class=\"grid-item item-username\">admin3</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">4</div>\r\n                <div class=\"grid-item item-username\">admin4</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n\r\n                <div class=\"grid-item item-registro\">5</div>\r\n                <div class=\"grid-item item-username\">admin5</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>        \r\n            </div>\r\n\r\n        </main>\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Cadastrar Tipo de arquivo</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupIDArquivo\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar Tipo do arquivo</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n  <script src=\"js/tipoArquivo.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/tipoArquivo.jsp b/src/main/webapp/pages/tipoArquivo.jsp
+--- a/src/main/webapp/pages/tipoArquivo.jsp	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/pages/tipoArquivo.jsp	(date 1730722210978)
+@@ -1,3 +1,5 @@
++<%@ page import="org.example.crud_site.model.Tipo_Arquivo" %>
++<%@ page import="java.util.List" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <!DOCTYPE html>
+ <html lang="pt-br">
+@@ -58,103 +60,74 @@
+ 
+             <div class="grid-container">
+               <div class="grid-header registro">Registro</div>
+-              <div class="grid-header username">UUID</div>
+-              <div class="grid-header senha">Nome</div>
++              <div class="grid-header senha">Tipo do arquivo</div>
+               <div class="grid-header acoes">Ações</div>
+ 
+-                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-username">admin1</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-=                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
+-
+-                <div class="grid-item item-registro">2</div>
+-                <div class="grid-item item-username">admin2</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
++                <%
++                    List<Tipo_Arquivo> lista = (List<Tipo_Arquivo>) request.getAttribute("listarTipo_Arquivo");
+ 
+-                <div class="grid-item item-registro">3</div>
+-                <div class="grid-item item-username">admin3</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
+-
+-                <div class="grid-item item-registro">4</div>
+-                <div class="grid-item item-username">admin4</div>
+-                <div class="grid-item">*****</div>
++                    if (!lista.isEmpty()) {
++                        for (int i = 0; i < lista.size(); i++) {
++                %>
++                <div class="grid-item registro"><%= i+1 %></div>
++                <div class="grid-item username"><%= lista.get(i).getNome() %></div>
+                 <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
++                    <button class="action edit">
++                        <img src="img/lapis.png" alt="editar status curso"></button>
++                    <form action="excluirStatusCurso" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action delete"><img src="img/lixo.png" alt="excluir status curso"></button>
++                    </form>
+                 </div>
+-
+-                <div class="grid-item item-registro">5</div>
+-                <div class="grid-item item-username">admin5</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>        
++                <%
++                    }
++                } else {
++                %>
++                <div class="grid-item">Nenhum registro encontrado.</div>
++                <%
++                        System.out.println("Nenhum registro encontrado.");
++                    }
++                %>
+             </div>
+ 
+         </main>
+ 
++
++        <!-- AQUI -->
++
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+                 <form action="#" class="registrar">
+                     <div class="bloco-titulo">
+-                        <h2 class="titulo">Cadastrar Tipo de arquivo</h2>
++                        <h2 class="titulo">Inserir status curso</h2>
+                     </div>
+                     <div class="form-group">
+-                        <label for="login" class="label">Login:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
++                        <label for="cadastrar" class="label">Status curso:</label>
++                        <input type="text" id="cadastrar" name="cadastrar" placeholder="em andamento" class="input" required />
+                     </div>
+ 
+-                    <div class="form-group">
+-                        <label for="password" class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
+-                    </div>
+-
+-
+                     <button type="submit" class="b bt-registrar">Cadastrar</button>
+-                    <button type="button" class="b bt-cancelar">Cancelar</button>
++                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                 </form>
+             </div>
+         </div>
+ 
+-        <!-- AQUI -->
+-
+-        <div id="popupIDArquivo" style="display: none;">
++        <div id="popupIDSituacaoTrabalhista" style="display: none;">
+             <div class="popup">
+                 <form action="#" class="registrar">
+                     <div class="bloco-titulo">
+-                        <h2 class="titulo">Editar Tipo do arquivo</h2>
++                        <h2 class="titulo">Editar status curso</h2>
+                     </div>
+                     <div class="form-group">
+-                        <label for="login" class="label">Login:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
++                        <label for="editar" class="label">Status curso:</label>
++                        <input type="text" id="editar" name="editar" class="input" required />
+                     </div>
+ 
+-                    <div class="form-group">
+-                        <label for="password" class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
+-                    </div>
+-
+-
+-                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+-                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+-                </form>
+-            </div>
++                    <button type="submit" class="b bt-registrar">Cadastrar</button>
++                    <button type="button" class="b bt-cancelar">Cancelar</button>
++                </form>
++            </div>
++        </div>
+         </div>
+     </div>
+   <script src="js/tipoArquivo.js"></script>
+Index: src/main/webapp/css/tipoVaga.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    display: flex;\r\n    height: 100vh;\r\n    background-color:#dbecfe;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: start;\r\n    justify-content: start;\r\n    width: 80%;\r\n    height: 85%;\r\n    padding: 3%;\r\n    background-color: white;\r\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\r\n    border-radius: 30px;\r\n    margin: 0 auto;\r\n    margin-top: 6%;\r\n    margin-bottom: 5%;\r\n}\r\n\r\n.grid-container {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr 2fr 2fr;\r\n    grid-auto-rows: 58px;\r\n    width: 100%;\r\n    background-color: #c3e0fe;\r\n    border-radius: 30px 30px 0 0;\r\n    border: 0.5px solid #c3e0fe;\r\n    height: 410px;\r\n    overflow-y: auto;\r\n    position: relative;\r\n    scrollbar-width: none;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.grid-header {\r\n    font-weight: bold;\r\n    text-align: center;\r\n    padding: 18px;\r\n    border: 1px  solid #c3e0fe;\r\n    border-bottom: 4px solid  #c3e0fe ;\r\n    background-color: white;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 10;\r\n    color: #0f0fe0;\r\n}\r\n\r\n.grid-container::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.grid-item {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 10px;\r\n    border: 1px solid #c3e0fe;\r\n    background-color: white;\r\n}\r\n\r\n.grid-item.empty {\r\n    background-color: #f0f0f0;\r\n}\r\n\r\n.action {\r\n    background: none;\r\n    border: none;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.elemento{\r\n    background-color: #0866FF;\r\n    height: 9px;\r\n    width: 23px;\r\n    border: none;\r\n    border-radius: 75px;\r\n    transform: rotate(90deg);\r\n    position: relative;\r\n    top: 13px;\r\n    right: 5px;\r\n}\r\n\r\n.action.view {\r\n    color: #5b4fff;\r\n}\r\n\r\n.action.edit {\r\n    color: #1ca8ff;\r\n}\r\n\r\n.action.delete {\r\n    color: #ff4b5b;\r\n}\r\n\r\n.action:hover {\r\n    transform: scale(1.2);\r\n}\r\n\r\n.grid-item:hover {\r\n    background-color: #f0f8ff;\r\n}\r\n\r\n.titulo {\r\n    font-size: 25px;\r\n    margin-bottom: 40px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\nh1 {\r\n    color: #2C46D1;\r\n    font-size: 35px;\r\n    margin-left: 20px;\r\n}\r\n\r\n.crud_adm{\r\n    font-weight: 350;\r\n}\r\n\r\n.inclus {\r\n    font-size: 30px;\r\n    color: mediumblue;\r\n}\r\n\r\n.es {\r\n\r\n    font-size: 30px;\r\n    color: blueviolet;\r\n}\r\n\r\n.sidebar {\r\n    width: 260px;\r\n    height: 100%;\r\n    background-image: url(../img/sidebar.png);\r\n    background-size: cover;\r\n    padding: 20px;\r\n    color: #ecf0f1;\r\n}\r\n\r\n.sidebar ul {\r\n    margin-top: 80px;\r\n    list-style-type: none;\r\n}\r\n\r\n.sidebar ul li {\r\n    margin-bottom: 35px;\r\n    margin-left: 20px;\r\n    font-size: 18px;\r\n    font-weight: bolder;\r\n}\r\n\r\n.sidebar ul li a {\r\n    text-decoration: none;\r\n    color: #c7c7c7;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar ul li a img {\r\n    width: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.logout {\r\n    margin-left: 35px;\r\n    width: 120px;\r\n    padding: 15px 30px;\r\n    background-color: #ffffff;\r\n    border: 1px solid #2B46D3;\r\n    border-radius: 11px;\r\n    color: #000000;\r\n    cursor: pointer;\r\n    font-size: 20px;\r\n    transition: 0.5s;\r\n    color: #0000F9;\r\n}\r\n\r\n.sidebar ul li a:hover {\r\n    color: #2B46D3;\r\n}\r\n\r\n\r\n.logout:hover {\r\n    background-color: #d3d3d3;\r\n}\r\n\r\n.main-content {\r\n    width: 100%;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n\r\n.inserir-vaga {\r\n    padding: 15px 20px;\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    border: none;\r\n    cursor: pointer;\r\n    border-radius: 10px;\r\n    font-size: 14px;\r\n    font-weight: bold;\r\n}\r\n\r\n.filtrar {\r\n    text-align: center;\r\n    border-radius: 10px;\r\n    padding: 15px 30px;\r\n    color: #0000F9;\r\n    font-weight: bold;\r\n    border: 0;\r\n    background-color: white;\r\n    border: rgb(177, 177, 177) 1px solid;\r\n    position: absolute;\r\n    margin-left: 18%;\r\n}\r\n\r\n#filtrar-bar {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    margin-bottom: 30px;\r\n    gap: 10px;\r\n}\r\n\r\n.pesquisa {\r\n    color: #D9D9D9;\r\n}\r\n.action{\r\n    height: 37px;\r\n    width: 65px;\r\n    border-radius: 10px;\r\n    padding-top: 4px;\r\n}\r\n\r\n.view {\r\n    background-color: #9747FF;\r\n}\r\n\r\n.edit {\r\n    background-color: #69B1FF;\r\n}\r\n\r\n.delete {\r\n    background-color: #FFA8A8;\r\n}\r\n\r\n#filtrar-bar input {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar button {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar select{\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\n#filtrar-bar button {\r\n    background-color: #69B1FF;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n#filtrar-bar button:hover {\r\n    background-color: #007bb5;\r\n}\r\n\r\n.sidebar ul li.selecionado a {\r\n    color: #2B46D3; /* Azul desejado */\r\n}\r\n\r\n#popupID,\r\n#popupIDVaga {\r\n    display: none; /* Para ocultar inicialmente */\r\n    position: fixed; /* Alterado */\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.35);\r\n    z-index: 100;\r\n    align-items: center; /* Alinhamento vertical */\r\n    justify-content: center; /* Alinhamento horizontal */\r\n}\r\n\r\n.popup{\r\n    display: flex;\r\n    background-color: white;\r\n    width: 430px;\r\n    height: 450px;\r\n    justify-content: center;\r\n    border-radius: 20px;\r\n}\r\n\r\n.b{\r\n    width: 80%;\r\n    height: 40px;\r\n    margin-left: 30px;\r\n    margin-bottom: 20px;\r\n    border-radius: 10px;\r\n}\r\n\r\n.label{\r\n    display: block;\r\n    margin-top: 20px;\r\n\r\n\r\n}\r\n\r\n.input{\r\n    padding: 10px;\r\n    border: 1px solid #000000;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    width: 100%;\r\n    height: 50px;\r\n    margin-top: 20px;\r\n}\r\n.registrar .titulo{\r\n    margin-top: 33px;\r\n    color: #0866FF;\r\n}\r\n\r\n.password{\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.bt-registrar{\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    cursor: pointer;\r\n}\r\n.bt-cancelar-edit{\r\n    background-color: white;\r\n    color:#FF1B1F;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n.bt-cancelar{\r\n    background-color: white;\r\n    color:#3f3ff5;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n@media (max-width: 904px) {\r\n    .titulo h1 {\r\n        font-size: 20px;\r\n    }\r\n\r\n    .filtrar, .inserir-vaga {\r\n        font-size: 10px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .grid-item {\r\n        font-size: 12px;\r\n    }\r\n\r\n    .sidebar ul li {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .logout {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .action {\r\n        height: 27px;\r\n        width: 35px;\r\n        margin-left: 10px;\r\n\r\n    }\r\n    .action img {\r\n        height: 18px;\r\n        width: 18px;\r\n    }\r\n\r\n    .permitido, .edit, .delete {\r\n        font-size: 12px;\r\n    }\r\n\r\n    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {\r\n        font-size: 12px;\r\n    }\r\n    .filtrar{\r\n        margin-left: 30%;\r\n    }\r\n    .sidebar {\r\n        margin-right: 20px;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/css/tipoVaga.css b/src/main/webapp/css/tipoVaga.css
+--- a/src/main/webapp/css/tipoVaga.css	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/css/tipoVaga.css	(date 1730719729245)
+@@ -29,7 +29,7 @@
+ 
+ .grid-container {
+     display: grid;
+-    grid-template-columns: 1fr 4fr 2fr 2fr;
++    grid-template-columns: 1fr 4fr 2fr;
+     grid-auto-rows: 58px;
+     width: 100%;
+     background-color: #c3e0fe;
+Index: src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletListarSituacoes_Trabalhistas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Situacao_Trabalhista;\r\n\r\nimport java.util.List;\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\n\r\nimport org.example.crud_site.dao.Situacao_TrabalhistaDAO;\r\nimport org.example.crud_site.model.Situacao_Trabalhista;\r\n\r\n// Define a servlet que responde ao caminho /listarSituacao_Trabalhistas\r\n@WebServlet(\"/listarSituacao_Trabalhistas\")\r\npublic class ServletListarSituacoes_Trabalhistas extends HttpServlet {\r\n\r\n    // Método que lida com requisições GET\r\n    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n\r\n        // Cria uma instância do DAO para acessar dados de situação trabalhista\r\n        Situacao_TrabalhistaDAO situacao_TrabalhistaDAO = new Situacao_TrabalhistaDAO();\r\n\r\n        // Obtém a lista de situações trabalhistas através do DAO\r\n        List<Situacao_Trabalhista> situacoes_Trabalhistas = situacao_TrabalhistaDAO.listarSituacao_Trabalhista();\r\n\r\n        // Define a lista de situações trabalhistas como um atributo da requisição\r\n        req.setAttribute(\"situacoes_Trabalhistas\", situacoes_Trabalhistas);\r\n\r\n        // Encaminha a requisição e a resposta para a página listarSituacao_Trabalhistas.jsp\r\n        req.getRequestDispatcher(\"pages/situacaoTrabalhista.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletListarSituacoes_Trabalhistas.java b/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletListarSituacoes_Trabalhistas.java
+--- a/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletListarSituacoes_Trabalhistas.java	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/java/org/example/crud_site/controller/Situacao_Trabalhista/ServletListarSituacoes_Trabalhistas.java	(date 1730719729296)
+@@ -25,7 +25,7 @@
+         List<Situacao_Trabalhista> situacoes_Trabalhistas = situacao_TrabalhistaDAO.listarSituacao_Trabalhista();
+ 
+         // Define a lista de situações trabalhistas como um atributo da requisição
+-        req.setAttribute("situacoes_Trabalhistas", situacoes_Trabalhistas);
++        req.setAttribute("listarSituacoes_Trabalhistas", situacoes_Trabalhistas);
+ 
+         // Encaminha a requisição e a resposta para a página listarSituacao_Trabalhistas.jsp
+         req.getRequestDispatcher("pages/situacaoTrabalhista.jsp").forward(req, res);
+Index: src/main/webapp/css/situacaoTrabalhista.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    display: flex;\r\n    height: 100vh;\r\n    background-color:#dbecfe;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: start;\r\n    justify-content: start;\r\n    width: 80%;\r\n    height: 85%;\r\n    padding: 3%;\r\n    background-color: white;\r\n    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;\r\n    border-radius: 30px;\r\n    margin: 0 auto;\r\n    margin-top: 6%;\r\n    margin-bottom: 5%;\r\n}\r\n\r\n.grid-container {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr 2fr 2fr;\r\n    grid-auto-rows: 58px;\r\n    width: 100%;\r\n    background-color: #c3e0fe;\r\n    border-radius: 30px 30px 0 0;\r\n    border: 0.5px solid #c3e0fe;\r\n    height: 410px;\r\n    overflow-y: auto;\r\n    position: relative;\r\n    scrollbar-width: none;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.grid-header {\r\n    font-weight: bold;\r\n    text-align: center;\r\n    padding: 18px;\r\n    border: 1px  solid #c3e0fe;\r\n    border-bottom: 4px solid  #c3e0fe ;\r\n    background-color: white;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 10;\r\n    color: #0f0fe0;\r\n}\r\n\r\n.grid-container::-webkit-scrollbar {\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.grid-item {\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n    padding: 10px;\r\n    border: 1px solid #c3e0fe;\r\n    background-color: white;\r\n}\r\n\r\n.grid-item.empty {\r\n    background-color: #f0f0f0;\r\n}\r\n\r\n.action {\r\n    background: none;\r\n    border: none;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.elemento{\r\n    background-color: #0866FF;\r\n    height: 9px;\r\n    width: 23px;\r\n    border: none;\r\n    border-radius: 75px;\r\n    transform: rotate(90deg);\r\n    position: relative;\r\n    top: 13px;\r\n    right: 5px;\r\n}\r\n\r\n.action.view {\r\n    color: #5b4fff;\r\n}\r\n\r\n.action.edit {\r\n    color: #1ca8ff;\r\n}\r\n\r\n.action.delete {\r\n    color: #ff4b5b;\r\n}\r\n\r\n.action:hover {\r\n    transform: scale(1.2);\r\n}\r\n\r\n.grid-item:hover {\r\n    background-color: #f0f8ff;\r\n}\r\n\r\n.titulo {\r\n    font-size: 25px;\r\n    margin-bottom: 40px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n}\r\nh1 {\r\n    color: #2C46D1;\r\n    font-size: 35px;\r\n    margin-left: 20px;\r\n}\r\n\r\n.crud_adm{\r\n    font-weight: 350;\r\n}\r\n\r\n.inclus {\r\n    font-size: 30px;\r\n    color: mediumblue;\r\n}\r\n\r\n.es {\r\n\r\n    font-size: 30px;\r\n    color: blueviolet;\r\n}\r\n\r\n.sidebar {\r\n    width: 260px;\r\n    height: 100%;\r\n    background-image: url(../img/sidebar.png);\r\n    background-size: cover;\r\n    padding: 20px;\r\n    color: #ecf0f1;\r\n}\r\n\r\n.sidebar ul {\r\n    margin-top: 80px;\r\n    list-style-type: none;\r\n}\r\n\r\n.sidebar ul li {\r\n    margin-bottom: 35px;\r\n    margin-left: 20px;\r\n    font-size: 18px;\r\n    font-weight: bolder;\r\n}\r\n\r\n.sidebar ul li a {\r\n    text-decoration: none;\r\n    color: #c7c7c7;\r\n    font-size: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar ul li a img {\r\n    width: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.logout {\r\n    margin-left: 35px;\r\n    width: 120px;\r\n    padding: 15px 30px;\r\n    background-color: #ffffff;\r\n    border: 1px solid #2B46D3;\r\n    border-radius: 11px;\r\n    color: #000000;\r\n    cursor: pointer;\r\n    font-size: 20px;\r\n    transition: 0.5s;\r\n    color: #0000F9;\r\n}\r\n\r\n.sidebar ul li a:hover {\r\n    color: #2B46D3;\r\n}\r\n\r\n\r\n.logout:hover {\r\n    background-color: #d3d3d3;\r\n}\r\n\r\n\r\n.main-content {\r\n    width: 100%;\r\n}\r\n\r\n.header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.inserir-situacao {\r\n    padding: 18px 30px;\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    border: none;\r\n    cursor: pointer;\r\n    border-radius: 10px;\r\n    font-size: 14px;\r\n    margin-right: 40px;\r\n    font-weight: bold;\r\n}\r\n\r\n.filtrar {\r\n    text-align: center;\r\n    border-radius: 10px;\r\n    padding: 15px 30px;\r\n    color: #0000F9;\r\n    font-weight: bold;\r\n    border: 0;\r\n    background-color: white;\r\n    border: rgb(177, 177, 177) 1px solid;\r\n    position: absolute;\r\n    margin-left: 25%;\r\n}\r\n\r\n#filtrar-bar {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    margin-bottom: 30px;\r\n    gap: 10px;\r\n}\r\n\r\n.pesquisa {\r\n    color: #D9D9D9;\r\n}\r\n.action{\r\n    height: 37px;\r\n    width: 65px;\r\n    border-radius: 10px;\r\n    padding-top: 4px;\r\n}\r\n\r\n.view {\r\n    background-color: #9747FF;\r\n}\r\n\r\n.edit {\r\n    background-color: #69B1FF;\r\n}\r\n\r\n.delete {\r\n    background-color: #FFA8A8;\r\n}\r\n\r\n#filtrar-bar input {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar button {\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n}\r\n\r\n#filtrar-bar select{\r\n    padding: 10px;\r\n    border: 1px solid #69B1FF;\r\n    border-radius: 8px;\r\n    font-size: 16px;\r\n}\r\n\r\n\r\n#filtrar-bar button {\r\n    background-color: #69B1FF;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n#filtrar-bar button:hover {\r\n    background-color: #007bb5;\r\n}\r\n\r\n.sidebar ul li.selecionado a {\r\n    color: #2B46D3; /* Azul desejado */\r\n}\r\n\r\n#popupID,\r\n#popupIDsituacao {\r\n    display: none; /* Para ocultar inicialmente */\r\n    position: fixed; /* Alterado */\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.35);\r\n    z-index: 100;\r\n    align-items: center; /* Alinhamento vertical */\r\n    justify-content: center; /* Alinhamento horizontal */\r\n}\r\n\r\n.popup{\r\n    display: flex;\r\n    background-color: white;\r\n    width: 430px;\r\n    height: 450px;\r\n    justify-content: center;\r\n    border-radius: 20px;\r\n}\r\n\r\n.b{\r\n    width: 80%;\r\n    height: 40px;\r\n    margin-left: 30px;\r\n    margin-bottom: 20px;\r\n    border-radius: 10px;\r\n}\r\n\r\n.label{\r\n    display: block;\r\n    margin-top: 20px;\r\n\r\n\r\n}\r\n\r\n.input{\r\n    padding: 10px;\r\n    border: 1px solid #000000;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    width: 100%;\r\n    height: 50px;\r\n    margin-top: 20px;\r\n}\r\n.registrar .titulo{\r\n    margin-top: 33px;\r\n    color: #0866FF;\r\n}\r\n\r\n.password{\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.bt-registrar{\r\n    background-color: #2C46D1;\r\n    color: white;\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    cursor: pointer;\r\n}\r\n.bt-cancelar-edit{\r\n    background-color: white;\r\n    color:#FF1B1F;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n.bt-cancelar{\r\n    background-color: white;\r\n    color:#3f3ff5;\r\n    border: #0000F9 1px solid;\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n}\r\n\r\n@media (max-width: 904px) {\r\n    .titulo h1 {\r\n        font-size: 20px;\r\n    }\r\n\r\n    .filtrar, .inserir-status {\r\n        font-size: 10px;\r\n        padding: 10px;\r\n    }\r\n\r\n    .grid-item {\r\n        font-size: 12px;\r\n    }\r\n\r\n    .sidebar ul li {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .logout {\r\n        font-size: 14px;\r\n    }\r\n\r\n    .action {\r\n        height: 27px;\r\n        width: 35px;\r\n        margin-left: 10px;\r\n\r\n    }\r\n    .action img {\r\n        height: 18px;\r\n        width: 18px;\r\n    }\r\n\r\n    .permitido, .edit, .delete {\r\n        font-size: 12px;\r\n    }\r\n\r\n    #filtrar-bar select, #filtrar-bar input, #filtrar-bar button {\r\n        font-size: 12px;\r\n    }\r\n    .filtrar{\r\n        margin-left: 30%;\r\n    }\r\n    .sidebar {\r\n        margin-right: 20px;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/css/situacaoTrabalhista.css b/src/main/webapp/css/situacaoTrabalhista.css
+--- a/src/main/webapp/css/situacaoTrabalhista.css	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/css/situacaoTrabalhista.css	(date 1730720048355)
+@@ -29,7 +29,7 @@
+ 
+ .grid-container {
+     display: grid;
+-    grid-template-columns: 1fr 4fr 2fr 2fr;
++    grid-template-columns: 1fr 4fr 2fr;
+     grid-auto-rows: 58px;
+     width: 100%;
+     background-color: #c3e0fe;
+@@ -360,7 +360,7 @@
+     background-color: #2C46D1;
+     color: white;
+     font-size: 18px;
+-    font-weight: 600;
++    font-weight: 400;
+     cursor: pointer;
+ }
+ .bt-cancelar-edit{
+Index: src/main/webapp/pages/statusCurso.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>CRUD status curso</title>\r\n  <link rel=\"stylesheet\" href=\"css/statusCurso.css\">\r\n</head>\r\n<body>\r\n\r\n  <aside class=\"sidebar\">\r\n    <div class=\"titulo\">\r\n        <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n    </div>\r\n    <nav>\r\n        <ul>\r\n            <li><a href=\"#\"><img src=\"img/casa.png\">Home</a></li>\r\n            <li><a href=\"listarAdm\">Adm</a></li>\r\n            <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n            <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n            <li><a href=\"listarSetor\">Setores</a></li>\r\n            <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n            <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n            <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n            <div class=\"elemento\"></div>\r\n            <li class=\"selecionado\"><a href=\"#\">Status curso</a></li>\r\n            <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n        </ul>\r\n    </nav>\r\n    </aside>\r\n\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Status curso</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-status-curso\">Inserir Status Curso </button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"uuid-filtro\">UUID</option>\r\n                        <option value=\"status-filtro\">Status</option>\r\n                    </select>\r\n\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header username\">UUID</div>\r\n                <div class=\"grid-header Nome\">Status</div>\r\n                <div class=\"grid-header ações\">Ações</div>\r\n\r\n\r\n                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-username\">admin1</div>\r\n                <div class=\"grid-item\">Em andamento</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n                <div class=\"grid-item item-registro\">2</div>\r\n                <div class=\"grid-item item-username\">admin2</div>\r\n                <div class=\"grid-item\">Concluido</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n                <div class=\"grid-item item-registro\">3</div>\r\n                <div class=\"grid-item item-username\">admin3</div>\r\n                <div class=\"grid-item\">Concluido</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n                <div class=\"grid-item item-registro\">4</div>\r\n                <div class=\"grid-item item-username\">admin4</div>\r\n                <div class=\"grid-item\">Cancelado</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>  \r\n\r\n                <div class=\"grid-item item-registro\">5</div>\r\n                <div class=\"grid-item item-username\">admin5</div>\r\n                <div class=\"grid-item\">Em andamento </div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>          \r\n            </div>\r\n\r\n        </main>\r\n\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Inserir status</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">UUIDgin:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Nome:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- AQUI -->\r\n\r\n        <div id=\"popupIDCurso\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar Status</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"login\" class=\"label\">UUID:</label>\r\n                        <input type=\"text\" id=\"login\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"label\">Nome:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"*\" class=\"input password\"/>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n  <script src=\"js/statusCurso.js\"></script>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/statusCurso.jsp b/src/main/webapp/pages/statusCurso.jsp
+--- a/src/main/webapp/pages/statusCurso.jsp	(revision db6f2c4c09cf09b28fc707a87c43cdae15ee3a1f)
++++ b/src/main/webapp/pages/statusCurso.jsp	(date 1730722825469)
+@@ -1,3 +1,5 @@
++<%@ page import="org.example.crud_site.model.Status_Curso" %>
++<%@ page import="java.util.List" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <!DOCTYPE html>
+ <html lang="pt-br">
+@@ -58,102 +60,72 @@
+ 
+             <div class="grid-container">
+                 <div class="grid-header registro">Registro</div>
+-                <div class="grid-header username">UUID</div>
+-                <div class="grid-header Nome">Status</div>
++                <div class="grid-header Nome">Status do curso</div>
+                 <div class="grid-header ações">Ações</div>
+ 
+ 
+-                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-username">admin1</div>
+-                <div class="grid-item">Em andamento</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>  
++                <%
++                    List<Status_Curso> lista = (List<Status_Curso>) request.getAttribute("listarStatus_curso");
+ 
+-                <div class="grid-item item-registro">2</div>
+-                <div class="grid-item item-username">admin2</div>
+-                <div class="grid-item">Concluido</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>  
+-
+-                <div class="grid-item item-registro">3</div>
+-                <div class="grid-item item-username">admin3</div>
+-                <div class="grid-item">Concluido</div>
++                    if (!lista.isEmpty()) {
++                        for (int i = 0; i < lista.size(); i++) {
++                %>
++                <div class="grid-item registro"><%= i+1 %></div>
++                <div class="grid-item username"><%= lista.get(i).getNome() %></div>
+                 <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>  
+-
+-                <div class="grid-item item-registro">4</div>
+-                <div class="grid-item item-username">admin4</div>
+-                <div class="grid-item">Cancelado</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>  
+-
+-                <div class="grid-item item-registro">5</div>
+-                <div class="grid-item item-username">admin5</div>
+-                <div class="grid-item">Em andamento </div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>          
++                    <button class="action edit">
++                        <img src="img/lapis.png" alt="editar status curso"></button>
++                    <form action="excluirStatusCurso" method="post">
++                        <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
++                        <button class="action delete"><img src="img/lixo.png" alt="excluir status curso"></button>
++                    </form>
++                </div>
++                <%
++                    }
++                } else {
++                %>
++                <div class="grid-item">Nenhum registro encontrado.</div>
++                <%
++                        System.out.println("Nenhum registro encontrado.");
++                    }
++                %>
+             </div>
+ 
+         </main>
+ 
++
++        <!-- AQUI -->
++
+         <div id="popupID" style="display: none;">
+             <div class="popup">
+                 <form action="#" class="registrar">
+                     <div class="bloco-titulo">
+-                        <h2 class="titulo">Inserir status</h2>
+-                    </div>
+-                    <div class="form-group">
+-                        <label for="login" class="label">UUIDgin:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
++                        <h2 class="titulo">Inserir Status Curso</h2>
+                     </div>
+-
+                     <div class="form-group">
+-                        <label for="password" class="label">Nome:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
++                        <label for="cadastrar" class="label">Status curso:</label>
++                        <input type="text" id="cadastrar" name="cadastrar" placeholder="Em andamento" class="input" required />
+                     </div>
+-
+ 
+                     <button type="submit" class="b bt-registrar">Cadastrar</button>
+-                    <button type="button" class="b bt-cancelar">Cancelar</button>
++                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+                 </form>
+             </div>
+         </div>
+ 
+-        <!-- AQUI -->
+-
+-        <div id="popupIDCurso" style="display: none;">
++        <div id="popupIDStatusCurso" style="display: none;">
+             <div class="popup">
+                 <form action="#" class="registrar">
+                     <div class="bloco-titulo">
+-                        <h2 class="titulo">Editar Status</h2>
++                        <h2 class="titulo">Editar status curso</h2>
+                     </div>
+                     <div class="form-group">
+-                        <label for="login" class="label">UUID:</label>
+-                        <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
++                        <label for="editar" class="label">Status curso:</label>
++                        <input type="text" id="editar" name="editar" placeholder="cancelado" class="input" required />
+                     </div>
+ 
+-                    <div class="form-group">
+-                        <label for="password" class="label">Nome:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="*" class="input password"/>
+-                        </div>
+-                    </div>
+-
+-
+-                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+-                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
++                    <button type="submit" class="b bt-registrar">Cadastrar</button>
++                    <button type="button" class="b bt-cancelar">Cancelar</button>
+                 </form>
+             </div>
+         </div>

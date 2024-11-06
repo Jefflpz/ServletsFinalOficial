@@ -1,0 +1,551 @@
+Index: src/main/webapp/pages/adm.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>CRUD Adm</title>\r\n    <link rel=\"stylesheet\" href=\"css/adm.css\">\r\n</head>\r\n<body>\r\n\r\n    <aside class=\"sidebar\">\r\n        <div class=\"titulo\">\r\n            <h1><span class=\"inclus\">Inclus</span><span class=\"es\">es</span></h1>\r\n        </div>\r\n        <nav>\r\n            <ul>\r\n                <li><a href=\"#\"><img src=\"img/casa.png\" alt=\"Home\">Home</a></li>\r\n                <div class=\"elemento\"></div>\r\n                <li class=\"selecionado\"><a href=\"#\">Adm</a></li>\r\n                <li><a href=\"listarPermissao_Vaga\">Permissão Vaga</a></li>\r\n                <li><a href=\"listarPermissao_Curso\">Permissão Curso</a></li>\r\n                <li><a href=\"listarSetor\">Setores</a></li>\r\n                <li><a href=\"listarTipo_arquivo\">Tipo de arquivo</a></li>\r\n                <li><a href=\"listarTipo_Vaga\">Tipo de vaga</a></li>\r\n                <li><a href=\"listarSituacao_Trabalhistas\">Situação trabalhista</a></li>\r\n                <li><a href=\"listarStatus_Curso\">Status curso</a></li>\r\n                <li><a href=\"index.html\" class=\"logout\">Sair</a></li>\r\n            </ul>\r\n        </nav>\r\n        </aside>\r\n\r\n    <div class=\"container\">\r\n        <main class=\"main-content\">\r\n            <div class=\"titulo\">\r\n                <h1>Adm</h1>\r\n                <button class=\"filtrar\">Filtrar <span class=\"pesquisa\"> > </span></button>\r\n                <button class=\"inserir-adm\">Inserir Adm</button>\r\n            </div>\r\n\r\n            <!-- Barra de Filtro -->\r\n            <div id=\"filtrar-bar\" style=\"display: none;\">\r\n                <form action=\"#\">\r\n                    <select name=\"filter-field\">\r\n                        <option value=\"\">Escolher campo</option>\r\n                        <option value=\"todos\">Todos</option>\r\n                        <option value=\"registro-filtro\">Registro</option>\r\n                        <option value=\"username-filtro\">Username</option>\r\n                    </select>\r\n                    <input type=\"text\" name=\"search\" placeholder=\"Pesquisar...\">\r\n                    <button type=\"submit\">Aplicar</button>\r\n                </form>\r\n            </div>\r\n\r\n            <div class=\"grid-container\">\r\n                <div class=\"grid-header registro\">Registro</div>\r\n                <div class=\"grid-header username\">Username</div>\r\n                <div class=\"grid-header senha\">Senha</div>\r\n                <div class=\"grid-header acoes\">Ações</div>\r\n\r\n                <!-- Exemplo de Itens da Grid -->\r\n                <div class=\"grid-item item-registro\">1</div>\r\n                <div class=\"grid-item item-username\">admin1</div>\r\n                <div class=\"grid-item\">*****</div>\r\n                <div class=\"grid-item\">\r\n                    <button class=\"action edit\"><img src=\"img/lapis.png\" alt=\"\"></button>\r\n                    <button class=\"action delete\"><img src=\"img/lixo.png\" alt=\"\"></button>\r\n                </div>\r\n                <!-- Repetir para outros admins... -->\r\n            </div>\r\n        </main>\r\n\r\n        <!-- Popup para Cadastro -->\r\n        <div id=\"popupID\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Cadastrar administrador</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"cadastrar\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"cadastrar\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label  class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"***********\" class=\"input password\" required />\r\n                        </div>\r\n                    </div>\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Cadastrar</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- Popup para Edição -->\r\n        <div id=\"popupIDadm\" style=\"display: none;\">\r\n            <div class=\"popup\">\r\n                <form action=\"#\" class=\"registrar\">\r\n                    <div class=\"bloco-titulo\">\r\n                        <h2 class=\"titulo\">Editar Adm</h2>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"editar\" class=\"label\">Login:</label>\r\n                        <input type=\"text\" id=\"editar\" name=\"login\" placeholder=\"avnadmin\" class=\"input\" required />\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label class=\"label\">Digite a senha:</label>\r\n                        <div class=\"password-container\">\r\n                            <input type=\"password\" placeholder=\"***********\" class=\"input password\" required />\r\n                        </div>\r\n                    </div>\r\n                    <button type=\"submit\" class=\"b bt-registrar\">Confirmar alterações</button>\r\n                    <button type=\"button\" class=\"b bt-cancelar-edit\">Cancelar</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n    </div> <!-- Fecha a div.container -->\r\n\r\n    <script src=\"js/adm.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/pages/adm.jsp b/src/main/webapp/pages/adm.jsp
+--- a/src/main/webapp/pages/adm.jsp	(revision 06dc534ccfe4219bb32d3acb6bbd109ad876d01d)
++++ b/src/main/webapp/pages/adm.jsp	(date 1730669558661)
+@@ -1,123 +1,147 @@
+-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
++<%@ page import="org.example.crud_site.dao.AdmDAO" %>
++<%@ page import="org.example.crud_site.model.Adm" %>
++<%@ page import="java.util.List" %>
++<%@ page import="java.util.ArrayList" %>
++<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+ <!DOCTYPE html>
+-<html lang="pt-br">
++<html lang="en">
+ <head>
+     <meta charset="UTF-8">
+-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-    <title>CRUD Adm</title>
+     <link rel="stylesheet" href="css/adm.css">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Crud Adm</title>
+ </head>
+ <body>
+-
+-    <aside class="sidebar">
+-        <div class="titulo">
+-            <h1><span class="inclus">Inclus</span><span class="es">es</span></h1>
+-        </div>
+-        <nav>
+-            <ul>
+-                <li><a href="#"><img src="img/casa.png" alt="Home">Home</a></li>
+-                <div class="elemento"></div>
+-                <li class="selecionado"><a href="#">Adm</a></li>
+-                <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
+-                <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
+-                <li><a href="listarSetor">Setores</a></li>
+-                <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+-                <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
+-                <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
+-                <li><a href="listarStatus_Curso">Status curso</a></li>
+-                <li><a href="index.html" class="logout">Sair</a></li>
+-            </ul>
+-        </nav>
+-        </aside>
++<aside class="sidebar">
++    <div class="titulo">
++        <h1><span class="inclus">Inclus</span><span class="es">es</span></h1>
++    </div>
++    <nav>
++        <ul>
++            <li><a href="#"><img src="img/house.png">Home</a></li>
++            <li class="selecionado"><a href="#">Adm</a></li>
++            <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
++            <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
++            <li><a href="listarSetor">Setores</a></li>
++            <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
++            <li><a href="listarStatus_Curso">Status curso</a></li>
++            <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
++            <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
++            <li><a href="index.html" class="logout">Sair</a></li>
++        </ul>
++    </nav>
++
++</aside>
+ 
+-    <div class="container">
+-        <main class="main-content">
+-            <div class="titulo">
+-                <h1>Adm</h1>
+-                <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
+-                <button class="inserir-adm">Inserir Adm</button>
+-            </div>
++<div class="container">
++    <main class="main-content">
++        <div class="titulo">
++            <h1>Adm</h1>
++            <button class="filtrar">Filtrar <span class="pesquisa"> > </span></button>
++            <button class="inserir-adm">Inserir Adm</button>
++        </div>
+ 
+-            <!-- Barra de Filtro -->
+-            <div id="filtrar-bar" style="display: none;">
+-                <form action="#">
+-                    <select name="filter-field">
+-                        <option value="">Escolher campo</option>
+-                        <option value="todos">Todos</option>
+-                        <option value="registro-filtro">Registro</option>
+-                        <option value="username-filtro">Username</option>
+-                    </select>
+-                    <input type="text" name="search" placeholder="Pesquisar...">
+-                    <button type="submit">Aplicar</button>
+-                </form>
+-            </div>
++        <div id="filtrar-bar" style="display: none;">
++            <form action="#" method="get">
++                <select name="filter-field">
++                    <option value="">Escolher campo</option>
++                    <option value="todos">Todos</option>
++                    <option value="registro-filtro">Registro</option>
++                    <option value="username-filtro">Username</option>
++                </select>
++                <input type="text" name="search" placeholder="Pesquisar...">
++                <button type="submit">Aplicar</button>
++            </form>
++        </div>
+ 
+-            <div class="grid-container">
+-                <div class="grid-header registro">Registro</div>
+-                <div class="grid-header username">Username</div>
+-                <div class="grid-header senha">Senha</div>
+-                <div class="grid-header acoes">Ações</div>
++        <div class="grid-container">
++            <div class="grid-header registro">Registro</div>
++            <div class="grid-header username">Username</div>
++            <div class="grid-header senha">Senha</div>
++            <div class="grid-header acoes">Ações</div>
+ 
+-                <!-- Exemplo de Itens da Grid -->
+-                <div class="grid-item item-registro">1</div>
+-                <div class="grid-item item-username">admin1</div>
+-                <div class="grid-item">*****</div>
+-                <div class="grid-item">
+-                    <button class="action edit"><img src="img/lapis.png" alt=""></button>
+-                    <button class="action delete"><img src="img/lixo.png" alt=""></button>
+-                </div>
+-                <!-- Repetir para outros admins... -->
+-            </div>
+-        </main>
++            <%
++                List<Adm> lista = (List<Adm>) request.getAttribute("listarAdm");
++
++                if (!lista.isEmpty()) {
++                    for (int i = 0; i < lista.size(); i++) {
++            %>
++            <div class="grid-item registro"><%= i+1 %></div>
++            <div class="grid-item username"><%= lista.get(i).getUsername() %></div>
++            <div class="grid-item"> <%= (lista.get(i).getSenha() != null) ? "*".repeat(lista.get(i).getSenha().length()) : "" %></div>
++            <div class="grid-item">
++                <button class="action edit"
++                        data-id="<%= lista.get(i).getId() %>"
++                        data-username="<%= lista.get(i).getUsername() %>"
++                        data-senha="<%= lista.get(i).getSenha() %>">
++                    <img src="img/lapis.png" alt="editar adm"></button>
++                <form action="/excluirAdm" method="post">
++                    <input type="hidden" name="id" value="<%=lista.get(i).getId()%>" >
++                    <button type="submit"><img src="img/lixo.png" alt="excluir adm"></button>
++                </form>
++            </div>
++            <%
++                }
++            } else {
++            %>
++            <div class="grid-item">Nenhum registro encontrado.</div>
++            <%
++                    System.out.println("Nenhum registro encontrado.");
++                }
++            %>
++        </div>
++
++    </main>
+ 
+-        <!-- Popup para Cadastro -->
+-        <div id="popupID" style="display: none;">
+-            <div class="popup">
+-                <form action="#" class="registrar">
+-                    <div class="bloco-titulo">
+-                        <h2 class="titulo">Cadastrar administrador</h2>
+-                    </div>
+-                    <div class="form-group">
+-                        <label for="cadastrar" class="label">Login:</label>
+-                        <input type="text" id="cadastrar" name="login" placeholder="avnadmin" class="input" required />
+-                    </div>
+-                    <div class="form-group">
+-                        <label  class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="***********" class="input password" required />
+-                        </div>
+-                    </div>
+-                    <button type="submit" class="b bt-registrar">Cadastrar</button>
+-                    <button type="button" class="b bt-cancelar">Cancelar</button>
+-                </form>
+-            </div>
+-        </div>
++    <div id="popupID" style="display: none;">
++        <div class="popup">
++            <form id="cadastroForm" action="inserirAdm" method="post" class="registrar">
++                <div class="bloco-titulo">
++                    <h2 class="titulo">Cadastrar administrador</h2>
++                </div>
++                <div class="form-group">
++                    <label for="login" class="label">Login:</label>
++                    <input type="text" id="novoAdm" name="username" placeholder="avnadmin" class="input" required />
++                </div>
++
++                <div class="form-group">
++                    <label class="label">Digite a senha:</label>
++                    <div class="password-container">
++                        <input type="password" placeholder="*" id="novoSenha" name="senha" class="input password" required/>
++                    </div>
++                </div>
++                <span id="erro" class="mensagem-erro"></span>
++
++                <button type="submit" class="b bt-registrar">Cadastrar</button>
++                <button type="button" class="b bt-cancelar">Cancelar</button>
++            </form>
++        </div>
++    </div>
+ 
+-        <!-- Popup para Edição -->
+-        <div id="popupIDadm" style="display: none;">
+-            <div class="popup">
+-                <form action="#" class="registrar">
+-                    <div class="bloco-titulo">
+-                        <h2 class="titulo">Editar Adm</h2>
+-                    </div>
+-                    <div class="form-group">
+-                        <label for="editar" class="label">Login:</label>
+-                        <input type="text" id="editar" name="login" placeholder="avnadmin" class="input" required />
+-                    </div>
+-                    <div class="form-group">
+-                        <label class="label">Digite a senha:</label>
+-                        <div class="password-container">
+-                            <input type="password" placeholder="***********" class="input password" required />
+-                        </div>
+-                    </div>
+-                    <button type="submit" class="b bt-registrar">Confirmar alterações</button>
+-                    <button type="button" class="b bt-cancelar-edit">Cancelar</button>
+-                </form>
+-            </div>
+-        </div>
+-
+-    </div> <!-- Fecha a div.container -->
+-
+-    <script src="js/adm.js"></script>
++    <div id="popupIDadm" style="display: none;">
++        <div class="popup">
++            <form action="#" class="registrar">
++                <div class="bloco-titulo">
++                    <h2 class="titulo">Editar Adm</h2>
++                </div>
++                <div class="form-group">
++                    <label for="login" class="label">Login:</label>
++                    <input type="text" id="login" name="login" placeholder="avnadmin" class="input" required />
++                </div>
++
++                <div class="form-group">
++                    <label class="label">Digite a senha:</label>
++                    <div class="password-container">
++                        <input type="password" placeholder="*" class="input password"/>
++                    </div>
++                </div>
++
++                <button type="submit" class="b bt-registrar">Confirmar alterações</button>
++                <button type="button" class="b bt-cancelar-edit">Cancelar</button>
++            </form>
++        </div>
++    </div>
++</div>
++<script src="js/adm.js"></script>
+ </body>
+-</html>
++</html>
+\ No newline at end of file
+Index: src/main/java/org/example/crud_site/controller/Adm/ServletExcluirAdm.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Adm;\r\n\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.dao.AdmDAO;\r\n\r\nimport java.io.IOException;\r\n\r\n@WebServlet(\"/excluirAdm\")\r\npublic class ServletExcluirAdm extends HttpServlet {\r\n    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {\r\n        // Obtém os parâmetros da requisição\r\n        String username = req.getParameter(\"username\");\r\n        String senha = req.getParameter(\"senha\");\r\n\r\n        // Cria uma instância do DAO para realizar a exclusão\r\n        AdmDAO admDAO = new AdmDAO();\r\n\r\n        // Tenta excluir o administrador\r\n        try {\r\n            admDAO.excluirAdm(username, senha);\r\n        } catch (RuntimeException e) {\r\n            // Se ocorrer um erro, redireciona para erro.jsp\r\n            req.setAttribute(\"erro\", e.getMessage());\r\n            req.getRequestDispatcher(\"/pages/errorPage.jsp\").forward(req, res);\r\n            return; // Para garantir que a execução não continue\r\n        }\r\n\r\n        // Redireciona para a página de sucesso após a exclusão\r\n        req.setAttribute(\"mensagem\", \"Administrador excluído com sucesso.\");\r\n        req.getRequestDispatcher(\"sucesso.jsp\").forward(req, res);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Adm/ServletExcluirAdm.java b/src/main/java/org/example/crud_site/controller/Adm/ServletExcluirAdm.java
+--- a/src/main/java/org/example/crud_site/controller/Adm/ServletExcluirAdm.java	(revision 06dc534ccfe4219bb32d3acb6bbd109ad876d01d)
++++ b/src/main/java/org/example/crud_site/controller/Adm/ServletExcluirAdm.java	(date 1730669103254)
+@@ -8,29 +8,20 @@
+ import org.example.crud_site.dao.AdmDAO;
+ 
+ import java.io.IOException;
++import java.util.UUID;
+ 
+ @WebServlet("/excluirAdm")
+ public class ServletExcluirAdm extends HttpServlet {
+-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
++    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         // Obtém os parâmetros da requisição
+-        String username = req.getParameter("username");
+-        String senha = req.getParameter("senha");
+-
++        String id = request.getParameter("id");
++        UUID uuid = UUID.fromString(id);
+         // Cria uma instância do DAO para realizar a exclusão
+         AdmDAO admDAO = new AdmDAO();
+ 
+-        // Tenta excluir o administrador
+-        try {
+-            admDAO.excluirAdm(username, senha);
+-        } catch (RuntimeException e) {
+-            // Se ocorrer um erro, redireciona para erro.jsp
+-            req.setAttribute("erro", e.getMessage());
+-            req.getRequestDispatcher("/pages/errorPage.jsp").forward(req, res);
+-            return; // Para garantir que a execução não continue
++        if (admDAO.excluirAdm(uuid)) {
++//            response.sendRedirect("listarAdm");
++            request.getRequestDispatcher("listarAdm").forward(request, response);
+         }
+-
+-        // Redireciona para a página de sucesso após a exclusão
+-        req.setAttribute("mensagem", "Administrador excluído com sucesso.");
+-        req.getRequestDispatcher("sucesso.jsp").forward(req, res);
+     }
+ }
+Index: src/main/java/org/example/crud_site/controller/Adm/ServletInserirAdm.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.controller.Adm;\r\n\r\nimport com.google.gson.Gson;\r\nimport jakarta.servlet.ServletException;\r\nimport jakarta.servlet.annotation.WebServlet;\r\nimport jakarta.servlet.http.HttpServlet;\r\nimport jakarta.servlet.http.HttpServletRequest;\r\nimport jakarta.servlet.http.HttpServletResponse;\r\nimport org.example.crud_site.controller.ServletLogin;\r\nimport org.example.crud_site.dao.AdmDAO;\r\nimport org.example.crud_site.dao.HashSenha;\r\n\r\nimport java.io.BufferedReader;\r\nimport java.io.IOException;\r\nimport java.security.NoSuchAlgorithmException;\r\nimport java.util.UUID;\r\n\r\n@WebServlet(\"/inserirAdm\")\r\npublic class ServletInserirAdm extends HttpServlet {\r\n    private final Gson gson = new Gson();\r\n\r\n    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {\r\n//        // Obtém os parâmetros da requisição\r\n//        String username = req.getParameter(\"username\");\r\n//        String senha = req.getParameter(\"senha\");\r\n\r\n        response.setContentType(\"application/json\");\r\n\r\n        StringBuilder requestBody = new StringBuilder();\r\n        String line;\r\n        try (BufferedReader reader = request.getReader()) {\r\n\r\n            while ((line = reader.readLine()) != null) {\r\n\r\n                requestBody.append(line);\r\n            }\r\n        } catch (IOException e) {\r\n            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);\r\n            response.getWriter().println(\"{\\\"success\\\": false, \\\"message\\\": \\\"Erro no servidor\\\"}\");\r\n            e.printStackTrace();\r\n            return;\r\n        }\r\n\r\n        // Cria uma instância do DAO para realizar a inserção\r\n        AdmDAO admDAO = new AdmDAO();\r\n\r\n        Cadastro adm = gson.fromJson(requestBody.toString(), Cadastro.class);\r\n\r\n        // Criando o hashing da senha\r\n        String senhaHash;\r\n\r\n        try {\r\n            HashSenha hashSenha = new HashSenha(adm.getSenha());\r\n            senhaHash = hashSenha.getSenha();\r\n        } catch (NoSuchAlgorithmException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n\r\n        try {\r\n            if ( admDAO.inserirAdm(adm.getUsername(), senhaHash)) {\r\n                response.setStatus(HttpServletResponse.SC_OK);\r\n                response.getWriter().println(\"{\\\"success\\\":true}\");\r\n            } else {\r\n                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);\r\n                response.getWriter().write(\"{\\\"success\\\": false, \\\"message\\\": \\\"Usuário ou senha incorretos\\\"}\");\r\n            }\r\n        } catch (Exception e) {\r\n            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);\r\n            response.getWriter().println(\"{\\\"success\\\": false, \\\"message\\\": \\\"Erro no servidor\\\"}\");\r\n            e.printStackTrace();\r\n        }\r\n\r\n        // Verifica se a inserção foi bem-sucedida\r\n//        if (resultado) {\r\n//            // Se a inserção foi bem-sucedida, redireciona para a página de sucesso\r\n//            req.getRequestDispatcher(\"/pages/CrudAdm.jsp\").forward(req, res);\r\n//            return; // Para evitar a execução do código abaixo\r\n//        }\r\n//\r\n//        // Se não for bem-sucedida, define uma mensagem de erro e encaminha para uma página de erro\r\n//        req.setAttribute(\"erro\", \"Falha ao inserir o administrador.\");\r\n//        req.getRequestDispatcher(\"/pages/errorPage.jsp\").forward(req, res);\r\n    }\r\n\r\n    private static class Cadastro {\r\n        private String username;\r\n        private String senha;\r\n\r\n        public String getUsername() {\r\n            return this.username;\r\n        }\r\n\r\n        public String getSenha() {\r\n            return this.senha;\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/controller/Adm/ServletInserirAdm.java b/src/main/java/org/example/crud_site/controller/Adm/ServletInserirAdm.java
+--- a/src/main/java/org/example/crud_site/controller/Adm/ServletInserirAdm.java	(revision 06dc534ccfe4219bb32d3acb6bbd109ad876d01d)
++++ b/src/main/java/org/example/crud_site/controller/Adm/ServletInserirAdm.java	(date 1730669678788)
+@@ -55,20 +55,24 @@
+         } catch (NoSuchAlgorithmException e) {
+             throw new RuntimeException(e);
+         }
+-
+-        try {
+-            if ( admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
+-                response.setStatus(HttpServletResponse.SC_OK);
+-                response.getWriter().println("{\"success\":true}");
+-            } else {
+-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+-                response.getWriter().write("{\"success\": false, \"message\": \"Usuário ou senha incorretos\"}");
+-            }
+-        } catch (Exception e) {
+-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+-            response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
+-            e.printStackTrace();
++        if (admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
++            response.setStatus(HttpServletResponse.SC_OK);
++            response.getWriter().println("{\"success\": true");
++            request.getRequestDispatcher("listarAdm").forward(request, response);
+         }
++//        try {
++//            if (admDAO.inserirAdm(adm.getUsername(), senhaHash)) {
++//                response.setStatus(HttpServletResponse.SC_OK);
++//                response.getWriter().println("{\"success\":true}");
++//            } else {
++//                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
++//                response.getWriter().write("{\"success\": false, \"message\": \"Usuário ou senha incorretos\"}");
++//            }
++//        } catch (Exception e) {
++//            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
++//            response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
++//            e.printStackTrace();
++//        }
+ 
+         // Verifica se a inserção foi bem-sucedida
+ //        if (resultado) {
+Index: src/main/java/org/example/crud_site/dao/AdmDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.dao;\r\n\r\n// Importando a classe Adm para usar os seus atributos e métodos.\r\n\r\nimport org.example.crud_site.model.Adm;\r\n\r\n//importando a classe SQLException para tratar os erros de SQL.\r\nimport java.sql.SQLException;\r\n\r\n// Importando a classe ArrayList para criar uma lista de administradores\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n// Importando a classe UUID para usar nos ids.\r\nimport java.util.UUID;\r\n\r\n//Classe AdmDAO\r\npublic class AdmDAO{\r\n\r\n    // objeto que acessa os atributos que gerenciam o banco de dados\r\n    private Conexao conexao;\r\n\r\n    //Construtor atribui a conexao uma nova Conexao() com os atribuitos da classe Conexao.\r\n    public AdmDAO() {\r\n        conexao = new Conexao();\r\n    }\r\n\r\n\r\n    // Método para inserir um novo registro na tabala Adm\r\n    public boolean inserirAdm(String username, String senha) {\r\n\r\n        conexao.conectar();\r\n        try{\r\n\r\n            // Instrução SQL para inserir um administrador na tabela Adm.\r\n            String sql = \"INSERT INTO adm (username, senha) VALUES (?,?)\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros da consulta\r\n            conexao.pstmt.setString(1, username);\r\n            conexao.pstmt.setString(2, senha);\r\n\r\n            //Executa a instrução SQL e se o numero de linhas afetadas for maior que 0 insere um usuário no banco de dados.\r\n            if (conexao.pstmt.executeUpdate() > 0) {\r\n\r\n                // Instrução SQL pra inserir um administrador no banco\r\n                conexao.pstmt = conexao.conn.prepareStatement(\"CREATE USER \" + username + \" WITH PASSWORD '\" + senha + \"'\"  );\r\n                // Executa a instrução SQL\r\n                conexao.pstmt.executeUpdate();\r\n\r\n                //retorna true se não der erro\r\n                return true;\r\n            }\r\n            return false;\r\n\r\n        }catch (SQLException e) {\r\n            throw new RuntimeException(e);\r\n        }finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para alterar a senha de um administrador na tabela Adm\r\n    public boolean alterarSenhaAdm(String novaSenha, UUID id) {\r\n        conexao.conectar();\r\n        try {\r\n\r\n            // Instrução SQL para inserir um administrador na tabela Adm.\r\n            String sql = \"UPDATE adm SET senha=? WHERE username=? AND senha=?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros na consulta SQL\r\n            conexao.pstmt.setString(1, novaSenha);\r\n            conexao.pstmt.setObject(2, id);\r\n\r\n            // Executa a instrução SQL.\r\n            int rows = conexao.pstmt.executeUpdate();\r\n\r\n            // Verifica se a instrução SQL alterou algum registro.\r\n            if (rows == 0) {\r\n                throw new RuntimeException(\"Nenhum registro encontrado.\");\r\n            }\r\n            // retorna true se a quantidade\r\n            return rows > 0;\r\n        }catch (SQLException e){\r\n            return false;\r\n        }finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para alterar o login de um administrador na tabela Adm\r\n    public boolean alterarLoginAdm(String novoUsername, UUID id) {\r\n        conexao.conectar();\r\n        try {\r\n\r\n            // Instrução SQL para inserir um administrador na tabela Adm.\r\n            String sql = \"UPDATE adm SET username=? WHERE id = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros na consulta SQL\r\n            conexao.pstmt.setString(1, novoUsername);\r\n            conexao.pstmt.setObject(2, id);\r\n\r\n            // Executa a instrução SQL.\r\n            int rows = conexao.pstmt.executeUpdate();\r\n\r\n            // Verifica se a instrução SQL alterou algum registro.\r\n            if (rows == 0) {\r\n                throw new RuntimeException(\"Nenhum registro encontrado.\");\r\n            }\r\n            return rows > 0;\r\n        }catch (SQLException e){\r\n            return false;\r\n//            throw new RuntimeException(\"Erro ao atualizar o registro.\", e);\r\n\r\n        }finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n\r\n    // Método para excluir um administrador na tabela Adm\r\n    public void excluirAdm(String username, String senha) {\r\n        conexao.conectar();\r\n        try {\r\n            // Instrução SQL para excluir um administrador na tabela Adm\r\n            String sql = \"DELETE FROM adm WHERE username=? AND senha=?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n\r\n            // Define os valores dos parâmetros na consulta SQL\r\n            conexao.pstmt.setString(1, username);\r\n            conexao.pstmt.setString(2, senha);\r\n\r\n            // Executa a instrução SQL de exclusão\r\n            conexao.pstmt.executeUpdate();\r\n        } catch (SQLException e) {\r\n            // Lança uma exceção em caso de erro\r\n            throw new RuntimeException(\"Erro ao excluir o administrador.\", e);\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n\r\n\r\n    // Método para buscar um administrador na tabela Adm\r\n    public Adm buscarAdm(String username){\r\n        conexao.conectar();\r\n\r\n        try {\r\n\r\n            // Instrução SQL para excluir um administrador na tabela Adm\r\n            String sql = \"SELECT * FROM adm WHERE username = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            conexao.pstmt.setString(1, username);\r\n\r\n            // Armazena o resultado da consulta no objeto ResultSet\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            /// Obtem os dados do ResultSet\r\n            if (conexao.rs.next()) {\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String login = conexao.rs.getString(2);\r\n                String senha = conexao.rs.getString(3);\r\n\r\n                // Cria um objeto Adm com os dados do ResultSet\r\n                return new Adm(id,login, senha);\r\n            }\r\n            return null;\r\n        }catch (SQLException e) {\r\n            // Retorna null caso ocorra algum erro.\r\n            return null;\r\n        }finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para buscar um administrador na tabela Adm\r\n    public Adm buscarAdm(String username, String senha){\r\n        conexao.conectar();\r\n\r\n        try {\r\n\r\n            // Instrução SQL para excluir um administrador na tabela Adm\r\n            String sql = \"SELECT * FROM adm WHERE username = ? AND senha = ?\";\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            conexao.pstmt.setString(1, username);\r\n            conexao.pstmt.setString(2, senha);\r\n\r\n            // Armazena o resultado da consulta no objeto ResultSet\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            /// Obtem os dados do ResultSet\r\n            if (conexao.rs.next()) {\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String login = conexao.rs.getString(2);\r\n                String senhaAtualizada = conexao.rs.getString(3);\r\n\r\n                // Cria um objeto Adm com os dados do ResultSet\r\n                return new Adm(id,login, senhaAtualizada);\r\n            }\r\n            return null;\r\n        }catch (SQLException e) {\r\n            // Retorna null caso ocorra algum erro.\r\n            return null;\r\n        }finally {\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para listar todos os administradores na tabela Adm\r\n    public List<Adm> listarAdms(){\r\n\r\n        // Instrução SQL para listar todos os administradores na tabela Adm\r\n        String sql = \"SELECT * FROM adm\";\r\n\r\n        // Essa linha cria uma lista vazia chamada adms, pronta para armazenar objetos do tipo Adm.\r\n        // Usamos o ArrayList para faciliar a manipulação da lista.\r\n        List<Adm> adms = new ArrayList<>();\r\n\r\n        conexao.conectar();\r\n\r\n        try {\r\n\r\n            // Prepara a instrução SQL para executar a consulta.\r\n            conexao.pstmt = conexao.conn.prepareStatement(sql);\r\n            // Armazena o resultado da consulta no objeto ResultSet.\r\n            conexao.rs = conexao.pstmt.executeQuery();\r\n\r\n            // Obtem os dados do ResultSet e armazena na lista de administradores.\r\n            // Usamos o while para percorrer o ResultSet caso haja mais de um registro.\r\n            while (conexao.rs.next()) {\r\n\r\n                // Pega os dados do ResultSet\r\n                UUID id = (UUID) conexao.rs.getObject(1);\r\n                String login = conexao.rs.getString(2);\r\n                String senha = conexao.rs.getString(3);\r\n\r\n                // Cria um objeto Adm com os dados do ResultSet\r\n                Adm adm = new Adm(id, login, senha);\r\n\r\n                // Adiciona o objeto Adm na lista de administradores\r\n                adms.add(adm);\r\n            }\r\n        }catch (SQLException e) {\r\n\r\n            // Retorna null caso ocorra algum erro.\r\n            return null;\r\n        }finally {\r\n            conexao.desconectar();\r\n        }\r\n\r\n        // Retorna a lista de administradores\r\n        return adms;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/AdmDAO.java b/src/main/java/org/example/crud_site/dao/AdmDAO.java
+--- a/src/main/java/org/example/crud_site/dao/AdmDAO.java	(revision 06dc534ccfe4219bb32d3acb6bbd109ad876d01d)
++++ b/src/main/java/org/example/crud_site/dao/AdmDAO.java	(date 1730668177355)
+@@ -121,19 +121,19 @@
+ 
+ 
+     // Método para excluir um administrador na tabela Adm
+-    public void excluirAdm(String username, String senha) {
++    public boolean excluirAdm(UUID id) {
+         conexao.conectar();
+         try {
+             // Instrução SQL para excluir um administrador na tabela Adm
+-            String sql = "DELETE FROM adm WHERE username=? AND senha=?";
++            String sql = "DELETE FROM adm WHERE id = ?";
+             conexao.pstmt = conexao.conn.prepareStatement(sql);
+ 
+             // Define os valores dos parâmetros na consulta SQL
+-            conexao.pstmt.setString(1, username);
+-            conexao.pstmt.setString(2, senha);
++            conexao.pstmt.setObject(1, id);
+ 
+             // Executa a instrução SQL de exclusão
+             conexao.pstmt.executeUpdate();
++            return true;
+         } catch (SQLException e) {
+             // Lança uma exceção em caso de erro
+             throw new RuntimeException("Erro ao excluir o administrador.", e);
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_23\" default=\"true\" project-jdk-name=\"openjdk-23\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 06dc534ccfe4219bb32d3acb6bbd109ad876d01d)
++++ b/.idea/misc.xml	(date 1730668210620)
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="openjdk-21" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/webapp/js/adm.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>document.querySelectorAll('.view-password').forEach(button => {\r\n    button.addEventListener('click', function() {\r\n        const passwordCell = this.parentElement.previousElementSibling;\r\n        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';\r\n    });\r\n});\r\n\r\ndocument.querySelectorAll('.delete').forEach(button => {\r\n    button.addEventListener('click', function() {\r\n        this.closest('.crud-row').remove();\r\n    });\r\n});\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", function() {\r\n    const filterButton = document.querySelector('.filtrar');\r\n    const filterBar = document.getElementById('filtrar-bar');\r\n    filterButton.addEventListener('click', toggleFilterBar);\r\n\r\n    function toggleFilterBar() {\r\n        filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';\r\n    }\r\n\r\n    const inserirADM = document.querySelector('.inserir-adm');\r\n    const editADM = document.querySelectorAll('.edit');\r\n    const cancelADM = document.querySelector('.bt-cancelar');\r\n    const cancelADMedi = document.querySelector('.bt-cancelar-edit');\r\n\r\n    const popupADM = document.getElementById('popupID');\r\n    const popupADMedit = document.getElementById('popupIDadm');\r\n\r\n    let i = 0; // Corrigido: declaração do índice\r\n    for (i = 0; i < editADM.length; i++) {\r\n        editADM[i].addEventListener('click', togglePopupedit);\r\n    }\r\n\r\n    cancelADM.addEventListener('click', cancelPopup);\r\n    cancelADMedi.addEventListener('click', cancelPopupedit);\r\n\r\n    inserirADM.addEventListener('click', togglePopup);\r\n\r\n    function togglePopup() {\r\n        popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';\r\n    }\r\n\r\n    function togglePopupedit() {\r\n        popupADMedit.style.display = popupADMedit.style.display === 'none' ? 'flex' : 'none';\r\n    }\r\n\r\n    function cancelPopup() {\r\n        popupADM.style.display = 'none';\r\n    }\r\n    function cancelPopupedit() {\r\n        popupADMedit.style.display = 'none';\r\n    }\r\n\r\n    const form = filterBar.querySelector('form');\r\n    form.addEventListener('submit', function(event) {\r\n        event.preventDefault();\r\n\r\n        const selectedField = this['filter-field'].value;\r\n        const searchTerm = this['search'].value.toLowerCase();\r\n\r\n        if (!selectedField) return; // Verificação extra\r\n\r\n        const gridItems = document.querySelectorAll('.grid-container .grid-item');\r\n        gridItems.forEach(item => item.style.display = 'none');\r\n\r\n        let found = false;\r\n\r\n        for (let i = 0; i < gridItems.length; i += 4) {\r\n            const registro = gridItems[i];\r\n            const username = gridItems[i + 1];\r\n            const senha = gridItems[i + 2];\r\n            const acoes = gridItems[i + 3];\r\n\r\n            let shouldDisplay = false;\r\n            if (selectedField === 'todos') {\r\n                shouldDisplay = true;\r\n            } else if (selectedField === 'registro-filtro') {\r\n                shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);\r\n            } else if (selectedField === 'username-filtro') {\r\n                shouldDisplay = username.textContent.toLowerCase().includes(searchTerm);\r\n            }\r\n\r\n            if (shouldDisplay) {\r\n                registro.style.display = 'flex';\r\n                username.style.display = 'flex';\r\n                senha.style.display = 'flex';\r\n                acoes.style.display = 'flex';\r\n                found = true;\r\n            }\r\n        }\r\n\r\n        if (!found) {\r\n            alert('Nenhum item encontrado.');\r\n        }\r\n    });\r\n});\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/js/adm.js b/src/main/webapp/js/adm.js
+--- a/src/main/webapp/js/adm.js	(revision 06dc534ccfe4219bb32d3acb6bbd109ad876d01d)
++++ b/src/main/webapp/js/adm.js	(date 1730668177310)
+@@ -1,24 +1,26 @@
++const novoAdmin = document.getElementById('novoAdm');
++const novaSenha = document.getElementById('novoSenha');
++const cadastroForm = document.getElementById('cadastroForm');
++const erro = document.getElementById('erro');
++
++// Regex para validação
++const patternSenha = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[áàâãéèêíïóôõöú])?(?=.*[\!\@\#\$%\^\&\(\)\_\-\+\=\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?]).{8,}$/;
++const patternAdm = /^adm((?=.[A-Z]{1,})?|(?=.[a-z]{1,}))(?=.\d{1,})?(?=.[!@#$%^&*()_\-+=[]\{}\|;:'",\.<>\/\?])?.{3,}/;
++
+ document.querySelectorAll('.view-password').forEach(button => {
+-    button.addEventListener('click', function() {
++    button.addEventListener('click', function () {
+         const passwordCell = this.parentElement.previousElementSibling;
+-        passwordCell.textContent = passwordCell.textContent === '*****' ? 'admin123' : '*****';
++        passwordCell.textContent = passwordCell.textContent === '' ? 'admin123' : '';
+     });
+ });
+ 
+ document.querySelectorAll('.delete').forEach(button => {
+-    button.addEventListener('click', function() {
++    button.addEventListener('click', function () {
+         this.closest('.crud-row').remove();
+     });
+ });
+ 
+-document.addEventListener("DOMContentLoaded", function() {
+-    const filterButton = document.querySelector('.filtrar');
+-    const filterBar = document.getElementById('filtrar-bar');
+-    filterButton.addEventListener('click', toggleFilterBar);
+-
+-    function toggleFilterBar() {
+-        filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
+-    }
++document.addEventListener("DOMContentLoaded", function () {
+ 
+     const inserirADM = document.querySelector('.inserir-adm');
+     const editADM = document.querySelectorAll('.edit');
+@@ -49,51 +51,44 @@
+     function cancelPopup() {
+         popupADM.style.display = 'none';
+     }
++
+     function cancelPopupedit() {
+         popupADMedit.style.display = 'none';
+     }
+ 
+-    const form = filterBar.querySelector('form');
+-    form.addEventListener('submit', function(event) {
+-        event.preventDefault();
+-
+-        const selectedField = this['filter-field'].value;
+-        const searchTerm = this['search'].value.toLowerCase();
+-
+-        if (!selectedField) return; // Verificação extra
+-
+-        const gridItems = document.querySelectorAll('.grid-container .grid-item');
+-        gridItems.forEach(item => item.style.display = 'none');
+-
+-        let found = false;
++    // Validação do login
++    cadastroForm.addEventListener('submit', async (e) => {
++        e.preventDefault();
+ 
+-        for (let i = 0; i < gridItems.length; i += 4) {
+-            const registro = gridItems[i];
+-            const username = gridItems[i + 1];
+-            const senha = gridItems[i + 2];
+-            const acoes = gridItems[i + 3];
++        erro.textContent = '';
++        let isValid = true;
+ 
+-            let shouldDisplay = false;
+-            if (selectedField === 'todos') {
+-                shouldDisplay = true;
+-            } else if (selectedField === 'registro-filtro') {
+-                shouldDisplay = registro.textContent.toLowerCase().includes(searchTerm);
+-            } else if (selectedField === 'username-filtro') {
+-                shouldDisplay = username.textContent.toLowerCase().includes(searchTerm);
+-            }
++        // Validação do ADM
++        if (!patternAdm.test(novoAdmin.value) || !patternSenha.test(novaSenha.value)) {
++            erro.textContent = 'Administrador ou senha inválida(o)!';
++            isValid = false;
++        }
+ 
+-            if (shouldDisplay) {
+-                registro.style.display = 'flex';
+-                username.style.display = 'flex';
+-                senha.style.display = 'flex';
+-                acoes.style.display = 'flex';
+-                found = true;
++        if (isValid) {
++            const formData = {
++                username: novoAdmin.value,
++                senha: novaSenha.value
+             }
+-        }
+-
+-        if (!found) {
+-            alert('Nenhum item encontrado.');
+-        }
+-    });
+-});
++            const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/inserirAdm', {
++                method: 'POST',
++                body: JSON.stringify(formData),
++                headers: {
++                    'Content-Type': 'application/json',
++                }
++            });
+ 
++            console.log(response);
++            if (response.ok) {
++                window.alert('Cadastro realizado com sucesso!');
++                location.reload();
++            } else {
++                const result = await response.json();
++                window.alert(result.message);
++            }
++        }});
++});
+\ No newline at end of file
