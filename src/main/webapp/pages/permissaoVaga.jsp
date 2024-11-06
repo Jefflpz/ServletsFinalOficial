@@ -1,5 +1,7 @@
 <%@ page import="org.example.crud_site.model.PermissaoVaga" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.example.crud_site.dao.PermissaoVagaDAO" %>
+<%@ page import="org.example.crud_site.model.Vaga" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -63,10 +65,12 @@
                 <div class="grid-header acoes">Ações</div>
 
                 <%
-                List<PermissaoVaga> lista = (List<PermissaoVaga>) request.getAttribute("listaPermissao_Vaga");
+                    List<PermissaoVaga> lista = (List<PermissaoVaga>) request.getAttribute("listaPermissao_Vaga");
 
-                if (!lista.isEmpty()) {
-                for (int i = 0; i < lista.size(); i++) {
+                    if (!lista.isEmpty()) {
+                    for (int i = 0; i < lista.size(); i++) {
+                        PermissaoVagaDAO permissaoVagaDAO = new PermissaoVagaDAO();
+                        Vaga vaga = permissaoVagaDAO.buscarPermissaoVagaPorId(lista.get(i).getId());
                 %>
                 <div class="grid-item registro"><%= i+1 %></div>
                 <div class="grid-item"><%= lista.get(i).getDtSolicitacao() %></div>
@@ -74,7 +78,13 @@
                 <div class="grid-item">
                     <form action="buscarPermissao_Vaga" method="post">
                         <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
-                        <button class="action view"><img src="img/olho.png" alt=""></button>
+                        <button class="action view"
+                                data-id="<%= vaga.getId() %>"
+                                data-tipo="<%= vaga.getId_tipo() %>"
+                                data-nome="<%= vaga.getNome() %>"
+                                data-idEmpresa="<%= vaga.getIdEmpresa() %>"
+                                data-descricao="<%= vaga.getDescricao() %>">
+                            <img src="img/olho.png" alt=""></button>
                     </form>
                 </div>
                     <%
@@ -94,7 +104,7 @@
                             <h2 class="titulo">Informações da vaga</h2>
                             <button class="close-button">✖</button>
                         </div>
-                        <form action="#" class="vaga-form">
+                        <form action="buscarPermissao_Vaga" class="vaga-form">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="uuid" class="label">UUID:</label>

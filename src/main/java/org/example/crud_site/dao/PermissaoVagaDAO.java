@@ -90,6 +90,7 @@ public class PermissaoVagaDAO {
             while (rs.next()) {
 
                 // Pega os dados de cada registro e cria um objeto Permissao_Vaga.
+                UUID id = (UUID) rs.getObject(1);
                 UUID id_Empresa = (UUID) rs.getObject(2);
                 boolean permissao = rs.getBoolean(3);
                 String dt_Solicitacao = rs.getString(4);
@@ -98,7 +99,7 @@ public class PermissaoVagaDAO {
                 UUID id_Autorizador = (UUID) rs.getObject(7);
 
                 // Cria um objeto Permissao_Vaga e adiciona na lista.
-                PermissaoVaga permissao_Vaga = new PermissaoVaga(null, id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);
+                PermissaoVaga permissao_Vaga = new PermissaoVaga(id, id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);
                 permissoes_Vaga.add(permissao_Vaga);
             }
 
@@ -120,7 +121,7 @@ public class PermissaoVagaDAO {
         // Conecta ao banco de dados
         conexao.conectar();
 
-        try(PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT pc.id, c.id_tipo , c.nome, pc.id_empresa, c.descricao FROM permissao_vaga pc JOIN vaga c ON pc.id_curso = c.id WHERE pc.id = ?"))
+        try(PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM vaga WHERE pc.id = ?"))
         {
 
             // Define o valor do parâmetro na instrução SQL
@@ -131,17 +132,15 @@ public class PermissaoVagaDAO {
 
             // Verifica se o ResultSet contém algum registro
             if (rs.next()) {
-                UUID idEmpresa = (UUID) rs.getObject("id_empresa");
-                boolean permissao = rs.getBoolean("permissao");
-                String dtSolicitacao = rs.getString("dt_solicitacao");
-                String dtAutorizacao = rs.getString("dt_autorizacao");
-                UUID idVaga = (UUID) rs.getObject("id_vaga");
-                UUID idAutorizador = (UUID) rs.getObject("id_autorizador");
-                String nomeVaga = rs.getString("nome_vaga");
-                String descricaoVaga = rs.getString("descricao_vaga");
+                UUID idId = (UUID) rs.getObject(1);
+                String nome = rs.getString(2);
+                String descricao = rs.getString(3);
+                UUID tipo_vaga = (UUID) rs.getObject(4);
+                UUID id_Empresa = (UUID) rs.getObject(5);
+
 
                 // Cria e retorna um objeto Permissao_Vaga com os dados obtidos
-                return new PermissaoVaga(nomeVaga, descricaoVaga, idEmpresa, id, idEmpresa, permissao, dtSolicitacao, dtAutorizacao, idVaga, idAutorizador);
+                return new PermissaoVaga(idId, nome, descricao, tipo_vaga, id_Empresa);
             }
 
             // Retorna null se nenhum registro for encontrado
