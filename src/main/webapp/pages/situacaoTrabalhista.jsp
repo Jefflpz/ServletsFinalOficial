@@ -22,7 +22,7 @@
             <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
             <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
             <li><a href="listarSetor">Setores</a></li>
-            <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+            <li><a href="listarTipoarquivo">Tipo de arquivo</a></li>
             <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
             <div class="elemento"></div>
             <li class="selecionado"><a href="#">Situação trabalhista</a></li>

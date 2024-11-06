@@ -24,7 +24,7 @@
             <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
             <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
             <li><a href="listarSetor">Setores</a></li>
-            <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+            <li><a href="listarTipoarquivo">Tipo de arquivo</a></li>
             <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
             <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
             <li><a href="listarStatus_Curso">Status curso</a></li>
@@ -76,7 +76,7 @@
                         data-username="<%= lista.get(i).getUsername() %>"
                         data-senha="<%= lista.get(i).getSenha() %>">
                     <img src="img/lapis.png" alt="editar adm"></button>
-                <form action="excluirAdm" method="get">
+                <form action="excluirADM" method="get">
                     <input type="hidden" name="id" value="<%=lista.get(i).getId()%>">
                     <button id="delete" class="action delete"><img src="img/lixo.png" alt="excluir tipo arquivo"></button>
                 </form>

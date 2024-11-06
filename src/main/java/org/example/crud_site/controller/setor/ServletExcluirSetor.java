@@ -13,16 +13,17 @@ import java.util.UUID;
 @WebServlet("/excluirSetor")
 public class ServletExcluirSetor extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtém os parâmetros da requisição
-        String nomeSetor = request.getParameter("nome");
-        UUID id = UUID.fromString(nomeSetor);
+        // Obtém o ID do setor da requisição
+        String idSetorParam = request.getParameter("nome");
+
 
         // Cria uma instância do DAO para realizar a exclusão
         SetorDAO setorDAO = new SetorDAO();
 
-        if (setorDAO.excluirSetor(id)) {
+        // Tenta excluir o setor e redireciona conforme o resultado
+        if (setorDAO.excluirSetor(idSetorParam)) {
             request.getRequestDispatcher("listarSetor").forward(request, response);
-        }else{
+        } else {
             request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
         }
     }

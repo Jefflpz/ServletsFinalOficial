@@ -9,7 +9,7 @@ import org.example.crud_site.dao.TipoVagaDAO;
 
 import java.io.IOException;
 
-@WebServlet("/excluirTipo_Vaga")
+@WebServlet("/excluirTipoVaga")
 public class ServletExcluirTipoVaga extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o nome do tipo de vaga a partir da requisição

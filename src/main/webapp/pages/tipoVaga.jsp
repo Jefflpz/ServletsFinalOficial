@@ -22,7 +22,7 @@
             <li><a href="listarPermissao_Vaga">Permissão Vaga</a></li>
             <li><a href="listarPermissao_Curso">Permissão Curso</a></li>
             <li><a href="listarSetor">Setores</a></li>
-            <li ><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+            <li ><a href="listarTipoarquivo">Tipo de arquivo</a></li>
             <div class="elemento"></div>
             <li class="selecionado"><a href="#">Tipo de vaga</a></li>
             <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
@@ -74,9 +74,9 @@
                         data-nomeTipoVaga="<%= lista.get(i).getNome() %>"
                         data-uuid="<%= lista.get(i).getId() %>">
                     <img src="img/lapis.png" alt="editar tipo vaga"></button>
-                <form action="excluirTipo_Vaga" method="get">
+                <form action="excluirTipoVaga" method="get">
                     <input type="hidden" id="nome" name="nome" value="<%=lista.get(i).getNome()%>">
-                    <button class="action delete"><img src="img/lixo.png" alt="excluir tipo vaga"></button>
+                    <button id="delete" class="action delete"><img src="img/lixo.png" alt="excluir tipo vaga"></button>
                 </form>
             </div>
             <%

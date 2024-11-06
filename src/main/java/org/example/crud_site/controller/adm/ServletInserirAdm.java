@@ -49,6 +49,7 @@ public class ServletInserirAdm extends HttpServlet {
         }
 
         try {
+
             if (admDAO.inserirAdm(adm.getAdm(), senhaHash)) {
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("{\"success\":true}");

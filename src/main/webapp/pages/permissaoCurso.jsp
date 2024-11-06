@@ -28,7 +28,7 @@
                 <div class="elemento"></div>
                 <li class="selecionado"><a href="#">Permissão Curso</a></li>
                 <li><a href="listarSetor">Setores</a></li>
-                <li><a href="listarTipo_arquivo">Tipo de arquivo</a></li>
+                <li><a href="listarTipoarquivo">Tipo de arquivo</a></li>
                 <li><a href="listarTipo_Vaga">Tipo de vaga</a></li>
                 <li><a href="listarSituacao_Trabalhistas">Situação trabalhista</a></li>
                 <li><a href="listarStatus_Curso">Status curso</a></li>

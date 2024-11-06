@@ -67,9 +67,11 @@ public class TipoArquivoDAO {
 
     // Método para excluir um tipo de arquivo
     public boolean excluirTipoArquivo(String nomeTipo_Arquivo) {
-        conexao.conectar();
-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM tipo_arquivo WHERE nome = ?")){
+        try {
+            conexao.conectar();
+
             // Define o valor do parâmetro na consulta SQL
+            PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM tipo_arquivo WHERE nome = ?");
             pstmt.setString(1, nomeTipo_Arquivo);
 
             // Executa a instrução SQL

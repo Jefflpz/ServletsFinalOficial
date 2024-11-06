@@ -99,11 +99,12 @@ public class AdmDAO{
     // Método para excluir um administrador na tabela Adm
     public boolean excluirAdm(UUID id) {
         conexao.conectar();
-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM adm WHERE id = ?")){
+        try {
             // Primeiro, obtemos o nome do usuário associado ao administrador que será excluído
-
+            PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM adm WHERE id = ?");
             pstmt.setObject(1, id);
-            return  pstmt.execute();
+            pstmt.execute();
+            return true;
 
         } catch (SQLException e) {
             return false;
