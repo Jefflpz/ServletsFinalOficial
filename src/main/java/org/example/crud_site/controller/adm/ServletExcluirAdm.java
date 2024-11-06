@@ -21,8 +21,8 @@ public class ServletExcluirAdm extends HttpServlet {
 
         if (admDAO.excluirAdm(uuid)) {
             request.getRequestDispatcher("listarAdm").forward(request, response);
+        }else {
+            request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("pages/errorPage.jsp").forward(request, response);
-
     }
 }

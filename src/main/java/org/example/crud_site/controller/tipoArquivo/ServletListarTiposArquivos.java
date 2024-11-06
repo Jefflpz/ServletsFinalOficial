@@ -25,7 +25,7 @@ public class ServletListarTiposArquivos extends HttpServlet {
         List<TipoArquivo> tipos_Arquivos = tipo_ArquivoDAO.listarTipoArquivo();
 
         // Define a lista de tipos de arquivos como um atributo da requisição
-        req.setAttribute("listarTipo_Arquivo", tipos_Arquivos);
+        req.setAttribute("listarTipo_arquivo", tipos_Arquivos);
 
         // Encaminha a requisição e a resposta para a página listarTipo_arquivo.jsp
         req.getRequestDispatcher("pages/tipoArquivo.jsp").forward(req, res);

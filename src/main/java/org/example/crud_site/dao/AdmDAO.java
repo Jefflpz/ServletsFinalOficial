@@ -37,7 +37,7 @@ public class AdmDAO{
             pstmt.setString(1, username);
             pstmt.setString(2, senha);
 
-            return false;
+            return pstmt.executeUpdate() > 0;
 
         }catch (SQLException e) {
             return false;

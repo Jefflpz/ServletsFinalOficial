@@ -77,14 +77,14 @@ public class SetorDAO {
     }
 
     // Método para excluir um setor da tabela Setor.
-    public boolean excluirSetor(String nomeSetor) {
+    public boolean excluirSetor(UUID idSetor) {
 
         // Estabelece a conexão com o banco de dados.
         conexao.conectar();
-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM Setor WHERE nome = ?")){
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM Setor WHERE id = ?")){
 
             // Define o valor do parâmetro na consulta SQL.
-            pstmt.setString(1, nomeSetor);
+            pstmt.setObject(1, idSetor);
 
             // Executa a instrução SQL.
             pstmt.execute();

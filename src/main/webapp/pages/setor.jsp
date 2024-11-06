@@ -78,7 +78,7 @@
                         data-uuid="<%= lista.get(i).getId() %>">
                     <img src="img/lapis.png" alt="editar setor"></button>
                 <form action="excluirSetor" method="get">
-                    <input type="hidden" id="nome" name="nome" value="<%=lista.get(i).getNome()%>">
+                    <input type="hidden"  name="nome" value="<%=lista.get(i).getNome()%>">
                     <button class="action delete"><img src="img/lixo.png" alt="excluir setor"></button>
                 </form>
             </div>

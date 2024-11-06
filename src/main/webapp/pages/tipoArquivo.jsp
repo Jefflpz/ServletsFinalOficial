@@ -62,7 +62,7 @@
             <div class="grid-header acoes">Ações</div>
 
             <%
-                List<TipoArquivo> lista = (List<TipoArquivo>) request.getAttribute("listarTipo_Arquivo");
+                List<TipoArquivo> lista = (List<TipoArquivo>) request.getAttribute("listarTipo_arquivo");
 
                 if (!lista.isEmpty()) {
                     for (int i = 0; i < lista.size(); i++) {
@@ -76,7 +76,7 @@
                     <img src="img/lapis.png" alt="editar tipo arquivo"></button>
                 <form action="excluirTipoArquivo" method="get">
                     <input type="hidden" id="nome" name="id" value="<%=lista.get(i).getId()%>">
-                    <button class="action delete"><img src="img/lixo.png" alt="excluir status curso"></button>
+                    <button id="delete" class="action delete"><img src="img/lixo.png" alt="excluir status curso"></button>
                 </form>
             </div>
             <%

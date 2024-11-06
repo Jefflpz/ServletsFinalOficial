@@ -76,7 +76,7 @@ public class TipoArquivoDAO {
             pstmt.execute();
             return true;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao excluir o registro.", e);
+            return false; // Retorna false caso ocorra algum erro
         } finally {
             conexao.desconectar();
         }
