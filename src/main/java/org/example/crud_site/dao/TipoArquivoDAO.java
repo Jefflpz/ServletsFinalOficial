@@ -43,12 +43,12 @@ public class TipoArquivoDAO {
     }
 
     // Método para alterar o nome de um tipo de arquivo
-    public boolean alterarNomeTipoArquivo(TipoArquivo tipo_arquivo, String nome) {
+    public boolean alterarNomeTipoArquivo(UUID uuid, String novoTipoArquivo) {
         conexao.conectar();
-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE tipo_arquivo SET nome = ? WHERE nome = ?")){
+        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE tipo_arquivo SET nome = ? WHERE id = ?")){
             // Define os valores dos parâmetros da consulta SQL
-            pstmt.setString(1, nome);
-            pstmt.setString(2, tipo_arquivo.getNome());
+            pstmt.setString(1, novoTipoArquivo);
+            pstmt.setObject(2, uuid);
 
             // Executa a instrução SQL
             int rows = pstmt.executeUpdate();

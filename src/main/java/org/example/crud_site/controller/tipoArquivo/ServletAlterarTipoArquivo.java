@@ -1,5 +1,6 @@
 package org.example.crud_site.controller.tipoArquivo;
 
+import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,33 +9,60 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.crud_site.dao.TipoArquivoDAO;
 import org.example.crud_site.model.TipoArquivo;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.UUID;
 
-@WebServlet("/alterarTipo_Arquivo")
+@WebServlet("/alterarTipoArquivo")
 public class ServletAlterarTipoArquivo extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        // Obtém os parâmetros da requisição
-        String nomeAtual = req.getParameter("nome_atual");
-        String novoNome = req.getParameter("novo_nome");
+    private final Gson gson = new Gson();
 
-        // Cria uma instância do modelo Tipo_Arquivo e define o nome atual
-        TipoArquivo tipo_arquivo = new TipoArquivo(nomeAtual);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
 
-        // Cria uma instância do DAO para realizar a alteração
-        TipoArquivoDAO tipo_arquivoDAO = new TipoArquivoDAO();
-
-        // Tenta alterar o nome do tipo de arquivo
-        try {
-            tipo_arquivoDAO.alterarNomeTipoArquivo(tipo_arquivo, novoNome);
-        } catch (RuntimeException e) {
-            // Se ocorrer um erro, redireciona para erro.jsp
-            req.setAttribute("erro", e.getMessage());
-            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
-            return; // Para garantir que a execução não continue
+        StringBuilder requestBody = new StringBuilder();
+        String line;
+        try (BufferedReader reader = request.getReader()) {
+            while ((line = reader.readLine()) != null) {
+                requestBody.append(line);
+            }
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
+            e.printStackTrace();
+            return;
         }
 
-        // Redireciona para a página de sucesso após a alteração
-        req.setAttribute("mensagem", "Tipo de arquivo alterado com sucesso.");
-        req.getRequestDispatcher("pages/tipoArquivo.jsp").forward(req, res);
+        // Cria uma instância do DAO para realizar a alteração
+        TipoArquivoDAO tipoArquivoDAO = new TipoArquivoDAO();
+
+        EditarTipoArquivo statusCurso = gson.fromJson(requestBody.toString(), EditarTipoArquivo.class);
+
+        try {
+            if (tipoArquivoDAO.alterarNomeTipoArquivo(statusCurso.getUuid(), statusCurso.getTipoArquivo())) {
+                response.setStatus(HttpServletResponse.SC_OK);
+                response.getWriter().println("{\"success\":true}");
+            } else {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("{\"success\": false, \"message\": \"Não foi possível alterar o nome do setor.\"}");
+            }
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().println("{\"success\": false, \"message\": \"Erro no servidor\"}");
+            e.printStackTrace();
+        }
+    }
+
+    private static class EditarTipoArquivo {
+        private String tipoArquivo;
+        private UUID uuid;
+
+        public String getTipoArquivo() {
+            return this.tipoArquivo;
+        }
+
+        public UUID getUuid() {
+            return this.uuid;
+        }
     }
 }

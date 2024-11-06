@@ -1,3 +1,7 @@
+const editarTipoArquivoForm = document.getElementById('editarTipoArquivo');
+const tipoArquivoEditado = document.getElementById('editar');
+let idTipoArquivo = null;
+
 document.addEventListener("DOMContentLoaded", function() {
     // Alternar visibilidade da senha
     document.querySelectorAll('.view-password').forEach(button => {
@@ -35,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
     inserirArquivoButton.addEventListener('click', togglePopup);
 
     editArquivoButtons.forEach(button => {
-        button.addEventListener('click', togglePopupEdit);
+        button.addEventListener('click', (e) => togglePopupEdit(e));
     });
 
     cancelArquivoButton.addEventListener('click', () => {
@@ -50,8 +54,12 @@ document.addEventListener("DOMContentLoaded", function() {
         popupArquivo.style.display = popupArquivo.style.display === 'none' ? 'flex' : 'none';
     }
 
-    function togglePopupEdit() {
+    function togglePopupEdit(e) {
         popupArquivoEdit.style.display = popupArquivoEdit.style.display === 'none' ? 'flex' : 'none';
+        let nomeTipoArquivo = document.getElementById('editar');
+        nomeTipoArquivo.value = e.currentTarget.getAttribute('data-nomeTipoArquivo');
+
+        idTipoArquivo = e.currentTarget.getAttribute('data-uuid');
     }
 
     // Filtro de pesquisa
@@ -93,6 +101,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (!found) {
             alert('Nenhum item encontrado.');
+        }
+    });
+
+    editarTipoArquivoForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = {
+            tipoArquivo: tipoArquivoEditado.value,
+            uuid: idTipoArquivo,
+        }
+        const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/alterarTipoArquivo', {
+            method: 'POST', body: JSON.stringify(formData), headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        console.log(response);
+        if (response.ok) {
+            window.alert('Informações atualizadas com sucesso!');
+            location.reload();
+        } else {
+            const result = await response.json();
+            window.alert(result.message);
         }
     });
 });
