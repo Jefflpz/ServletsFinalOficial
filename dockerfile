@@ -3,6 +3,7 @@ FROM maven:3.8.3-openjdk-17 AS build
 
 WORKDIR /app
 
+# Copia o arquivo POM e o código-fonte
 COPY pom.xml .
 COPY src ./src
 
