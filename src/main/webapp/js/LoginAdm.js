@@ -48,7 +48,7 @@ form.addEventListener('submit', async (e) => {
             username: usuarioInput.value,
             senha: senhaInput.value
         }
-        const response = await fetch('http://localhost:8080/CRUD_Site_war_exploded/login', {
+        const response = await fetch('https://servletsfinaloficial-2.onrender.com/CRUD_Site_war_exploded/login', {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
