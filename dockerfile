@@ -14,4 +14,4 @@ COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 # Exponha a porta padrão do Tomcat
 EXPOSE 8080
 # Inicia o Tomcat
-CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
+CMD ["catalina.sh", "run"]
