@@ -1,17 +1,18 @@
 package org.example.crud_site.dao;
 
-// importa o arquvio.env
-import io.github.cdimascio.dotenv.Dotenv;
-
 // importa todo o pacote java.sql
 import java.sql.*;
 
 // Classe Conexao
 public class Conexao {
 
-    // Atributos públicos usados em todas as outras classes
+    // Atributo conection
     private Connection conn;
 
+    //Método para retornar a conexão com o banco de dados
+    public Connection getConn() {
+        return conn;
+    }
     //Método para estabelecer a conexão com o banco de dados
     public void conectar() {
         try {
@@ -22,7 +23,6 @@ public class Conexao {
             String url = System.getenv("DATABASE_URL");
             String user = System.getenv("DATABASE_USER");
             String password = System.getenv("DATABASE_PASSWORD");
-            System.out.println(url + " / " + user + " / " + password);
 
         // Atribui a conn a Conexao que o "DriverManager.getConnection(url, user, password);" retorna
             this.conn = DriverManager.getConnection(url, user, password);
@@ -47,10 +47,5 @@ public class Conexao {
             // Se houver algum erro ao fechar a conexão, exibe a mensagem de erro
             e.printStackTrace();
         }
-    }
-
-
-    public Connection getConn() {
-        return conn;
     }
 }

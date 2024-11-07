@@ -19,10 +19,10 @@ import java.util.UUID;
 //Classe AdmDAO
 public class AdmDAO{
 
-    // objeto que acessa os atributos que gerenciam o banco de dados
+    // objeto que acessa o atributo conn
     private Conexao conexao;
 
-    //Construtor atribui a conexao uma nova Conexao() com os atribuitos da classe Conexao.
+    //Construtor que atribui a conexao uma nova instância com os atribuitos da classe Conexao.
     public AdmDAO() {
         conexao = new Conexao();
     }
@@ -30,16 +30,20 @@ public class AdmDAO{
     // Método para inserir um novo registro na tabala Adm
     public boolean inserirAdm(String username, String senha) {
 
-        conexao.conectar();
+        // Cria uma instrução SQL para inserir um novo administrador na tabela Adm.
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO adm (username, senha) VALUES (?,?)")){
+
+            conexao.conectar();
 
             // Define os valores dos parâmetros da consulta
             pstmt.setString(1, username);
             pstmt.setString(2, senha);
 
+            // retorna true se a quantidade de registros afetados for maior que 0
             return pstmt.executeUpdate() > 0;
 
         }catch (SQLException e) {
+            // Retorna false caso ocorra algum erro.
             return false;
         }finally {
             conexao.desconectar();
@@ -48,23 +52,28 @@ public class AdmDAO{
 
     // Método para alterar a senha de um administrador na tabela Adm
     public boolean alterarSenhaAdm(String novaSenha, UUID id) {
-        conexao.conectar();
+
+        // Cria uma instrução SQL para atualizar a senha do administrador na tabela Adm.
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE adm SET senha=? WHERE id=?")){
+
+            conexao.conectar();
 
             // Define os valores dos parâmetros na consulta SQL
             pstmt.setString(1, novaSenha);
             pstmt.setObject(2, id);
 
-            // Executa a instrução SQL.
+            // Executa a instrução SQL e armazena o resultado na variável rows.
             int rows = pstmt.executeUpdate();
 
             // Verifica se a instrução SQL alterou algum registro.
-            if (rows == 0) {
+            if (rows > 0) {
+                // Retorna true caso a senha tenha sido alterada.
+                return true;
+            }else {
                 throw new RuntimeException("Nenhum registro encontrado.");
             }
-            // retorna true se a quantidade
-            return rows > 0;
         }catch (SQLException e){
+            // Retorna false caso ocorra algum erro.
             return false;
         }finally {
             conexao.desconectar();
@@ -73,8 +82,11 @@ public class AdmDAO{
 
     // Método para alterar o login de um administrador na tabela Adm
     public boolean alterarLoginAdm(String novoUsername, UUID id) {
-        conexao.conectar();
+
+        // Cria uma instrução SQL para atualizar o login do administrador na tabela Adm.
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE adm SET username=? WHERE id = ?")) {
+
+            conexao.conectar();
 
             // Define os valores dos parâmetros na consulta SQL
             pstmt.setString(1, novoUsername);
@@ -84,11 +96,14 @@ public class AdmDAO{
             int rows = pstmt.executeUpdate();
 
             // Verifica se a instrução SQL alterou algum registro.
-            if (rows == 0) {
+            if (rows > 0) {
+                // retorna true caso o login tenha sido alterado.
+                return true;
+            }else {
                 throw new RuntimeException("Nenhum registro encontrado.");
             }
-            return rows > 0;
         }catch (SQLException e){
+            // Retorna false caso ocorra algum erro.
             return false;
         }finally {
             conexao.desconectar();
@@ -116,7 +131,7 @@ public class AdmDAO{
 
 
 
-    // Método para buscar um administrador na tabela Adm
+    // Método para buscar um administrador na tabela Adm pelo nome
     public Adm buscarAdm(String username){
         conexao.conectar();
 
@@ -146,12 +161,16 @@ public class AdmDAO{
         }
     }
 
-    // Método para buscar um administrador na tabela Adm
+    // Método para buscar um administrador na tabela Adm pelo nome e senha
     public Adm buscarAdm(String username, String senha){
-        conexao.conectar();
 
+
+        // Cria uma instrução SQL para buscar um administrador na tabela Adm.
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM adm WHERE username = ? AND senha = ?")){
 
+            conexao.conectar();
+
+            // Define os valores dos parâmetros na consulta SQL
             pstmt.setString(1, username);
             pstmt.setString(2, senha);
 
@@ -184,11 +203,10 @@ public class AdmDAO{
         // Usamos o ArrayList para faciliar a manipulação da lista.
         List<Adm> adms = new ArrayList<>();
 
-        conexao.conectar();
 
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM adm")){
 
-            // Prepara a instrução SQL para executar a consulta.
+            conexao.conectar();
 
             // Armazena o resultado da consulta no objeto ResultSet.
             ResultSet rs = pstmt.executeQuery();
