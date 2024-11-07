@@ -10,7 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="commitando a pagina intermediaria">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletAutorizarPermissaoCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoCurso/ServletAutorizarPermissaoCurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/permissaoCurso.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/permissaoCurso.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/permissaoVaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/permissaoVaga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +40,12 @@
     &quot;assignee&quot;: &quot;Jefflpz&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Jefflpz/ServletsFinalOficial.git",
-    "accountId": "680ddf12-abde-4a36-b030-2d765f761827"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Jefflpz/ServletsFinalOficial.git&quot;,
+    &quot;accountId&quot;: &quot;c7146c17-0968-4a42-acb5-4d1edd5d45f3&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -73,11 +78,12 @@
     "JavaScript Debug.tipoArquivo.jsp.executor": "Coverage",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 10.1.28.executor": "Run",
     "Tomcat Server.Tomcat 10.1.281.executor": "Run",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "openjdk-21",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jeffersonlopes-ieg/IdeaProjects/ServletsOficial/.env",
+    "last_opened_file_path": "C:/Users/diogoqueiroz-ieg/IdeaProjects/ServletsFinalOficial/.env",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -102,8 +108,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 10.1.281" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.281" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="UPDATING_POLICY" value="restart-server" />
+    <configuration name="Tomcat 10.1.28" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.28" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <deployment>
         <artifact name="CRUD_Site:war exploded">
           <settings>
@@ -112,7 +117,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="ae50de24-bbad-40b1-80b1-a5638b40c80c" />
+        <option name="BASE_DIRECTORY_NAME" value="304193a7-6927-44e6-b639-11b1d962b93f" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -131,7 +136,7 @@
         </ENTRIES>
       </extension>
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="56971" />
+        <option name="DEBUG_PORT" value="50501" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -204,8 +209,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.387" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.387" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
       </set>
     </attachedChunks>
   </component>
@@ -223,6 +228,7 @@
       <workItem from="1730823445290" duration="911000" />
       <workItem from="1730826759419" duration="15013000" />
       <workItem from="1730892441720" duration="36903000" />
+      <workItem from="1730941810539" duration="3108000" />
     </task>
     <task id="LOCAL-00001" summary="Commit para o gustavo terminar a estilização do site">
       <option name="closed" value="true" />
@@ -426,6 +432,20 @@
     <option name="LAST_COMMIT_MESSAGE" value="commitando a pagina intermediaria" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/pages/permissaoVaga.jsp</url>
+          <line>67</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/permissaoVaga/ServletAutorizarPermissaoVaga.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
         <watch expression="e" language="JAVA" />

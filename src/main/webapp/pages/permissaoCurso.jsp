@@ -86,13 +86,13 @@
                     <form action="autorizarPermissao_Curso" method="post">
                         <%%>
                         <input type="hidden" name="id" value="<%=curso.getId()%>">
-                        <button class="action permitido"
+                        <button class="action view"
                                 data-id="<%= curso.getId() %>"
                                 data-tipo="<%= curso.getStatus() %>"
                                 data-nome="<%= curso.getNome() %>"
                                 data-idEmpresa="<%= curso.getIdConta() %>"
                                 data-descricao="<%= curso.getDescricao() %>">
-                            ><img src="img/correto.png" alt="excluir setor"></button>
+                            <img src="img/olho.png" alt="excluir setor"></button>
                     </form>
                 </div>
                 <%

@@ -14,7 +14,14 @@ public class ServletAutorizarPermissaoCurso extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // Obtém o ID do curso a partir da requisição.
         String idCursoParam = req.getParameter("id_curso");
-        UUID idCurso = UUID.fromString(idCursoParam);
+        UUID idCurso;
+        try {
+            idCurso = UUID.fromString(idCursoParam);
+        } catch (IllegalArgumentException e) {
+            req.setAttribute("error", "ID do curso inválido.");
+            req.getRequestDispatcher("pages/errorPage.jsp").forward(req, res);
+            return;
+        }
 
         // Instancia o DAO para interagir com o banco de dados.
         PermissaoCursoDAO permissaoCursoDAO = new PermissaoCursoDAO();

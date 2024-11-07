@@ -12,15 +12,30 @@ document.addEventListener("DOMContentLoaded", function() {
     const popupADM = document.getElementById('popupID');
 
     editADM.forEach(button => {
-        button.addEventListener('click', togglePopupedit);
+        button.addEventListener('click', (e) => togglePopupedit(e));
     });
 
     if (cancelADM) {
         cancelADM.addEventListener('click', cancelPopup);
     }
 
-    function togglePopupedit() {
+    function togglePopupedit(e) {
         popupADM.style.display = popupADM.style.display === 'none' ? 'flex' : 'none';
+        let uuid = document.getElementById('uuid');
+        uuid.value = e.currentTarget.getAttribute('data-id');
+        uuid.disabled = true;
+        let tipo = document.getElementById('id_tipo');
+        tipo.value = e.currentTarget.getAttribute('data-tipo');
+        tipo.disabled = true;
+        let nome = document.getElementById('nome');
+        nome.value = e.currentTarget.getAttribute('data-nome');
+        nome.disabled = true;
+        let idEmpresa = document.getElementById('id_empresa');
+        idEmpresa.value = e.currentTarget.getAttribute('data-idEmpresa');
+        idEmpresa.disabled = true;
+        let descricao = document.getElementById('descricao');
+        descricao.value = e.currentTarget.getAttribute('data-descricao');
+        descricao.disabled = true;
     }
 
     function cancelPopup() {
