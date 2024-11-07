@@ -1,5 +1,5 @@
 # Fase 1: Build do projeto
-FROM maven:3.8.3-openjdk-17 AS build
+FROM maven:3.8.3-openjdk-21 AS build
 
 WORKDIR /app
 
