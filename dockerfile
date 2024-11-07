@@ -8,7 +8,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Realiza o build do projeto, empacotando-o como um arquivo WAR
-RUN mvn clean package -DskipTests
+RUN mvn clean packages -DskipTests
 
 # Fase 2: Execução com Tomcat
 FROM tomcat:10.1.19-jdk11
