@@ -1,23 +1,17 @@
-# Fase 1: Build do projeto
 FROM maven:3.8.3-openjdk-17 AS build
-
+# Define o diretório de trabalho
 WORKDIR /app
-
-# Copia o arquivo POM e o código-fonte
-COPY pom.xml .
-COPY src ./src
-
-# Realiza o build do projeto, empacotando-o como um arquivo WAR
-RUN mvn clean packages -DskipTests
-
-# Fase 2: Execução com Tomcat
-FROM tomcat:10.1.19-jdk11
-
-# Copia o arquivo WAR gerado para o diretório de deploy do Tomcat
-COPY --from=build /app/target/CRUD_Site-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/app.war
-
-# Expõe a porta 8080 para acesso ao aplicativo
+# Copia o arquivo pom.xml e as dependências necessárias para o diretório de trabalho
+COPY . .
+# Executa o comando Maven para construir o projeto
+RUN mvn clean package -DskipTests
+# Etapa 2: Imagem de execução com Tomcat
+FROM tomcat:10.0.12-jdk17-openjdk-slim
+# Remove o aplicativo padrão do Tomcat
+RUN rm -rf /usr/local/tomcat/webapps/*
+# Copia o arquivo WAR do build para o diretório webapps do Tomcat
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
+# Exponha a porta padrão do Tomcat
 EXPOSE 8080
-
-# Define o comando para iniciar o Tomcat
+# Inicia o Tomcat
 CMD ["catalina.sh", "run"]
