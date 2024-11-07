@@ -1,0 +1,828 @@
+Index: src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.dao;\r\n\r\n// Importando a classe Permissao_Curso para manipular permissões de cursos\r\nimport org.example.crud_site.model.Curso;\r\nimport org.example.crud_site.model.PermissaoCurso;\r\n\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.UUID;\r\n\r\n// Classe Permissao_CursoDAO para manipulação dos dados de permissão de cursos no banco de dados\r\npublic class PermissaoCursoDAO {\r\n\r\n    // Objeto de conexão com o banco de dados\r\n    private Conexao conexao;\r\n\r\n    // Construtor que inicializa a conexão com o banco de dados\r\n    public PermissaoCursoDAO() {\r\n        conexao = new Conexao();\r\n    }\r\n\r\n    // Método para autorizar a permissão de um curso\r\n    public boolean autorizarPermissao(UUID id_Curso) {\r\n\r\n        // Conecta ao banco de dados\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"UPDATE Permissao_Curso SET permissao = TRUE WHERE id_curso = ?\")){\r\n\r\n            // Define o valor do parâmetro na instrução SQL\r\n            pstmt.setObject(1, id_Curso);\r\n\r\n            // Executa o comando SQL e retorna verdadeiro se a atualização for bem-sucedida\r\n            return pstmt.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            // Retorna falso caso ocorra uma exceção\r\n            return false;\r\n\r\n        } finally {\r\n            // Desconecta do banco de dados\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para negar a permissão de um curso\r\n    public boolean negarPermissao(UUID id_Curso) {\r\n\r\n        // Conecta ao banco de dados\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"UPDATE Permissao_Curso SET permissao = FALSE WHERE id_curso = ?\")){\r\n\r\n            // Define o valor do parâmetro na instrução SQL\r\n            pstmt.setObject(1, id_Curso);\r\n\r\n            // Executa o comando SQL e retorna verdadeiro se a atualização for bem-sucedida\r\n            return pstmt.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            // Retorna falso caso ocorra uma exceção\r\n            return false;\r\n\r\n        } finally {\r\n            // Desconecta do banco de dados\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para listar todas as permissões de cursos\r\n    public List<PermissaoCurso> listarPermissoesCurso() {\r\n\r\n        // Conecta ao banco de dados\r\n        conexao.conectar();\r\n        // Cria uma lista vazia de Permissao_Curso\r\n        List<PermissaoCurso> permissoes_Curso = new ArrayList<>();\r\n\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"SELECT * FROM Permissao_Curso\")){\r\n\r\n            // Executa a instrução SQL e armazena os resultados em um ResultSet\r\n            ResultSet rs = pstmt.executeQuery();\r\n\r\n            // Processa cada registro do ResultSet e adiciona à lista\r\n            while (rs.next()) {\r\n                UUID id_Conta = (UUID) rs.getObject(2);\r\n                boolean permissao = rs.getBoolean(3);\r\n                String dt_Solicitacao = rs.getString(4);\r\n                String dt_Autorizacao = rs.getString(5);\r\n                UUID id_Curso = (UUID) rs.getObject(6);\r\n                UUID id_Autorizador = (UUID) rs.getObject(7);\r\n\r\n                // Cria um objeto Permissao_Curso e adiciona na lista\r\n                PermissaoCurso permissao_Curso = new PermissaoCurso(id_Autorizador,id_Curso, dt_Autorizacao, dt_Solicitacao, permissao, id_Conta, id_Conta);\r\n                permissoes_Curso.add(permissao_Curso);\r\n            }\r\n\r\n            // Retorna a lista de permissões de cursos\r\n            return permissoes_Curso;\r\n\r\n        } catch (SQLException e) {\r\n            // Retorna null caso ocorra uma exceção\r\n            return null;\r\n\r\n        } finally {\r\n            // Desconecta do banco de dados\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para buscar uma permissão de curso pelo ID, incluindo atributos de Curso\r\n    public Curso buscarPermissaoCursoPorId(UUID id) {\r\n\r\n        // Conecta ao banco de dados\r\n        Curso curso = null;\r\n        try {\r\n            conexao.conectar();\r\n\r\n            PreparedStatement pstmt = conexao.getConn().prepareStatement(\"SELECT * FROM curso WHERE id = ?\");\r\n            // Define o valor do parâmetro na instrução SQL\r\n            pstmt.setObject(1, id);\r\n\r\n            // Executa a consulta e armazena o resultado em ResultSet\r\n            ResultSet rs = pstmt.executeQuery();\r\n\r\n            // Verifica se o ResultSet contém algum registro\r\n            if (rs.next()) {\r\n                UUID idConta = (UUID) rs.getObject(1);\r\n                String nome  = rs.getString(2);\r\n                String descricao = rs.getString(3);\r\n                UUID idCurso = (UUID) rs.getObject(4);\r\n                UUID idAutorizador = (UUID) rs.getObject(5);\r\n\r\n                // Cria e retorna um objeto Permissao_Curso com os dados obtidos\r\n                curso = new Curso(idConta, nome, descricao, idCurso, idAutorizador);\r\n            }\r\n            return curso;\r\n        } catch (SQLException e) {\r\n            // Retorna null caso ocorra uma exceção\r\n            return null;\r\n\r\n        } finally {\r\n            // Desconecta do banco de dados\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java b/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java
+--- a/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java	(revision 6b1e98dcb7fe091ee1ab4fd8d4574e480bf75414)
++++ b/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java	(date 1730944360717)
+@@ -1,6 +1,6 @@
+ package org.example.crud_site.dao;
+ 
+-// Importando a classe Permissao_Curso para manipular permissões de cursos
++// Importa as classes Curso e PermissaoCurso para manipulação dos dados relacionados
+ import org.example.crud_site.model.Curso;
+ import org.example.crud_site.model.PermissaoCurso;
+ 
+@@ -11,77 +11,74 @@
+ import java.util.List;
+ import java.util.UUID;
+ 
+-// Classe Permissao_CursoDAO para manipulação dos dados de permissão de cursos no banco de dados
++// Classe PermissaoCursoDAO para operações CRUD na tabela Permissao_Curso
+ public class PermissaoCursoDAO {
+ 
+-    // Objeto de conexão com o banco de dados
++    // Objeto para gerenciar a conexão com o banco de dados
+     private Conexao conexao;
+ 
+-    // Construtor que inicializa a conexão com o banco de dados
++    // Construtor que inicializa uma nova conexão
+     public PermissaoCursoDAO() {
+         conexao = new Conexao();
+     }
+ 
+     // Método para autorizar a permissão de um curso
+     public boolean autorizarPermissao(UUID id_Curso) {
+-
+         // Conecta ao banco de dados
+         conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE Permissao_Curso SET permissao = TRUE WHERE id_curso = ?")){
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE Permissao_Curso SET permissao = TRUE WHERE id_curso = ?")) {
+ 
+-            // Define o valor do parâmetro na instrução SQL
++            // Define o valor do parâmetro da instrução SQL
+             pstmt.setObject(1, id_Curso);
+ 
+-            // Executa o comando SQL e retorna verdadeiro se a atualização for bem-sucedida
++            // Retorna verdadeiro se a atualização foi bem-sucedida
+             return pstmt.executeUpdate() > 0;
+ 
+         } catch (SQLException e) {
+-            // Retorna falso caso ocorra uma exceção
++            // Retorna falso em caso de erro
+             return false;
+ 
+         } finally {
+-            // Desconecta do banco de dados
++            // Fecha a conexão com o banco de dados
+             conexao.desconectar();
+         }
+     }
+ 
+     // Método para negar a permissão de um curso
+     public boolean negarPermissao(UUID id_Curso) {
+-
+         // Conecta ao banco de dados
+         conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE Permissao_Curso SET permissao = FALSE WHERE id_curso = ?")){
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE Permissao_Curso SET permissao = FALSE WHERE id_curso = ?")) {
+ 
+-            // Define o valor do parâmetro na instrução SQL
++            // Define o valor do parâmetro da instrução SQL
+             pstmt.setObject(1, id_Curso);
+ 
+-            // Executa o comando SQL e retorna verdadeiro se a atualização for bem-sucedida
++            // Retorna verdadeiro se a atualização foi bem-sucedida
+             return pstmt.executeUpdate() > 0;
+ 
+         } catch (SQLException e) {
+-            // Retorna falso caso ocorra uma exceção
++            // Retorna falso em caso de erro
+             return false;
+ 
+         } finally {
+-            // Desconecta do banco de dados
++            // Fecha a conexão com o banco de dados
+             conexao.desconectar();
+         }
+     }
+ 
+     // Método para listar todas as permissões de cursos
+     public List<PermissaoCurso> listarPermissoesCurso() {
+-
+         // Conecta ao banco de dados
+         conexao.conectar();
+-        // Cria uma lista vazia de Permissao_Curso
++        // Cria uma lista vazia para armazenar as permissões de cursos
+         List<PermissaoCurso> permissoes_Curso = new ArrayList<>();
+ 
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM Permissao_Curso")){
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM Permissao_Curso")) {
+ 
+-            // Executa a instrução SQL e armazena os resultados em um ResultSet
++            // Executa a instrução SQL e armazena os resultados no ResultSet
+             ResultSet rs = pstmt.executeQuery();
+ 
+-            // Processa cada registro do ResultSet e adiciona à lista
++            // Itera sobre os registros do ResultSet e os adiciona na lista
+             while (rs.next()) {
+                 UUID id_Conta = (UUID) rs.getObject(2);
+                 boolean permissao = rs.getBoolean(3);
+@@ -90,8 +87,8 @@
+                 UUID id_Curso = (UUID) rs.getObject(6);
+                 UUID id_Autorizador = (UUID) rs.getObject(7);
+ 
+-                // Cria um objeto Permissao_Curso e adiciona na lista
+-                PermissaoCurso permissao_Curso = new PermissaoCurso(id_Autorizador,id_Curso, dt_Autorizacao, dt_Solicitacao, permissao, id_Conta, id_Conta);
++                // Cria um objeto PermissaoCurso e o adiciona à lista
++                PermissaoCurso permissao_Curso = new PermissaoCurso(id_Autorizador, id_Curso, dt_Autorizacao, dt_Solicitacao, permissao, id_Conta, id_Conta);
+                 permissoes_Curso.add(permissao_Curso);
+             }
+ 
+@@ -99,28 +96,29 @@
+             return permissoes_Curso;
+ 
+         } catch (SQLException e) {
+-            // Retorna null caso ocorra uma exceção
++            // Retorna null em caso de erro
+             return null;
+ 
+         } finally {
+-            // Desconecta do banco de dados
++            // Fecha a conexão com o banco de dados
+             conexao.desconectar();
+         }
+     }
+ 
+     // Método para buscar uma permissão de curso pelo ID, incluindo atributos de Curso
+     public Curso buscarPermissaoCursoPorId(UUID id) {
+-
+-        // Conecta ao banco de dados
++        // Inicializa o objeto Curso como null
+         Curso curso = null;
+         try {
++            // Conecta ao banco de dados
+             conexao.conectar();
+ 
++            // Prepara a instrução SQL para buscar o curso pelo ID
+             PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM curso WHERE id = ?");
+-            // Define o valor do parâmetro na instrução SQL
++            // Define o valor do parâmetro da instrução SQL
+             pstmt.setObject(1, id);
+ 
+-            // Executa a consulta e armazena o resultado em ResultSet
++            // Executa a consulta e armazena o resultado no ResultSet
+             ResultSet rs = pstmt.executeQuery();
+ 
+             // Verifica se o ResultSet contém algum registro
+@@ -131,16 +129,17 @@
+                 UUID idCurso = (UUID) rs.getObject(4);
+                 UUID idAutorizador = (UUID) rs.getObject(5);
+ 
+-                // Cria e retorna um objeto Permissao_Curso com os dados obtidos
++                // Cria e retorna um objeto Curso com os dados obtidos
+                 curso = new Curso(idConta, nome, descricao, idCurso, idAutorizador);
+             }
+             return curso;
++
+         } catch (SQLException e) {
+-            // Retorna null caso ocorra uma exceção
++            // Retorna null em caso de erro
+             return null;
+ 
+         } finally {
+-            // Desconecta do banco de dados
++            // Fecha a conexão com o banco de dados
+             conexao.desconectar();
+         }
+     }
+Index: src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.dao;\r\n\r\n// Importando a classe Permissao_Vaga para usar os seus atributos e métodos.\r\nimport org.example.crud_site.model.PermissaoVaga;\r\nimport org.example.crud_site.model.Vaga;\r\n\r\n// Importando a classe SQLException para tratar os erros de SQL.\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\n\r\n// Importando a classe ArrayList para criar uma lista de permissões.\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n// Importando a classe UUID para usar nos ids.\r\nimport java.util.UUID;\r\n\r\n// Classe Permissao_VagaDAO\r\npublic class PermissaoVagaDAO {\r\n\r\n    // Objeto que acessa os atributos que gerenciam o banco de dados.\r\n    private Conexao conexao;\r\n\r\n    // Construtor atribui a conexao uma nova Conexao() com os atributos da classe Conexao.\r\n    public PermissaoVagaDAO() {\r\n        conexao = new Conexao();\r\n    }\r\n\r\n    // Método para autorizar a permissão de uma vaga.\r\n    public boolean autorizarPermissao(UUID id_Vaga) {\r\n\r\n        // Conecta ao banco de dados.\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"UPDATE permissao_vaga SET permissao = TRUE WHERE id_vaga = ?\")) {\r\n\r\n            // Define os valores dos parâmetros na consulta SQL.\r\n            pstmt.setObject(1, id_Vaga);\r\n\r\n            // Retorna se o comando SQL foi executado com sucesso.\r\n            return pstmt.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            // Retorna false se ocorrer algum erro na execução do comando SQL.\r\n            return false;\r\n        } finally {\r\n            // Desconecta do banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para negar a permissão de uma vaga.\r\n    public boolean negarPermissao(UUID id_Vaga) {\r\n\r\n        // Conecta ao banco de dados.\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"UPDATE permissao_vaga SET permissao = FALSE WHERE id_vaga = ?\")){\r\n\r\n            // Define os valores dos parâmetros na consulta SQL.\r\n            pstmt.setObject(1, id_Vaga);\r\n\r\n            // Retorna se o comando SQL foi executado com sucesso.\r\n            return pstmt.executeUpdate() > 0;\r\n\r\n        } catch (SQLException e) {\r\n            // Retorna false se ocorrer algum erro na execução do comando SQL.\r\n            return false;\r\n        } finally {\r\n            // Desconecta do banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para listar todas as permissões de vagas.\r\n    public List<PermissaoVaga> listarPermissoesVaga() {\r\n\r\n        // Conecta ao banco de dados.\r\n        conexao.conectar();\r\n        // Cria uma lista vazia de Permissao_Vaga.\r\n        List<PermissaoVaga> permissoes_Vaga = new ArrayList<>();\r\n\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"SELECT * FROM permissao_vaga\")){\r\n\r\n            // Prepara a instrução SQL para ser executada.\r\n\r\n\r\n            // Executa a instrução SQL e armazena os resultados em um ResultSet.\r\n            ResultSet rs = pstmt.executeQuery();\r\n\r\n            // Enquanto houver registros no ResultSet, adiciona os dados na lista de permissões.\r\n            while (rs.next()) {\r\n\r\n                // Pega os dados de cada registro e cria um objeto Permissao_Vaga.\r\n                UUID id = (UUID) rs.getObject(1);\r\n                UUID id_Empresa = (UUID) rs.getObject(2);\r\n                boolean permissao = rs.getBoolean(3);\r\n                String dt_Solicitacao = rs.getString(4);\r\n                String dt_Autorizacao = rs.getString(5);\r\n                UUID id_Vaga = (UUID) rs.getObject(6);\r\n                UUID id_Autorizador = (UUID) rs.getObject(7);\r\n\r\n                // Cria um objeto Permissao_Vaga e adiciona na lista.\r\n                PermissaoVaga permissao_Vaga = new PermissaoVaga(id, id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);\r\n                permissoes_Vaga.add(permissao_Vaga);\r\n            }\r\n\r\n            // Retorna a lista de permissões.\r\n            return permissoes_Vaga;\r\n\r\n        } catch (SQLException e) {\r\n            // Retorna null caso ocorra algum erro.\r\n            return null;\r\n\r\n        } finally {\r\n            // Desconecta do banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n    // Método para buscar uma permissão de vaga pelo ID, incluindo atributos de Vaga\r\n    public Vaga buscarPermissaoVagaPorId(UUID id) {\r\n\r\n        // Conecta ao banco de dados\r\n        conexao.conectar();\r\n        Vaga vaga = null;\r\n        try\r\n        {\r\n            // Cria a instrução SQL para buscar uma permissão de vaga pelo ID\r\n            PreparedStatement pstmt = conexao.getConn().prepareStatement(\"SELECT * FROM vaga WHERE id = ?\");\r\n            // Define o valor do parâmetro na instrução SQL\r\n            pstmt.setObject(1, id);\r\n\r\n            // Executa a consulta e armazena o resultado em ResultSet\r\n            ResultSet rs = pstmt.executeQuery();\r\n\r\n            // Verifica se o ResultSet contém algum registro\r\n            if (rs.next()) {\r\n                UUID idId = (UUID) rs.getObject(1);\r\n                String nome = rs.getString(2);\r\n                String descricao = rs.getString(3);\r\n                UUID tipo_vaga = (UUID) rs.getObject(4);\r\n                UUID id_Empresa = (UUID) rs.getObject(5);\r\n\r\n\r\n                // Cria e retorna um objeto Permissao_Vaga com os dados obtidos\r\n                vaga = new Vaga(idId, tipo_vaga, descricao, nome, id_Empresa);\r\n            }\r\n            return vaga;\r\n        } catch (SQLException e) {\r\n            // Retorna null caso ocorra uma exceção\r\n            return null;\r\n\r\n        } finally {\r\n            // Desconecta do banco de dados\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java b/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java
+--- a/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java	(revision 6b1e98dcb7fe091ee1ab4fd8d4574e480bf75414)
++++ b/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java	(date 1730944562272)
+@@ -1,96 +1,86 @@
+ package org.example.crud_site.dao;
+ 
+-// Importando a classe Permissao_Vaga para usar os seus atributos e métodos.
++// Importando a classe PermissaoVaga e Vaga para manipulação dos dados de permissões de vaga
+ import org.example.crud_site.model.PermissaoVaga;
+ import org.example.crud_site.model.Vaga;
+ 
+-// Importando a classe SQLException para tratar os erros de SQL.
++// Importa as classes necessárias para manipulação de SQL e listas
+ import java.sql.PreparedStatement;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
+-
+-// Importando a classe ArrayList para criar uma lista de permissões.
+ import java.util.ArrayList;
+ import java.util.List;
+-
+-// Importando a classe UUID para usar nos ids.
+ import java.util.UUID;
+ 
+-// Classe Permissao_VagaDAO
++// Classe PermissaoVagaDAO para manipulação das permissões de vaga no banco de dados
+ public class PermissaoVagaDAO {
+ 
+-    // Objeto que acessa os atributos que gerenciam o banco de dados.
++    // Objeto para gerenciar a conexão com o banco de dados
+     private Conexao conexao;
+ 
+-    // Construtor atribui a conexao uma nova Conexao() com os atributos da classe Conexao.
++    // Construtor que inicializa uma nova conexão
+     public PermissaoVagaDAO() {
+         conexao = new Conexao();
+     }
+ 
+-    // Método para autorizar a permissão de uma vaga.
++    // Método para autorizar a permissão de uma vaga
+     public boolean autorizarPermissao(UUID id_Vaga) {
+-
+-        // Conecta ao banco de dados.
++        // Conecta ao banco de dados
+         conexao.conectar();
+         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE permissao_vaga SET permissao = TRUE WHERE id_vaga = ?")) {
+ 
+-            // Define os valores dos parâmetros na consulta SQL.
++            // Define o valor do parâmetro da consulta SQL
+             pstmt.setObject(1, id_Vaga);
+ 
+-            // Retorna se o comando SQL foi executado com sucesso.
++            // Retorna verdadeiro se a atualização foi bem-sucedida
+             return pstmt.executeUpdate() > 0;
+ 
+         } catch (SQLException e) {
+-            // Retorna false se ocorrer algum erro na execução do comando SQL.
++            // Retorna falso em caso de erro
+             return false;
++
+         } finally {
+-            // Desconecta do banco de dados.
++            // Desconecta do banco de dados
+             conexao.desconectar();
+         }
+     }
+ 
+-    // Método para negar a permissão de uma vaga.
++    // Método para negar a permissão de uma vaga
+     public boolean negarPermissao(UUID id_Vaga) {
+-
+-        // Conecta ao banco de dados.
++        // Conecta ao banco de dados
+         conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE permissao_vaga SET permissao = FALSE WHERE id_vaga = ?")){
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE permissao_vaga SET permissao = FALSE WHERE id_vaga = ?")) {
+ 
+-            // Define os valores dos parâmetros na consulta SQL.
++            // Define o valor do parâmetro da consulta SQL
+             pstmt.setObject(1, id_Vaga);
+ 
+-            // Retorna se o comando SQL foi executado com sucesso.
++            // Retorna verdadeiro se a atualização foi bem-sucedida
+             return pstmt.executeUpdate() > 0;
+ 
+         } catch (SQLException e) {
+-            // Retorna false se ocorrer algum erro na execução do comando SQL.
++            // Retorna falso em caso de erro
+             return false;
++
+         } finally {
+-            // Desconecta do banco de dados.
++            // Desconecta do banco de dados
+             conexao.desconectar();
+         }
+     }
+ 
+-    // Método para listar todas as permissões de vagas.
++    // Método para listar todas as permissões de vaga
+     public List<PermissaoVaga> listarPermissoesVaga() {
+-
+-        // Conecta ao banco de dados.
++        // Conecta ao banco de dados
+         conexao.conectar();
+-        // Cria uma lista vazia de Permissao_Vaga.
++        // Cria uma lista para armazenar as permissões de vaga
+         List<PermissaoVaga> permissoes_Vaga = new ArrayList<>();
+ 
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM permissao_vaga")){
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM permissao_vaga")) {
+ 
+-            // Prepara a instrução SQL para ser executada.
+-
+-
+-            // Executa a instrução SQL e armazena os resultados em um ResultSet.
++            // Executa a consulta SQL e armazena o resultado no ResultSet
+             ResultSet rs = pstmt.executeQuery();
+ 
+-            // Enquanto houver registros no ResultSet, adiciona os dados na lista de permissões.
++            // Itera sobre os registros do ResultSet e os adiciona na lista
+             while (rs.next()) {
+-
+-                // Pega os dados de cada registro e cria um objeto Permissao_Vaga.
+                 UUID id = (UUID) rs.getObject(1);
+                 UUID id_Empresa = (UUID) rs.getObject(2);
+                 boolean permissao = rs.getBoolean(3);
+@@ -99,40 +89,38 @@
+                 UUID id_Vaga = (UUID) rs.getObject(6);
+                 UUID id_Autorizador = (UUID) rs.getObject(7);
+ 
+-                // Cria um objeto Permissao_Vaga e adiciona na lista.
++                // Cria um objeto PermissaoVaga e o adiciona à lista
+                 PermissaoVaga permissao_Vaga = new PermissaoVaga(id, id_Empresa, permissao, dt_Solicitacao, dt_Autorizacao, id_Vaga, id_Autorizador);
+                 permissoes_Vaga.add(permissao_Vaga);
+             }
+ 
+-            // Retorna a lista de permissões.
++            // Retorna a lista de permissões de vaga
+             return permissoes_Vaga;
+ 
+         } catch (SQLException e) {
+-            // Retorna null caso ocorra algum erro.
++            // Retorna null em caso de erro
+             return null;
+ 
+         } finally {
+-            // Desconecta do banco de dados.
++            // Desconecta do banco de dados
+             conexao.desconectar();
+         }
+     }
++
+     // Método para buscar uma permissão de vaga pelo ID, incluindo atributos de Vaga
+     public Vaga buscarPermissaoVagaPorId(UUID id) {
+-
+         // Conecta ao banco de dados
+         conexao.conectar();
+         Vaga vaga = null;
+-        try
+-        {
+-            // Cria a instrução SQL para buscar uma permissão de vaga pelo ID
++        try {
++            // Prepara a consulta SQL para buscar a vaga pelo ID
+             PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM vaga WHERE id = ?");
+-            // Define o valor do parâmetro na instrução SQL
+             pstmt.setObject(1, id);
+ 
+-            // Executa a consulta e armazena o resultado em ResultSet
++            // Executa a consulta e armazena o resultado no ResultSet
+             ResultSet rs = pstmt.executeQuery();
+ 
+-            // Verifica se o ResultSet contém algum registro
++            // Verifica se há registros no ResultSet
+             if (rs.next()) {
+                 UUID idId = (UUID) rs.getObject(1);
+                 String nome = rs.getString(2);
+@@ -140,13 +128,13 @@
+                 UUID tipo_vaga = (UUID) rs.getObject(4);
+                 UUID id_Empresa = (UUID) rs.getObject(5);
+ 
+-
+-                // Cria e retorna um objeto Permissao_Vaga com os dados obtidos
++                // Cria um objeto Vaga com os dados obtidos e o retorna
+                 vaga = new Vaga(idId, tipo_vaga, descricao, nome, id_Empresa);
+             }
+             return vaga;
++
+         } catch (SQLException e) {
+-            // Retorna null caso ocorra uma exceção
++            // Retorna null em caso de erro
+             return null;
+ 
+         } finally {
+@@ -154,5 +142,4 @@
+             conexao.desconectar();
+         }
+     }
+-
+ }
+Index: src/main/java/org/example/crud_site/dao/SetorDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.crud_site.dao;\r\n\r\n// Importando a classe Setor para utilizar seus atributos e métodos.\r\nimport org.example.crud_site.model.Setor;\r\n\r\n// Importando a classe SQLException para tratar os erros de SQL.\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\n\r\n// Importando a classe ArrayList para criar uma lista de setores.\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n// Importando a classe UUID para usar nos ids.\r\nimport java.util.UUID;\r\nimport java.util.function.Predicate;\r\n\r\n// Classe SetorDAO\r\npublic class SetorDAO {\r\n\r\n    // Objeto que acessa os atributos que gerenciam a conexão com o banco de dados.\r\n    private Conexao conexao;\r\n\r\n    // Construtor que inicializa a conexão com o banco de dados.\r\n    public SetorDAO() {\r\n        conexao = new Conexao();\r\n    }\r\n\r\n    // Método para inserir um registro na tabela Setor.\r\n    public boolean inserir(String setor) {\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"INSERT INTO Setor (nome) VALUES (?)\")){\r\n\r\n            // Define os valores dos parâmetros da consulta.\r\n            pstmt.setString(1, setor);\r\n\r\n            // Executa a instrução SQL e retorna true se bem-sucedido.\r\n            return pstmt.executeUpdate() > 0;\r\n        } catch (SQLException e) {\r\n            // Retorna false se ocorrer algum erro.\r\n            return false;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para alterar o nome de um setor existente na tabela Setor.\r\n    public boolean alterarNomeSetor(UUID uuid, String novoSetor) {\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"UPDATE Setor SET nome = ? WHERE id = ?\")){\r\n\r\n            // Define os valores dos parâmetros da consulta SQL.\r\n            pstmt.setString(1, novoSetor);\r\n            pstmt.setObject(2, uuid);\r\n\r\n            // Executa a instrução SQL e verifica se algum registro foi alterado.\r\n            int rows = pstmt.executeUpdate();\r\n            if (rows == 0) {\r\n                throw new RuntimeException(\"Nenhum registro encontrado.\");\r\n            }\r\n\r\n            // Retorna true se a alteração foi bem-sucedida.\r\n            return rows > 0;\r\n        } catch (SQLException e) {\r\n            // Retorna false em caso de erro.\r\n            return false;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para excluir um setor da tabela Setor.\r\n    public boolean excluirSetor(String nomeSetor) {\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"DELETE FROM Setor WHERE nome = ?\")){\r\n\r\n            // Define o valor do parâmetro na consulta SQL.\r\n            pstmt.setObject(1, nomeSetor);\r\n\r\n            // Executa a instrução SQL.\r\n            pstmt.execute();\r\n            // Retorna true se a exclusão foi bem-sucedida.\r\n            return true;\r\n        } catch (SQLException e) {\r\n            // Lança uma exceção em caso de erro.\r\n            throw new RuntimeException(\"Erro ao excluir o registro.\", e);\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n    }\r\n\r\n    // Método para buscar um setor pelo nome na tabela Setor.\r\n    public Setor buscarSetor(String nomeSetor) {\r\n\r\n        // Cria um objeto Setor para armazenar os dados obtidos da consulta.\r\n        Setor setor;\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"SELECT * FROM Setor WHERE nome = ?\")){\r\n            // Define o valor do parâmetro na consulta SQL.\r\n            pstmt.setString(1, nomeSetor);\r\n\r\n            // Executa a consulta e armazena o resultado no ResultSet.\r\n            ResultSet rs = pstmt.executeQuery();\r\n\r\n            // Verifica se o ResultSet contém dados.\r\n            if (rs.next()) {\r\n                // Obtém o nome do setor do ResultSet.\r\n                String nome = rs.getString(1);\r\n\r\n                // Cria um novo objeto Setor com os dados obtidos.\r\n                return new Setor(nome);\r\n            }\r\n            // Retorna null se não houver nenhum setor com o nome informado.\r\n            return null;\r\n        } catch (SQLException e) {\r\n            // Retorna null em caso de erro.\r\n            return null;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n\r\n        // Retorna o objeto Setor encontrado.\r\n\r\n    }\r\n\r\n    // Método para listar todos os setores da tabela Setor.\r\n    public List<Setor> listarSetores() {\r\n\r\n\r\n        // Cria uma lista vazia para armazenar os setores.\r\n        List<Setor> setores = new ArrayList<>();\r\n\r\n        // Estabelece a conexão com o banco de dados.\r\n        conexao.conectar();\r\n        try (PreparedStatement pstmt = conexao.getConn().prepareStatement(\"SELECT * FROM Setor\")) {\r\n\r\n            // Prepara e executa a consulta SQL.\r\n            ResultSet rs = pstmt.executeQuery();\r\n\r\n            // Percorre o ResultSet e armazena os dados dos setores na lista.\r\n            while (rs.next()) {\r\n\r\n                // Pega os dados do setor do ResultSet.\r\n                UUID id = (UUID) rs.getObject(1);\r\n                String nome = rs.getString(2);\r\n\r\n                // Cria um objeto Setor com os dados obtidos.\r\n                Setor setor = new Setor(id, nome);\r\n\r\n                // Adiciona o setor à lista.\r\n                setores.add(setor);\r\n            }\r\n        } catch (SQLException e) {\r\n            // Retorna null em caso de erro.\r\n            return null;\r\n        } finally {\r\n            // Fecha a conexão com o banco de dados.\r\n            conexao.desconectar();\r\n        }\r\n\r\n        // Retorna a lista de setores.\r\n        return setores;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/SetorDAO.java b/src/main/java/org/example/crud_site/dao/SetorDAO.java
+--- a/src/main/java/org/example/crud_site/dao/SetorDAO.java	(revision 6b1e98dcb7fe091ee1ab4fd8d4574e480bf75414)
++++ b/src/main/java/org/example/crud_site/dao/SetorDAO.java	(date 1730945027895)
+@@ -1,177 +1,154 @@
+ package org.example.crud_site.dao;
+ 
+-// Importando a classe Setor para utilizar seus atributos e métodos.
++// Importando a classe Setor para manipulação dos dados do setor
+ import org.example.crud_site.model.Setor;
+ 
+-// Importando a classe SQLException para tratar os erros de SQL.
++// Importando classes para manipulação de SQL e listas
+ import java.sql.PreparedStatement;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
+-
+-// Importando a classe ArrayList para criar uma lista de setores.
+ import java.util.ArrayList;
+ import java.util.List;
+-
+-// Importando a classe UUID para usar nos ids.
+ import java.util.UUID;
+-import java.util.function.Predicate;
+ 
+-// Classe SetorDAO
++// Classe SetorDAO para operações de CRUD na tabela Setor
+ public class SetorDAO {
+ 
+-    // Objeto que acessa os atributos que gerenciam a conexão com o banco de dados.
++    // Objeto que gerencia a conexão com o banco de dados
+     private Conexao conexao;
+ 
+-    // Construtor que inicializa a conexão com o banco de dados.
++    // Construtor que inicializa a conexão
+     public SetorDAO() {
+         conexao = new Conexao();
+     }
+ 
+-    // Método para inserir um registro na tabela Setor.
++    // Método para inserir um novo setor na tabela Setor
+     public boolean inserir(String setor) {
+-
+-        // Estabelece a conexão com o banco de dados.
++        // Conecta ao banco de dados
+         conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO Setor (nome) VALUES (?)")){
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO Setor (nome) VALUES (?)")) {
+ 
+-            // Define os valores dos parâmetros da consulta.
++            // Define o valor do parâmetro da consulta SQL
+             pstmt.setString(1, setor);
+ 
+-            // Executa a instrução SQL e retorna true se bem-sucedido.
++            // Retorna true se a inserção foi bem-sucedida
+             return pstmt.executeUpdate() > 0;
++
+         } catch (SQLException e) {
+-            // Retorna false se ocorrer algum erro.
++            // Retorna false em caso de erro
+             return false;
++
+         } finally {
+-            // Fecha a conexão com o banco de dados.
++            // Desconecta do banco de dados
+             conexao.desconectar();
+         }
+     }
+ 
+-    // Método para alterar o nome de um setor existente na tabela Setor.
++    // Método para alterar o nome de um setor existente na tabela Setor
+     public boolean alterarNomeSetor(UUID uuid, String novoSetor) {
+-
+-        // Estabelece a conexão com o banco de dados.
++        // Conecta ao banco de dados
+         conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE Setor SET nome = ? WHERE id = ?")){
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE Setor SET nome = ? WHERE id = ?")) {
+ 
+-            // Define os valores dos parâmetros da consulta SQL.
++            // Define os valores dos parâmetros da consulta SQL
+             pstmt.setString(1, novoSetor);
+             pstmt.setObject(2, uuid);
+ 
+-            // Executa a instrução SQL e verifica se algum registro foi alterado.
++            // Verifica se o setor foi atualizado
+             int rows = pstmt.executeUpdate();
+             if (rows == 0) {
+                 throw new RuntimeException("Nenhum registro encontrado.");
+             }
+ 
+-            // Retorna true se a alteração foi bem-sucedida.
+             return rows > 0;
++
+         } catch (SQLException e) {
+-            // Retorna false em caso de erro.
+             return false;
++
+         } finally {
+-            // Fecha a conexão com o banco de dados.
+             conexao.desconectar();
+         }
+     }
+ 
+-    // Método para excluir um setor da tabela Setor.
++    // Método para excluir um setor da tabela Setor
+     public boolean excluirSetor(String nomeSetor) {
+-
+-        // Estabelece a conexão com o banco de dados.
++        // Conecta ao banco de dados
+         conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM Setor WHERE nome = ?")){
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM Setor WHERE nome = ?")) {
+ 
+-            // Define o valor do parâmetro na consulta SQL.
++            // Define o parâmetro da consulta SQL
+             pstmt.setObject(1, nomeSetor);
+ 
+-            // Executa a instrução SQL.
++            // Executa a exclusão e retorna true se bem-sucedido
+             pstmt.execute();
+-            // Retorna true se a exclusão foi bem-sucedida.
+             return true;
++
+         } catch (SQLException e) {
+-            // Lança uma exceção em caso de erro.
+             throw new RuntimeException("Erro ao excluir o registro.", e);
++
+         } finally {
+-            // Fecha a conexão com o banco de dados.
+             conexao.desconectar();
+         }
+     }
+ 
+-    // Método para buscar um setor pelo nome na tabela Setor.
++    // Método para buscar um setor pelo nome
+     public Setor buscarSetor(String nomeSetor) {
+-
+-        // Cria um objeto Setor para armazenar os dados obtidos da consulta.
++        // Objeto Setor para armazenar o resultado
+         Setor setor;
+ 
+-        // Estabelece a conexão com o banco de dados.
++        // Conecta ao banco de dados
+         conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM Setor WHERE nome = ?")){
+-            // Define o valor do parâmetro na consulta SQL.
++        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM Setor WHERE nome = ?")) {
++
++            // Define o parâmetro da consulta SQL
+             pstmt.setString(1, nomeSetor);
+ 
+-            // Executa a consulta e armazena o resultado no ResultSet.
++            // Executa a consulta
+             ResultSet rs = pstmt.executeQuery();
+ 
+-            // Verifica se o ResultSet contém dados.
++            // Verifica se o setor existe
+             if (rs.next()) {
+-                // Obtém o nome do setor do ResultSet.
+-                String nome = rs.getString(1);
++                UUID id = (UUID) rs.getObject(1);
++                String nome = rs.getString(2);
+ 
+-                // Cria um novo objeto Setor com os dados obtidos.
+-                return new Setor(nome);
++                return new Setor(id, nome);
+             }
+-            // Retorna null se não houver nenhum setor com o nome informado.
+             return null;
++
+         } catch (SQLException e) {
+-            // Retorna null em caso de erro.
+             return null;
++
+         } finally {
+-            // Fecha a conexão com o banco de dados.
+             conexao.desconectar();
+         }
+-
+-        // Retorna o objeto Setor encontrado.
+-
+     }
+ 
+-    // Método para listar todos os setores da tabela Setor.
++    // Método para listar todos os setores
+     public List<Setor> listarSetores() {
+-
+-
+-        // Cria uma lista vazia para armazenar os setores.
+         List<Setor> setores = new ArrayList<>();
+ 
+-        // Estabelece a conexão com o banco de dados.
++        // Conecta ao banco de dados
+         conexao.conectar();
+         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM Setor")) {
+ 
+-            // Prepara e executa a consulta SQL.
++            // Executa a consulta SQL
+             ResultSet rs = pstmt.executeQuery();
+ 
+-            // Percorre o ResultSet e armazena os dados dos setores na lista.
++            // Adiciona cada setor à lista
+             while (rs.next()) {
+-
+-                // Pega os dados do setor do ResultSet.
+                 UUID id = (UUID) rs.getObject(1);
+                 String nome = rs.getString(2);
+ 
+-                // Cria um objeto Setor com os dados obtidos.
+                 Setor setor = new Setor(id, nome);
+-
+-                // Adiciona o setor à lista.
+                 setores.add(setor);
+             }
+         } catch (SQLException e) {
+-            // Retorna null em caso de erro.
+             return null;
++
+         } finally {
+-            // Fecha a conexão com o banco de dados.
+             conexao.desconectar();
+         }
+ 
+-        // Retorna a lista de setores.
+         return setores;
+     }
+ }
+Index: src/main/java/org/example/crud_site/dao/CursoDAO.java
+===================================================================
+diff --git a/src/main/java/org/example/crud_site/dao/CursoDAO.java b/src/main/java/org/example/crud_site/dao/CursoDAO.java
+deleted file mode 100644
+--- a/src/main/java/org/example/crud_site/dao/CursoDAO.java	(revision 6b1e98dcb7fe091ee1ab4fd8d4574e480bf75414)
++++ /dev/null	(revision 6b1e98dcb7fe091ee1ab4fd8d4574e480bf75414)
+@@ -1,151 +0,0 @@
+-package org.example.crud_site.dao;
+-
+-import org.example.crud_site.model.Curso;
+-
+-import java.sql.PreparedStatement;
+-import java.sql.ResultSet;
+-import java.sql.SQLException;
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.UUID;
+-
+-// Classe CursoDAO, responsável pelo CRUD na tabela Curso
+-public class CursoDAO {
+-
+-    // Objeto para gerenciar a conexão com o banco de dados
+-    private Conexao conexao;
+-
+-    // Construtor que inicializa uma nova conexão com o banco de dados
+-    public CursoDAO() {
+-        conexao = new Conexao();
+-    }
+-
+-    // Método para inserir um novo curso na tabela Curso
+-    public boolean inserirCurso(String nome, String descricao, UUID idConta) {
+-        conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO curso (nome, descricao, id_conta) VALUES (?, ?, ?)")){
+-
+-            // Define os valores dos parâmetros da consulta
+-            pstmt.setString(1, nome);
+-            pstmt.setString(2, descricao);
+-            pstmt.setObject(3, idConta);
+-
+-            // Executa a instrução SQL e retorna true se a inserção foi bem-sucedida
+-            return pstmt.executeUpdate() > 0;
+-        } catch (SQLException e) {
+-            return false;
+-        } finally {
+-            // Fecha a conexão com o banco de dados
+-            conexao.desconectar();
+-        }
+-    }
+-
+-    // Método para alterar o nome e descrição de um curso na tabela Curso
+-    public boolean alterarCurso(UUID id, String novoNome, String novaDescricao) {
+-        conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE curso SET nome = ?, descricao = ? WHERE id = ?")){
+-
+-            // Define os valores dos parâmetros na consulta SQL
+-            pstmt.setString(1, novoNome);
+-            pstmt.setString(2, novaDescricao);
+-            pstmt.setObject(3, id);
+-
+-            // Executa a instrução SQL e verifica se algum registro foi alterado
+-            int rows = pstmt.executeUpdate();
+-            if (rows == 0) {
+-                throw new RuntimeException("Nenhum registro encontrado.");
+-            }
+-            return rows > 0;
+-        } catch (SQLException e) {
+-            return false;
+-        } finally {
+-            // Fecha a conexão com o banco de dados
+-            conexao.desconectar();
+-        }
+-    }
+-
+-    // Método para excluir um curso na tabela Curso
+-    public boolean excluirCurso(UUID id) {
+-        conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("DELETE FROM curso WHERE id = ?")){
+-
+-            // Define o valor do parâmetro na consulta SQL
+-            pstmt.setObject(1, id);
+-
+-            // Executa a instrução SQL de exclusão
+-            pstmt.executeUpdate();
+-            return true;
+-        } catch (SQLException e) {
+-            return false;
+-        } finally {
+-            // Fecha a conexão com o banco de dados
+-            conexao.desconectar();
+-        }
+-    }
+-
+-    // Método para buscar um curso específico pelo ID
+-    public Curso buscarCurso(UUID id) {
+-        conexao.conectar();
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM curso WHERE id = ?")){
+-
+-            pstmt.setObject(1, id);
+-
+-            // Armazena o resultado da consulta no objeto ResultSet
+-            ResultSet rs = pstmt.executeQuery();
+-
+-            // Obtém os dados do ResultSet e cria um objeto Curso
+-            if (rs.next()) {
+-                UUID cursoId = (UUID) rs.getObject("id");
+-                String nome = rs.getString("nome");
+-                String descricao = rs.getString("descricao");
+-                char status = rs.getString("status").charAt(0);
+-                UUID idConta = (UUID) rs.getObject("id_conta");
+-
+-                Curso curso = new Curso(nome, descricao, idConta);
+-                curso.setStatus(status);
+-                return curso;
+-            }
+-            return null;
+-        } catch (SQLException e) {
+-            return null;
+-        } finally {
+-            // Fecha a conexão com o banco de dados
+-            conexao.desconectar();
+-        }
+-    }
+-
+-    // Método para listar todos os cursos na tabela Curso
+-    public List<Curso> listarCursos() {
+-
+-        // Lista para armazenar os cursos recuperados
+-        List<Curso> cursos = new ArrayList<>();
+-        conexao.conectar();
+-
+-        try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM curso")){
+-
+-            // Armazena o resultado da consulta no objeto ResultSet
+-            ResultSet rs = pstmt.executeQuery();
+-
+-            // Obtém os dados do ResultSet e armazena na lista de cursos
+-            while (rs.next()) {
+-                UUID id = (UUID) rs.getObject("id");
+-                String nome = rs.getString("nome");
+-                String descricao = rs.getString("descricao");
+-                char status = rs.getString("status").charAt(0);
+-                UUID idConta = (UUID) rs.getObject("id_conta");
+-
+-                Curso curso = new Curso(nome, descricao, idConta);
+-                curso.setStatus(status);
+-                cursos.add(curso);
+-            }
+-        } catch (SQLException e) {
+-            return null;
+-        } finally {
+-            // Fecha a conexão com o banco de dados
+-            conexao.desconectar();
+-        }
+-
+-        // Retorna a lista de cursos
+-        return cursos;
+-    }
+-}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"CRUD_Site:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"38b6207f-ec65-44fb-92b4-b8e4a5862d36\" name=\"Changes\" comment=\"commitando a pagina intermediaria\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"RESET_MODE\" value=\"HARD\" />\r\n    <option name=\"ROOT_SYNC\" value=\"SYNC\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Jefflpz&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/Jefflpz/ServletsFinalOficial.git\",\r\n    \"accountId\": \"680ddf12-abde-4a36-b030-2d765f761827\"\r\n  }\r\n}]]></component>\r\n  <component name=\"KubernetesApiPersistence\">{}</component>\r\n  <component name=\"KubernetesApiProvider\">{\r\n  &quot;isMigrated&quot;: true\r\n}</component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 6\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2oFcKUBbdh9ZW93beML8UVFe4t2\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"JavaScript Debug.tipoArquivo.jsp.executor\": \"Coverage\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"Tomcat Server.Tomcat 10.1.281.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"jdk.selected.JAVA_MODULE\": \"openjdk-21\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/jeffersonlopes-ieg/IdeaProjects/ServletsOficial/.env\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Project\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\jeffersonlopes-ieg\\IdeaProjects\\ServletsOficial\\src\\main\\webapp\\TipoVaga\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\jeffersonlopes-ieg\\IdeaProjects\\ServletsOficial\\src\\main\\webapp\\img\" />\r\n      <recent name=\"C:\\Users\\jeffersonlopes-ieg\\IdeaProjects\\ServletsOficial\\src\\main\\webapp\\css\" />\r\n      <recent name=\"C:\\Users\\jeffersonlopes-ieg\\IdeaProjects\\ServletsOficial\\src\\main\\webapp\\pages\" />\r\n      <recent name=\"C:\\Users\\jeffersonlopes-ieg\\IdeaProjects\\ServletsOficial\\src\\main\\webapp\\js\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 10.1.281\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 10.1.281\" ALTERNATIVE_JRE_ENABLED=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"CRUD_Site:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/CRUD_Site_war_exploded\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"ae50de24-bbad-40b1-80b1-a5638b40c80c\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <extension name=\"net.ashald.envfile\">\r\n        <option name=\"IS_ENABLED\" value=\"true\" />\r\n        <option name=\"IS_SUBST\" value=\"false\" />\r\n        <option name=\"IS_PATH_MACRO_SUPPORTED\" value=\"false\" />\r\n        <option name=\"IS_IGNORE_MISSING_FILES\" value=\"false\" />\r\n        <option name=\"IS_ENABLE_EXPERIMENTAL_INTEGRATIONS\" value=\"false\" />\r\n        <ENTRIES>\r\n          <ENTRY IS_ENABLED=\"true\" PARSER=\"runconfig\" IS_EXECUTABLE=\"false\" />\r\n          <ENTRY IS_ENABLED=\"true\" PARSER=\"env\" IS_EXECUTABLE=\"false\" PATH=\".env\" />\r\n        </ENTRIES>\r\n      </extension>\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"56971\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"CRUD_Site:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.387\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.387\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"38b6207f-ec65-44fb-92b4-b8e4a5862d36\" name=\"Changes\" comment=\"\" />\r\n      <created>1730468701622</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1730468701622</updated>\r\n      <workItem from=\"1730468706590\" duration=\"5392000\" />\r\n      <workItem from=\"1730488649972\" duration=\"59683000\" />\r\n      <workItem from=\"1730798531678\" duration=\"14822000\" />\r\n      <workItem from=\"1730823445290\" duration=\"911000\" />\r\n      <workItem from=\"1730826759419\" duration=\"15013000\" />\r\n      <workItem from=\"1730892441720\" duration=\"36903000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Commit para o gustavo terminar a estilização do site\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730582191046</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730582191046</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Commit para o gustavo terminar a estilização do site\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730588116298</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730588116298</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Push pra terminar o servlets\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730662815729</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730662815729</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Push pra terminar o servlets\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730663358494</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730663358494</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Push pra terminar o servlets\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730663851814</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730663851814</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"excluir dando certo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730677231159</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730677231160</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"arrumem o filtrar\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730728450579</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730728450579</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"filtrar dano certo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730730307656</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730730307656</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Inserir e excluir de todos dando certo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730822572839</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730822572839</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Inserir e deletar rodando\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730838391499</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730838391499</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Preparei para fazer o alterar\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730890432062</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730890432062</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"DAOs certos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730898291782</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730898291782</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"AJuste na PermissaoVaga\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730908430933</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730908430933</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"AJuste na PermissaoVaga\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730911561510</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730911561510</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"innitial commit do fim\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730926876349</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730926876349</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"innitial commit do fim\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730927072302</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730927072302</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"innitial commit do fim\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730927574814</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730927574815</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Commit com tudo fincionando\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730935240791</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730935240791</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Commit com tudo fincionando\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730937341189</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730937341189</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"Commit com tudo fincionando\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730939506335</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730939506335</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"commitando a pagina intermediaria\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730941040459</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730941040459</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"22\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Commit para o gustavo terminar a estilização do site\" />\r\n    <MESSAGE value=\"Push pra terminar o servlets\" />\r\n    <MESSAGE value=\"excluir dando certo\" />\r\n    <MESSAGE value=\"arrumem o filtrar\" />\r\n    <MESSAGE value=\"filtrar dano certo\" />\r\n    <MESSAGE value=\"Inserir e excluir de todos dando certo\" />\r\n    <MESSAGE value=\"Inserir e deletar rodando\" />\r\n    <MESSAGE value=\"Preparei para fazer o alterar\" />\r\n    <MESSAGE value=\"DAOs certos\" />\r\n    <MESSAGE value=\"AJuste na PermissaoVaga\" />\r\n    <MESSAGE value=\"innitial commit do fim\" />\r\n    <MESSAGE value=\"Commit com tudo fincionando\" />\r\n    <MESSAGE value=\"commitando a pagina intermediaria\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commitando a pagina intermediaria\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <watches-manager>\r\n      <configuration name=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\">\r\n        <watch expression=\"e\" language=\"JAVA\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6b1e98dcb7fe091ee1ab4fd8d4574e480bf75414)
++++ b/.idea/workspace.xml	(date 1730945028226)
+@@ -10,7 +10,11 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="commitando a pagina intermediaria">
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/CursoDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoCursoDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/PermissaoVagaDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/SetorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/SetorDAO.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -222,7 +226,7 @@
+       <workItem from="1730798531678" duration="14822000" />
+       <workItem from="1730823445290" duration="911000" />
+       <workItem from="1730826759419" duration="15013000" />
+-      <workItem from="1730892441720" duration="36903000" />
++      <workItem from="1730892441720" duration="39442000" />
+     </task>
+     <task id="LOCAL-00001" summary="Commit para o gustavo terminar a estilização do site">
+       <option name="closed" value="true" />
+@@ -392,7 +396,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1730941040459</updated>
+     </task>
+-    <option name="localTasksCounter" value="22" />
++    <task id="LOCAL-00022" summary="commitando a pagina intermediaria">
++      <option name="closed" value="true" />
++      <created>1730941199659</created>
++      <option name="number" value="00022" />
++      <option name="presentableId" value="LOCAL-00022" />
++      <option name="project" value="LOCAL" />
++      <updated>1730941199659</updated>
++    </task>
++    <option name="localTasksCounter" value="23" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
