@@ -9,10 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="Commit com tudo fincionando">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="commitando a pagina intermediaria">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/AdmDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/Conexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/dao/Conexao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +112,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="30e13bdb-7006-43de-b27c-8131985355c0" />
+        <option name="BASE_DIRECTORY_NAME" value="ae50de24-bbad-40b1-80b1-a5638b40c80c" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -133,7 +131,7 @@
         </ENTRIES>
       </extension>
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="56833" />
+        <option name="DEBUG_PORT" value="56971" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -224,7 +222,7 @@
       <workItem from="1730798531678" duration="14822000" />
       <workItem from="1730823445290" duration="911000" />
       <workItem from="1730826759419" duration="15013000" />
-      <workItem from="1730892441720" duration="36632000" />
+      <workItem from="1730892441720" duration="36903000" />
     </task>
     <task id="LOCAL-00001" summary="Commit para o gustavo terminar a estilização do site">
       <option name="closed" value="true" />
@@ -386,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730939506335</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="commitando a pagina intermediaria">
+      <option name="closed" value="true" />
+      <created>1730941040459</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1730941040459</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +422,8 @@
     <MESSAGE value="AJuste na PermissaoVaga" />
     <MESSAGE value="innitial commit do fim" />
     <MESSAGE value="Commit com tudo fincionando" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit com tudo fincionando" />
+    <MESSAGE value="commitando a pagina intermediaria" />
+    <option name="LAST_COMMIT_MESSAGE" value="commitando a pagina intermediaria" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

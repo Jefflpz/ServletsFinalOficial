@@ -29,11 +29,11 @@ public class AdmDAO{
 
     // Método para inserir um novo registro na tabala Adm
     public boolean inserirAdm(String username, String senha) {
+        conexao.conectar();
 
         // Cria uma instrução SQL para inserir um novo administrador na tabela Adm.
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("INSERT INTO adm (username, senha) VALUES (?,?)")){
 
-            conexao.conectar();
 
             // Define os valores dos parâmetros da consulta
             pstmt.setString(1, username);
@@ -52,11 +52,11 @@ public class AdmDAO{
 
     // Método para alterar a senha de um administrador na tabela Adm
     public boolean alterarSenhaAdm(String novaSenha, UUID id) {
+        conexao.conectar();
 
         // Cria uma instrução SQL para atualizar a senha do administrador na tabela Adm.
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE adm SET senha=? WHERE id=?")){
 
-            conexao.conectar();
 
             // Define os valores dos parâmetros na consulta SQL
             pstmt.setString(1, novaSenha);
@@ -82,11 +82,11 @@ public class AdmDAO{
 
     // Método para alterar o login de um administrador na tabela Adm
     public boolean alterarLoginAdm(String novoUsername, UUID id) {
+        conexao.conectar();
 
         // Cria uma instrução SQL para atualizar o login do administrador na tabela Adm.
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("UPDATE adm SET username=? WHERE id = ?")) {
 
-            conexao.conectar();
 
             // Define os valores dos parâmetros na consulta SQL
             pstmt.setString(1, novoUsername);
@@ -164,11 +164,10 @@ public class AdmDAO{
     // Método para buscar um administrador na tabela Adm pelo nome e senha
     public Adm buscarAdm(String username, String senha){
 
+        conexao.conectar();
 
         // Cria uma instrução SQL para buscar um administrador na tabela Adm.
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM adm WHERE username = ? AND senha = ?")){
-
-            conexao.conectar();
 
             // Define os valores dos parâmetros na consulta SQL
             pstmt.setString(1, username);
@@ -202,11 +201,10 @@ public class AdmDAO{
         // Essa linha cria uma lista vazia chamada adms, pronta para armazenar objetos do tipo Adm.
         // Usamos o ArrayList para faciliar a manipulação da lista.
         List<Adm> adms = new ArrayList<>();
+        conexao.conectar();
 
 
         try (PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT * FROM adm")){
-
-            conexao.conectar();
 
             // Armazena o resultado da consulta no objeto ResultSet.
             ResultSet rs = pstmt.executeQuery();
