@@ -58,7 +58,7 @@ form.addEventListener('submit', async (e) => {
 
         console.log(response);
         if (response.ok) {
-            window.location.href = 'http://localhost:8080/CRUD_Site_war_exploded/listarAdm';
+            window.location.href = 'pages/intermediaria.jsp';
             window.alert('Login realizado com sucesso!');
         } else {
             const result = await response.json();

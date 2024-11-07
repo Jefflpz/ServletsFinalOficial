@@ -11,31 +11,21 @@
   <component name="ChangeListManager">
     <list default="true" id="38b6207f-ec65-44fb-92b4-b8e4a5862d36" name="Changes" comment="Commit com tudo fincionando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletExcluirSituacaoTrabalhista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletExcluirSituacaoTrabalhista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletInserirSituacaoTrabalhista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletInserirSituacaoTrabalhista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletListarSituacoesTrabalhistas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/situacaoTrabalhista/ServletListarSituacoesTrabalhistas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletExcluirStatusCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletExcluirStatusCurso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletInserirStatusCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletInserirStatusCurso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletListarStatusCursos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/statusCurso/ServletListarStatusCursos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletExcluirTipoArquivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletInserirTipoArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletInserirTipoArquivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletListarTiposArquivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoArquivo/ServletListarTiposArquivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletExcluirTipoVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletExcluirTipoVaga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletInserirTipoVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletInserirTipoVaga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletListarTiposVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crud_site/controller/tipoVaga/ServletListarTiposVaga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/adm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoCurso.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/permissaoVaga.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/permissaoVaga.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/setor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/setor.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/situacaoTrabalhista.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/situacaoTrabalhista.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/statusCurso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/statusCurso.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/tipoArquivo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/tipoArquivo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/tipoVaga.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/tipoVaga.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/LoginAdm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/LoginAdm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,10 +72,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.tipoArquivo.jsp.executor": "Coverage",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.1.281.executor": "Debug",
+    "Tomcat Server.Tomcat 10.1.281.executor": "Run",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "openjdk-21",
     "kotlin-language-version-configured": "true",
@@ -107,9 +98,10 @@
       <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\TipoVaga" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\img" />
       <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\css" />
-      <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\js" />
       <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\pages" />
+      <recent name="C:\Users\jeffersonlopes-ieg\IdeaProjects\ServletsOficial\src\main\webapp\js" />
     </key>
   </component>
   <component name="RunManager">
@@ -233,7 +225,7 @@
       <workItem from="1730798531678" duration="14822000" />
       <workItem from="1730823445290" duration="911000" />
       <workItem from="1730826759419" duration="15013000" />
-      <workItem from="1730892441720" duration="33106000" />
+      <workItem from="1730892441720" duration="35141000" />
     </task>
     <task id="LOCAL-00001" summary="Commit para o gustavo terminar a estilização do site">
       <option name="closed" value="true" />
@@ -379,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730935240791</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Commit com tudo fincionando">
+      <option name="closed" value="true" />
+      <created>1730937341189</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1730937341189</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
